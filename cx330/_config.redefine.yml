@@ -23,7 +23,7 @@ defaults:
     # Favicon
     favicon: assets/me.jpg
     # Site logo
-    logo:
+    logo: assets/me.jpg
     # Site avatar
     avatar: assets/me.jpg
 # IMAGE CONFIGURATION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
