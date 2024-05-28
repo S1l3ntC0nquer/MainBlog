@@ -21,9 +21,9 @@ info:
 # Docs: https://redefine-docs.ohevan.com/basic/defaults
 defaults:
     # Favicon
-    favicon: assets/me.jpg
+    favicon:
     # Site logo
-    logo: assets/me.jpg
+    logo:
     # Site avatar
     avatar: assets/me.jpg
 # IMAGE CONFIGURATION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
