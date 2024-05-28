@@ -104,4 +104,3 @@ deploy:
     type: git
     repo: https://github.com/CX330Blake/CX330Blake.github.io.git
     branch: main
-    message: "Site updated: {{ now('YYYY-MM-DD HH:mm:ss') }}"
