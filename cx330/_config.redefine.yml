@@ -308,7 +308,7 @@ articles:
         init_open: true # Open toc by default
     # Whether to enable copyright notice
     copyright:
-        enable: false # Whether to enable
+        enable: true # Whether to enable
         default: cc_by_nc_sa # Default license, can be cc_by_nc_sa, cc_by_nd, cc_by_nc, cc_by_sa, cc_by, all_rights_reserved, public_domain
     # Whether to enable lazyload for images
     lazyload: true
@@ -317,7 +317,7 @@ articles:
         # Whether to enable article recommendation
         enable: false
         # Article recommendation title
-        title: Recommended Articles
+        title: Recommended Reading
         # Max number of articles to display
         limit: 3
         # Max number of articles to display mobile
