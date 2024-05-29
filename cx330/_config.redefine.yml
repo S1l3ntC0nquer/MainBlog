@@ -197,9 +197,9 @@ navbar:
             icon: fa-regular fa-planet-ringed
             submenus:
                 Whoami: /whoami
-                Friends: /links
                 Ls: /ls
                 Github: https://github.com/CX330Blake
+                Friends: /links
 
             # Archives:
             #   path: /archives
@@ -249,7 +249,7 @@ home:
                 icon: fa-regular fa-tags # can be empty
             Categories:
                 path: /categories
-                icon: fa-regular fa-folder # can be empty
+                icon: fa-solid fa-folder-heart # can be empty
             # ...... # you can add more
     # Article date format
     article_date_format: YYYY-MM-DD # auto, relative, YYYY-MM-DD, YYYY-MM-DD HH:mm:ss etc.
