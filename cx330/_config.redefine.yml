@@ -190,11 +190,15 @@ navbar:
         Tree:
             path: /archives
             icon: fa-light fa-timeline-arrow
+        categories:
+            path: /categories #链接
+            icon: fa-solid fa-folder-heart #图标
         About:
             icon: fa-regular fa-planet-ringed
             submenus:
                 Whoami: /whoami
                 Friends: /links
+                Ls: /ls
                 Github: https://github.com/CX330Blake
 
             # Archives:
@@ -217,11 +221,8 @@ navbar:
             #     Link2: /link2
             #     Link3: /link3
             # ...... # you can add more
-            # categories:
-            #     Categories: #取名随意
-            #         icon: fa-solid fa-folder #图标
-            #         path: /categories #链接
-            #     # Navbar search (local search). Requires hexo-generator-searchdb (npm i hexo-generator-searchdb). See https://github.com/theme-next/hexo-generator-searchdb
+
+            # Navbar search (local search). Requires hexo-generator-searchdb (npm i hexo-generator-searchdb). See https://github.com/theme-next/hexo-generator-searchdb
     search:
         # Whether to enable
         enable: true
