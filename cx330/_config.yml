@@ -104,3 +104,6 @@ deploy:
     type: git
     repo: https://github.com/CX330Blake/CX330Blake.github.io.git
     branch: main
+
+sitemap:
+    path: sitemap.xml
