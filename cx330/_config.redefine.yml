@@ -21,11 +21,11 @@ info:
 # Docs: https://redefine-docs.ohevan.com/basic/defaults
 defaults:
     # Favicon
-    favicon: assets/me.jpg
+    favicon: assets/favicon.ico
     # Site logo
-    logo:
+    logo: assets/favicon.ico
     # Site avatar
-    avatar: assets/me.jpg
+    avatar: assets/favicon.ico
 # IMAGE CONFIGURATION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 # COLORS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
@@ -285,7 +285,7 @@ articles:
     # Word count. Requires hexo-wordcount (npm install hexo-wordcount). See https://github.com/willin/hexo-wordcount
     word_count:
         enable: true # Whether to enable
-        count: false # Whether to display word count
+        count: true # Whether to display word count
         min2read: true # Whether to display reading time
     # Author label
     author_label:
