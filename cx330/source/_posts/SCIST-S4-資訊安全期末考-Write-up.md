@@ -2,7 +2,7 @@
 title: SCIST S4 資訊安全期末考 Write up
 date: 2024-05-28 13:33:42
 categories: 
-- CTF
+- [CyberSec, CTF]
 tags: 
 - CTF
 - Security
