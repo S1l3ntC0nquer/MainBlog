@@ -107,8 +107,8 @@ home_banner:
     style: fixed # static or fixed
     # Home banner image
     image:
-        light: /images/wallhaven-wqery6-light.webp # light mode
-        dark: /images/wallhaven-wqery6-dark.webp # dark mode
+        light: assets/Lakeside_2019_Teal_UHD2.png # light mode /images/wallhaven-wqery6-light.webp
+        dark: assets/Lakeside_2019_Evening_UHD2.png # dark mode /images/wallhaven-wqery6-dark.webp
     # Home banner title
     title: Welcome to CX330's Universe
     # Home banner subtitle
@@ -385,7 +385,7 @@ footer:
     # Site statistics
     statistics: true # show site statistics or not (total articles, total words)
     # Footer message
-    customize:
+    customize: Background image is designed by <a href="https://dribbble.com/louiscoyle" target="_blank">Louis Coyle</a>
     # ICP record number. See https://beian.miit.gov.cn/
     icp:
         enable: false # Whether to enable
