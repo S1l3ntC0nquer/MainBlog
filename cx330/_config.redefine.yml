@@ -175,8 +175,8 @@ navbar:
     auto_hide: false
     # Navbar background color
     color:
-        left: "#008080" #left side #f78736
-        right: "#f78736" #right side
+        left: "#f78736" #left side #f78736
+        right: "#b2d8d8" #right side #66b2b2
         transparency: 35 #percent (10-99)
     # Navbar width (usually no need to modify)
     width:
