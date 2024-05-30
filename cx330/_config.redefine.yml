@@ -160,7 +160,7 @@ home_banner:
             twitter: # your twitter URL
             facebook: https://www.facebook.com/profile.php?id=100011698690769
             fa-brands fa-linkedin-in: https://www.linkedin.com/in/%E5%AD%90%E9%9B%8B-%E9%99%B3-11087825b/
-            fa-regular fa-envelope: timchen975@gmail.com # your email
+            fa-regular fa-envelope: mailto:timchen975@gmail.com # your email
             # ...... # you can add more
         # Social links with QRcode drawers
         qrs:
@@ -175,7 +175,7 @@ navbar:
     auto_hide: false
     # Navbar background color
     color:
-        left: "#f78736" #left side
+        left: "#f5a524" #left side #f78736
         right: "#367df7" #right side
         transparency: 35 #percent (10-99)
     # Navbar width (usually no need to modify)
@@ -297,9 +297,9 @@ articles:
         copy: true # Whether to enable code block copy button
         style: mac # mac | simple
         font: # Custom font
-            enable: false # Whether to enable
-            family: # Font family
-            url: https://cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.css # Font URL to CSS file
+            enable: true # Whether to enable
+            family: Fira Code # Font family
+            url: https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap # Font URL to CSS file
     # Table of contents settings
     toc:
         enable: true # Whether to enable TOC
