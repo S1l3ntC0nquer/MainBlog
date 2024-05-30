@@ -107,8 +107,8 @@ home_banner:
     style: fixed # static or fixed
     # Home banner image
     image:
-        light: assets/Lakeside_2019_Teal_UHD2.png # light mode /images/wallhaven-wqery6-light.webp
-        dark: assets/Lakeside_2019_Evening_UHD2.png # dark mode /images/wallhaven-wqery6-dark.webp
+        light: assets/Lakeside_2019_Teal_NoDeer_UHD2.png # light mode /images/wallhaven-wqery6-light.webp
+        dark: assets/lakeside_2019_midnight.png # dark mode /images/wallhaven-wqery6-dark.webp
     # Home banner title
     title: Welcome to CX330's Universe
     # Home banner subtitle
@@ -128,8 +128,8 @@ home_banner:
         smart_backspace: true # Whether to smart backspace
     # Color of home banner text
     text_color:
-        light: "#fff" # light mode
-        dark: "#d1d1b6" # dark mode
+        light: "#3c3c3c" # light mode #fff #DEADBEEF
+        dark: "#fff" # dark mode #d1d1b6
     # Specific style of the text
     text_style:
         # Title font size
@@ -175,8 +175,8 @@ navbar:
     auto_hide: false
     # Navbar background color
     color:
-        left: "#f5a524" #left side #f78736
-        right: "#367df7" #right side
+        left: "#008080" #left side #f78736
+        right: "#f78736" #right side
         transparency: 35 #percent (10-99)
     # Navbar width (usually no need to modify)
     width:
