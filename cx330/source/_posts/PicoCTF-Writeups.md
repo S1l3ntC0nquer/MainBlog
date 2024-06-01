@@ -258,7 +258,7 @@ This is the encrypted flag!
 What data would you like to encrypt?
 ```
 在這題中，我們要先閱讀他給我們的Code。在encrypt函式中我們可以看到一些事情。因為題目給的Cipher的長度為64，又因為他是以十六進制的方式輸出Cipher，所以我們可以知道他用掉的`key_location`長度為32，也就是說，我們下次在加密的時候是用第33位開始的key。
-```pytho=
+```python=
 def encrypt(key_location):
     ui = input("What data would you like to encrypt? ").rstrip()
     if len(ui) == 0 or len(ui) > KEY_LEN:
