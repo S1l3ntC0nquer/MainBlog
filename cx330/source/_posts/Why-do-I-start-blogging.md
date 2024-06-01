@@ -6,7 +6,7 @@ categories:
 sticky: 1337
 password: hello
 message: You need a password to access this article.
-theme: xray
+theme: wave
 ---
 
 # Big bang! 宇宙的起源
