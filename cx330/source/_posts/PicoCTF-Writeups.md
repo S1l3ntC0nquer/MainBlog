@@ -152,18 +152,16 @@ print(enc)
 ```
 先觀察這個加密腳本。發現他是把明文每個字母的Ascii值轉為Binary後，從左邊補0補到8個Bits，然後
 ## Mind your Ps and Qs
-這題是個RSA加密，先來複習一下RSA加密裡面的各個參數。
-:::info
-Find two prime numbers p & q
-n = p * q 
-phi(n) = (p-1) * (q-1)
-e is the encryption exponent
-d = e^-1 mod phi(n)
-c is the encrypted message; c = m^e mod n
-m is the message; m = c^d mod n
-Public key  = (e, n)
-Private key = (d, n)
-:::
+這題是個RSA加密，先來複習一下RSA加密裡面的各個參數還有加密流程。
+> Find two prime numbers p & q
+> n = p * q 
+> phi(n) = (p-1) * (q-1)
+> e is the encryption exponent
+> d = e^-1 mod phi(n)
+> c is the encrypted message; c = m^e mod n
+> m is the message; m = c^d mod n
+> Public key  = (e, n)
+> Private key = (d, n)
 複習完後，看一下題目的說明。
 ```
 Description:
