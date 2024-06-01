@@ -162,6 +162,7 @@ print(enc)
 > m is the message; m = c^d mod n
 > Public key  = (e, n)
 > Private key = (d, n)
+ 
 複習完後，看一下題目的說明。
 ```
 Description:
