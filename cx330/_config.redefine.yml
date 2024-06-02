@@ -423,7 +423,7 @@ plugins:
               artist: 房東的貓 # audio artist
               url: https://cx330.tw/assets/孤獨之書.mp3 # audio url
               cover: https://i.kfs.io/album/global/141875941,0v1/fit/500x500.jpg # audio cover url
-              lrc: https://cx330.tw/assets/孤獨之書.lrc # audio cover lrc
+              lrc: # audio cover lrc
     #      - name: # audio name
     #        artist: # audio artist
     #        url: # audio url
