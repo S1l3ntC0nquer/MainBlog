@@ -12,9 +12,11 @@ password: 2024AIS3
 (這次的參賽紀錄我也有放在個人網站上，等審查結束後打算公開，可以透過[這個連結](https://cx330.tw/CyberSec/CTF/2024-AIS3-Pre-exam-Writeup/)訪問，密碼`2024AIS3`)
 # Web
 ## Evil Calculator
-> 這是一題command injection的題目
+> Command Injection
 
-先觀察題目，打開F12的開發者工具，隨便輸入點東西看看它的運作。這邊我們先在計算機上按下3+3。![image](https://hackmd.io/_uploads/SydoCk94C.png)
+先觀察題目，打開F12的開發者工具，隨便輸入點東西看看它的運作。這邊我們先在計算機上按下3+3。
+
+![image](https://hackmd.io/_uploads/SydoCk94C.png)
 
 在圖中我們可以看見，他其實是傳了一個request給後端服務器，後端服務器會去執行這個計算，並且把結果回傳給前端。這邊的payload長這樣:
 ```json=
@@ -58,9 +60,12 @@ expression = data["expression"].replace(" ", "").replace("_", "")
 # Reverse
 
 ## The Long Print
+題目給了我們一個二進制文件，然後又是出題在Reverse類別，所以就理所當然地把檔案用[IDA](https://hex-rays.com/ida-free/)打開來看看吧！
 # Pwn
 # Misc
 ## Three Dimensional Secret
+> 封包分析
+
 這題給了一個`capture.pcapng`，所以我們先用Wireshark把檔案給打開來，看看他葫蘆裡賣的是甚麼藥。![image](https://hackmd.io/_uploads/r1EEdx9VR.png)
 在圖片中我們可以看到超級多的TCP封包，我一開始還不太知道接下來該怎麼做，但我在翻了一下[這本書](https://www.books.com.tw/products/0010884220)之後就找到解法了！
 
