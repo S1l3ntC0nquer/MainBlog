@@ -3,7 +3,7 @@ title: 2024 AIS3 Pre-exam Writeup
 date: 2024-06-01 21:11:25
 categories:
 - [CyberSec, CTF]
-password: 2024AIS3
+password: helloworld
 message: This is NOT able to access until 6/5
 abstract: This is NOT able to access until 6/5
 theme: wave
@@ -14,6 +14,8 @@ theme: wave
 而進到成大後我也並沒有忘記自己當時的初衷，是因為對資安特別感興趣，才誘使我轉換到了這條跑道，所以我也報名了SCIST的課程，希望可以在資安領域有更多的成長。嚴格說起來，加上SCIST的期末考試，這次是我第二次正式的資安比賽。而這次的我又比上次(SCIST期末考)花了更多的時間在解題。這次三天的賽程，我幾乎是除了吃飯睡覺以外的時間，都在解題(三點睡覺八點起床💤)，可惜最後還是一直卡在一些想不出來的點，所以解出來的題目還是有點少。希望在我今年暑假的修煉過後，下次參賽可以有更好的表現！
 # Web
 ## Evil Calculator
+
+![alt text](image.png)
 # Crypto
 # Reverse
 # Pwn
