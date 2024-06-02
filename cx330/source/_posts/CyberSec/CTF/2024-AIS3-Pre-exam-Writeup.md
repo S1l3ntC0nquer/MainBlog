@@ -14,9 +14,7 @@ password: 2024AIS3
 ## Evil Calculator
 > 這是一題command injection的題目
 
-先觀察題目，打開F12的開發者工具，隨便輸入點東西看看它的運作。這邊我們先在計算機上按下3+3。
-
-![image](https://hackmd.io/_uploads/SydoCk94C.png)
+先觀察題目，打開F12的開發者工具，隨便輸入點東西看看它的運作。這邊我們先在計算機上按下3+3。![image](https://hackmd.io/_uploads/SydoCk94C.png)
 
 在圖中我們可以看見，他其實是傳了一個request給後端服務器，後端服務器會去執行這個計算，並且把結果回傳給前端。這邊的payload長這樣:
 ```json=

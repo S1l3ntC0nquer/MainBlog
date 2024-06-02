@@ -116,8 +116,8 @@ mathjax:
     append_css: true # add CSS to every page
     every_page: false # if true, every page will be rendered by mathjax regardless the `mathjax` setting in Front-matter of each article
 
-# hexo-admin authentification
-admin:
-    username: CX330Blake
-    password_hash: $2a$10$ugKYYV64RKb5cpY6FqWTL.fs3fpYsazDJX/l6F3PRNj.oiujLbnlS
-    secret: CX330
+lazyload:
+    enable: true
+    onlypost: true # optional
+    loadingImg: # optional eg ./images/loading.gif
+    isSPA: true # optional
