@@ -15,7 +15,7 @@ theme: wave
 # Web
 ## Evil Calculator
 
-![alt text](image.png)
+![alt text](./2024-AIS3-Pre-exam-Writeup/image.png)
 # Crypto
 # Reverse
 # Pwn
