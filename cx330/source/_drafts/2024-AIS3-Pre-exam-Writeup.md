@@ -393,7 +393,7 @@ G1 X174.043 Y135.473 E2064.98511
 
 (然後因為我偷懶+怕打錯字所以用了OCR把它的文字題取出來)
 ```
-AIS3{b4d1y_tun3d PriN73r)
+AIS3{b4d1y_tun3d PriN73r}
 ```
 ## Emoji Console
 這題點進去後發現是長下面這樣，是由很多Emoji所組成的一個Console，也難怪題目就叫這名字XD。
