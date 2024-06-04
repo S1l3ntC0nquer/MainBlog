@@ -859,7 +859,7 @@ def menu():
 
 每次參加資安的活動、課程等等，看到那些厲害的學長姐們聚在一起聊天的時候常常會幻想自己有天也能躋身在他們的行列，也是因此，我打算在暑假的時候好好修煉！期待下學期的自己可以多多參加CTF比賽，並且爭取得到些成績。在這次暑假中我也會把我每次練習題目的Writeup放在我的個人網站上，如果有任何理解錯誤的地方也歡迎大家指正！
 
-> *Do not go gentle into that good night; Old age should burn and rave at close of day. Rage, rage against the dying of the light. -- **Interstellar***
+> *"Do not go gentle into that good night; Old age should burn and rave at close of day. Rage, rage against the dying of the light." -- **Interstellar***
 
 # Reference
 有鑑於我認為自己在資訊這個領域中，如果能有任何的成就或是進展，很大部分的原因都是站在了許多巨人的肩膀上，所以我會把比賽過程中用到的資源都放上來。
