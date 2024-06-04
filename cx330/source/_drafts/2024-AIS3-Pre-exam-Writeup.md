@@ -2,6 +2,7 @@
 title: 2024 AIS3 Pre-exam Writeup
 date: 2024-06-02 21:42:41
 mathjax: true
+thumbnail: "https://hackmd.io/_uploads/BJzJezn4A.jpg" 
 categories: [CyberSec, CTF]
 ---
 
