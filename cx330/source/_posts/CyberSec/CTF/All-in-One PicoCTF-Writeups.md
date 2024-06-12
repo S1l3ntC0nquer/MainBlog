@@ -1,5 +1,5 @@
 ---
-title: PicoCTF Writeups
+title: All-in-One PicoCTF Writeups
 date: 2024-06-01 10:27:03
 categories: 
 - [CyberSec, CTF]
