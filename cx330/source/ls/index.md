@@ -5,7 +5,7 @@ comment: true
 ---
 # Skills
 1. Python
-2. HTML/CSS/JS
+2. Vanilla JS
 3. C
 4. Java
 5. Linux
