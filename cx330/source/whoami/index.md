@@ -7,7 +7,6 @@ comment: true
 # 陳子雋 CX330
 > 正在努力成為改變世界的人
 > Striving to become a person who changes the world.
----
 ## Who am I?
 Welcome to CX330BLΛKΞ's Universe! You may be wondering who I am. Well, let me introduce myself to you.
 

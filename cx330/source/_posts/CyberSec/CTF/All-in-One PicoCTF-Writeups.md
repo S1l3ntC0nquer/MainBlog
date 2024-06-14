@@ -1,5 +1,5 @@
 ---
-title: PicoCTF Writeups
+title: All-in-One PicoCTF Writeups
 date: 2024-06-01 10:27:03
 categories: 
 - [CyberSec, CTF]
@@ -152,17 +152,18 @@ print(enc)
 ```
 先觀察這個加密腳本。發現他是把明文每個字母的Ascii值轉為Binary後，從左邊補0補到8個Bits，然後
 ## Mind your Ps and Qs
-這題是個RSA加密，先來複習一下RSA加密裡面的各個參數還有加密流程。
-> Find two prime numbers p & q
-> n = p * q 
-> phi(n) = (p-1) * (q-1)
-> e is the encryption exponent
-> d = e^-1 mod phi(n)
-> c is the encrypted message; c = m^e mod n
-> m is the message; m = c^d mod n
-> Public key  = (e, n)
-> Private key = (d, n)
- 
+這題是個RSA加密，先來複習一下RSA加密裡面的各個參數。
+:::info
+Find two prime numbers p & q
+n = p * q 
+phi(n) = (p-1) * (q-1)
+e is the encryption exponent
+d = e^-1 mod phi(n)
+c is the encrypted message; c = m^e mod n
+m is the message; m = c^d mod n
+Public key  = (e, n)
+Private key = (d, n)
+:::
 複習完後，看一下題目的說明。
 ```
 Description:
@@ -257,7 +258,7 @@ This is the encrypted flag!
 What data would you like to encrypt?
 ```
 在這題中，我們要先閱讀他給我們的Code。在encrypt函式中我們可以看到一些事情。因為題目給的Cipher的長度為64，又因為他是以十六進制的方式輸出Cipher，所以我們可以知道他用掉的`key_location`長度為32，也就是說，我們下次在加密的時候是用第33位開始的key。
-```python=
+```pytho=
 def encrypt(key_location):
     ui = input("What data would you like to encrypt? ").rstrip()
     if len(ui) == 0 or len(ui) > KEY_LEN:
