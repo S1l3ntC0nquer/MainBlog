@@ -9,7 +9,7 @@ mathjax: true
 TODO
 # Web
 ## picobrowser
-這題我們點進URL後會看到一個FLAG的按鈕，按下去會發現我們不能得到FLAG。![image](https://hackmd.io/_uploads/SJB9S0p70.png)
+這題我們點進URL後會看到一個FLAG的按鈕，按下去會發現我們不能得到FLAG。![](https://hackmd.io/_uploads/SJB9S0p70.png)
 他說我們應該要是picobrowser，所以我就寫了一個selenium的Python腳本來運行，看看能不能拿到flag。
 ```python=
 from selenium import webdriver

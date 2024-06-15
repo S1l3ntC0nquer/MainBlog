@@ -22,7 +22,7 @@ password: 2024AIS3
 
 先觀察題目，打開F12的開發者工具，隨便輸入點東西看看它的運作。這邊我們先在計算機上按下3+3。
 
-![image](https://hackmd.io/_uploads/SydoCk94C.png)
+![](https://hackmd.io/_uploads/SydoCk94C.png)
 
 在圖中我們可以看見，他其實是傳了一個request給後端服務器，後端服務器會去執行這個計算，並且把結果回傳給前端。這邊的payload長這樣:
 ```json=
@@ -52,7 +52,7 @@ expression = data["expression"].replace(" ", "").replace("_", "")
 ```
 然後我們就得到flag了！
 
-![evil_calculator_flag](https://hackmd.io/_uploads/S1DlyecE0.png)
+![evil calculator flag](https://hackmd.io/_uploads/S1DlyecE0.png)
 
 (圖片的字可能有點小，flag我放在下面)
 
@@ -65,7 +65,7 @@ expression = data["expression"].replace(" ", "").replace("_", "")
 ## Ebook Parser
 這題我一看到就覺得是文件上傳漏洞(file upload vulnerability)。
 
-![image](https://hackmd.io/_uploads/HyNVgLoN0.png)
+![](https://hackmd.io/_uploads/HyNVgLoN0.png)
 
 但是知道是知道，難就難在我不知道payload是甚麼以及該怎麼實作🥲。所以我嘗試了很多種方法，包括在某個epub檔案後面注入一些東西，但都還是失敗了。
 
@@ -166,11 +166,11 @@ def fermat_factorization(n: int) -> tuple[int, int]:
 ## The Long Print
 題目給了我們一個二進制文件，然後又是出題在Reverse類別，所以就理所當然地把檔案用[IDA](https://hex-rays.com/ida-free/)打開來看看吧！
 
-![image](https://hackmd.io/_uploads/HJprW1oNR.png)
+![IDA打開的樣子](https://hackmd.io/_uploads/HJprW1oNR.png)
 
 點開之後我們就會看到一堆很可怕的東西，所以趕快按下我們的tab/F5讓IDA幫我們Decompile一下。
 
-![image](https://hackmd.io/_uploads/SkydbyjVR.png)
+![IDA Decompile](https://hackmd.io/_uploads/SkydbyjVR.png)
 
 這樣看起來平易近人多了。那我們就一步一步跟隨著這個程式研究一下他到底如何運作的。為了寫的詳細點我把代碼放上來加點註解解釋一下(寫一起感覺比較清楚)，如下:
 ```c=
@@ -365,11 +365,11 @@ AIS3{You_are_the_master_of_time_management!!!!?}
 
 首先我們先對著這坨TCP封包點右鍵，會出現一個選項叫做Follow，如圖:
 
-![image](https://hackmd.io/_uploads/SJkMtl5NA.png)
+![Wireshark](https://hackmd.io/_uploads/SJkMtl5NA.png)
 
 然後我們把它點下去，然後再選擇TCP Stream，就可以看到Wireshark所解析出來的內容，如下:
 
-![image](https://hackmd.io/_uploads/SkGcFx5N0.png)
+![](https://hackmd.io/_uploads/SkGcFx5N0.png)
 
 因為之前忘記在哪裡刷提的時候有寫過類似的題目，所以我知道這串看不懂的字其實是一個叫做Gcode的東西，它是用來控制工業中的一些自動工具機的代碼。因為太長了，所以我只放一小部分在下面。Gcode就長下面這樣。
 ```
@@ -391,11 +391,11 @@ G1 X174.043 Y135.473 E2064.98511
 
 既然已經知道了他是Gcode，我們就趕快來找一個線上的Viewer來看看他生做圓還是扁吧！我使用的網站是[這個](https://ncviewer.com/)。把那串代碼放上去後，就點一下圖中的Plot來看看！
 
-![image](https://hackmd.io/_uploads/HJA09l9N0.png)
+![](https://hackmd.io/_uploads/HJA09l9N0.png)
 
 點下去後發現居然沒有東西，我直接愣在原地被硬控三秒鐘。難道是我想錯了嗎！！！在慌亂之中，我趕緊調整視角，終於發現了偷偷躲在旁邊的Flag，如下:
 
-![image](https://hackmd.io/_uploads/SyqholcNR.png)
+![](https://hackmd.io/_uploads/SyqholcNR.png)
 
 (然後因為我偷懶+怕打錯字所以用了OCR把它的文字題取出來)
 ```
@@ -404,7 +404,7 @@ AIS3{b4d1y_tun3d PriN73r}
 ## Emoji Console
 這題點進去後發現是長下面這樣，是由很多Emoji所組成的一個Console，也難怪題目就叫這名字XD。
 
-![image](https://hackmd.io/_uploads/Hyj42rsEC.png)
+![](https://hackmd.io/_uploads/Hyj42rsEC.png)
 
 在這邊，我嘗試點了一些不同的emoji，發現會對應到右邊不同的字符，組成不同的命令，所以我先用了
 ```
