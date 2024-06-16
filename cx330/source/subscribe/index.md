@@ -7,6 +7,8 @@ comment: true
 - You will receive an email to verify your subscription.
 - If you don't receive the email, please check your spam folder.
 
+<meta name="follow.it-verification-code" content="QxZmB12Bpyy1n0RF8vMZ"/>
+
 <style>
     .followit--follow-form-container[attr-a][attr-b][attr-c][attr-d][attr-e][attr-f] .form-preview {
   display: flex !important;
