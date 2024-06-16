@@ -190,9 +190,12 @@ navbar:
         Tree:
             path: /archives
             icon: fa-light fa-timeline-arrow
-        categories:
+        Categories:
             path: /categories #链接
             icon: fa-solid fa-folder-heart #图标
+        Subscribe:
+            path: /subscribe
+            icon: fa-light fa-bell #图标
         About:
             icon: fa-regular fa-planet-ringed
             submenus:
@@ -250,6 +253,9 @@ home:
             Categories:
                 path: /categories
                 icon: fa-solid fa-folder-heart # can be empty
+            Subscribe:
+                path: /subscribe
+                icon: fa-light fa-bell
             # ...... # you can add more
     # Article date format
     article_date_format: YYYY-MM-DD # auto, relative, YYYY-MM-DD, YYYY-MM-DD HH:mm:ss etc.
@@ -413,7 +419,10 @@ inject:
 plugins:
     # RSS feed. Requires hexo-generator-feed (npm i hexo-generator-feed). See https://github.com/hexojs/hexo-generator-feed
     feed:
-        enable: false # Whether to enable
+        enable: true # Whether to enable
+        type: atom
+        path: atom.xml
+        limit: 20 # Maximum number of posts to display
     # Aplayer. See https://github.com/DIYgod/APlayer
     aplayer:
         enable: true # Whether to enable
