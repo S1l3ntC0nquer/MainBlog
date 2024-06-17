@@ -406,8 +406,8 @@ inject:
     enable: true
     # Inject custom head html code
     head:
-        - <meta name="follow.it-verification-code" content="QxZmB12Bpyy1n0RF8vMZ"/>
-        - <style>.right-bottom-tools.rss.flex.justify-center.items-center {display:none;}</style>
+        - <meta name="follow.it-verification-code" content="QxZmB12Bpyy1n0RF8vMZ"/> # Follow.it verification code
+        - <style>.right-bottom-tools.rss.flex.justify-center.items-center {display:none;}</style> # Remove rss icon in setting
 
     # Inject custom footer html code
     footer:
