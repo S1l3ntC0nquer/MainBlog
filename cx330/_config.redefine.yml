@@ -385,7 +385,7 @@ footer:
     # Show website running time
     runtime: true # show website running time or not
     # Icon in footer, write fontawesome icon code here
-    icon: '<i class="fa-solid fa-code fa-flip" style="--fa-animation-duration: 5s; color:#f5a524;"></i>'
+    icon: '<i class="fa-solid fa-code fa-flip" style="--fa-animation-duration: 2s; color:#f5a524;"></i>'
     # The start time of the website, format: YYYY/MM/DD HH:mm:ss
     start: 2024/5/28 02:31:17
     # Site statistics
@@ -407,7 +407,8 @@ inject:
     # Inject custom head html code
     head:
         - <meta name="follow.it-verification-code" content="QxZmB12Bpyy1n0RF8vMZ"/>
-        -
+        - <style>.right-bottom-tools.rss.flex.justify-center.items-center {display:none;}</style>
+
     # Inject custom footer html code
     footer:
         -
