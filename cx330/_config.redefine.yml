@@ -361,7 +361,7 @@ comment:
                     "/assets/emoji/love.png",
                     "/assets/emoji/laugh.png",
                     "/assets/emoji/wow.png",
-                    "/assets/emoji/cru.png",
+                    "/assets/emoji/cry.png",
                     "/assets/emoji/angry.png",
                 ]
         # Gitalk comment system. See https://github.com/gitalk/gitalk
