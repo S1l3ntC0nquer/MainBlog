@@ -121,3 +121,5 @@ lazyload:
     onlypost: true # optional
     loadingImg: # optional eg ./images/loading.gif
     isSPA: true # optional
+
+all_minifier: true
