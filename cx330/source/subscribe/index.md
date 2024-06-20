@@ -101,7 +101,7 @@ date: 2024-06-16 16:33:46
   </div>
 
 # Donate
-- You can donate me by clicking the button or scan the QR code below.
+- You can donate me by clicking the button below.
 - Your donation will help me to keep the website running and provide better content.
 
 <style>
