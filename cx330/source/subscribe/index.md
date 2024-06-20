@@ -99,3 +99,31 @@ date: 2024-06-16 16:33:46
     <form data-v-c76ccf54="" action="https://api.follow.it/subscription-form/QjRpSU91L2UwaHVvNWpjVzJTd3VTYXprRzhUSzd5UzFwOE1LQWkvNG9BQjdtcnduVzV6Mm9BemR0R0RpMnZsOVh3d2k4cWNqM21HNXNtcFI3eGxCR2p1RjF4bnEzWkZzbnFzUXhlMmJyOXA5ZUYyeC9lS3hlRXVObW0rMkdKNGF8NzFqK3ZtaHl3UWMwdFJSZmxxT1o2Z21qRXA0VloxcFM0YXBHTGJKTGJKVT0=/8" method="post" data-np-autofill-form-type="subscribe" data-np-checked="1" data-np-watching="1"><div data-v-c76ccf54="" class="form-preview" style="background-color: rgb(255, 255, 255); position: relative; border-style: solid; border-width: 1px; border-color: rgb(204, 204, 204);"><div data-v-c76ccf54="" class="preview-heading"><h5 data-v-c76ccf54="" style="text-transform: none !important; font-family: Arial; font-weight: bold; color: rgb(0, 0, 0); font-size: 16px; text-align: center;">Subscribe to CX330's Universe</h5></div><div data-v-c76ccf54="" class="preview-input-field"><input data-v-c76ccf54="" type="email" name="email" required="" placeholder="Enter your email" spellcheck="false" style="text-transform: none !important; font-family: Arial; font-weight: normal; color: rgb(0, 0, 0); font-size: 14px; text-align: center; background-color: rgb(255, 255, 255);" data-np-autofill-field-type="email" data-np-uid="3fa804bc-3e6f-4a8c-b04f-03a140a106b7"><nordpass-icon data-np-uid="3fa804bc-3e6f-4a8c-b04f-03a140a106b7"></nordpass-icon></div><div data-v-c76ccf54="" class="preview-submit-button"><button data-v-c76ccf54="" type="submit" style="text-transform: none !important; font-family: Arial; font-weight: bold; color: rgb(255, 255, 255); font-size: 16px; text-align: center; background-color: rgb(245, 165, 36);">Subscribe</button></div></div>
     <!-- </form><a href="https://follow.it" class="powered-by-line">Powered by <img src="https://follow.it/static/img/colored-logo.svg" alt="follow.it" height="17px"/></a> -->
   </div>
+
+# Donate
+- You can donate me by clicking the button or scan the QR code below.
+- Your donation will help me to keep the website running and provide better content.
+
+<style>
+.donate-section {
+    text-align: center;
+    margin: 20px auto;
+    max-width: 300px; /* Set a maximum width */
+}
+
+.donate-button img {
+    width: 100%;
+    transition: transform 0.3s ease;
+}
+
+.donate-button:hover img {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+</style>
+
+<div class="donate-section">
+    <a href="https://www.buymeacoffee.com/cx330" class="donate-button">
+        <img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=cx330&button_colour=FFDD00&font_colour=000000&font_family=Bree&outline_colour=000000&coffee_colour=ffffff" />
+    </a>
+</div>
