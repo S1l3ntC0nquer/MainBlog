@@ -478,7 +478,7 @@ page_templates:
 cdn:
     # Whether to enable CDN
     enable:
-        true
+        false
         # CDN Provider
     provider:
         npmmirror # npmmirror, zstatic, sustech, staticfile, bootcdn, cdnjs, jsdelivr, unpkg, custom
