@@ -2,7 +2,7 @@
 title: 2024 GDSC AI Team
 mathjax: true
 categories:
-- [Development, AI]
+- [DevCorner, AI]
 tags: 
 - AI
 - GDSC
