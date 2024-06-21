@@ -1,5 +1,5 @@
 ---
-title: 2024 GDSC AI Team
+title: 2024 NCKU GDSC AI Team
 mathjax: true
 categories:
 - [DevCorner, AI]
