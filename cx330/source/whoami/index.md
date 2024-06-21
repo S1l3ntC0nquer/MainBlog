@@ -30,7 +30,7 @@ If you would like to explore my works, skills, and more, you can click on the pl
 ## Who am I?
 有空再寫 
 
-> *"Dreams feel real while we're in them. It's only when we wake up that we realize something was actually strange." — **Inception***
+> "Dreams feel real while we're in them. It's only when we wake up that we realize something was actually strange." — ***Inception***
 <!-- endtab -->
 
 {% endtabs %}

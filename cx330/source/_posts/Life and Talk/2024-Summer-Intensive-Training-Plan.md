@@ -17,4 +17,4 @@ tags:
 # 大家可以幫我個忙嗎！
 希望大家可以好好的監督我，我會開留言區，或是認識我的人也可以直接私訊我。如果我太久沒有更新文章可以來提醒我！如果我某段期間有事情、出去玩、blabla的我應該會公告在網頁上，所以如果沒特殊狀況又沒更新就是我在偷懶，請監督我！
 
-> *"I wanna tell you a little secret, being the one is just like being in love. No one needs to tell you you are in love, you just know it, through and through." — **The Matrix***
+> "We used to look up at the sky and wonder at our place in the stars. Now we just look down, and worry about our place in the dirt." — ***Interstellar***

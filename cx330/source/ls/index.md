@@ -23,4 +23,4 @@ comment: true
 1. [TRbooker](https://github.com/CX330Blake/TRbooker): A tool can get TW Train ticket altomatically. It use the Selenium from Python and 2Captcha API to conquer the human verification on the Taiwan Railway website.
 2. [X-crawler](https://github.com/CX330Blake/X-crawler): A Python script utilizes Selenium and BeautifulSoup to crawl tweets from Twitter (now X) based on a given keyword and date range. The scraped data can be saved in both text and JSON format.
 
-> *"I wanna tell you a little secret, being the one is just like being in love. No one needs to tell you you are in love, you just know it, through and through." -- **The Matrix***
+> "I wanna tell you a little secret, being the one is just like being in love. No one needs to tell you you are in love, you just know it, through and through." -- ***The Matrix***
