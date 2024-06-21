@@ -9,6 +9,7 @@ tags:
   - AI
   - GDSC
 excerpt: Sharing the experience of being a member of 2024 GDSC NCKU AI Team. 
+thumbnail: https://hackmd.io/_uploads/rJKaUHmIA.png
 ---
 
 # Intro — What is GDSC
