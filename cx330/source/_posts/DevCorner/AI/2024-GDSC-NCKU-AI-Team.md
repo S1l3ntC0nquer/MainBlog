@@ -3,8 +3,7 @@ title: 2024 GDSC NCKU AI Team
 date: 2024-06-22 03:33:41
 mathjax: true
 categories:
-  - DevCorner
-  - AI
+  - [DevCorner, AI]
 tags:
   - AI
   - GDSC
