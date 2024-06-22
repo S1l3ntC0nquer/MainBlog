@@ -3,9 +3,9 @@ title: Whoami
 date: 2024-05-28 13:37:54
 comment: true
 ---
-{% tabs 页面内不重复的ID %}
+{% tabs whoami %}
 
-<!--tab English -->
+<!-- tab English -->
 # 陳子雋 CX330
 > Striving to become a person who changes the world.
 
@@ -20,10 +20,11 @@ If you would like to explore my works, skills, and more, you can click on the pl
 
 ## Why CX330
 
-> *"Dreams feel real while we're in them. It's only when we wake up that we realize something was actually strange." — **Inception***
+> "Dreams feel real while we're in them. It's only when we wake up that we realize something was actually strange." — ***Inception***
 <!-- endtab -->
 
 <!-- tab 中文 -->
+
 # 陳子雋 CX330
 > 正在努力成為改變世界的人
 
