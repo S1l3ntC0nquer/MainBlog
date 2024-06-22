@@ -4,10 +4,6 @@ date: 2024-05-30 02:47:09
 categories:
 - Life and Talk
 sticky: 1337
-password: hello
-message: You need a password to access this article.
-abstract: Not done yet
-theme: wave
 ---
 # Big bang! 宇宙的起源
 我其實從很久以前就有想要架設自己的網站，上了大學後又看到更多厲害的前輩們都會有自己的網站來記錄自己的成長，於是下定決心也要來建立自己的Blog。再加上我今年（2023開始）剛好把Instagram關版了（想挑戰一年不用Instagram），所以剛好就利用這邊來記錄我的生活和技術類文章吧！（未來可能會順便紀錄一些旅遊、和朋友的約、blablabla）
