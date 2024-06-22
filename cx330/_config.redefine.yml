@@ -192,7 +192,7 @@ navbar:
             icon: fa-light fa-timeline-arrow
         Categories:
             path: /categories #链接
-            icon: fa-solid fa-folder-heart #图标
+            icon: fa-regular fa-folder-heart #图标
         Subscribe:
             path: /subscribe
             icon: fa-light fa-bell #图标
