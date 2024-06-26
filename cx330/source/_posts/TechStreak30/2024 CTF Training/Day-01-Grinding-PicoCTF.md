@@ -2,14 +2,16 @@
 title: '[Day 01] Grinding PicoCTF'
 mathjax: true
 categories:
-- [CyberSec, CTF]
 - [TechStreak30, 2024 CTF Training]
+- [CyberSec, CTF]
 tags:
 - CTF
 - PicoCTF
 - CyberSec
 - TechStreak30
+date: 2024-06-26 16:42:14
 ---
+
 # 前言
 因為已經有開了一篇文章，打算放上所有picoCTF的writeups了，所以就不把解題思路寫在這邊啦，如果想看的話請見[這邊](https://cx330.tw/CyberSec/CTF/All-in-One%20PicoCTF-Writeups/)!
 
