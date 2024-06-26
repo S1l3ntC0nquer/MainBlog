@@ -4,6 +4,7 @@ date: 2024-06-01 10:27:03
 categories: 
 - [CyberSec, CTF]
 mathjax: true
+thumbnail: https://hackmd.io/_uploads/BJxhDLKL0.png
 ---
 # 前言
 其實好像也沒什麼好講前言的，但就是不想要一開始就是題目分類，所以還是放了個前言XD。總之呢這裡就是會盡量彙整所有的picoCTF的題目在這邊（但是因為已經寫了60題左右才開始打算來寫writeup，所以可能前面的部分會等其他都寫完再來補），如果有需要就可以直接來這邊看所有的writeup，就這樣啦！希望能幫忙到你。

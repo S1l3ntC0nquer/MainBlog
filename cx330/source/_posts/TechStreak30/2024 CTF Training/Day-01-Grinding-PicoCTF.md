@@ -10,6 +10,7 @@ tags:
 - CyberSec
 - TechStreak30
 date: 2024-06-26 16:42:14
+thumbnail: /images/hacker_in_the_universe.webp
 ---
 
 # 前言
