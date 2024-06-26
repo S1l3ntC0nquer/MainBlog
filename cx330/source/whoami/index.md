@@ -19,6 +19,9 @@ Currently, I am diligently enhancing my skills in cybersecurity, which includes 
 If you would like to explore my works, skills, and more, you can click on the planet icon in the top left corner to expand the list and view other pages. Feel free to follow me on social media platforms such as Facebook, Instagram, LinkedIn, and more. Thank you for visiting, and I hope you have a great experience at CX330's Universe. Wishing you a pleasant journey!
 
 ## Why CX330
+> "CX330 is the most isolated young star that has been discovered." — ***NASA*** 
+
+As NASA researchers have mentioned, CX330 is a young and isolated star. I chose it as my ID because I deeply appreciate the importance of embracing solitude on my path to becoming a hacker. It's only in solitude that I can enter a state of complete focus, and such intense isolation allows me to achieve a state of flow. I hope this ID will remind me to value and enjoy each moment of solitude, aspiring to be a young and brilliant star.
 
 > "Dreams feel real while we're in them. It's only when we wake up that we realize something was actually strange." — ***Inception***
 <!-- endtab -->
