@@ -2,11 +2,15 @@
 title: Subscribe
 date: 2024-06-16 16:33:46
 ---
+
 {% tabs subscribe %}
+
 <!-- tab English -->
+
 # Subscribe
-- You will receive an email to verify your subscription.
-- If you don't receive the email, please check your spam folder.
+
+-   You will receive an email to verify your subscription.
+-   If you don't receive the email, please check your spam folder.
 
 <style>
     .followit--follow-form-container[attr-a][attr-b][attr-c][attr-d][attr-e][attr-f] .form-preview {
@@ -95,16 +99,16 @@ date: 2024-06-16 16:33:46
   height: 1.13em !important;
   max-height: 1.13em !important;
 }
-  /* TODO: make it fit dark mode */
-</style>
+
+  </style>
 <div class="followit--follow-form-container" attr-a attr-b attr-c attr-d attr-e attr-f>
-    <form data-v-c76ccf54="" action="https://api.follow.it/subscription-form/QjRpSU91L2UwaHVvNWpjVzJTd3VTYXprRzhUSzd5UzFwOE1LQWkvNG9BQjdtcnduVzV6Mm9BemR0R0RpMnZsOVh3d2k4cWNqM21HNXNtcFI3eGxCR2p1RjF4bnEzWkZzbnFzUXhlMmJyOXA5ZUYyeC9lS3hlRXVObW0rMkdKNGF8NzFqK3ZtaHl3UWMwdFJSZmxxT1o2Z21qRXA0VloxcFM0YXBHTGJKTGJKVT0=/8" method="post" data-np-autofill-form-type="subscribe" data-np-checked="1" data-np-watching="1"><div data-v-c76ccf54="" class="form-preview" style="background-color: rgb(255, 255, 255); position: relative; border-style: solid; border-width: 1px; border-color: rgb(204, 204, 204);"><div data-v-c76ccf54="" class="preview-heading"><h5 data-v-c76ccf54="" style="text-transform: none !important; font-family: Arial; font-weight: bold; color: rgb(0, 0, 0); font-size: 16px; text-align: center;">Subscribe to CX330's Universe</h5></div><div data-v-c76ccf54="" class="preview-input-field"><input data-v-c76ccf54="" type="email" name="email" required="" placeholder="Enter your email" spellcheck="false" style="text-transform: none !important; font-family: Arial; font-weight: normal; color: rgb(0, 0, 0); font-size: 14px; text-align: center; background-color: rgb(255, 255, 255);" data-np-autofill-field-type="email" data-np-uid="3fa804bc-3e6f-4a8c-b04f-03a140a106b7"><nordpass-icon data-np-uid="3fa804bc-3e6f-4a8c-b04f-03a140a106b7"></nordpass-icon></div><div data-v-c76ccf54="" class="preview-submit-button"><button data-v-c76ccf54="" type="submit" style="text-transform: none !important; font-family: Arial; font-weight: bold; color: rgb(255, 255, 255); font-size: 16px; text-align: center; background-color: rgb(245, 165, 36);">Subscribe</button></div></div>
-    <!-- </form><a href="https://follow.it" class="powered-by-line">Powered by <img src="https://follow.it/static/img/colored-logo.svg" alt="follow.it" height="17px"/></a> -->
+    <form data-v-c76ccf54="" action="https://api.follow.it/subscription-form/SEZOejNzUzZ2K3dIUS80K1BVK01QNG9QMUJyTHA2WE1uQ0JSblJ0amFYczNDd2oyVjBFd29hWVNES254bFVVNUtQUktBV1NRalA5MVBsUnpqMk9ocWd1OUV3VEh1dUM1UUxvL0dEc2ZFK1lFLzNIQldvSFhQdGhGall5Wlk3VlJ8dlZrT2NRNnZHSkFhcFZtQkR3azQzUkhJRFMvcGlyM3J5dzBiQm9qQWxJdz0=/8" method="post" data-np-autofill-form-type="subscribe" data-np-checked="1" data-np-watching="1"><div data-v-c76ccf54="" class="form-preview" style="background-color: rgb(255, 255, 255); position: relative; border-style: solid; border-width: 1px; border-color: rgb(204, 204, 204);"><div data-v-c76ccf54="" class="preview-heading"><h5 data-v-c76ccf54="" style="text-transform: none !important; font-family: Arial; font-weight: bold; color: rgb(0, 0, 0); font-size: 18px; text-align: center;">Subscribe to CX330's Universe</h5></div><div data-v-c76ccf54="" class="preview-input-field"><input data-v-c76ccf54="" type="email" name="email" required="" placeholder="Enter your email" spellcheck="false" style="text-transform: none !important; font-family: Arial; font-weight: normal; color: rgb(0, 0, 0); font-size: 14px; text-align: center; background-color: rgb(255, 255, 255);" data-np-autofill-field-type="email" data-np-uid="97596ea4-c16b-4581-b4ed-fd9b657777fd"><nordpass-icon data-np-uid="97596ea4-c16b-4581-b4ed-fd9b657777fd"></nordpass-icon></div><div data-v-c76ccf54="" class="preview-submit-button"><button data-v-c76ccf54="" type="submit" style="text-transform: none !important; font-family: Arial; font-weight: bold; color: rgb(255, 255, 255); font-size: 16px; text-align: center; background-color: rgb(245, 165, 36);">Subscribe</button></div></div></form>
   </div>
 
 # Donate
-- You can donate me by clicking the button below.
-- Your donation will help me to keep the website running and provide better content.
+
+-   You can donate me by clicking the button below.
+-   Your donation will help me to keep the website running and provide better content.
 
 <style>
 .donate-section {
@@ -134,8 +138,9 @@ date: 2024-06-16 16:33:46
 <!-- tab 中文 -->
 
 # 訂閱
-- 您將收到一封電子郵件以驗證您的訂閱。
-- 如果您沒收到電子郵件，請檢查垃圾郵件。
+
+-   您將收到一封電子郵件以驗證您的訂閱。
+-   如果您沒收到電子郵件，請檢查垃圾郵件。
 
 <style>
     .followit--follow-form-container[attr-a][attr-b][attr-c][attr-d][attr-e][attr-f] .form-preview {
@@ -224,16 +229,16 @@ date: 2024-06-16 16:33:46
   height: 1.13em !important;
   max-height: 1.13em !important;
 }
-  /* TODO: make it fit dark mode */
-</style>
-<div class="followit--follow-form-container" attr-a attr-b attr-c attr-d attr-e attr-f>
-    <form data-v-c76ccf54="" action="https://api.follow.it/subscription-form/QjRpSU91L2UwaHVvNWpjVzJTd3VTYXprRzhUSzd5UzFwOE1LQWkvNG9BQjdtcnduVzV6Mm9BemR0R0RpMnZsOVh3d2k4cWNqM21HNXNtcFI3eGxCR2p1RjF4bnEzWkZzbnFzUXhlMmJyOXA5ZUYyeC9lS3hlRXVObW0rMkdKNGF8NzFqK3ZtaHl3UWMwdFJSZmxxT1o2Z21qRXA0VloxcFM0YXBHTGJKTGJKVT0=/8" method="post" data-np-autofill-form-type="subscribe" data-np-checked="1" data-np-watching="1"><div data-v-c76ccf54="" class="form-preview" style="background-color: rgb(255, 255, 255); position: relative; border-style: solid; border-width: 1px; border-color: rgb(204, 204, 204);"><div data-v-c76ccf54="" class="preview-heading"><h5 data-v-c76ccf54="" style="text-transform: none !important; font-family: Arial; font-weight: bold; color: rgb(0, 0, 0); font-size: 16px; text-align: center;">Subscribe to CX330's Universe</h5></div><div data-v-c76ccf54="" class="preview-input-field"><input data-v-c76ccf54="" type="email" name="email" required="" placeholder="Enter your email" spellcheck="false" style="text-transform: none !important; font-family: Arial; font-weight: normal; color: rgb(0, 0, 0); font-size: 14px; text-align: center; background-color: rgb(255, 255, 255);" data-np-autofill-field-type="email" data-np-uid="3fa804bc-3e6f-4a8c-b04f-03a140a106b7"><nordpass-icon data-np-uid="3fa804bc-3e6f-4a8c-b04f-03a140a106b7"></nordpass-icon></div><div data-v-c76ccf54="" class="preview-submit-button"><button data-v-c76ccf54="" type="submit" style="text-transform: none !important; font-family: Arial; font-weight: bold; color: rgb(255, 255, 255); font-size: 16px; text-align: center; background-color: rgb(245, 165, 36);">Subscribe</button></div></div>
-    <!-- </form><a href="https://follow.it" class="powered-by-line">Powered by <img src="https://follow.it/static/img/colored-logo.svg" alt="follow.it" height="17px"/></a> -->
-  </div>
 
+  </style>
+<div class="followit--follow-form-container" attr-a attr-b attr-c attr-d attr-e attr-f>
+    <form data-v-c76ccf54="" action="https://api.follow.it/subscription-form/SEZOejNzUzZ2K3dIUS80K1BVK01QNG9QMUJyTHA2WE1uQ0JSblJ0amFYczNDd2oyVjBFd29hWVNES254bFVVNUtQUktBV1NRalA5MVBsUnpqMk9ocWd1OUV3VEh1dUM1UUxvL0dEc2ZFK1lFLzNIQldvSFhQdGhGall5Wlk3VlJ8dlZrT2NRNnZHSkFhcFZtQkR3azQzUkhJRFMvcGlyM3J5dzBiQm9qQWxJdz0=/8" method="post" data-np-autofill-form-type="subscribe" data-np-checked="1" data-np-watching="1"><div data-v-c76ccf54="" class="form-preview" style="background-color: rgb(255, 255, 255); position: relative; border-style: solid; border-width: 1px; border-color: rgb(204, 204, 204);"><div data-v-c76ccf54="" class="preview-heading"><h5 data-v-c76ccf54="" style="text-transform: none !important; font-family: Arial; font-weight: bold; color: rgb(0, 0, 0); font-size: 18px; text-align: center;">Subscribe to CX330's Universe</h5></div><div data-v-c76ccf54="" class="preview-input-field"><input data-v-c76ccf54="" type="email" name="email" required="" placeholder="Enter your email" spellcheck="false" style="text-transform: none !important; font-family: Arial; font-weight: normal; color: rgb(0, 0, 0); font-size: 14px; text-align: center; background-color: rgb(255, 255, 255);" data-np-autofill-field-type="email" data-np-uid="97596ea4-c16b-4581-b4ed-fd9b657777fd"><nordpass-icon data-np-uid="97596ea4-c16b-4581-b4ed-fd9b657777fd"></nordpass-icon></div><div data-v-c76ccf54="" class="preview-submit-button"><button data-v-c76ccf54="" type="submit" style="text-transform: none !important; font-family: Arial; font-weight: bold; color: rgb(255, 255, 255); font-size: 16px; text-align: center; background-color: rgb(245, 165, 36);">Subscribe</button></div></div></form>
+  </div>
+  
 # 贊助
-- 你可以通過下面的按鈕贊助我。
-- 你的贊助將幫助我保持網站的運行，並提供更好的內容。
+
+-   你可以通過下面的按鈕贊助我。
+-   你的贊助將幫助我保持網站的運行，並提供更好的內容。
 
 <style>
 .donate-section {
@@ -259,4 +264,5 @@ date: 2024-06-16 16:33:46
 </div>
 
 <!-- endtab -->
+
 {% endtabs %}
