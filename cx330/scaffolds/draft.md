@@ -1,6 +1,7 @@
 ---
-title: {{ title }}
+title: { { title } }
 mathjax: true
+thumbnail:
 categories:
 tags:
 ---

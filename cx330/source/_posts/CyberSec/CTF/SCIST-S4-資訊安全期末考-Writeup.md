@@ -1,6 +1,7 @@
 ---
 title: SCIST S4 資訊安全期末考 Writeup
 date: 2024-05-28 13:33:42
+thumbnail: https://hackmd.io/_uploads/ByG6mhhcT.png
 categories:
     - [CyberSec, CTF]
 tags:
@@ -123,7 +124,7 @@ app.get('/note/:noteId', (req, res) => {
 
 # Uploader
 
-在這題裡面，我先嘗試上傳了一張正常的圖片，發現網頁會呈現這樣的狀態。![image](https://hackmd.io/_uploads/ByG6mhhcT.png)
+在這題裡面，我先嘗試上傳了一張正常的圖片，發現網頁會呈現這樣的狀態。![](https://hackmd.io/_uploads/ByG6mhhcT.png)
 我一開始先用了課程中教過的一句話木馬來嘗試上傳，我上傳的是 php 檔。
 
 ```php=
