@@ -1,14 +1,15 @@
 ---
 title: Cryptography Notes
 mathjax: true
-thumbnail: /images/cryptography.webp
 categories:
-    - [CyberSec, CTF]
+    - [CyberSec, Notes]
 tags:
     - Cryptography
     - CTF
     - CyberSec
     - Notes
+thumbnail: /images/cryptography.webp
+date: 2024-06-27 20:05:01
 ---
 
 {% notel red 公告 %}
@@ -59,7 +60,32 @@ tags:
 
 ## ASCII Encoding
 
-他的全名是 American Standard Code for Information Interchange，反正不是很重要，就是一個挺常見的編碼方式。以下是一張 ASCII 表：
+### 簡介
+
+這應該大家都很熟悉吧！他的全名是 American Standard Code for Information Interchange，反正不是很重要，就是一個挺常見的編碼方式。以下是一張 ASCII 表：
+
+![ASCII Table from GeeksforGeeks](https://hackmd.io/_uploads/rJ6NTsq8A.png)
+
+### Python Code
+
+```python=
+# 將字符串轉換為 ASCII 編碼
+def ascii_encode(input_string):
+    return [ord(char) for char in input_string]
+
+# 將 ASCII 編碼轉換回字串
+def ascii_decode(ascii_codes):
+    return ''.join(chr(code) for code in ascii_codes)
+
+# 示例
+input_string = "This is ASCII encoding"
+ascii_encoded = ascii_encode(input_string)
+ascii_decoded = ascii_decode(ascii_encoded)
+
+print("Original string:", input_string)
+print("ASCII encoded:", ascii_encoded)
+print("ASCII decoded:", ascii_decoded)
+```
 
 ## Base64 Encoding
 
@@ -69,16 +95,86 @@ Base64 通常用於傳輸二進制數據的場合，例如在電子郵件中嵌�
 
 ### 原理
 
-由於 $\log_{2}64=6$，所以每 6 個
+Base64 編碼這個名稱代表著它**基於 64 個可列印字元**所形成的編碼。由於 $\log_{2}64=6$，所以每 6 個位元（Bit）為一個基本單元，對應著一個可列印字元。每 3 個位元組（Byte）為 24 個位元，相當於 4 個 Base64 基本單元，代表每 3 個位元組可以由 4 個可列印字元表示。下圖就是每個可列印字元所對應的索引值。
+
+![Base64 encoding table from GeeksforGeeks](https://hackmd.io/_uploads/r1KgQh5LR.png)
+
+### Python Code
+
+```python=
+import base64
+
+
+def base64_encode(data):
+    # 使用 base64 模組的 b64encode 函式進行編碼
+    encoded_bytes = base64.b64encode(data)
+    # 將編碼後的位元組轉換為字串並回傳
+    return encoded_bytes.decode("utf-8")
+
+
+def base64_decode(encoded_data):
+    # 將 Base64 編碼的字串轉為位元組
+    encoded_bytes = encoded_data.encode("utf-8")
+    # 用 base64 的 b64decode 解碼
+    decoded_bytes = base64.b64decode(encoded_bytes)
+    # 回傳解碼後的字串
+    return decoded_bytes.decode("utf-8")
+
+# 測試
+data_to_encode = b"This is Base64 encoding"
+
+encoded_data = base64_encode(data_to_encode)
+print("Base64 Encoded Data:", encoded_data)
+
+decoded_data = base64_decode(encoded_data)
+print("Base64 Decoded Data:", decoded_data)
+```
+
+### 延伸
+
+除了 Base64 編碼以外，這個 Base 家族還有許多例如 Base16（Hex）、Base32、Base58（用於 Bitcoin）等不同的編碼方式。如果有興趣的話歡迎閱讀[這篇文章](https://blog.csdn.net/Sciurdae/article/details/133642336)。
 
 ## URL Encoding
 
+### 簡介
+
+URL Encoding 也稱作為 Percent-encoding，是一種將 URL 中的特殊字符和非 ASCII 字符轉換為百分號（%）後跟兩個十六進制數字的形式，以確保這些字符在 URL 中能夠被正確解析和傳輸。
+
+### Python Code
+
+```python=
+import urllib.parse
+
+# URL 編碼
+def url_encode(input_string):
+    return urllib.parse.quote(input_string)
+
+# URL 解碼
+def url_decode(encoded_string):
+    return urllib.parse.unquote(encoded_string)
+
+# 示例
+input_string = "This is URL encoding"
+url_encoded = url_encode(input_string)
+url_decoded = url_decode(url_encoded)
+
+print("Original string:", input_string)
+print("URL encoded:", url_encoded)
+print("URL decoded:", url_decoded)
+```
+
+## 小結
+
+這裡面其實在打 CTF 的時候最常用到的就是 Base64 了，所以其實只要熟悉一下 Base64 的原理還有代碼，在比賽的時候可以快速編碼解碼就可以啦！
+
 # 常見雜湊函式 Common Hash Functions
+
+## MD5
+
+## SHA-256
 
 # 古典密碼學 Classical Cryptography
 
 # 對稱式加密 Symmetric Cryptography
 
 # 非對稱式加密 Asymmetric Cryptography
-
-# 公鑰加密 Public-key Cryptography
