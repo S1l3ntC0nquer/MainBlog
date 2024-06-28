@@ -1,9 +1,9 @@
 ---
-title: Cryptography Notes
+title: Cryptography Notes 密碼學任督二脈
 mathjax: true
 thumbnail: /images/cryptography.webp
 categories:
-    - [CyberSec, CTF]
+    - Notebooks
 tags:
     - Cryptography
     - CTF
@@ -190,20 +190,22 @@ MD5 的全名是 Message Digest Algorithm 5，它能將任意長度的數據轉�
         - B = 0xEFCDAB89
         - C = 0x98BADCFE
         - D = 0x10325476
-3. **處理資料** - 將填充後的資料以 512 位（64 Bytes）分成多個塊（Chunk）。 - 對於每個 512 位的塊，再分為 16 個 32 位的小塊。 - 用這些 32 位的小塊和上面初始化好的四個 32 位的變量（A, B, C, D），進行四輪（每輪 16 步）迭代運算。每一步使用非線性函數（F, G, H, I）和特定的常數以及循環左移操作，來混淆和壓縮數據。
-    $$
-    \begin{aligned}
-    F(X, Y, Z) &= (X \land Y) \lor (\neg X \land Z) \\
-    G(X, Y, Z) &= (X \land Z) \lor (Y \land \neg Z) \\
-    H(X, Y, Z) &= X \oplus Y \oplus Z \\
-    I(X, Y, Z) &= Y \oplus (X \lor \neg Z) \\
-    \end{aligned}
-    $$
-    $$
-    \text{\(\oplus, \land, \lor, \neg\) are the signs of XOR, AND, OR, NOT}
-    $$
+3. **處理資料**
+
+    - 將填充後的資料以 512 位（64 Bytes）分成多個塊（Chunk）。
+    - 對於每個 512 位的塊，再分為 16 個 32 位的小塊。
+    - 用這些 32 位的小塊和上面初始化好的四個 32 位的變量（A, B, C, D），進行四輪（每輪 16 步）迭代運算。每一步使用非線性函數（F, G, H, I）和特定的常數以及循環左移操作，來混淆和壓縮數據。公式如下：
+
+        $F(X, Y, Z) = (X \land Y) \lor (\neg X \land Z)$
+        $G(X, Y, Z) = (X \land Z) \lor (Y \land \neg Z)$
+        $H(X, Y, Z) = X \oplus Y \oplus Z$
+        $I(X, Y, Z) = Y \oplus (X \lor \neg Z)$
+        $\oplus, \land, \lor, \neg \text{ are the signs of XOR, AND, OR, NOT}$
+
 4. **輸出最終哈希值**
     - 最終將四個 32 位的變量 A, B, C, D 串聯起來成為一個 128 位的哈希值（以小端序表示）
+
+看完文字敘述之後我們來看一下 MD5 的圖解吧！
 
 ![圖示 MD5 from Wikipedia](https://hackmd.io/_uploads/BJav5njU0.png)
 
@@ -224,11 +226,11 @@ MD5 的全名是 Message Digest Algorithm 5，它能將任意長度的數據轉�
 
 那他們具體又有甚麼差別呢？下面一張圖看完馬上可以理解其中的差別在哪！
 
-![Source: [thebittheories](https://thebittheories.com/little-endian-vs-big-endian-b4046c63e1f2)](https://hackmd.io/_uploads/ryh8Rhj8C.png)
+![Source: The Bit Theories](https://hackmd.io/_uploads/ryh8Rhj8C.png)
 
 如果這張圖還是不能理解，那我們再看下一張圖！
 
-![**Little Endian, things are stored in reverse order.** Source: fundd.blogspot.in](https://hackmd.io/_uploads/rJO9p3iI0.png)
+![Little Endian, things are stored in reverse order. Source: fundd.blogspot.in](https://hackmd.io/_uploads/rJO9p3iI0.png)
 
 用文字來敘述的話，大端序是從數據的最高有效位（Most Significant Bit，MSB）作為起始位置；而小端序是從最低有效位（Least Significant Bit，LSB）開始。
 
