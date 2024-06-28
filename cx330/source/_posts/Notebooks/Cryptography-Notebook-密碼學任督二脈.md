@@ -182,7 +182,7 @@ print("URL decoded:", url_decoded)
 MD5 的全名是 Message Digest Algorithm 5，它能將任意長度的數據轉換為 128 位（16 Bytes）長度的哈希值。它的運算過程如下：
 
 1. **填充資料**
-    - 將資料的末尾添加一個 "1"，為了標記填充的開始；然後添加足夠位的 "0"，使資料的長度（以 Bit 為單位）對 512 取模後的結果為 448。這樣可以確保最終加上 64 位長度信息後，總長度是 512 的整數倍。
+    - 將資料的末尾添加一個"1"，為了標記填充的開始；然後添加足夠位的"0"，使資料的長度（以 Bit 為單位）對 512 取模後的結果為 448。這樣可以確保最終加上 64 位長度信息後，總長度是 512 的整數倍。
     - 最後，將消息的原始長度（以位為單位）附加到消息的末尾，使得填充後的消息長度為 512 的倍數。
 2. **初始化 MD 緩衝區**
     - MD5 使用四個 32 位的變量（A, B, C, D）來存儲中間和最終的雜湊值。它們分別初始化為：
@@ -221,8 +221,8 @@ MD5 的全名是 Message Digest Algorithm 5，它能將任意長度的數據轉�
 
 端序，又稱位元組順序，又稱尾序。它指的是排列位元組的順序或方式。它又分為以下兩種：
 
-1. 大端序 Big-Endian
-2. 小端序 little-Endian
+1. **大端序 Big-Endian**
+2. **小端序 little-Endian**
 
 那他們具體又有甚麼差別呢？下面一張圖看完馬上可以理解其中的差別在哪！
 
@@ -236,18 +236,193 @@ MD5 的全名是 Message Digest Algorithm 5，它能將任意長度的數據轉�
 
 而大端序和小端序在應用上有甚麼差別呢？
 
-1. 大端序
+1. **大端序**
     - 更加直觀
     - 應用於一些網絡協議中，例如 TCP/IP
-2. 小端序
+2. **小端序**
     - 更符合計算機科學中的數學計算順序，因為最低有效位在前面更方便處理。（像是數據型態的轉換）
 
 端序的部份我就大致介紹到這邊。如果對端序有興趣想要更深入了解的話，可以去看[這篇文章](https://blog.csdn.net/kevin_tech/article/details/113979523)！
 
+### Python Code
+
+```python=
+import hashlib
+
+# 要雜湊的消息
+message = "This is MD5!"
+
+# 創建一個 MD5 雜湊對象
+md5_hash = hashlib.md5()
+
+# 將消息編碼後更新到雜湊對象中
+md5_hash.update(message.encode())
+
+# 獲取雜湊值（十六進制表示）
+hash_hex = md5_hash.hexdigest()
+
+# 打印雜湊值
+print(f"MD5 value: {hash_hex}")
+```
+
+### MD5 已死
+
+為甚麼說 MD5 已死呢？在 2004 年，中國的密碼學家王小雲和其研究同事發表了一篇論文，詳細描述了如何在不到一個小時內找到 MD5 的碰撞，同時這也證明了 MD5 是不安全的。
+
+2012 年的時候密碼學研究人員 Marc Stevens 提出了一種更高效的 MD5 碰撞攻擊方法，稱為 Fast Collision Attack on MD5，他還開發了一個名為 HashClash 的工具，用於自動化生成 MD5 碰撞。
+
+想更詳細的了解其原理，可以觀看以下影片！
+
+<div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+    <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/aHeRBeJLjMI" frameborder="0" allowfullscreen></iframe>
+</div>
+
 ## SHA-256
+
+### 簡介
+
+SHA(Secure Hash Algorithm)家族的雜湊函式是被美國聯邦資訊處理標準（FIPS）所認證的安全雜湊算法。他們（SHA 家族）是由美國國家安全局所設計，並由美國國家標準與技術研究院所發布的。他們家族中除了 SHA-256 以外還有 SHA-224、SHA-512 等等的雜湊函式，但這裡就主要講解最常見的 SHA-256。
+
+SHA-256 和 MD5 其實流程是差不多的，大概的流程如下：
+
+1. **填充資料**
+    - 將資料的末尾添加一個"1"，為了標記填充的開始
+    - 添加"0"位，直到資料的長度對 512 取模後等於 448。
+    - 最後，將資料的原始長度（以 Bit 為單位）附加到末尾，使得填充後的資料長度為 512 的倍數。
+2. **初始化緩衝區**
+    - SHA-256 使用八個 32 位元的變量來存儲中間和最終的雜湊值：
+        - h0 = 0x6a09e667
+        - h1 = 0xbb67ae85
+        - h2 = 0x3c6ef372
+        - h3 = 0xa54ff53a
+        - h4 = 0x510e527f
+        - h5 = 0x9b05688c
+        - h6 = 0x1f83d9ab
+        - h7 = 0x5be0cd19
+    - 是對自然數中前 8 個質數（2, 3, 5, 7, 11, 13, 17, 19）的平方根的小數部分取前 32 bits 而來。
+3. **處理資料**
+
+    - 將填充後的資料以 512 位（64 Bytes）分成多個塊（Chunk）
+    - 對於每個 512 位的塊，再分為 16 個 32 位的小塊。
+    - 用這些 32 位的小塊和原本初始化好的 8 個變量進行迭代運算，由於過程太過於複雜，我會將其公式定義和圖解放在下面。
+
+        $Ch(x, y, z) = (x \land y) \oplus (\neg x \land z)$
+        $Maj(x, y, z) = (x \land y) \oplus (x \land z) \oplus (y \land z)$
+        $\Sigma_0(x) = S^2(x) \oplus S^{13}(x) \oplus S^{22}(x)$
+        $\Sigma_1(x) = S^6(x) \oplus S^{11}(x) \oplus S^{25}(x)$
+        $\sigma_0(x) = S^7(x) \oplus S^{18}(x) \oplus R^3(x)$
+        $\sigma_1(x) = S^{17}(x) \oplus S^{19}(x) \oplus R^{10}(x)$
+
+        ![SHA-256 workflow from Wikipedia](https://hackmd.io/_uploads/B1pTgx2U0.png)
+
+4. 輸出最終哈希值
+    - 當所有的 512 位塊都處理完成後，將 8 個變量 h0 到 h7 連接起來（大端序），形成最終的 256 位（32 字節）雜湊值。這個雜湊值即為輸入數據的 SHA-256 雜湊值。
+
+### Python Code
+
+```python=
+import hashlib
+
+def sha256(message):
+    # 將消息編碼為字節
+    message_bytes = message.encode()
+
+    # 創建 SHA-256 雜湊對象
+    sha256_hash = hashlib.sha256()
+
+    # 更新雜湊對象
+    sha256_hash.update(message_bytes)
+
+    # 獲取雜湊值
+    hash_hex = sha256_hash.hexdigest()
+
+    return hash_hex
+
+# 測試 SHA-256 雜湊計算
+message = "This is RSA-256!"
+hash_result = sha256(message)
+print(f"SHA-256 Value: {hash_result}")
+```
+
+## 鹽 Salt
+
+TODO
 
 # 古典密碼學 Classical Cryptography
 
+古典密碼是指在計算機出現之前廣泛使用的密碼學技術。這些密碼技術通常基於簡單的替換或置換規則，而不涉及覆雜的數學運算。
+
+儘管這些古典密碼在過去被廣泛使用，但它們都存在易受攻擊的缺陷，因此在現代密碼學中已經不再安全。現代密碼學使用基於覆雜數學運算和密鑰管理的加密算法來確保更高的安全性（且在現代密碼學中的觀點，他們更像是**編碼**而不是加密）。
+
+以下是幾種常見的古典密碼。
+
+## 凱薩加密 Caesar Cipher
+
+### 簡介
+
+凱撒密碼是一種簡單的替換密碼（Substitution cipher），通過將字母表中的每個字母向後（或向前）移動固定數量的位置來加密文本。例如，如果向後移動 3 個位置，則"A"加密為"D"，"B"加密為"E"，以此類推。
+
+### Python Code
+
+```python=
+def caesar_encrypt(plaintext, key):
+    ciphertext = ""
+    for char in plaintext:
+        if char.isalpha():  # 只對字母進行加密
+            shift = (
+                65 if char.isupper() else 97
+            )  # 大寫字母對應 ASCII 表中的 65，小寫字母對應 97
+            encrypted_char = chr((ord(char) - shift + key) % 26 + shift)
+            ciphertext += encrypted_char
+        else:
+            ciphertext += char  # 非字母字符保持不變
+    return ciphertext
+
+
+def caesar_decrypt(ciphertext, key):
+    return caesar_encrypt(ciphertext, -key)  # 解密即加密的逆操作
+
+
+# 示例明文和密鑰
+plaintext = "This is the Caesar cipher"
+key = 14
+
+# 加密明文
+encrypted_text = caesar_encrypt(plaintext, key)
+print("Encrypted:", encrypted_text)
+```
+
+### 暴力破解 Brute Force
+
+```python=
+# 嘗試所有可能的密鑰進行破解
+for possible_key in range(1, 26):  # 因為凱撒密碼只有 26 種可能的密鑰
+    decrypted_text = caesar_decrypt(encrypted_text, possible_key)
+    print(f"Key {possible_key}: {decrypted_text}")
+```
+
+## 置換密碼 Transposition Cipher
+
+### 簡介
+
+置換密碼重新排列明文中的字母，而不改變字母本身。例如，列置換密碼將明文中的字母按列排列，然後按特定規則讀取以生成密文。
+
+## 維吉尼亞密碼 Vigenère Cipher
+
+### 簡介
+
+維吉尼亞密碼是一種多表替換密碼，它使用關鍵字來改變每個字母的替換規則。加密時，將明文的每個字母與關鍵字中的對應字母相結合來確定替換規則。
+
+## 柵欄密碼 Rail Fence Cipher
+
+### 簡介
+
+柵欄密碼將明文中的字母沿著特定的線排列，然後以不同的方式讀取以生成密文。例如，3 欄柵欄密碼將字母交替排列成三行，然後以從上到下、從左到右的順序讀取。
+
 # 對稱式加密 Symmetric Cryptography
 
+TODO
+
 # 非對稱式加密 Asymmetric Cryptography
+
+TODO
