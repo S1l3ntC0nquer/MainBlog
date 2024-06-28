@@ -86,11 +86,11 @@ SELECT city, address, phone FROM {TABLE_NAME} WHERE city = '' UNION SELECT name,
 
 這邊我們使用聯集合併兩個查詢結果，因為第一個結果為空集合，所以返回的結果就會是 sqlite_master 的表格內容，如下:
 
-![image](https://hackmd.io/_uploads/BysgmNY8R.png)
+![找到flag所在的表格了](https://hackmd.io/_uploads/BysgmNY8R.png)
 
 我們可以看到被紅色框框圈住的地方就是我們所想獲得的 flag，既然知道表格名稱，也知道表格的結構了，就把它查詢出來吧！使用這段 payload`' UNION SELECT 1, flag, 1 FROM more_table; --`。輸入後就可以看到以下的介面啦！
 
-![image](https://hackmd.io/_uploads/SyoSNNtLA.png)
+![flag](https://hackmd.io/_uploads/SyoSNNtLA.png)
 
 flag 就找到囉！
 
@@ -100,7 +100,7 @@ picoCTF{G3tting_5QL_1nJ3c7I0N_l1k3_y0u_sh0ulD_78d0583a}
 
 ## Trickster
 
-這題的題目是一個可以上傳 png 的網頁，看起來就是文件上船漏洞，頁面如下:
+這題的題目是一個可以上傳 png 的網頁，看起來就是文件上傳漏洞，頁面如下:
 
 ![題目](https://hackmd.io/_uploads/HkocKNtIA.png)
 
@@ -112,7 +112,7 @@ Disallow: /instructions.txt
 Disallow: /uploads/
 ```
 
-既然它都禁止了，我們就去看看吧 XD。`/uploads/`應該就是它的上船後的文件路徑了，而它 instructions.txt 的內容如下:
+既然它都禁止了，我們就去看看吧 XD。`/uploads/`應該就是它的上傳後的文件路徑了，而它 instructions.txt 的內容如下:
 
 ```
 Let's create a web app for PNG Images processing.
@@ -133,7 +133,7 @@ after validation, store the uploaded files so that the admin can retrieve them l
 
 整個修改完後如下（點開來看可能會比較清楚）:
 
-![image](https://hackmd.io/_uploads/Sy7rFrYU0.png)
+![一句話木馬](https://hackmd.io/_uploads/Sy7rFrYU0.png)
 
 上傳完成後，現在這個 shell 就會位於`https://my_instance_url/uploads/hack.png.php`這個位置上啦。
 
