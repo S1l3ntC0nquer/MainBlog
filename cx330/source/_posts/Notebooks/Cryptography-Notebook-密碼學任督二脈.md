@@ -1,8 +1,8 @@
 ---
-title: Cryptography Notes
+title: Cryptography Notebook 密碼學任督二脈
 mathjax: true
 categories:
-    - [CyberSec, Notes]
+    - Notebooks
 tags:
     - Cryptography
     - CTF
