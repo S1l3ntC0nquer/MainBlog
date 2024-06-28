@@ -1,14 +1,14 @@
 ---
-title: Cryptography Notebook 密碼學任督二脈
+title: Cryptography Notes
 mathjax: true
+thumbnail: /images/cryptography.webp
 categories:
-    - Notebooks
+    - [CyberSec, CTF]
 tags:
     - Cryptography
     - CTF
     - CyberSec
     - Notes
-thumbnail: /images/cryptography.webp
 date: 2024-06-27 20:05:01
 ---
 
@@ -34,7 +34,7 @@ date: 2024-06-27 20:05:01
 
 ## 領域展開：密碼學的三大領域
 
-在密碼學中的任何知識幾乎都是圍繞著**編碼**、**雜湊**、**加密**這三個領域，所以就先來分別簡單聊聊他們各自都是甚麼吧！
+在密碼學中的任何知識幾乎都是圍繞著**編碼**、**雜湊**、**加密**這三個領域，所以就先來分別簡單聊聊他們各自都是甚麼吧！（這裡推薦一篇文章，講的滿深入淺出的：[一次搞懂密碼學中的三兄弟 — Encode、Encrypt 跟 Hash](https://medium.com/starbugs/what-are-encoding-encrypt-and-hashing-4b03d40e7b0c)）
 
 ### 編碼 Encoding
 
@@ -169,7 +169,78 @@ print("URL decoded:", url_decoded)
 
 # 常見雜湊函式 Common Hash Functions
 
+如果想要了解一下哈希函式還有數位簽章的大致運作流程，可以在往下看之前先看一下這部影片。我自己認為它的內容簡單而且李永樂老師教的很清晰，幾乎沒有任何數學難度就可以理解！十分推薦去看！
+
+<div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+    <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/uS1ZIAsvT5w" frameborder="0" allowfullscreen></iframe>
+</div>
+
 ## MD5
+
+### 簡介
+
+MD5 的全名是 Message Digest Algorithm 5，它能將任意長度的數據轉換為 128 位（16 Bytes）長度的哈希值。它的運算過程如下：
+
+1. **填充資料**
+    - 將資料的末尾添加一個 "1"，為了標記填充的開始；然後添加足夠位的 "0"，使資料的長度（以 Bit 為單位）對 512 取模後的結果為 448。這樣可以確保最終加上 64 位長度信息後，總長度是 512 的整數倍。
+    - 最後，將消息的原始長度（以位為單位）附加到消息的末尾，使得填充後的消息長度為 512 的倍數。
+2. **初始化 MD 緩衝區**
+    - MD5 使用四個 32 位的變量（A, B, C, D）來存儲中間和最終的雜湊值。它們分別初始化為：
+        - A = 0x67452301
+        - B = 0xEFCDAB89
+        - C = 0x98BADCFE
+        - D = 0x10325476
+3. **處理資料** - 將填充後的資料以 512 位（64 Bytes）分成多個塊（Chunk）。 - 對於每個 512 位的塊，再分為 16 個 32 位的小塊。 - 用這些 32 位的小塊和上面初始化好的四個 32 位的變量（A, B, C, D），進行四輪（每輪 16 步）迭代運算。每一步使用非線性函數（F, G, H, I）和特定的常數以及循環左移操作，來混淆和壓縮數據。
+    $$
+    \begin{aligned}
+    F(X, Y, Z) &= (X \land Y) \lor (\neg X \land Z) \\
+    G(X, Y, Z) &= (X \land Z) \lor (Y \land \neg Z) \\
+    H(X, Y, Z) &= X \oplus Y \oplus Z \\
+    I(X, Y, Z) &= Y \oplus (X \lor \neg Z) \\
+    \end{aligned}
+    $$
+    $$
+    \text{\(\oplus, \land, \lor, \neg\) are the signs of XOR, AND, OR, NOT}
+    $$
+4. **輸出最終哈希值**
+    - 最終將四個 32 位的變量 A, B, C, D 串聯起來成為一個 128 位的哈希值（以小端序表示）
+
+![圖示 MD5 from Wikipedia](https://hackmd.io/_uploads/BJav5njU0.png)
+
+看完了那麼多可能有點頭昏腦脹，但沒關係！慢慢理解它的過程還有大致流程，多看幾次可能就比較理解了。接下來講點比較簡單理解的東西吧！甚麼是 Endian？
+
+### 端序 Endian
+
+在了解端序是甚麼之前，我們先來講個有趣的吧！
+
+> 「endian」一詞來源於十八世紀愛爾蘭作家喬納森·斯威夫特（Jonathan Swift）的小說《格列佛遊記》（Gulliver's Travels）。小說中，小人國為水煮蛋該從大的一端（Big-End）剝開還是小的一端（Little-End）剝開而爭論，爭論的雙方分別被稱為「大頭派（Big-Endians）」和「小頭派（Little-Endians）」。（From [Wikipedia](https://zh.wikipedia.org/zh-tw/%E5%AD%97%E8%8A%82%E5%BA%8F)）
+
+好了這真的十分不重要但還是滿有趣的 XD。進入正題吧！
+
+端序，又稱位元組順序，又稱尾序。它指的是排列位元組的順序或方式。它又分為以下兩種：
+
+1. 大端序 Big-Endian
+2. 小端序 little-Endian
+
+那他們具體又有甚麼差別呢？下面一張圖看完馬上可以理解其中的差別在哪！
+
+![Source: [thebittheories](https://thebittheories.com/little-endian-vs-big-endian-b4046c63e1f2)](https://hackmd.io/_uploads/ryh8Rhj8C.png)
+
+如果這張圖還是不能理解，那我們再看下一張圖！
+
+![**Little Endian, things are stored in reverse order.** Source: fundd.blogspot.in](https://hackmd.io/_uploads/rJO9p3iI0.png)
+
+用文字來敘述的話，大端序是從數據的最高有效位（Most Significant Bit，MSB）作為起始位置；而小端序是從最低有效位（Least Significant Bit，LSB）開始。
+
+而大端序和小端序在應用上有甚麼差別呢？
+
+1. 大端序
+    - 更加直觀
+    - 應用於一些網絡協議中，例如 TCP/IP
+2. 小端序
+    - 更符合計算機科學中的數學計算順序，因為最低有效位在前面更方便處理。（像是數據型態的轉換）
+
+端序的部份我就大致介紹到這邊。如果對端序有興趣想要更深入了解的話，可以去看[這篇文章](https://blog.csdn.net/kevin_tech/article/details/113979523)！
 
 ## SHA-256
 
