@@ -3,7 +3,7 @@ title: Cryptography Notes 密碼學任督二脈
 mathjax: true
 thumbnail: /images/cryptography.webp
 categories:
-    - Notebooks
+    - StudyNotes
 tags:
     - Cryptography
     - CTF
@@ -13,7 +13,7 @@ date: 2024-06-27 20:05:01
 ---
 
 {% notel red 公告 %}
-這篇文章會先發布公開，但是有內容都還在完善中，等補完內容後會把這個公告撤掉。
+這篇文章會先發布公開，但是有內容都還在完善中，等補完內容後會把這個公告撤掉。同時也有在計畫在全部完成後將其發布為 GitBook，敬請期待！
 {% endnotel %}
 
 # 前言
