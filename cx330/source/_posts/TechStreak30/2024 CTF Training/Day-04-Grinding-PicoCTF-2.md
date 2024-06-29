@@ -1,6 +1,5 @@
 ---
-title:
-    "[object Object]": null
+title: "[Day 04] Grinding PicoCTF 2"
 mathjax: true
 categories:
     - [TechStreak30, 2024 CTF Training]
@@ -11,6 +10,7 @@ tags:
     - CyberSec
     - TechStreak30
 thumbnail: /images/hacker_in_the_universe.webp
+date: 2024-06-29 16:44:33
 ---
 
 # 前言
