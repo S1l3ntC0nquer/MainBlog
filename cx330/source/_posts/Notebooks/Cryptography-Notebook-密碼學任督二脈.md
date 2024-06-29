@@ -232,9 +232,13 @@ MD5 的全名是 Message Digest Algorithm 5，它能將任意長度的數據轉�
 
 ![Little Endian, things are stored in reverse order. Source: fundd.blogspot.in](https://hackmd.io/_uploads/rJO9p3iI0.png)
 
-用文字來敘述的話，大端序是從數據的最高有效位（Most Significant Bit，MSB）作為起始位置；而小端序是從最低有效位（Least Significant Bit，LSB）開始。
+如果看圖片看不太懂，那就用文字來介紹一下。
 
-而大端序和小端序在應用上有甚麼差別呢？
+首先，要先知道甚麼是 LSB 和 MSB，LSB 是最低有效位（Least Significant Bit，LSB）；MSB 是最高有效位（Most Significant Bit，MSB）。和十進制類似，通常 MSB 是二進制數的最左側，而 LSB 位於最右側。
+
+而大端序就是是從數據的 MSB 作為起始位置；而小端序是從最低有效位 LSB 開始。
+
+那大端序和小端序在應用上有甚麼差別呢？
 
 1. **大端序**
     - 更加直觀

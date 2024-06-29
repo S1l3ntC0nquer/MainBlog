@@ -7,6 +7,10 @@ mathjax: true
 thumbnail: https://hackmd.io/_uploads/BJxhDLKL0.png
 ---
 
+{% notel red 公告 %}
+目前尚未有所有的題目，陸續完善中
+{% endnotel %}
+
 # 前言
 
 其實好像也沒什麼好講前言的，但就是不想要一開始就是題目分類，所以還是放了個前言 XD。總之呢這裡就是會盡量彙整所有的 picoCTF 的題目在這邊（但是因為已經寫了 60 題左右才開始打算來寫 writeup，所以可能前面的部分會等其他都寫完再來補），如果有需要就可以直接來這邊看所有的 writeup，就這樣啦！希望能幫忙到你。
@@ -50,7 +54,7 @@ picoCTF{p1c0_s3cr3t_ag3nt_84f9c865}
 
 然後我們先嘗試使用`admin`作為帳號密碼登入。帳號密碼都輸入`admin`後按下登入，網頁會渲染一個我們剛剛輸入的帳號密碼，以及後台的使用者資訊的查詢語句，如下。
 
-![image](https://hackmd.io/_uploads/r1wnu7KIR.png)
+![](https://hackmd.io/_uploads/r1wnu7KIR.png)
 
 圖片有點小，總之他顯示的內容就是像下面這樣:
 
@@ -68,7 +72,7 @@ SELECT id FROM users WHERE password = ''OR 1=1 --' AND username = 'admin'
 
 可以從上面的代碼高亮的顏色發現，在`1=1`後面的東西都被註解掉了，所以就可以直接登入系統啦！登入後會看到以下的介面:
 
-![image](https://hackmd.io/_uploads/rJjw6XYUC.png)
+![](https://hackmd.io/_uploads/rJjw6XYUC.png)
 
 他可以查詢 City 的名稱，但其實一筆資料包含了 City, Address, Phone。分析一下後台可能的 SQL 語句，應該是如下:
 
@@ -100,7 +104,7 @@ picoCTF{G3tting_5QL_1nJ3c7I0N_l1k3_y0u_sh0ulD_78d0583a}
 
 ## Trickster
 
-這題的題目是一個可以上傳 png 的網頁，看起來就是文件上傳漏洞，頁面如下:
+這題的題目是一個可以上傳 png 的網頁，看起來就是文件上船漏洞，頁面如下:
 
 ![題目](https://hackmd.io/_uploads/HkocKNtIA.png)
 
@@ -112,7 +116,7 @@ Disallow: /instructions.txt
 Disallow: /uploads/
 ```
 
-既然它都禁止了，我們就去看看吧 XD。`/uploads/`應該就是它的上傳後的文件路徑了，而它 instructions.txt 的內容如下:
+既然它都禁止了，我們就去看看吧 XD。`/uploads/`應該就是它的上船後的文件路徑了，而它 instructions.txt 的內容如下:
 
 ```
 Let's create a web app for PNG Images processing.
@@ -504,13 +508,280 @@ for i in range(len(encrypted_flag)):
 
 flag = "".join(flag)
 print(flag)
-
 ```
 
-# Pwn
+## Custom encryption
 
-# Forensic
+這題給了兩個檔案。一個是加密後的 flag，裡面還包含了加密需要的一些變量；另一個是加密腳本。既然給了腳本，那就先來看看 Code 吧。我結合了題目給的加密後的 flag 的資訊，把註解直接寫在了代碼裡面，看看吧！
+
+```python=
+from random import randint
+import sys
+
+
+def generator(g, x, p):
+    return pow(g, x) % p
+
+
+# 密文 = 明文的每個字元ASCII碼 * 密鑰 * 311並append到一個list
+def encrypt(plaintext, key):
+    cipher = []
+    for char in plaintext:
+        cipher.append(((ord(char) * key * 311)))
+    return cipher
+
+
+def is_prime(p):
+    v = 0
+    for i in range(2, p + 1):
+        if p % i == 0:
+            v = v + 1
+    if v > 1:
+        return False
+    else:
+        return True
+
+
+def dynamic_xor_encrypt(plaintext, text_key):
+    cipher_text = ""
+    key_length = len(text_key)
+    for i, char in enumerate(plaintext[::-1]):  # 從明文的末尾開始
+        key_char = text_key[i % key_length]  # 循環text_key裡面每個字元
+        encrypted_char = chr(ord(char) ^ ord(key_char))  # 對應的密文 = 明文 ^ 密鑰
+        cipher_text += encrypted_char
+    return cipher_text
+
+
+def test(plain_text, text_key):
+    p = 97
+    g = 31
+    if not is_prime(p) and not is_prime(g):
+        print("Enter prime numbers")
+        return
+    a = randint(p - 10, p)
+    b = randint(g - 10, g)
+    print(f"a = {a}")
+    print(f"b = {b}")
+
+    # a = 89
+    # b = 27
+    # p = 97
+    # g = 31
+    u = generator(g, a, p)  # u = 31 ** 89 % 97 = 49
+    v = generator(g, b, p)  # u = 31** 27 % 97 = 85
+    key = generator(v, a, p)  # key = 85 ** 89 % 97 = 12
+    b_key = generator(u, b, p)  # b_key = 49 ** 27 % 97 = 12
+    shared_key = None
+    if key == b_key:
+        shared_key = key  # shared_key = 12
+    else:
+        print("Invalid key")
+        return
+    semi_cipher = dynamic_xor_encrypt(plain_text, text_key)
+    cipher = encrypt(semi_cipher, shared_key)
+    print(f"cipher is: {cipher}")
+
+
+if __name__ == "__main__":
+    message = sys.argv[1]
+    test(message, "trudeau")
+```
+
+由上面的代碼可以知道，它是經過了兩次的加密，一次是把明文反過來並讓其對`text_key`循環做 XOR，第二次是把第一次加密得到的東西轉 ASCII 並乘以 key 再乘以 311。
+
+解密的話就反過來，先去除以 311 再除以 key（這裡為 12），得到一個半密文（semi_cipher）。接下來這個半密文要先反轉，再用它寫好的 function 去做 XOR（因為它的 function 裡面又有一次反轉，所以這樣剛好會是和加密時相同的順序），最後得到的這個明文還要再反轉一次，才會得到正確的 flag。至於為甚麼要反轉兩次，解釋如下：
+
+```
+假設題目的dynamic_xor_encrypt為f，明文為ABC
+
+加密：
+f(ABC, KEY) = C'B'A'
+
+解密：
+第一次反轉，把C'B'A變為A'B'C，所以在f裡就會計算C'B'A對KEY的XOR
+f(A'B'C, KEY) = CBA
+第二次反轉，把CBA轉為ABC
+flag = ABC
+```
+
+希望這樣解釋有比較清楚一點！總之照這樣解密就可以得到 flag 啦，以下是我的解密的代碼：
+
+```python=
+def decrypt(cipher: list, key: int, text_key: str) -> str:
+    semi_cipher = ""
+    for encrypted_value in cipher:
+        decrypted_value = encrypted_value // (key * 311)  # 使用 // 返回int
+        semi_cipher += chr(decrypted_value)
+    semi_cipher = semi_cipher[::-1]  # 將密文反轉
+    plaintext = dynamic_xor_encrypt(semi_cipher, text_key)
+    return plaintext
+
+
+cipher = [
+    33588,
+    276168,
+    261240,
+    302292,
+    343344,
+    328416,
+    242580,
+    85836,
+    82104,
+    156744,
+    0,
+    309756,
+    78372,
+    18660,
+    253776,
+    0,
+    82104,
+    320952,
+    3732,
+    231384,
+    89568,
+    100764,
+    22392,
+    22392,
+    63444,
+    22392,
+    97032,
+    190332,
+    119424,
+    182868,
+    97032,
+    26124,
+    44784,
+    63444,
+]
+plaintext = decrypt(cipher, 12, "trudeau")  # since we know the key is 12
+print(f"plaintext is: {plaintext[::-1]}")
+```
+
+```
+picoCTF{custom_d2cr0pt6d_dc499538}
+```
+
+# Pwn (Binary Exploitation)
+
+# Forensics
+
+## MSB
+
+看這個題目名稱，然後又出現在 Forensics，應該是跟隱寫術有關了。如果你還不知道 LSB 和 MSB 都是個啥，可以先去看看 [Cryptography Notes 密碼學任督二脈](https://cx330.tw/Notebooks/Cryptography-Notebook-%E5%AF%86%E7%A2%BC%E5%AD%B8%E4%BB%BB%E7%9D%A3%E4%BA%8C%E8%84%88/)，裡面有解釋了甚麼是 LSB 和 MSB。
+
+題目的題幹說，This image passes LSB statistical analysis。那相反的，它其實就是在暗示 flag 可能藏在 RGB 像素值的 MSB 中，所以就來提取它每個像素中的的 MSB 吧。這邊用到了 Python 中的 Pillow 這個庫，如果覺得太麻煩，也可以直接用這個現成的工具 [Stegsolve](https://github.com/zardus/ctf-tools/tree/master/stegsolve)。
+
+Exploit 如下：
+
+```python=
+from PIL import Image
+import re
+
+
+def extract_msb(image_path):
+    image = Image.open(image_path)
+    pixels = image.load()
+
+    # 獲取圖片尺寸
+    width, height = image.size
+
+    # 初始化儲存提取自MSB的字串
+    msb_data = ""
+
+    # 提取每個像素的MSB
+    for y in range(height):
+        for x in range(width):
+            r, g, b = pixels[x, y]
+            # AND運算只保留了r, g, b的最高位，後面清零，再右移7位
+            msb_data += str((r & 0b10000000) >> 7)
+            msb_data += str((g & 0b10000000) >> 7)
+            msb_data += str((b & 0b10000000) >> 7)
+
+    # 將提取的MSB每8個位元轉換成字元
+    hidden_text = ""
+    for i in range(0, len(msb_data), 8):
+        byte = msb_data[i : i + 8]
+        if len(byte) == 8:
+            hidden_text += chr(int(byte, 2))
+
+    return hidden_text
+
+
+def find_pico_ctf(data):
+    pattern = r"picoCTF\{.*?\}"
+    matches = re.findall(pattern, data)
+
+    if matches:
+        for match in matches:
+            print(f"Found: {match}")
+    else:
+        print("No matches found")
+
+
+if __name__ == "__main__":
+    image_path = (
+        "MSB/Ninja-and-Prince-Genji-Ukiyoe-Utagawa-Kunisada.flag.png"  # 替換為你的路徑
+    )
+    hidden_message = extract_msb(image_path)
+    find_pico_ctf(hidden_message)
+```
+
+```
+picoCTF{15_y0ur_que57_qu1x071c_0r_h3r01c_ea7deb4c}
+```
 
 # Reverse
 
-# Misc
+# Misc (General Skills)
+
+## binhexa
+
+這題比較簡單，就是一些基礎的 Binary operations 和最後把 bin 轉為 hexadecimal 就行了，它主要有六題的邏輯運算和一題 bin to hexadecimal。我是直接使用 picoCTF 提供的 Webshell 進行 nc 連接，然後用[這個線上工具](https://www.rapidtables.com/calc/math/binary-calculator.html)運算。題目如下。
+
+```
+Binary Number 1: 00101010
+Binary Number 2: 00101011
+
+Question 1/6:
+Operation 1: '&'
+Perform the operation on Binary Number 1&2.
+Enter the binary result: 00101010
+Correct!
+
+Question 2/6:
+Operation 2: '*'
+Perform the operation on Binary Number 1&2.
+Enter the binary result: 11100001110
+Correct!
+
+Question 3/6:
+Operation 3: '<<'
+Perform a left shift of Binary Number 1 by 1 bits.
+Enter the binary result: 1010100
+Correct!
+
+Question 4/6:
+Operation 4: '+'
+Perform the operation on Binary Number 1&2.
+Enter the binary result: 1010101
+Correct!
+
+Question 5/6:
+Operation 5: '|'
+Perform the operation on Binary Number 1&2.
+Enter the binary result: 00101011
+Correct!
+
+Question 6/6:
+Operation 6: '>>'
+Perform a right shift of Binary Number 2 by 1 bits.
+Enter the binary result: 10101
+Correct!
+
+Enter the results of the last operation in hexadecimal: 15
+
+Correct answer!
+The flag is: picoCTF{b1tw^3se_0p3eR@tI0n_su33essFuL_d6f8047e}
+```
+
+這樣就得到 flag 啦！Easy peasy。
