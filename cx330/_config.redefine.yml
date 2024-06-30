@@ -418,6 +418,7 @@ inject:
     enable: true
     # Inject custom head html code
     head:
+        - <meta property="og:image" content="https://cx330.tw/assets/light.webp" />
         - <meta name="follow.it-verification-code" content="QxZmB12Bpyy1n0RF8vMZ"/> # Follow.it verification code
         - <style>.right-bottom-tools.rss.flex.justify-center.items-center {display:none;}</style> # Remove rss icon in setting
         - <script src="https://mypopups.com/api/embed/element?sub=8f2d4a70-2d83-11ef-a24f-309c23ce08f7-kuksouosjl"></script>
