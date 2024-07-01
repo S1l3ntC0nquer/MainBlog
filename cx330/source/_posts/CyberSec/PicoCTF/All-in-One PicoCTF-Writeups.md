@@ -707,6 +707,102 @@ picoCTF{custom_d2cr0pt6d_dc499538}
 
 # Pwn (Binary Exploitation)
 
+## Local Target
+
+這題給了一個可執行的檔案和C語言的代碼，先來分析一下他的代碼吧。
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+  FILE *fptr;
+  char c;
+
+  char input[16];
+  int num = 64;
+
+  printf("Enter a string: ");
+  fflush(stdout);
+  gets(input);
+  printf("\n");
+
+  printf("num is %d\n", num);
+  fflush(stdout);
+
+  if (num == 65)
+  {
+    printf("You win!\n");
+    fflush(stdout);
+    // Open file
+    fptr = fopen("flag.txt", "r");
+    if (fptr == NULL)
+    {
+      printf("Cannot open file.\n");
+      fflush(stdout);
+      exit(0);
+    }
+
+    // Read contents from file
+    c = fgetc(fptr);
+    while (c != EOF)
+    {
+      printf("%c", c);
+      c = fgetc(fptr);
+    }
+    fflush(stdout);
+
+    printf("\n");
+    fflush(stdout);
+    fclose(fptr);
+    exit(0);
+  }
+
+  printf("Bye!\n");
+  fflush(stdout);
+}
+```
+
+當使用Netcat連線到題目的時候，會如同下面一般。
+
+![題目](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240701161031231.png)
+
+**分析代碼**
+
+1. `char input[16];`宣告了一個長度為16的字元陣列，儲存使用者輸入。
+2. `get(input);`獲取使用者輸入，由於`get`函數不檢查輸入的長度，使用者可以輸入超過16個字元。（[危险函数gets()几种完美的替代方法 你可能还不知道的](https://blog.csdn.net/qq_40907279/article/details/89046366)）
+3. `int num = 64;`宣告並初始化變數`num`。
+4. 拿到flag的條件是要讓num的值為65。
+
+**BOF攻擊**
+
+首先，先檢查一下他有沒有任何保護機制。
+
+![Checksec from pwntools](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240701171059944.png)
+
+他沒有 [Canary](https://ctf-wiki.org/pwn/linux/user-mode/mitigation/canary/) 也沒有 [PIE](https://ithelp.ithome.com.tw/articles/10336777)，就正常做BOF就可以了。
+
+因為`input`和`num`都是區域變數，所以會存在Stack中。並且因為是先宣告`input`緊接著宣告`num`，所以在Stack中會像下面這樣：
+
+```
+High Address
+|
+|---------------------|
+|  Return Address     | <-- top
+|---------------------|
+|  Frame Pointer      |
+|---------------------|
+|  int num            | <-- 4 Bytes
+|---------------------|
+|  char input[16]     | <-- 16 Bytes
+|---------------------|
+|
+Low Address
+```
+
+// TODO
+
 # Forensics
 
 ## MSB
