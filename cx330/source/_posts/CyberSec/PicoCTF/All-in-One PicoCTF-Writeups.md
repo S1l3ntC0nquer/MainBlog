@@ -7,7 +7,7 @@ mathjax: true
 thumbnail: https://hackmd.io/_uploads/BJxhDLKL0.png
 ---
 
-{% notel red 公告 %}
+{% notel red fa-circle-exclamation 公告 %}
 目前尚未有所有的題目，陸續完善中
 {% endnotel %}
 
