@@ -19,6 +19,20 @@ thumbnail: https://hackmd.io/_uploads/BJxhDLKL0.png
 
 # Web
 
+## unminify
+
+先看題目，點開後他會說如果你打開了這個網頁，代表你的瀏覽器已經收到了 flag，只是他不知道要怎麼讀取它。
+
+![題目](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240701091116470.png)
+
+既然他說了我們瀏覽器已經收到 flag 了，就打開 F12 看一下網頁代碼吧！點開開發者工具後，直接在 Element 的 Tab 裡面用`Ctrl+F`搜尋`picoCTF`字串，結果就直接找到了 XD。欸不是這題也太水了吧！
+
+![利用開發者工具搜尋flag](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240701091535175.png)
+
+```
+picoCTF{pr3tty_c0d3_dbe259ce}
+```
+
 ## picobrowser
 
 這題我們點進 URL 後會看到一個 FLAG 的按鈕，按下去會發現我們不能得到 FLAG。![image](https://hackmd.io/_uploads/SJB9S0p70.png)
@@ -46,6 +60,34 @@ time.sleep(1337)
 
 ```
 picoCTF{p1c0_s3cr3t_ag3nt_84f9c865}
+```
+
+## SQLiLite
+
+題目是一個登入頁面。
+
+![題目](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240701092406670.png)
+
+我們先嘗試用`admin, admin`登入看看。
+
+![Login as admin](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240701092632509.png)
+
+它會說 Login failed，但是我們可以看到它的 SQL 查詢語句是
+
+```sqlite
+SELECT * FROM users WHERE name='admin' AND password='admin'
+```
+
+所以我們就可以很輕鬆的用 SQL Injection 啦！這邊使用帳號`' OR 1=1--`登入就可以啦，密碼不用輸入，或是隨便輸入也行。
+
+![Logged in](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240701093002857.png)
+
+但是他說 flag 在 plainsight 裡面所以我們看不見，那就打開開發者工具用`Ctrl+F`搜尋吧！
+
+![flag](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240701093133835.png)
+
+```
+picoCTF{L00k5_l1k3_y0u_solv3d_it_d3c660ac}
 ```
 
 ## More SQLi
