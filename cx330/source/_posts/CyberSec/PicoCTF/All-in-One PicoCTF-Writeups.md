@@ -897,7 +897,7 @@ picoCTF{15_y0ur_que57_qu1x071c_0r_h3r01c_ea7deb4c}
 
 至於這邊為甚麼要在 main+99 的地方設定斷點，是因為這裡他調用了一個函式叫做`sleep`，所以當我們直接執行 gdbme 的時候會進入到**sleep**的狀態，讓我們以為這個程式沒有做任何事。
 
-![Sleep function](C:\Users\陳子雋\AppData\Roaming\Typora\typora-user-images\image-20240701220205264.png)
+![Sleep function](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/H1IxfrlvA.png)
 
 所以在這邊我們才要把斷點設在 main+99，讓他執行到這邊的時候暫停一下，然後我們直接使用 jump 叫到下面一個地方，也就是 main+104 繼續執行。
 
