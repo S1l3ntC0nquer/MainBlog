@@ -709,7 +709,7 @@ picoCTF{custom_d2cr0pt6d_dc499538}
 
 ## Local Target
 
-這題給了一個可執行的檔案和C語言的代碼，先來分析一下他的代碼吧。
+這題給了一個可執行的檔案和 C 語言的代碼，先來分析一下他的代碼吧。
 
 ```c
 #include <stdio.h>
@@ -764,26 +764,26 @@ int main()
 }
 ```
 
-當使用Netcat連線到題目的時候，會如同下面一般。
+當使用 Netcat 連線到題目的時候，會如同下面一般。
 
 ![題目](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240701161031231.png)
 
 **分析代碼**
 
-1. `char input[16];`宣告了一個長度為16的字元陣列，儲存使用者輸入。
-2. `get(input);`獲取使用者輸入，由於`get`函數不檢查輸入的長度，使用者可以輸入超過16個字元。（[危险函数gets()几种完美的替代方法 你可能还不知道的](https://blog.csdn.net/qq_40907279/article/details/89046366)）
+1. `char input[16];`宣告了一個長度為 16 的字元陣列，儲存使用者輸入。
+2. `get(input);`獲取使用者輸入，由於`get`函數不檢查輸入的長度，使用者可以輸入超過 16 個字元。（[危险函数 gets()几种完美的替代方法 你可能还不知道的](https://blog.csdn.net/qq_40907279/article/details/89046366)）
 3. `int num = 64;`宣告並初始化變數`num`。
-4. 拿到flag的條件是要讓num的值為65。
+4. 拿到 flag 的條件是要讓 num 的值為 65。
 
-**BOF攻擊**
+**BOF 攻擊**
 
 首先，先檢查一下他有沒有任何保護機制。
 
 ![Checksec from pwntools](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240701171059944.png)
 
-他沒有 [Canary](https://ctf-wiki.org/pwn/linux/user-mode/mitigation/canary/) 也沒有 [PIE](https://ithelp.ithome.com.tw/articles/10336777)，就正常做BOF就可以了。
+他沒有 [Canary](https://ctf-wiki.org/pwn/linux/user-mode/mitigation/canary/) 也沒有 [PIE](https://ithelp.ithome.com.tw/articles/10336777)，就正常做 BOF 就可以了。
 
-因為`input`和`num`都是區域變數，所以會存在Stack中。並且因為是先宣告`input`緊接著宣告`num`，所以在Stack中會像下面這樣：
+因為`input`和`num`都是區域變數，所以會存在 Stack 中。並且因為是先宣告`input`緊接著宣告`num`，所以在 Stack 中會像下面這樣：
 
 ```
 High Address
@@ -871,6 +871,43 @@ picoCTF{15_y0ur_que57_qu1x071c_0r_h3r01c_ea7deb4c}
 ```
 
 # Reverse
+
+## GDB Test Drive
+
+這題的話先用`wget`把題目這個二進制檔案抓下來。
+
+![Wget](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240701212911463.png)
+
+然後後面的步驟基本上就照著題目給的指令一步一步來就可以了。
+
+![Instructions](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240701213346170.png)
+
+這邊來稍微解釋一下每個指令的意義，他到底是做了哪些事情呢？
+
+-   `chmod +x gdbme`
+    -   修改 gdbme 檔案的權限，新增執行權限（x）
+-   `gdb gdbme`
+    -   使用 gdb（GNU Debugger）打開 gdbme 這個可執行檔案。
+-   `layout asm`
+    -   啟用組合語言（Assembly, ASM）視圖
+-   `break *(main+99)`
+    -   在 main 函數開始偏移 99 的位元組的地方設置斷點（Breakpoint）。
+-   `jump *(main+104)`
+    -   跳到 main 函數開始偏移 104 位元組的地方繼續執行。
+
+至於這邊為甚麼要在 main+99 的地方設定斷點，是因為這裡他調用了一個函式叫做`sleep`，所以當我們直接執行 gdbme 的時候會進入到**sleep**的狀態，讓我們以為這個程式沒有做任何事。
+
+![Sleep function](C:\Users\陳子雋\AppData\Roaming\Typora\typora-user-images\image-20240701220205264.png)
+
+所以在這邊我們才要把斷點設在 main+99，讓他執行到這邊的時候暫停一下，然後我們直接使用 jump 叫到下面一個地方，也就是 main+104 繼續執行。
+
+![Flag](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240701213211218.png)
+
+這樣就得到 flag 啦。
+
+```
+picoCTF{d3bugg3r_dr1v3_72bd8355}
+```
 
 # Misc (General Skills)
 
