@@ -8,6 +8,10 @@ tags:
     - Security
 ---
 
+{% notel red fa-circle-exclamation 公告 %}
+歡迎到 [這邊](https://cx330.tw/categories/TechStreak30/2024-CTF-Training/) 看我這個系列的文章噢！
+{% endnotel %}
+
 # 為甚麼要修煉?
 
 有鑑於這次 AIS3 Pre-exam 的成績不甚理想。我決定要來在這次暑假的時候展開特訓，來這邊立個旗。以下來講講我打算怎麼修煉！
