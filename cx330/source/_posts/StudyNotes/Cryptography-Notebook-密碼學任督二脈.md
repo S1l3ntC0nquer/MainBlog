@@ -343,7 +343,7 @@ def sha256(message):
     return hash_hex
 
 # 測試 SHA-256 雜湊計算
-message = "This is RSA-256!"
+message = "This is SHA-256!"
 hash_result = sha256(message)
 print(f"SHA-256 Value: {hash_result}")
 ```
@@ -429,4 +429,12 @@ TODO
 
 # 非對稱式加密 Asymmetric Cryptography
 
-TODO
+## RSA
+
+### RSA 介紹
+
+### 小公鑰指數攻擊（Low public exponent attack）
+
+### Coppersmith's Attack
+
+### 題目
