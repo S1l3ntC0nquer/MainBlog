@@ -10,7 +10,7 @@ menu:
         Message board: /comments/ || anzhiyu-icon-message
 
     My:
-        Music Hall: /music/ || anzhiyu-icon-music
+        Music Hall: /music/?id=7032963191&server=netease || anzhiyu-icon-music
         Moments: /essay/ || anzhiyu-icon-lightbulb
         Chasing: /bangumis/ || anzhiyu-icon-book
         Album Set: /album/ || anzhiyu-icon-images
@@ -19,7 +19,6 @@ menu:
     About:
         Me: /about/ || anzhiyu-icon-paper-plane
         Random: javascript:toRandomPost() || anzhiyu-icon-dice
-
 # nav相关配置
 nav:
     enable: false
@@ -805,7 +804,7 @@ aside:
         name_link: /
     card_announcement:
         enable: true
-        content: 0XDEADBEEF
+        content: English site at <a href="https://en.cx330.tw">HERE</a>
     card_weixin:
         enable: false
         face: https://bu.dusays.com/2023/01/13/63c02edf44033.png
