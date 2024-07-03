@@ -804,7 +804,7 @@ aside:
         name_link: /
     card_announcement:
         enable: true
-        content: English site at <a href="https://en.cx330.tw">HERE</a>
+        content: English site at <a href="https://en.cx330.tw" style="color:#f5a524;text-decoration:underline;">HERE</a>
     card_weixin:
         enable: false
         face: https://bu.dusays.com/2023/01/13/63c02edf44033.png
