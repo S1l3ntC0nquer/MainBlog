@@ -3,22 +3,22 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: CX330 Odyssey
-subtitle: Build the universe with me.
-description: ""
-keywords:
+title: CX330's Universe
+subtitle: ""
+description: "Hello Internet! Welcome to CX330's Universe, the place I can share my experience and leave some proof that I existed. Hope u guys enjoy my universe. GLHF! 哈囉！我是陳子雋，這是我的個人網站，會分享一些技術文章或是各種各樣的文章，歡迎參觀！"
+keywords: CX330, 陳子雋, CX330 universe, CX330 Blog, Blog, CTF, CX330 hacker, hacker
 author: CX330
 language: en
 timezone: ""
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://example.com
+url: https://cx330.tw/
 permalink: :title/
 permalink_defaults:
 pretty_urls:
-    trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
-    trailing_html: true # Set to false to remove trailing '.html' from permalinks
+    trailing_index: false # Set to false to remove trailing 'index.html' from permalinks
+    trailing_html: false # Set to false to remove trailing '.html' from permalinks
 
 # Directory
 source_dir: source
@@ -96,37 +96,32 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: anzhiyu
+theme: redefine
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-    type: ""
+    type: git
+    repo: https://github.com/CX330Blake/en.CX330Blake.github.io
+    branch: main
 
-# APlayer
-# https://github.com/MoePlayer/hexo-tag-aplayer/blob/master/docs/README-zh_cn.md
-aplayer:
-    meting: true
-    asset_inject: false
+sitemap:
+    path: sitemap.xml
+baidusitemap:
+    path: baidusitemap.xml
 
-#envelope_comment
-#seehttps://akilar.top/posts/e2d3c450/
-envelope_comment:
-    enable: true #控制开关
-    custom_pic:
-        cover: /assets/me.jpg #信笺头部图片
-        line: https://npm.elemecdn.com/hexo-butterfly-envelope/lib/line.png #信笺底部图片
-        beforeimg: https://npm.elemecdn.com/hexo-butterfly-envelope/lib/before.png # 信封前半部分
-        afterimg: https://npm.elemecdn.com/hexo-butterfly-envelope/lib/after.png # 信封后半部分
-    message: #信笺正文，多行文本，写法如下
-        - Feel free to leave your message here.
-        - Asking me a question?
-        - Something to say?
-    bottom: Leave a message here！ #仅支持单行文本
-    height: #1024px，信封划出的高度
-    path: #【可选】comments 的路径名称。默认为 comments，生成的页面为 comments/index.html
-    front_matter: #【可选】comments页面的 front_matter 配置
-        title: Message Board
-        comments: true
-        top_img: false
-        type: envelope
+mathjax:
+    tags: none # or 'ams' or 'all'
+    single_dollars: true # enable single dollar signs as in-line math delimiters
+    cjk_width: 0.9 # relative CJK char width
+    normal_width: 0.6 # relative normal (monospace) width
+    append_css: true # add CSS to every page
+    every_page: false # if true, every page will be rendered by mathjax regardless the `mathjax` setting in Front-matter of each article
+
+lazyload:
+    enable: true
+    onlypost: true # optional
+    loadingImg: # optional eg ./images/loading.gif
+    isSPA: true # optional
+
+all_minifier: true
