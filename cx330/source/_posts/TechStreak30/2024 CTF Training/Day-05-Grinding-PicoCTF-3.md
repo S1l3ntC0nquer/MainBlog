@@ -1,7 +1,7 @@
 ---
 title: "[Day 05] Grinding PicoCTF 3"
 mathjax: true
-thumbnail: /images/hacker_in_the_universe.webp
+cover: /images/hacker_in_the_universe.webp
 categories:
     - [TechStreak30, 2024 CTF Training]
     - [CyberSec, CTF]

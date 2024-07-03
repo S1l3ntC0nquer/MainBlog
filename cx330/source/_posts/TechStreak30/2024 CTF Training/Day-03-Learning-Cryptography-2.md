@@ -10,7 +10,7 @@ tags:
     - Cryptography
     - CyberSec
     - TechStreak30
-thumbnail: /images/hacker_in_the_universe.webp
+cover: /images/hacker_in_the_universe.webp
 date: 2024-06-28 17:16:17
 ---
 

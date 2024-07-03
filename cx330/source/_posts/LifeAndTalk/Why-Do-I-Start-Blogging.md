@@ -4,7 +4,7 @@ date: 2024-05-30 02:47:09
 categories:
     - LifeAndTalk
 sticky: 1337
-thumbnail: /images/CX330.webp
+cover: /images/CX330.webp
 ---
 
 # Big bang! 宇宙的起源

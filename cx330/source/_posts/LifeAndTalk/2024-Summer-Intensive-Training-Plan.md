@@ -1,16 +1,13 @@
 ---
 title: 2024 Summer Intensive Training Plan
 date: 2024-05-28 22:18:12
+cover: /images/default_cover.webp
 categories:
     - LifeAndTalk
 tags:
     - CTF
     - Security
 ---
-
-{% notel red fa-circle-exclamation 公告 %}
-歡迎到 [這邊](https://cx330.tw/categories/TechStreak30/2024-CTF-Training/) 看我這個系列的文章噢！
-{% endnotel %}
 
 # 為甚麼要修煉?
 
