@@ -5,6 +5,7 @@
       left:
           - Hacker
           - CTFer
+          - Hackstronaut
       right:
           - Developer
           - Programmer
@@ -42,20 +43,20 @@
       cover: https://bu.dusays.com/2023/05/01/644f4b037b930.jpg
   map:
       title: 平時出沒於
-      StrengthenTitle: 中国，长沙市
-      background: https://bu.dusays.com/2023/07/05/64a4c61cb20ef.jpg
-      backgroundDark: https://bu.dusays.com/2023/07/05/64a4c63495ac5.jpg
+      StrengthenTitle: 地球，台灣
+      background: https://cx330.tw/assets/taiwan.png
+      backgroundDark: https://cx330.tw/assets/taiwan.png
   selfInfo:
-      selfInfoTips1: Born in
+      selfInfoTips1: 生於
       selfInfoContentYear: 2004
       selfInfoTips2: National Chung Kung University
       selfInfoContent2: CSIE
       selfInfoTips3: Now
-      selfInfoContent3: Undergraduate student
+      selfInfoContent3: 大二學生
   personalities:
-      author_name: Mediator
+      author_name: 調停者
       personality_type: INFP
-      photo_url: https://bu.dusays.com/2023/07/05/64a4c63495ac5.jpg
+      photo_url: https://cx330.tw/assets/real_me.jpg
       personality_img: https://static.neris-assets.com/images/personality-types/avatars/infp-mediator-s3-female.svg
       name_url: https://www.16personalities.com/infp-personality
   maxim:

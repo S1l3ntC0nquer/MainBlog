@@ -221,6 +221,8 @@ picoCTF{c3rt!fi3d_Xp3rt_tr1ckst3r_d3ac625b}
 
 題目說Flag在`../flag`中，所以解題的思路就是要想辦法讀取到`../flag`。
 
+
+
 ## Java Code Analysis!?!
 
 這題稍微大一點，是一個電子書系統。一開始他給了一個登入介面還有一組帳密：帳號`user`，密碼`user`。除此之外，也有給源代碼。我們先來看看網頁的樣子。
