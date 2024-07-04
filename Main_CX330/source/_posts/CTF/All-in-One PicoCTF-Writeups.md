@@ -213,6 +213,28 @@ picoCTF{c3rt!fi3d_Xp3rt_tr1ckst3r_d3ac625b}
 
 然後我後來找到了另一篇 writeup，它的 payload 比較酷，是一個即時執行的 input 框，有興趣可以去看一下[這篇](https://medium.com/@niceselol/picoctf-2024-trickster-af90f7476e18)。
 
+## Super Serial
+
+這題先讀取`/robots.txt`發現它有一個禁止的路徑為`/admin.phps`，這似乎代表著它有支持`.phps`文件。所以可以到`/index.phps`裡面看它的源代碼。（`phps`為PHP source）
+
+![index.phps](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240704170553939.png)
+
+題目說Flag在`../flag`中，所以解題的思路就是要想辦法讀取到`../flag`。
+
+## Java Code Analysis!?!
+
+這題稍微大一點，是一個電子書系統。一開始他給了一個登入介面還有一組帳密：帳號`user`，密碼`user`。除此之外，也有給源代碼。我們先來看看網頁的樣子。
+
+![Login](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240704143233744.png)
+
+登入後會看到更多的功能，包括閱讀書籍、查詢書籍、查看帳戶等等。登入後的介面如下。
+
+![Home page](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240704143405607.png)
+
+題目告訴我們，這題的Winning condition是要讀取到Flag的書籍，就可以獲得Flag了。但是向上圖所看到的，我們現在是Free user，而Flag這本書只有Admin可以閱讀，所以要來想辦法提升權限。
+
+**// TODO**
+
 # Crypto
 
 > [My scripts & note on Github](https://github.com/CX330Blake/Crypto_Notebook)
@@ -459,6 +481,53 @@ print(long_to_bytes(m))
 
 ```
 picoCTF{m4yb3_Th0se_m3s54g3s_4r3_difurrent_1772735}
+```
+
+## interencdec
+
+題目給了密文enc_flag，如下。
+
+```
+YidkM0JxZGtwQlRYdHFhR3g2YUhsZmF6TnFlVGwzWVROclh6YzRNalV3YUcxcWZRPT0nCg==
+```
+
+因為他最後面的兩個`==`讓他看起來很像是base64的格式，所以就用base64先Decode一下。這邊用的是[CyberChef](https://gchq.github.io/CyberChef/)這款工具，他可以線上進行很多種的編碼解碼、加密等等。
+
+![b64 decode](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240704163439113.png)
+
+```
+d3BqdkpBTXtqaGx6aHlfazNqeTl3YTNrXzc4MjUwaG1qfQ==
+```
+
+解碼一次後長這樣，還是很像base64的格式，所以我又做了一次base64解碼。（注意：這邊要把前面的b拿掉，只留引號中的內容）
+
+![b64 decode](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240704163700571.png)
+
+```
+wpjvJAM{jhlzhy_k3jy9wa3k_78250hmj}
+```
+
+再解碼一次後變成了這樣的形狀，看起來已經有Flag的雛型了（因為大括號），所以猜測它是某種置換密碼。就用最普遍的凱薩密碼來暴力解解看吧！Exploit如下：
+
+```python
+enc_flag = input("Enter the encrypted flag: ")
+
+for i in range(1, 27):
+    dec_flag = ""
+    for char in enc_flag:
+        if char.isalpha():
+            if char.isupper():
+                dec_flag += chr((ord(char) - ord("A") - i) % 26 + ord("A"))
+            else:
+                dec_flag += chr((ord(char) - ord("a") - i) % 26 + ord("a"))
+        else:
+            dec_flag += char
+    if "pico" in dec_flag.lower():
+        print(dec_flag)
+```
+
+```
+picoCTF{caesar_d3cr9pt3d_78250afc}
 ```
 
 ## Easy peasy
@@ -855,7 +924,13 @@ High Address
 Low Address
 ```
 
-**// TODO**
+最後試出來的Payload是24個字元加上一個大寫的A（因為`ord(A) == 65`），但是在這裡我有點不理解為甚麼前面是24個填充，猜測是`input[16]`跟`num`中間有Padding之類的東西。如果有人知道的話再麻煩跟我解釋一下，感謝了！總之，還是拿到Flag啦。
+
+![Flag](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240704141242017.png)
+
+```
+picoCTF{l0c4l5_1n_5c0p3_fee8ef05}
+```
 
 ## buffer overflow 0
 
