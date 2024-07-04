@@ -14,7 +14,7 @@ date: 2024-06-26 16:42:14
 
 # 前言
 
-因為已經有開了一篇文章，打算放上所有 picoCTF 的 writeups 了，所以就不把解題思路寫在這邊啦，如果想看的話請見[這邊](https://cx330.tw/CyberSec/CTF/All-in-One%20PicoCTF-Writeups/)!
+因為已經有開了一篇文章，打算放上所有 picoCTF 的 writeups 了，所以就不把解題思路寫在這邊啦，如果想看的話請見[這邊](https://cx330.tw/CyberSec/CTF/All-in-One%20PicoCTF-Writeups/)！
 
 # 今日進度
 
