@@ -1,24 +1,26 @@
 menu:
-    Articles:
-        Tree: /archives/ || anzhiyu-icon-list-ul
-        Categories: /categories/ || anzhiyu-icon-shapes
-        Tags: /tags/ || anzhiyu-icon-tags
+    文章:
+        總覽: /archives/ || anzhiyu-icon-list-ul
+        分類: /categories/ || anzhiyu-icon-shapes
+        標籤: /tags/ || anzhiyu-icon-tags
+        抽一篇: javascript:toRandomPost() || anzhiyu-icon-dice
 
-    Friends:
-        Sites: /link/ || anzhiyu-icon-link
+    社交中心:
+        友站: /link/ || anzhiyu-icon-link
         # Moments: /fcircle/ ||
-        Message board: /comments/ || anzhiyu-icon-message
+        留言板: /comments/ || anzhiyu-icon-message
 
-    My:
-        Music Hall: /music/?id=7032963191&server=netease || anzhiyu-icon-music
-        Moments: /essay/ || anzhiyu-icon-lightbulb
+    我的:
+        音樂吧: /music/?id=7032963191&server=netease || anzhiyu-icon-music
+        生活碎片: /essay/ || anzhiyu-icon-lightbulb
         Chasing: /bangumis/ || anzhiyu-icon-book
-        Album Set: /album/ || anzhiyu-icon-images
+        相簿: /album/ || anzhiyu-icon-images
         # Conditioning: /air-conditioner/ ||
 
-    About:
-        Me: /about/ || anzhiyu-icon-paper-plane
-        Random: javascript:toRandomPost() || anzhiyu-icon-dice
+    關於:
+        我是誰: /about/ || anzhiyu-icon-paper-plane
+        訂閱: /subscribe/ || anzhiyu-icon-rss
+
 # nav相关配置
 nav:
     enable: false
@@ -223,7 +225,7 @@ index_post_content:
 
 # anchor
 # when you scroll in post, the URL will update according to header id.
-anchor: true
+anchor: false
 
 # Post
 # --------------------------------------
@@ -317,7 +319,7 @@ sharejs:
 # AddToAny
 # https://www.addtoany.com/
 addtoany:
-    enable: true
+    enable: false
     item: facebook,twitter,line,copy_link
 
 # Comments System
@@ -1235,8 +1237,8 @@ dynamicEffect:
 # 插入代码到头部 </head> 之前 和 底部 </body> 之前
 inject:
     head:
-        # 自定义css
-        # - <link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'">
+        - <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="cx330" data-description="Support me on Buy me a coffee!" data-message="" data-color="#5F7FFF" data-position="Right" data-x_margin="18" data-y_margin="18"></script> # 自定义css
+          # - <link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'">
 
     bottom:
         # 自定义js
