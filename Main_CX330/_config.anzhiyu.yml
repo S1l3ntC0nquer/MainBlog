@@ -25,16 +25,22 @@ nav:
     travelling: true
     clock: true
     menu:
-        - title: Web
+        - title: 聯絡
           item:
-              - name: 博客
-                link: https://blog.anheyu.com/
-                icon: /img/favicon.ico
-        # - title: 项目
-        #   item:
-        #       - name: 安知鱼图床
-        #         link: https://image.anheyu.com/
-        #         icon: https://image.anheyu.com/favicon.ico
+              - name: Facebook
+                link: https://www.facebook.com/profile.php?id=100011698690769
+                icon: /assets/fb.png
+              #   - name: Instagram
+              #     link: https://github.com/CX330Blake
+              #     icon: /assets/ig.png
+              - name: LinkedIn
+                link: https://www.linkedin.com/in/%E5%AD%90%E9%9B%8B-%E9%99%B3-11087825b/
+                icon: /assets/linkedin.png
+        - title: English site
+          item:
+              - name: CX330's Universe
+                link: https://en.cx330.tw
+                icon: /assets/me.jpg
 
 # mourn （哀悼日，指定日期网站简单变灰，不包括滚动条）
 # 注意： 仅网站首页变灰，其他页面正常显示
@@ -543,7 +549,7 @@ footer:
             # 如果关闭打字效果，subtitle 只会显示 sub 的第一行文字
             sub:
                 - Build the universe with me
-                - Undergraduate | Hacker | Developer | CTF | Python | JavaScript | C | Java | React |
+                - Hack the planet!
                 # - 生活明朗&#44; 万物可爱&#44; 人间值得&#44; 未来可期.
 
 # Analysis

@@ -14,7 +14,7 @@ info:
     # Author name
     author: CX330
     # Site URL
-    url: https://cx330.tw
+    url: https://en.cx330.tw
 # BASIC INFORMATION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 # IMAGE CONFIGURATION >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
@@ -444,18 +444,18 @@ plugins:
         audios:
             - name: 孤獨之書 # audio name
               artist: 房東的貓 # audio artist
-              url: https://cx330.tw/assets/孤獨之書.mp3 # audio url
+              url: https://en.cx330.tw/assets/孤獨之書.mp3 # audio url
               cover: https://i.kfs.io/album/global/141875941,0v1/fit/500x500.jpg # audio cover url
               lrc: # audio cover lrc
             - name: Interstellar # audio name
               artist: Hans Zimmer # audio artist
-              url: https://cx330.tw/assets/interstellar.mp3 # audio url
+              url: https://en.cx330.tw/assets/interstellar.mp3 # audio url
               cover: https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/f4/5b/73/f45b735a-8d7a-9713-b217-0f8e1593c28b/794043201943.jpg/316x316bb.webp # audio cover url
               lrc: # audio cover lrc
             - name: Rainbow connection # audio name
               artist: Trespassers William # audio artist
-              url: https://cx330.tw/assets/rainbow_connection.mp3 # audio url
-              cover: https://cx330.tw/assets/rainbow_connection.jpg # audio cover url
+              url: https://en.cx330.tw/assets/rainbow_connection.mp3 # audio url
+              cover: https://en.cx330.tw/assets/rainbow_connection.jpg # audio cover url
               lrc: # audio cover lrc
     # .... you can add more audios here
     # Mermaid JS. Requires hexo-filter-mermaid-diagrams (npm i hexo-filter-mermaid-diagrams). See https://mermaid.js.org/
