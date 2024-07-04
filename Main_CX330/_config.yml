@@ -137,3 +137,18 @@ sitemap:
     path: sitemap.xml
 baidusitemap:
     path: baidusitemap.xml
+
+# RSS
+feed:
+    enable: true
+    type: atom
+    path: atom.xml
+    limit: 20
+    hub:
+    content:
+    content_limit: 140
+    content_limit_delim: " "
+    order_by: -date
+    icon: /assets/favicon.ico
+    autodiscovery: true
+    template:
