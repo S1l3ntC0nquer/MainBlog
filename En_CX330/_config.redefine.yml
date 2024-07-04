@@ -110,7 +110,7 @@ home_banner:
         light: assets/light.webp # light mode /images/wallhaven-wqery6-light.webp
         dark: assets/dark.webp # dark mode /images/wallhaven-wqery6-dark.webp
     # Home banner title
-    title: CX330's Universe
+    title: CX330's Hackverse
     # Home banner subtitle
     subtitle:
         text: [
