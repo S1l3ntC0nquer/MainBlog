@@ -3,12 +3,13 @@ title: Cryptography Notes 密碼學任督二脈
 mathjax: true
 cover: /images/cryptography.webp
 categories:
-    - StudyNotes
+    - 學習筆記
 tags:
-    - Cryptography
+    - 密碼學
     - CTF
-    - CyberSec
-    - Notes
+    - Crypto
+    - 資安
+    - 筆記
 date: 2024-06-27 20:05:01
 ---
 

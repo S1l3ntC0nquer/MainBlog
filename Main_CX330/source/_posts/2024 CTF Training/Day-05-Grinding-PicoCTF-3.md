@@ -3,13 +3,12 @@ title: "[Day 05] Grinding PicoCTF 3"
 mathjax: true
 cover: /images/hacker_in_the_universe.webp
 categories:
-    - [TechStreak30, 2024 CTF Training]
-    - [CyberSec, CTF]
+    - 2024 CTF 修煉計畫
 tags:
     - CTF
     - PicoCTF
     - CyberSec
-    - TechStreak30
+    - 30天計畫
 date: 2024-07-01 22:15:41
 ---
 

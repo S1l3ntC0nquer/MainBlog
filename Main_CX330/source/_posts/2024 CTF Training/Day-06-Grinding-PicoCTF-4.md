@@ -4,13 +4,12 @@ mathjax: true
 date: 2024-07-02 16:24:10
 cover: /images/hacker_in_the_universe.webp
 categories:
-    - [TechStreak30, 2024 CTF Training]
-    - [CyberSec, CTF]
+    - 2024 CTF 修煉計畫
 tags:
     - CTF
     - PicoCTF
     - CyberSec
-    - TechStreak30
+    - 30天計畫
 ---
 
 # 前言

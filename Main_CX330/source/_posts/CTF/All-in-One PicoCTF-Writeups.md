@@ -2,9 +2,12 @@
 title: All-in-One PicoCTF Writeups
 date: 2024-06-01 10:27:03
 categories:
-    - [CyberSec, PicoCTF]
+    - CTF
 mathjax: true
 cover: https://hackmd.io/_uploads/BJxhDLKL0.png
+tags:
+    - PicoCTF
+    - 資安
 ---
 
 # 前言
