@@ -1,5 +1,5 @@
 ---
-title: Subscribe
+title: Subscribe & Donate
 date: 2024-06-16 16:33:46
 ---
 

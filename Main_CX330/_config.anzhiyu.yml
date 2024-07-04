@@ -22,8 +22,8 @@ menu:
 # nav相关配置
 nav:
     enable: false
-    travelling: true
-    clock: true
+    travelling: false
+    clock: false
     menu:
         - title: 聯絡
           item:
