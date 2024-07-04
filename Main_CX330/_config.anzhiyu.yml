@@ -235,7 +235,7 @@ toc:
     post: true
     page: false
     number: true
-    expand: true
+    expand: false
     style_simple: false # for post
 
 post_copyright:
@@ -333,7 +333,7 @@ comments:
     # lazyload: The comment system will be load when comment element enters the browser's viewport.
     # If you set it to true, the comment count will be invalid
     lazyload: false
-    count: false # Display comment count in post's top_img
+    count: true # Display comment count in post's top_img
     card_post_count: false # Display comment count in Home Page
 
 # valine
@@ -804,7 +804,7 @@ aside:
     hide: false
     button: true
     mobile: true # display on mobile
-    position: left # left or right
+    position: right # left or right
     display: # 控制对应详情页面是否显示侧边栏
         archive: true
         tag: true
@@ -815,7 +815,7 @@ aside:
         name_link: /
     card_announcement:
         enable: true
-        content: English site at <a href="https://en.cx330.tw" style="color:#f5a524;text-decoration:underline;">HERE</a>
+        content: English site at <a href="https://en.cx330.tw" style="color:#f5a524;text-decoration:underline;font-weight:bold;">HERE</a>
     card_weixin:
         enable: false
         face: https://bu.dusays.com/2023/01/13/63c02edf44033.png
@@ -1096,11 +1096,11 @@ universe:
 
 # 页面卡片顶部气泡升起效果
 bubble:
-    enable: false
+    enable: true
 
 #  控制台打印信息
 console:
-    enable: true
+    enable: false
 
 # 51a统计配置
 LA:

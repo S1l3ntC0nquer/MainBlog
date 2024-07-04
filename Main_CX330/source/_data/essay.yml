@@ -1,7 +1,7 @@
-- title: Moments
-  subTitle: Fragments of CX330's life
+- title: 生活碎片
+  subTitle: 紀錄每個瞬間
   tips: Anytime, anywhere.
-  buttonText: About me
+  buttonText: 關於我
   buttonLink: /about/
   limit: 30
   home_essay: true
@@ -10,6 +10,9 @@
       - content: 換主題到這裡的第一天
         date: 2024/07/03
         address: CX330's Universe
+      - content: 差不多快要完成網站的重構了，終於！
+        date: 2024/07/05
+        address: 床上
       # - content: 支持了Accesskey快捷键，可以直接按下shift + ?组合键以查看快捷键选项。
       #   date: 2023/07/01
       #   video:
