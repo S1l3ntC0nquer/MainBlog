@@ -576,6 +576,7 @@ footer:
             source: false
             # 如果关闭打字效果，subtitle 只会显示 sub 的第一行文字
             sub:
+                - Yes, I am a criminal. My crime is that of curiosity.
                 - Build the universe with me
                 - Hack the planet!
                 # - 生活明朗&#44; 万物可爱&#44; 人间值得&#44; 未来可期.
@@ -1078,9 +1079,9 @@ css_prefix: true
 home_top:
     enable: true # 开关
     timemode: date #date/updated
-    title: CX330 Odyssey
-    subTitle: GLHF!
-    siteText: cx330.tw
+    title: Let's hack the
+    subTitle: planet!
+    siteText: 資安、開發、學習、生活
     category:
         - name: CTF
           path: /categories/CTF/
@@ -1250,7 +1251,7 @@ rightClickMenu:
 # 首页随便逛逛people模式 而非技能点模式，关闭后为技能点模式需要配置creativity.yml
 peoplecanvas:
     enable: false
-    img: https://upload-bbs.miyoushe.com/upload/2023/09/03/125766904/ee23df8517f3c3e3efc4145658269c06_5714860933110284659.png
+    img: https://cx330.tw/assets/dark.webp
 
 # 动效
 dynamicEffect:
