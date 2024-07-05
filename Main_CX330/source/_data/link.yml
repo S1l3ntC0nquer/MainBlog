@@ -1,22 +1,38 @@
-- class_name: 推荐博客
+- class_name: 推薦站點
   flink_style: telescopic
   hundredSuffix: ""
   link_list:
-      - name: 安知鱼
-        link: https://blog.anheyu.com/
-        avatar: https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg
-        descr: 生活明朗，万物可爱
-        siteshot: https://npm.elemecdn.com/anzhiyu-theme-static@1.1.6/img/blog.anheyu.com.jpg
+      - name: CX330
+        link: https://cx330.tw/
+        avatar: https://cx330.tw/assets/me.jpg
+        descr: Hack the planet!
+        tag: 技術
         color: vip
-        tag: 技术
-
-- class_name: 小伙伴
-  class_desc: 那些人，那些事
-  flink_style: anzhiyu
-  hundredSuffix: ""
-  link_list:
-      - name: 安知鱼
-        link: https://blog.anheyu.com/
-        avatar: https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg
-        descr: 生活明朗，万物可爱
-        recommend: true
+      - name: Buntalk Universe
+        link: https://www.setbun.com/
+        avatar: https://cdn.jsdelivr.net/gh/FrederickBun/upyun-rhimgcdn@img/upload/202406272229074.png
+        descr: 歡迎來到磅說，快來留下你的足跡吧！
+        color: vip
+        tag: 技術
+      - name: 張洪Heo
+        link: https://blog.zhheo.com/
+        avatar: https://bu.dusays.com/2022/12/28/63ac2812183aa.png
+        descr: 分享设计与科技生活
+        color: speed
+        tag: 設計
+      - name: EvanNotFound’s Blog
+        link: https://ohevan.com/
+        avatar: https://evan.beee.top/avatars/avatar-min.png
+        descr: Evan的部落阁，用香港记者的速度更新文章
+        color: vip
+        tag: 技術
+# - class_name: 小伙伴
+#   class_desc: 那些人，那些事
+#   flink_style: flexcard
+#   hundredSuffix: ""
+#   link_list:
+#       - name: 安知鱼
+#         link: https://www.setbun.com/
+#         avatar: https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg
+#         descr: 歡迎來到磅說，快來留下你的足跡吧！
+#         recommend: true

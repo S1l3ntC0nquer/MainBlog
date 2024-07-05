@@ -460,15 +460,16 @@ footer:
         enable: true
         centerImg: /assets/me.jpg
         left:
-            - title: Email
-              link: mailto:timchen975@gmail.com
-              icon: fa-solid fa-envelope
-            - title: Facebook
-              link: https://www.facebook.com/profile.php?id=100011698690769
-              icon: fa-brands fa-facebook
             - title: GitHub
               link: https://github.com/CX330Blake
               icon: fa-brands fa-github
+            - title: Facebook
+              link: https://www.facebook.com/profile.php?id=100011698690769
+              icon: fa-brands fa-facebook
+            - title: Email
+              link: mailto:timchen975@gmail.com
+              icon: fa-solid fa-envelope
+
         right:
             - title: LinkedIn
               link: https://www.linkedin.com/in/%E5%AD%90%E9%9B%8B-%E9%99%B3-11087825b/
@@ -483,7 +484,7 @@ footer:
               link: https://creativecommons.org/licenses/by-nc-nd/4.0/deed.en
               icon: fa-regular fa-copyright
     list:
-        enable: false
+        enable: true
         randomFriends: 3
         project:
             # - title: 服务
@@ -502,14 +503,38 @@ footer:
             #       link: https://github.com/anzhiyu-c/hexo-theme-anzhiyu
             #     - title: 更新日志
             #       link: /update/
-            - title: Navigation
+            - title: 文章導航
               links:
-                  - title: Tree
+                  - title: 總覽
                     link: /archives/
-                  - title: Categories
+                  - title: 分類
                     link: /categories/
-                  - title: Tags
+                  - title: 標籤
                     link: /tags/
+            - title: 社交中心
+              links:
+                  - title: 友站
+                    link: /link/
+                  - title: 留言板
+                    link: /comments/
+            - title: 我的
+              links:
+                  - title: 音樂吧
+                    link: /music/?id=7032963191&server=netease
+                  - title: 生活碎片
+                    link: /essay/
+                  - title: 書架
+                    link: /notyet/
+                  - title: 相簿
+                    link: /notyet/
+            - title: 關於
+              links:
+                  - title: 我是誰
+                    link: /about/
+                  - title: 訂閱
+                    link: /subscribe/
+                  - title: 支持我
+                    link: https://buymeacoffee.com/cx330
             # - title: 协议
             #   links:
             #     - title: 隐私协议
@@ -525,8 +550,8 @@ footer:
             enable: true
             link: https://creativecommons.org/licenses/by-nc-nd/4.0/deed.en
         linkList:
-            - link: https://cx330.tw/subscribe
-              text: Subscribe
+            - link: https://github.com/anzhiyu-c/hexo-theme-anzhiyu
+              text: Theme
             # - link: https://image.anheyu.com
             #  text: 图床
             # - link: https://beian.miit.gov.cn/
@@ -1056,18 +1081,18 @@ home_top:
     subTitle: GLHF!
     siteText: cx330.tw
     category:
-        - name: CyberSec
-          path: /categories/CyberSec/
+        - name: CTF
+          path: /categories/CTF/
           shadow: var(--anzhiyu-shadow-blue)
           class: blue
           icon: anzhiyu-icon-dice-d20
-        - name: DevCorner
-          path: /categories/DevCorner/
+        - name: 開發角
+          path: /categories/開發角/
           shadow: var(--anzhiyu-shadow-red)
           class: red
           icon: anzhiyu-icon-fire
-        - name: StudyNotes
-          path: /categories/StudyNotes/
+        - name: 學習筆記
+          path: /categories/學習筆記/
           shadow: var(--anzhiyu-shadow-green)
           class: green
           icon: anzhiyu-icon-book
@@ -1096,7 +1121,7 @@ universe:
 
 # 页面卡片顶部气泡升起效果
 bubble:
-    enable: true
+    enable: false
 
 #  控制台打印信息
 console:
@@ -1204,10 +1229,10 @@ accesskey:
 
 # 友情链接顶部相关配置
 linkPageTop:
-    enable: true
-    title: 与数百名博主无限进步
+    enable: false
+    title: 和其他站長共同進步
     # 添加博主友链的评论自定义格式
-    addFriendPlaceholder: "昵称（请勿包含博客等字样）：\n网站地址（要求博客地址，请勿提交个人主页）：\n头像图片url（请提供尽可能清晰的图片，我会上传到我自己的图床）：\n描述：\n站点截图（可选）：\n"
+    addFriendPlaceholder: "暱稱：\n網站網址：\n頭貼URL：\n描述：\n網站截圖：\n"
 
 # 缩略图后缀 archive/tag/category 页面单独开启后缀
 pageThumbnailSuffix: ""
