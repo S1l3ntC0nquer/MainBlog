@@ -75,14 +75,14 @@
       game_bg: https://cdn.akamai.steamstatic.com/apps/csgo/images/csgo_react/social/cs2.jpg
   comic:
       comic_tips: 閱讀
-      comic_title: 小書架
+      comic_title: 書架
       comic_list:
           - name: The pragmatic programmer
             href: https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/
             cover: https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/tpp20_hu7d9a813cf46675dfb7b1bf4930cee733_2802494_375x0_resize_q75_box.jpg
-          - name: 咒术回战
-            href: https://www.bilibili.com/bangumi/media/md28229899/?spm_id_from=666.25.b_6d656469615f6d6f64756c65.1
-            cover: https://bu.dusays.com/2023/05/24/646db4398832e.webp
+          - name: Hacker manifesto
+            href: http://phrack.org/issues/7/3.html
+            cover: /assets/hacker_manifesto.png
           - name: 紫罗兰永恒花园
             href: https://www.bilibili.com/bangumi/media/md8892/?spm_id_from=666.25.b_6d656469615f6d6f64756c65.1
             cover: https://bu.dusays.com/2023/05/24/646db43983d99.webp
@@ -99,7 +99,7 @@
       like_bottom: 資安、CTF、前端開發、後端開發、AI、軟體開發
   music:
       music_tips: 音樂
-      music_title: 民謠, Lo-Fi, Sad Rap
+      music_title: 民謠，Lo-Fi，Sad Rap
       music_bg: /assets/powfu.jpg
       music_link: /music
 #   reward_list:
