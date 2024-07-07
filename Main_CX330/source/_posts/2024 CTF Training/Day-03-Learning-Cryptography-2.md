@@ -15,7 +15,7 @@ date: 2024-06-28 17:16:17
 
 # 前言
 
-這是第一個 TechStreak30 系列的第三天，今天一樣繼續 work on [我的密碼學筆記](/StudyNotes/Cryptography-Notebook-密碼學任督二脈/)，歡迎大家來看！一想到之後要進入 RSA 的部分就感覺好難 XD，但總之就加油啦！
+這是第一個 TechStreak30 系列的第三天，今天一樣繼續 work on [我的密碼學筆記](/StudyNotes/Cryptography-Notes-密碼學任督二脈)，歡迎大家來看！一想到之後要進入 RSA 的部分就感覺好難 XD，但總之就加油啦！
 
 # 今日進度
 
