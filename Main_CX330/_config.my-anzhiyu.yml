@@ -168,7 +168,7 @@ cover:
     position: left
     # When cover is not set, the default cover is displayed (当没有设置cover时，默认的封面显示)
     default_cover:
-        - /images/default_cover.webp
+        - /images/default_cover.jpg
         # - /img/default_cover.jpg
 
 # Replace Broken Images (替换无法显示的图片)
@@ -1107,7 +1107,7 @@ home_top:
     banner:
         tips: 推薦閱讀
         title: Cryptography Notebook 密碼學任督二脈
-        image: /images/cryptography.webp
+        image: /images/cryptography.jpg
         link: /StudyNotes/Cryptography-Notes-密碼學任督二脈
 
 # 朋友圈配置

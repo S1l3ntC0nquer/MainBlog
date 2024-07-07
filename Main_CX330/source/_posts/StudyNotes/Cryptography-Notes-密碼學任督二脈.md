@@ -1,7 +1,7 @@
 ---
 title: Cryptography Notes 密碼學任督二脈
 mathjax: true
-cover: /images/cryptography.webp
+cover: /images/cryptography.jpg
 categories:
     - 學習筆記
 tags:

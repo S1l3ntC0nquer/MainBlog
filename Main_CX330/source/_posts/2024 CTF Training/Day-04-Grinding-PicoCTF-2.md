@@ -8,7 +8,7 @@ tags:
     - PicoCTF
     - CyberSec
     - 30天計畫
-cover: /images/hacker_in_the_universe.webp
+cover: /images/hacker_in_the_universe.jpg
 date: 2024-06-29 16:44:33
 ---
 

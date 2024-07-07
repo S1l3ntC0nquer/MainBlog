@@ -2,7 +2,7 @@
 title: "[Day 06] Grinding PicoCTF 4"
 mathjax: true
 date: 2024-07-02 16:24:10
-cover: /images/hacker_in_the_universe.webp
+cover: /images/hacker_in_the_universe.jpg
 categories:
     - 2024 CTF 修煉計畫
 tags:

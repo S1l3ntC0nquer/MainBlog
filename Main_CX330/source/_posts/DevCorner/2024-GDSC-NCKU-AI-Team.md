@@ -8,7 +8,7 @@ tags:
     - AI
     - GDSC
 description: Sharing the experience of being a member of 2024 GDSC NCKU AI Team.
-cover: https://hackmd.io/_uploads/rJKaUHmIA.png
+cover: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/upload_97e1adcfafc9b114ef3a964245a78c25.png
 ---
 
 # Intro — What is GDSC

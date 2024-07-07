@@ -2,7 +2,7 @@
 title: 不懂就問！如何利用 Hexo + GitHub + HackMD 搭建自己的個人部落格
 mathjax: true
 date: 2024-06-30 02:39:53
-cover: /images/hackers_blog.webp
+cover: /images/hackers_blog.jpg
 categories: 開發角
 tags:
     - Blog
@@ -192,25 +192,25 @@ deploy:
 
 因為我有購買域名，所以可以設定 Custom Domain。如果你也有購買域名，並且想設置它作為你的部落格 URL，請見 [GitHub Pages 自訂域名與 HTTPS 設定（GoDaddy + Cloudflare）](https://clairechang.tw/2023/06/28/web/github-pages-with-custom-domain/)。
 
-## 修改Hexo配置文件
+## 修改 Hexo 配置文件
 
-創建好Repo後，你需要打開Hexo專案資料夾裡面的的`_config.yml`文件（**注意，這邊是指Hexo配置文件，並不是主題配置文件**），新增以下內容。（詳見 [官方文檔](https://hexo.io/zh-tw/docs/one-command-deployment)）
+創建好 Repo 後，你需要打開 Hexo 專案資料夾裡面的的`_config.yml`文件（**注意，這邊是指 Hexo 配置文件，並不是主題配置文件**），新增以下內容。（詳見 [官方文檔](https://hexo.io/zh-tw/docs/one-command-deployment)）
 
 ```yaml
 deploy:
-  type: git
-  repo: 你的專案連結 	#舉例：https://bitbucket.org/JohnSmith/johnsmith.bitbucket.io
-  branch: [branch]	# 通常為main
+    type: git
+    repo: 你的專案連結 #舉例：https://bitbucket.org/JohnSmith/johnsmith.bitbucket.io
+    branch: [branch] # 通常為main
 ```
 
-修改完後，還需要去安裝一個套件。這個套件可以幫助你自動部署你使用`hexo d`時產生的靜態文件到你設定的Repo。安裝方式如下：
+修改完後，還需要去安裝一個套件。這個套件可以幫助你自動部署你使用`hexo d`時產生的靜態文件到你設定的 Repo。安裝方式如下：
 
-1. 打開你的Hexo專案資料夾（有`package.json`的那個資料夾）。
+1. 打開你的 Hexo 專案資料夾（有`package.json`的那個資料夾）。
 2. 在這層目錄中打開終端。
 3. 輸入`npm install hexo-deployer-git --save`。
 4. 大功告成。
 
-如果你有使用Vscode的GitHub擴充套件儲存過使用者token，就可以直接用`hexo d`部署你的文章啦！如果沒有的話也沒關係，只需要在`hexo d`的時候提供使用者名稱和密碼就行了。
+如果你有使用 Vscode 的 GitHub 擴充套件儲存過使用者 token，就可以直接用`hexo d`部署你的文章啦！如果沒有的話也沒關係，只需要在`hexo d`的時候提供使用者名稱和密碼就行了。
 
 到這邊，你就已經大致完成啦！接下來只要找個喜歡的 [Hexo 主題](https://hexo.io/themes/)、[設定配置文件](https://hexo.io/zh-tw/docs/configuration)，就可以開始寫作囉！（這邊可以去看看官方文件，選個自己喜歡的主題，並照著文檔配置就行了）
 

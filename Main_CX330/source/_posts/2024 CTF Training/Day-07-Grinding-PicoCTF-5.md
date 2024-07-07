@@ -1,6 +1,6 @@
 ---
 title: "[Day 07] Grinding PicoCTF 5"
-cover: /images/hacker_in_the_universe.webp
+cover: /images/hacker_in_the_universe.jpg
 categories: 2024 CTF 修煉計畫
 tags:
     - CTF

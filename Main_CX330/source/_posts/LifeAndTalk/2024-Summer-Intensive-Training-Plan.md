@@ -1,7 +1,7 @@
 ---
 title: 2024 Summer Intensive Training Plan
 date: 2024-05-28 22:18:12
-cover: /images/default_cover.webp
+cover: /images/default_cover.jpg
 categories:
     - LifeAndTalk
 tags:

@@ -4,7 +4,7 @@ date: 2024-06-01 10:27:03
 categories:
     - CTF
 mathjax: true
-cover: https://hackmd.io/_uploads/BJxhDLKL0.png
+cover: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/upload_4810c93f4ec30864588fcab3bf179d5f.png
 tags:
     - PicoCTF
     - 資安
@@ -320,8 +320,8 @@ picoCTF{th15_vu1n_1s_5up3r_53r1ous_y4ll_405f4c0e}
 
 # Crypto
 
-- [My scripts & note on Github](https://github.com/CX330Blake/Crypto_Notebook)
-- [Cryptography Notebook 密碼學任督二脈](https://cx330.tw/StudyNotes/Cryptography-Notes-%E5%AF%86%E7%A2%BC%E5%AD%B8%E4%BB%BB%E7%9D%A3%E4%BA%8C%E8%84%88/)
+-   [My scripts & note on Github](https://github.com/CX330Blake/Crypto_Notebook)
+-   [Cryptography Notebook 密碼學任督二脈](https://cx330.tw/StudyNotes/Cryptography-Notes-%E5%AF%86%E7%A2%BC%E5%AD%B8%E4%BB%BB%E7%9D%A3%E4%BA%8C%E8%84%88/)
 
 ## Easy1
 
@@ -455,9 +455,9 @@ for i, c in enumerate(b16):
 print(enc)
 ```
 
-先觀察這個加密腳本。發現他是把明文每個字母的 Ascii 值轉為 Binary 後，從左邊補 0 補到 8 個 Bits，然後每4位元分為一塊，每塊的二進制數字（0～15）映射到Base16的字符集（a～p）。再把這個東西拿去做shift，就是凱薩加密的變形。
+先觀察這個加密腳本。發現他是把明文每個字母的 Ascii 值轉為 Binary 後，從左邊補 0 補到 8 個 Bits，然後每 4 位元分為一塊，每塊的二進制數字（0 ～ 15）映射到 Base16 的字符集（a ～ p）。再把這個東西拿去做 shift，就是凱薩加密的變形。
 
-總之解密的話就是反著來，就不詳細解釋了。Exploit如下：
+總之解密的話就是反著來，就不詳細解釋了。Exploit 如下：
 
 ```python
 import string
@@ -508,7 +508,7 @@ for key in ALPHABET:
     print(f"Decrypted flag: {b16_dec}")
 ```
 
-暴力破解後，看起來最像Flag的就是`et_tu?_23217b54456fb10e908b5e87c6e89156`這個了。最後自己幫它包上`picoCTF{}`提交，果然是正確的。
+暴力破解後，看起來最像 Flag 的就是`et_tu?_23217b54456fb10e908b5e87c6e89156`這個了。最後自己幫它包上`picoCTF{}`提交，果然是正確的。
 
 ```
 picoCTF{et_tu?_23217b54456fb10e908b5e87c6e89156}
@@ -522,7 +522,7 @@ picoCTF{et_tu?_23217b54456fb10e908b5e87c6e89156}
 xqkwKBN{z0bib1wv_l3kzgxb3l_949in1i1}
 ```
 
-看起來就是Transposition Cipher，直接拿去網路上那種凱薩密碼暴力破解。這邊使用[CyberChef](https://gchq.github.io/CyberChef/)。
+看起來就是 Transposition Cipher，直接拿去網路上那種凱薩密碼暴力破解。這邊使用[CyberChef](https://gchq.github.io/CyberChef/)。
 
 ![Pwned!](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240706165309173.png)
 
@@ -983,7 +983,7 @@ picoCTF{e_sh0u1d_b3_lArg3r_7adb35b1}
 
 ## miniRSA
 
-這題的原理和上面那題一模一樣，都是e太小所以用小公鑰指數攻擊。想知道更詳細原理看[上面那題](http://localhost:4000/CTF/All-in-One%20PicoCTF-Writeups/#Mini-RSA)，這邊直接上Exploit。
+這題的原理和上面那題一模一樣，都是 e 太小所以用小公鑰指數攻擊。想知道更詳細原理看[上面那題](http://localhost:4000/CTF/All-in-One%20PicoCTF-Writeups/#Mini-RSA)，這邊直接上 Exploit。
 
 ```python
 import gmpy2
@@ -1012,7 +1012,7 @@ picoCTF{n33d_a_lArg3r_e_d0cd6eae}
 
 ## b00tl3gRSA2
 
-這題給了一個Netcat連接方式`nc jupiter.challenges.picoctf.org 57464`。先連進去主機看看吧。連進去後可以得到公鑰（e, n）跟密文C。
+這題給了一個 Netcat 連接方式`nc jupiter.challenges.picoctf.org 57464`。先連進去主機看看吧。連進去後可以得到公鑰（e, n）跟密文 C。
 
 ```
 c: 34445152657892770965998909208982810010756495888304322276986171688963957553047312382212965383503534206383273951160130679579064667281298014647933151624988393675732505770685953145935008017740630822545491396331269103186466894080672218590474311310524848042116230603776754439341606635542489964403857509012413327600
@@ -1026,13 +1026,13 @@ e: 37080866881034431981182406871995949206609767233841813908107646836499839869322
 
 意思是在這題裡面他把 $d$ 和 $e$ 互換了，用 $d$ 來加密 $e$。下面這篇文章有詳細說了為甚麼不應該使用這種做法。
 
-- [RSA: Does it matter if you use e or d to encrypt?](https://crypto.stackexchange.com/questions/54557/rsa-does-it-matter-if-you-use-e-or-d-to-encrypt)
+-   [RSA: Does it matter if you use e or d to encrypt?](https://crypto.stackexchange.com/questions/54557/rsa-does-it-matter-if-you-use-e-or-d-to-encrypt)
 
 簡而言之，當私鑰指數（$d$）比較小的時候，可以使用[Wiener's attack](https://en.wikipedia.org/wiki/Wiener%27s_attack)。這邊可以使用一個開源工具來幫助我們快速執行攻擊。
 
-- [RsaCtfTool](https://github.com/RsaCtfTool/RsaCtfTool)
+-   [RsaCtfTool](https://github.com/RsaCtfTool/RsaCtfTool)
 
-使用方式請查看官方文檔。總之Exploit如下。
+使用方式請查看官方文檔。總之 Exploit 如下。
 
 ```bash
 python RsaCtfTool.py -e 37080866881034431981182406871995949206609767233841813908107646836499839869322256469420054910921271502986970536597423895034064361029486896285600240175045808110268909882526287214985406985265436522819284777174250321264328876332147142628536767687999620602780344780826878645902905435208326564999474536627301460973 -n 68119657260892882095325897664190568273401102037961904922092525598421583896728037063388427153386051029888075348478917163527609699475528597669779479757588723783858410926089233944915463760773669961431608182207070211704104302242228666666950454789023679482670607533342993172566630254264627616929496230133089420521 --decrypt 34445152657892770965998909208982810010756495888304322276986171688963957553047312382212965383503534206383273951160130679579064667281298014647933151624988393675732505770685953145935008017740630822545491396331269103186466894080672218590474311310524848042116230603776754439341606635542489964403857509012413327600 --attack wiener
@@ -1040,7 +1040,7 @@ python RsaCtfTool.py -e 37080866881034431981182406871995949206609767233841813908
 
 ![Pwned!](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240707150749451.png)
 
-總之就是把參數都設定好，就可以成功得到Flag了。
+總之就是把參數都設定好，就可以成功得到 Flag 了。
 
 ```
 picoCTF{bad_1d3a5_2152720}
@@ -1048,7 +1048,7 @@ picoCTF{bad_1d3a5_2152720}
 
 ## b00tl3gRSA3
 
-這題和上一題一樣，先用Netcat連線到主機，得到資訊如下。
+這題和上一題一樣，先用 Netcat 連線到主機，得到資訊如下。
 
 ```
 c: 1155413374658603081887942538070618568058048531029758454280998255793925425541835159695263849863790503010031220771999047690488595295467625987010931696477313386062384452816188902386984531395080585643524053777943484599038478398898775019494628236550977835910935567524611329303821647514235510296512723444159728500460371101677191814101634547011569775
@@ -1058,9 +1058,9 @@ e: 65537
 
 題目說了
 
-> Why use p and q when I can use more? 
+> Why use p and q when I can use more?
 
-意思是，這題的初始質數不只有 $p$ 和 $q$。所以我們只要找到歐拉函數 $\phi(n)$，並且正常走流程就可以了。由於他不只有 $p$ 和 $q$ 兩個質數，分解起來會容易很多。Exploit如下。
+意思是，這題的初始質數不只有 $p$ 和 $q$。所以我們只要找到歐拉函數 $\phi(n)$，並且正常走流程就可以了。由於他不只有 $p$ 和 $q$ 兩個質數，分解起來會容易很多。Exploit 如下。
 
 ```python
 from sympy.ntheory import factorint
