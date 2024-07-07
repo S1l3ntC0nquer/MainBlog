@@ -1,7 +1,7 @@
 ---
 title: 2024 AIS3 Pre-exam Writeup
 mathjax: true
-cover: https://hackmd.io/_uploads/rk2dgM3NA.jpg
+cover: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/upload_81ff509e73230b8e44daafad39fe99e0.jpg
 categories:
     - CTF
 date: 2024-06-02 21:42:41
