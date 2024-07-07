@@ -152,3 +152,20 @@ feed:
     icon: /assets/favicon.ico
     autodiscovery: true
     template:
+
+# algolia搜索: https://github.com/LouisBarranqueiro/hexo-algoliasearch
+algolia:
+    appId: "B6WJG9UW69"
+    apiKey: "94a5f6b569db22afad95b99d2822fa6e"
+    adminApiKey: "9671447fc35270b11154ce93d9fb61aa"
+    chunkSize: 5000
+    indexName: "hexo"
+    fields:
+        - content:strip:truncate,0,200
+        - excerpt:strip
+        - gallery
+        - permalink
+        - photos
+        - slug
+        - tags
+        - title
