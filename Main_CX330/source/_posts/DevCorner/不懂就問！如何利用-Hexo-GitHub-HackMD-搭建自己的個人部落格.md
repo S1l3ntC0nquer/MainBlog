@@ -1,12 +1,13 @@
 ---
 title: 不懂就問！如何利用 Hexo + GitHub + HackMD 搭建自己的個人部落格
 mathjax: true
-date: 2024-06-30 02:39:53
 cover: /images/hackers_blog.jpg
 categories: 開發角
 tags:
-    - Blog
-    - 網頁開發
+  - Blog
+  - 網頁開發
+abbrlink: 81070fa0
+date: 2024-06-30 02:39:53
 ---
 
 # 前言

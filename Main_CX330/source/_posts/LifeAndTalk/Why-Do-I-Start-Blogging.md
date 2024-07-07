@@ -1,10 +1,11 @@
 ---
 title: Why Do I Start Blogging
-date: 2024-05-30 02:47:09
 categories:
-    - LifeAndTalk
+  - LifeAndTalk
 sticky: 1
 cover: /images/CX330.jpg
+abbrlink: e6118152
+date: 2024-05-30 02:47:09
 ---
 
 # Big bang! 宇宙的起源

@@ -1,13 +1,15 @@
 ---
 title: All-in-One PicoCTF Writeups
-date: 2024-06-01 10:27:03
 categories:
-    - CTF
+  - CTF
 mathjax: true
-cover: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/upload_4810c93f4ec30864588fcab3bf179d5f.png
+cover: >-
+  https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/upload_4810c93f4ec30864588fcab3bf179d5f.png
 tags:
-    - PicoCTF
-    - 資安
+  - PicoCTF
+  - 資安
+abbrlink: 4f98706e
+date: 2024-06-01 10:27:03
 ---
 
 # 前言

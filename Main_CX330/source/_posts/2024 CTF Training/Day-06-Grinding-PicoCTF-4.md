@@ -1,15 +1,16 @@
 ---
-title: "[Day 06] Grinding PicoCTF 4"
+title: '[Day 06] Grinding PicoCTF 4'
 mathjax: true
-date: 2024-07-02 16:24:10
 cover: /images/hacker_in_the_universe.jpg
 categories:
-    - 2024 CTF 修煉計畫
+  - 2024 CTF 修煉計畫
 tags:
-    - CTF
-    - PicoCTF
-    - CyberSec
-    - 30天計畫
+  - CTF
+  - PicoCTF
+  - CyberSec
+  - 30天計畫
+abbrlink: 41c83dfb
+date: 2024-07-02 16:24:10
 ---
 
 # 前言

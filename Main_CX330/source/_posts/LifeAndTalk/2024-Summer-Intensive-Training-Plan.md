@@ -1,12 +1,13 @@
 ---
 title: 2024 Summer Intensive Training Plan
-date: 2024-05-28 22:18:12
 cover: /images/default_cover.jpg
 categories:
-    - LifeAndTalk
+  - LifeAndTalk
 tags:
-    - CTF
-    - Security
+  - CTF
+  - Security
+abbrlink: 1bd6c34a
+date: 2024-05-28 22:18:12
 ---
 
 # 為甚麼要修煉?

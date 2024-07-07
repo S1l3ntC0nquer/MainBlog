@@ -1,13 +1,15 @@
 ---
 title: 2024 AIS3 Pre-exam Writeup
 mathjax: true
-cover: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/upload_81ff509e73230b8e44daafad39fe99e0.jpg
+cover: >-
+  https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/upload_81ff509e73230b8e44daafad39fe99e0.jpg
 categories:
-    - CTF
-date: 2024-06-02 21:42:41
+  - CTF
 tag:
-    - 資安
-    - AIS3
+  - 資安
+  - AIS3
+abbrlink: d01f5ccf
+date: 2024-06-02 21:42:41
 ---
 
 # Intro
