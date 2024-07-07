@@ -3,7 +3,7 @@ title: Why Do I Start Blogging
 date: 2024-05-30 02:47:09
 categories:
     - LifeAndTalk
-sticky: 1337
+sticky: 1
 cover: /images/CX330.webp
 ---
 
