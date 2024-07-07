@@ -376,7 +376,7 @@ waline:
 twikoo:
     envId: https://comments.cx330.tw/
     region:
-    visitor: false
+    visitor: true
     option:
     card_post_count: false
 
