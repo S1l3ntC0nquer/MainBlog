@@ -1106,7 +1106,7 @@ home_top:
         tips: 推薦閱讀
         title: Cryptography Notebook 密碼學任督二脈
         image: /images/cryptography.jpg
-        link: /StudyNotes/Cryptography-Notes-密碼學任督二脈
+        link: https://cx330.tw/posts/39694de9/
 
 # 朋友圈配置
 friends_vue:
