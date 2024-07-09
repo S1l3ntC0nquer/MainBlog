@@ -3,13 +3,13 @@ title: Cryptography Notes 密碼學任督二脈
 mathjax: true
 cover: /images/cryptography.jpg
 categories:
-  - 學習筆記
+    - 學習筆記
 tags:
-  - 密碼學
-  - CTF
-  - Crypto
-  - 資安
-  - 筆記
+    - 密碼學
+    - CTF
+    - Crypto
+    - 資安
+    - 筆記
 abbrlink: 39694de9
 date: 2024-06-27 20:05:01
 ---
@@ -194,14 +194,19 @@ MD5 的全名是 Message Digest Algorithm 5，它能將任意長度的數據轉�
     - 對於每個 512 位的塊，再分為 16 個 32 位的小塊。
     - 用這些 32 位的小塊和上面初始化好的四個 32 位的變量（A, B, C, D），進行四輪（每輪 16 步）迭代運算。每一步使用非線性函數（F, G, H, I）和特定的常數以及循環左移操作，來混淆和壓縮數據。公式如下：
 
-        $F(X, Y, Z) = (X \land Y) \lor (\neg X \land Z)$
-        $G(X, Y, Z) = (X \land Z) \lor (Y \land \neg Z)$
-        $H(X, Y, Z) = X \oplus Y \oplus Z$
-        $I(X, Y, Z) = Y \oplus (X \lor \neg Z)$
-        $\oplus, \land, \lor, \neg \text{ are the signs of XOR, AND, OR, NOT}$
+        $$
+        \begin{align*}
+        &F(X, Y, Z) = (X \land Y) \lor (\neg X \land Z) \\
+        &G(X, Y, Z) = (X \land Z) \lor (Y \land \neg Z) \\
+        &H(X, Y, Z) = X \oplus Y \oplus Z \\
+        &I(X, Y, Z) = Y \oplus (X \lor \neg Z) \\
+        &\oplus, \land, \lor, \neg \text{ are the signs of XOR, AND, OR, NOT}
+        \end{align*}
+        $$
 
 4. **輸出最終哈希值**
-    - 最終將四個 32 位的變量 A, B, C, D 串聯起來成為一個 128 位的哈希值（以小端序表示）
+
+    - 最終將四個 32 位的變量 A, B, C, D 串聯起來成為一個 128 位的哈希值（以小端序表示）。
 
 看完文字敘述之後我們來看一下 MD5 的圖解吧！
 
@@ -278,7 +283,6 @@ print(f"MD5 value: {hash_hex}")
 <div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
     <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/aHeRBeJLjMI" frameborder="0" allowfullscreen></iframe>
 </div>
-
 ## SHA-256
 
 ### 簡介
@@ -305,15 +309,21 @@ SHA-256 和 MD5 其實流程是差不多的，大概的流程如下：
 3. **處理資料**
 
     - 將填充後的資料以 512 位（64 Bytes）分成多個塊（Chunk）
+
     - 對於每個 512 位的塊，再分為 16 個 32 位的小塊。
+
     - 用這些 32 位的小塊和原本初始化好的 8 個變量進行迭代運算，由於過程太過於複雜，我會將其公式定義和圖解放在下面。
 
-        $Ch(x, y, z) = (x \land y) \oplus (\neg x \land z)$
-        $Maj(x, y, z) = (x \land y) \oplus (x \land z) \oplus (y \land z)$
-        $\Sigma_0(x) = S^2(x) \oplus S^{13}(x) \oplus S^{22}(x)$
-        $\Sigma_1(x) = S^6(x) \oplus S^{11}(x) \oplus S^{25}(x)$
-        $\sigma_0(x) = S^7(x) \oplus S^{18}(x) \oplus R^3(x)$
-        $\sigma_1(x) = S^{17}(x) \oplus S^{19}(x) \oplus R^{10}(x)$
+        $$
+        \begin{align*}
+        &Ch(x, y, z) = (x \land y) \oplus (\neg x \land z) \\
+        &Maj(x, y, z) = (x \land y) \oplus (x \land z) \oplus (y \land z) \\
+        &\Sigma_0(x) = S^2(x) \oplus S^{13}(x) \oplus S^{22}(x) \\
+        &\Sigma_1(x) = S^6(x) \oplus S^{11}(x) \oplus S^{25}(x) \\
+        &\sigma_0(x) = S^7(x) \oplus S^{18}(x) \oplus R^3(x) \\
+        &\sigma_1(x) = S^{17}(x) \oplus S^{19}(x) \oplus R^{10}(x)
+        \end{align*}
+        $$
 
         ![SHA-256 workflow from Wikipedia](https://hackmd.io/_uploads/B1pTgx2U0.png)
 
