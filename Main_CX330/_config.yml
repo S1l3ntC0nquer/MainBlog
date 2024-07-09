@@ -187,3 +187,11 @@ abbrlink:
 
 # hexo-all-minifier
 # all_minifier: true
+kramed:
+    gfm: true
+    pedantic: false
+    sanitize: false
+    tables: true
+    breaks: true
+    smartLists: true
+    smartypants: true
