@@ -1,0 +1,60 @@
+- class_name: Creativity
+  creativity_list:
+      - name: Java
+        color: "#fff"
+        icon: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/643293b1184e9.jpg
+      # - name: Docker
+      #   color: "#57b6e6"
+      #   icon: https://bu.dusays.com/2023/04/09/643293b0f0abe.png
+      # - name: Photoshop
+      #   color: "#4082c3"
+      #   icon: https://bu.dusays.com/2022/12/15/639aa3a5c240e.png
+      - name: Node
+        color: "#fff"
+        icon: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/590px-Node.js_logo.svg.png
+      # - name: Webpack
+      #   color: "#2e3a41"
+      #   icon: https://bu.dusays.com/2023/04/09/643293b68026c.png
+      # - name: Pinia
+      #   color: "#fff"
+      #   icon: https://npm.elemecdn.com/anzhiyu-blog@2.0.8/img/svg/pinia-logo.svg
+      - name: Python
+        color: "#fff"
+        icon: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/643293b1230f7.png
+      # - name: Vite
+      #   color: "#937df7"
+      #   icon: https://npm.elemecdn.com/anzhiyu-blog@2.0.8/img/svg/vite-logo.svg
+      # - name: Flutter
+      #   color: "#4499e4"
+      #   icon: https://bu.dusays.com/2023/04/09/643293b1055c2.png
+      # - name: Vue
+      #   color: "#b8f0ae"
+      #   icon: https://bu.dusays.com/2023/04/09/643293b6788bd.png
+      - name: C
+        color: "#fff"
+        icon: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/380px-C_Programming_Language.svg.png
+      - name: React
+        color: "#222"
+        icon: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/pngwing.com (1).png
+      - name: CSS3
+        color: "#2c51db"
+        icon: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/639aa3a5c251e.png
+      - name: JS
+        color: "#f7cb4f"
+        icon: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/643293b121f02.png
+      - name: HTML
+        color: "#e9572b"
+        icon: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/639aa3a5c241c.png
+      - name: Next.js
+        color: "#fff"
+        icon: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/pngwing.com.png
+      - name: Git
+        color: "#df5b40"
+        icon: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/Git-Logo-White.png
+      - name: Nmap
+        color: "#fff"
+        icon: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/Daco_6083498.png
+
+      # - name: Apifox
+      #   color: "#e65164"
+      #   icon: https://bu.dusays.com/2022/11/19/6378d6458c6b6.png

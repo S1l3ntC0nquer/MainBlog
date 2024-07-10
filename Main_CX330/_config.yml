@@ -195,3 +195,9 @@ kramed:
     breaks: true
     smartLists: true
     smartypants: true
+
+markdown:
+    anchors:
+        level: 1
+    plugins:
+        - "@renbaoshuo/markdown-it-katex"

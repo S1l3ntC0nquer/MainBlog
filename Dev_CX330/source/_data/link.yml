@@ -1,0 +1,62 @@
+- class_name: 推薦站點
+  flink_style: telescopic
+  hundredSuffix: ""
+  link_list:
+      - name: CX330
+        link: https://cx330.tw/
+        avatar: https://cx330.tw/assets/me.jpg
+        descr: Hack the planet!
+        tag: 技術
+        color:
+      - name: Buntalk Universe
+        link: https://www.setbun.com/
+        avatar: https://cdn.jsdelivr.net/gh/FrederickBun/upyun-rhimgcdn@img/upload/202406272229074.png
+        descr: 歡迎來到磅說，快來留下你的足跡吧！
+        color:
+        tag: 技術
+      - name: 張洪Heo
+        link: https://blog.zhheo.com/
+        avatar: https://bu.dusays.com/2022/12/28/63ac2812183aa.png
+        descr: 分享設計與科技生活
+        color: speed
+        tag: 設計
+      - name: Leonus
+        link: https://blog.leonus.cn/
+        avatar: https://q1.qlogo.cn/g?b=qq&nk=990320751&s=5
+        descr: 進一寸有近一寸的歡喜。
+        color:
+        tag: 技術
+      - name: EvanNotFound
+        link: https://ohevan.com/
+        avatar: https://evan.beee.top/avatars/avatar-min.png
+        descr: Evan的部落格，用香港記者的速度更新文章
+        color:
+        tag: 技術
+      - name: Kazma
+        link: https://kazma.tw
+        avatar: https://kazma.tw/images/kazma.png
+        descr: Pwning my life.
+        color: "#818589"
+        tag: 駭客
+      - name: R1ck
+        link: https://rickliu.com/
+        avatar: https://r1ck-blog.oss-cn-shenzhen.aliyuncs.com/avatar.jpg
+        descr: Nothing really matters.
+        color: "#818589"
+        tag: 駭客
+      - name: 安知魚
+        link: https://blog.anheyu.com/
+        avatar: https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg
+        descr: 生活明朗，萬物可愛
+        tag: 技術
+        color:
+# - class_name: 小伙伴
+#   class_desc: 那些人，那些事
+#   flink_style: flexcard
+#   hundredSuffix: ""
+#   link_list:
+#       - name: 安知鱼
+#         link: https://www.setbun.com/
+#         avatar: https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg
+#         descr: 歡迎來到磅說，快來留下你的足跡吧！
+#         recommend: true
