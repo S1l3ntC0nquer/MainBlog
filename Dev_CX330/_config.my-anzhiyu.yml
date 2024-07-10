@@ -5,14 +5,14 @@ menu:
         Tags: /tags/ || anzhiyu-icon-tags
         Random: javascript:toRandomPost() || anzhiyu-icon-dice
 
-    Friends:
-        Sites: /link/ || anzhiyu-icon-link
+    Social:
+        Link exchange: /link/ || anzhiyu-icon-link
         # Moments: /fcircle/ ||
         Message board: /comments/ || anzhiyu-icon-message
 
     My:
         Music bar: /music/?id=7032963191&server=netease || anzhiyu-icon-music
-        Talks: /essay/ || anzhiyu-icon-lightbulb
+        Life snippets: /essay/ || anzhiyu-icon-lightbulb
         Books: /bangumis/ || anzhiyu-icon-book
         Photos: /album/ || anzhiyu-icon-images
         # Conditioning: /air-conditioner/ ||
