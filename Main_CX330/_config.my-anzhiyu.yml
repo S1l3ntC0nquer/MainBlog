@@ -21,6 +21,8 @@ menu:
         我是誰: /about/ || anzhiyu-icon-paper-plane
         訂閱: /subscribe/ || anzhiyu-icon-rss
 
+    # English: https://alt.cx330.tw/
+
 # nav相关配置
 nav:
     enable: false
