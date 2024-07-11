@@ -3,7 +3,7 @@ title: Cryptography Notes 密碼學任督二脈
 mathjax: true
 cover: /images/cryptography.jpg
 categories:
-    - 學習筆記
+    - StudyNotes
 tags:
     - 密碼學
     - CTF
