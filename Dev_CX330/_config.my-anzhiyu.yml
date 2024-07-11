@@ -177,7 +177,7 @@ error_img:
 # A simple 404 page
 error_404:
     enable: true
-    subtitle: "Not Found"
+    subtitle: "Country roads, take me home."
     background: /assets/404.gif
 
 post_meta:
