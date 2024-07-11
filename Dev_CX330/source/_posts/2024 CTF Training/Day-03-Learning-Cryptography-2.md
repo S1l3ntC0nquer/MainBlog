@@ -8,7 +8,7 @@ tags:
     - Crypto
     - Cryptography
     - CyberSec
-    - 30天計畫
+    - TechStreak30
 cover: /images/hacker_in_the_universe.jpg
 abbrlink: f9245dd2
 date: 2024-06-28 17:16:17

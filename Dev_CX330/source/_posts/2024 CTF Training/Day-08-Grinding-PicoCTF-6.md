@@ -5,7 +5,7 @@ categories: 2024 CTF Training
 tags:
     - CTF
     - CyberSec
-    - 30天計畫
+    - TechStreak30
     - PicoCTF
 abbrlink: 7c095067
 date: 2024-07-06 17:24:11

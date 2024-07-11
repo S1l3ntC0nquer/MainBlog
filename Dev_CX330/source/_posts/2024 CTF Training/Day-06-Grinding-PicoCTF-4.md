@@ -8,7 +8,7 @@ tags:
     - CTF
     - PicoCTF
     - CyberSec
-    - 30天計畫
+    - TechStreak30
 abbrlink: 41c83dfb
 date: 2024-07-02 16:24:10
 ---
