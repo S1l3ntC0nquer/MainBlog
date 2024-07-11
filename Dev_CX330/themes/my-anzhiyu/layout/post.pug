@@ -43,3 +43,13 @@ block content
       - var commentsJsLoad = true
       !=partial('includes/third-party/comments/index', {}, {cache: true})
       
+    script.
+      document.addEventListener("DOMContentLoaded", function() {
+        var pageLang = "#{page.lang || 'en'}";
+        document.documentElement.lang = pageLang || 'en';
+      });
+
+      document.addEventListener("pjax:complete", function() {
+        var pageLang = "#{page.lang || 'en'}";
+        document.documentElement.lang = pageLang || 'en';
+      });
