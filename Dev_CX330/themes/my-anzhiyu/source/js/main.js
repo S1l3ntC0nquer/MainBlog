@@ -1788,7 +1788,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // 開發者工具鍵盤監聽
     window.onkeydown = function (e) {
         123 === e.keyCode &&
-            anzhiyu.snackbarShow("開發者模式已打開，請遵循GPL協議", !1);
+            anzhiyu.snackbarShow(
+                "DevTools are opened. Please adhere to the terms of the GPL license.",
+                !1
+            );
     };
 
     // 歡迎語
