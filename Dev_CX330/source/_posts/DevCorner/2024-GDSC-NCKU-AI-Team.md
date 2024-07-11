@@ -2,16 +2,15 @@
 title: 2024 GDSC NCKU AI Team
 mathjax: true
 categories:
-    - DevCorner
+  - 開發角
 tags:
-    - AI
-    - GDSC
+  - AI
+  - GDSC
 description: Sharing the experience of being a member of 2024 GDSC NCKU AI Team.
 cover: >-
-    https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/upload_97e1adcfafc9b114ef3a964245a78c25.png
+  https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/upload_97e1adcfafc9b114ef3a964245a78c25.png
 abbrlink: 23950b86
 date: 2024-06-22 03:33:41
-lang: zh-TW
 ---
 
 # Intro — What is GDSC

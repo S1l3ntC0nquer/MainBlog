@@ -1,5 +1,5 @@
 ---
-title: 生活碎片
+title: Life snippets
 date: 2024-07-03 16:30:55
 comments: true
 aside: false

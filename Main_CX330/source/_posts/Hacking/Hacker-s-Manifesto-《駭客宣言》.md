@@ -3,16 +3,17 @@ title: Hacker's Manifesto《駭客宣言》
 cover: /images/hacker_manifesto.jpg
 categories: Hacking
 tags:
-  - 資安
-  - 駭客
-  - Hacker
+    - 資安
+    - 駭客
+    - Hacker
 copyright_author: The Mentor (Loyd Blankenship)
-copyright_author_href: 'https://en.wikipedia.org/wiki/Loyd_Blankenship'
-copyright_info: 本文是轉載或翻譯文章，版權歸原作者所有。建議訪問原文，轉載本文請聯繫原作者。
-copyright_url: 'http://phrack.org/issues/7/3.html'
+copyright_author_href: "https://en.wikipedia.org/wiki/Loyd_Blankenship"
+copyright_info: This article is a repost or translation of the original work. All rights belong to the original author.
+copyright_url: "http://phrack.org/issues/7/3.html"
 sticky: 1337
 abbrlink: 5ed2c20
 date: 2024-07-07 18:11:39
+lang: zh-TW
 ---
 
 # 前言

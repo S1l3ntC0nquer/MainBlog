@@ -1,15 +1,14 @@
 ---
-title: "[Day 08] Grinding PicoCTF 6"
+title: '[Day 08] Grinding PicoCTF 6'
 cover: /images/hacker_in_the_universe.jpg
-categories: 2024 CTF Training
+categories: 2024 CTF 修煉計畫
 tags:
-    - CTF
-    - CyberSec
-    - TechStreak30
-    - PicoCTF
+  - CTF
+  - CyberSec
+  - 30天計畫
+  - PicoCTF
 abbrlink: 7c095067
 date: 2024-07-06 17:24:11
-lang: zh-TW
 ---
 
 # 前言

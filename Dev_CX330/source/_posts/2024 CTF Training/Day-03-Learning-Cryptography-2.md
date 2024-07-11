@@ -1,18 +1,17 @@
 ---
-title: "[Day 03] Learning Cryptography 2"
+title: '[Day 03] Learning Cryptography 2'
 mathjax: true
 categories:
-    - 2024 CTF Training
+  - 2024 CTF 修煉計畫
 tags:
-    - CTF
-    - Crypto
-    - Cryptography
-    - CyberSec
-    - TechStreak30
+  - CTF
+  - Crypto
+  - Cryptography
+  - CyberSec
+  - 30天計畫
 cover: /images/hacker_in_the_universe.jpg
 abbrlink: f9245dd2
 date: 2024-06-28 17:16:17
-lang: zh-TW
 ---
 
 # 前言

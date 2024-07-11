@@ -1,5 +1,5 @@
 ---
-title: 分類
+title: Categories
 date: 2024-07-03 16:21:41
 aside: false
 top_img: false

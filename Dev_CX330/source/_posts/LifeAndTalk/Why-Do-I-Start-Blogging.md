@@ -6,7 +6,6 @@ sticky: 1
 cover: /images/CX330.jpg
 abbrlink: e6118152
 date: 2024-05-30 02:47:09
-lang: zh-TW
 ---
 
 # Big bang! 宇宙的起源

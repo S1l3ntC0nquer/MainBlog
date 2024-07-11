@@ -1,5 +1,5 @@
-- class_name: About me
-  title: About me
+- class_name: 關於我
+  title: 關於我
   subtitle: 正在努力成為改變世界的人
   avatarImg: /assets/me.jpg
   avatarSkills:
@@ -13,7 +13,7 @@
   name: 陳子雋 CX330
   description: An hacker, developer, and a CTFer.
   aboutsiteTips:
-      tips: Philosophy
+      tips: 哲理
       title1: Life is short,
       title2: you need
       word:
@@ -25,10 +25,10 @@
           # - Travel
   helloAbout: Hello world
   skillsTips:
-      tips: My skills
+      tips: 技術
       title: H4CK 7h3 P14N3T!
   careers:
-      tips: Careers
+      tips: 生涯
       title: Let's go
       list:
           - desc: EDU,软件工程专业
@@ -40,22 +40,22 @@
       img: https://bu.dusays.com/2023/04/21/644287166329b.png
   statistic:
       link: /archives
-      text: Archives
+      text: 文章隧道
       cover: https://bu.dusays.com/2023/05/01/644f4b037b930.jpg
   map:
-      title: "pwd: "
-      StrengthenTitle: /Earth/Taiwan
+      title: 平時出沒於
+      StrengthenTitle: 地球，台灣
       background: https://cx330.tw/assets/taiwan.png
       backgroundDark: https://cx330.tw/assets/taiwan.png
   selfInfo:
-      selfInfoTips1: Born in
+      selfInfoTips1: 生於
       selfInfoContentYear: 2004
       selfInfoTips2: National Chung Kung University
       selfInfoContent2: CSIE
       selfInfoTips3: Now
-      selfInfoContent3: Undergraduate
+      selfInfoContent3: 大二學生
   personalities:
-      author_name: Mediator
+      author_name: 調停者
       personality_type: INFP
       photo_url: https://cx330.tw/assets/real_me.jpg
       personality_img: https://static.neris-assets.com/images/personality-types/avatars/infp-mediator-s3-female.svg
@@ -67,20 +67,20 @@
   buff:
       buff_tips: Buff
       buff_top: Thinking outside the box
-      buff_bottom: Execution MAX
+      buff_bottom: 執行力 MAX
   game:
       game_tips: Game
       game_title: CS2
       game_uid: "UID: 125766904"
       game_bg: https://cdn.akamai.steamstatic.com/apps/csgo/images/csgo_react/social/cs2.jpg
   comic:
-      comic_tips: Reading
-      comic_title: Bookshelf
+      comic_tips: 閱讀
+      comic_title: 書架
       comic_list:
           - name: The pragmatic programmer
             href: https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/
             cover: https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/tpp20_hu7d9a813cf46675dfb7b1bf4930cee733_2802494_375x0_resize_q75_box.jpg
-          - name: Hacker's manifesto
+          - name: Hacker manifesto
             href: http://phrack.org/issues/7/3.html
             cover: /assets/hacker_manifesto.png
           - name: 紫罗兰永恒花园
@@ -93,13 +93,13 @@
             href: https://www.bilibili.com/bangumi/media/md135652/?spm_id_from=666.25.b_6d656469615f6d6f64756c65.1
             cover: https://bu.dusays.com/2023/05/30/64760e38d651a.webp
   like:
-      like_tips: Following
-      like_title: Tech news
+      like_tips: 關注
+      like_title: 科技新聞
       like_bg: https://contentstatic.techgig.com/photo/88607432/a-to-z-of-technology-top-tech-news-of-2021-at-a-glance.jpg?32786
-      like_bottom: CyberSec, CTF, Front end, Back end, AI, Mobile app
+      like_bottom: 資安、CTF、前端開發、後端開發、AI、軟體開發
   music:
-      music_tips: Music
-      music_title: Folk, Lo-Fi, Sad Rap
+      music_tips: 音樂
+      music_title: 民謠，Lo-Fi，Sad Rap
       music_bg: /assets/powfu.jpg
       music_link: /music
 #   reward_list:

@@ -1,7 +1,7 @@
 - title: 生活碎片
   subTitle: 紀錄每個瞬間
   tips: Anytime, anywhere.
-  buttonText: About me
+  buttonText: 關於我
   buttonLink: /about/
   limit: 30
   home_essay: true

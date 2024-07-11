@@ -8,7 +8,6 @@ tags:
     - Security
 abbrlink: 1bd6c34a
 date: 2024-05-28 22:18:12
-lang: zh-TW
 ---
 
 # 為甚麼要修煉?

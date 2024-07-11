@@ -1,16 +1,17 @@
 ---
-title: '[Day 01] Grinding PicoCTF'
+title: "[Day 01] Grinding PicoCTF"
 mathjax: true
 categories:
-  - 2024 CTF 修煉計畫
+    - 2024 CTF Training
 tags:
-  - CTF
-  - PicoCTF
-  - CyberSec
-  - 30天計畫
+    - CTF
+    - PicoCTF
+    - CyberSec
+    - TechStreak30
 cover: /images/hacker_in_the_universe.jpg
 abbrlink: 6431e3b0
 date: 2024-06-26 16:42:14
+lang: zh-TW
 ---
 
 # 前言
