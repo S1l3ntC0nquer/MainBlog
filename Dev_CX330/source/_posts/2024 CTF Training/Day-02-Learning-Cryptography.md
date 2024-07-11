@@ -12,6 +12,7 @@ tags:
 cover: /images/hacker_in_the_universe.jpg
 abbrlink: b40c06ed
 date: 2024-06-27 20:05:12
+lang: zh-TW
 ---
 
 # 前言
