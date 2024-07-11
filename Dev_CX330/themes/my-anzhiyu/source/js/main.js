@@ -1790,7 +1790,8 @@ document.addEventListener("DOMContentLoaded", function () {
         123 === e.keyCode &&
             anzhiyu.snackbarShow(
                 "DevTools are opened. Please adhere to the terms of the GPL license.",
-                !1
+                !1,
+                5000
             );
     };
 
