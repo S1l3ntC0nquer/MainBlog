@@ -3,8 +3,8 @@
       #catalog-bar
         #catalog-list
           .catalog-list-item(id='首頁')
-            a(href="/") 首頁
+            a(href="/") Home
           !=catalog_list("categories")
         .category-bar-next#category-bar-next(onclick="anzhiyu.scrollCategoryBarToRight()")
           i.anzhiyufont.anzhiyu-icon-angle-double-right
-        a.catalog-more(href="/categories/")!= '更多'
+        a.catalog-more(href="/categories/")!= 'More'
