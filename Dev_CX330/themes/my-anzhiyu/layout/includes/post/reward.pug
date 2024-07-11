@@ -1,10 +1,10 @@
 .post-reward(onclick='anzhiyu.addRewardMask()')
-  .reward-button.button--animated(title='讚賞作者')
+  .reward-button.button--animated(title='Support the author')
     i.anzhiyufont.anzhiyu-icon-hand-heart-fill
-    | 打賞作者
+    | Support
   .reward-main
     .reward-all
-      span.reward-title 感謝你賜予我前進的力量
+      span.reward-title Thank's for supporting me!
       ul.reward-group
         each item in theme.reward.QR_code
           - var clickTo = item.link ? item.link : item.img
@@ -13,6 +13,6 @@
               img.post-qr-code-img(src=url_for(item.img) alt=item.text)
             .post-qr-code-desc=item.text
       a.reward-main-btn(href='/about/#about-reward' target='_blank')
-        .reward-text 讚賞者名單
-        .reward-dec 因爲你們的支持讓我意識到寫文章的價值🙏
+        .reward-text Sponsor List
+        .reward-dec Really thanks for your coffee🙏
 #quit-box(onclick="anzhiyu.removeRewardMask()" style="display: none")
