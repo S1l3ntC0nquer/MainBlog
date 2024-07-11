@@ -1762,7 +1762,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             msgPlay;
                         document.getElementById(
                             "nav-music-hoverTips"
-                        ).innerHTML = "音樂已暫停";
+                        ).innerHTML = "Music paused";
                         document
                             .querySelector("#consoleMusic")
                             .classList.remove("on");
