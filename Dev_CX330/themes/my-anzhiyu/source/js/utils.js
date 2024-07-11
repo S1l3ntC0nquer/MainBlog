@@ -660,15 +660,15 @@ const anzhiyu = {
             let message = "";
 
             if (hour >= 0 && hour <= 5) {
-                message = "Have a good sleep to stay energetic.";
+                message = "睡個好覺，保證精力充沛";
             } else if (hour > 5 && hour <= 10) {
-                message = "The early bird catches the worm.";
+                message = "一日之計在於晨";
             } else if (hour > 10 && hour <= 14) {
-                message = "Time for a meal!";
+                message = "快去喫個飯吧！";
             } else if (hour > 14 && hour <= 18) {
-                message = "Stay focused and overcome challenges.";
+                message = "集中精力，攻克難關";
             } else if (hour > 18 && hour <= 24) {
-                message = "Don't overwork, early to bed is healthier.";
+                message = "不要太勞累了，早睡更健康";
             }
 
             return message;

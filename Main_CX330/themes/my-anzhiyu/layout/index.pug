@@ -6,3 +6,14 @@ block content
     include includes/categoryGroup.pug
     +postUI
     include includes/pagination.pug
+
+    script.
+      document.addEventListener("DOMContentLoaded", function() {
+        var pageLang = "#{page.lang || 'en'}";
+        document.documentElement.lang = pageLang || 'en';
+      });
+
+      document.addEventListener("pjax:complete", function() {
+        var pageLang = "#{page.lang || 'en'}";
+        document.documentElement.lang = pageLang || 'en';
+      });

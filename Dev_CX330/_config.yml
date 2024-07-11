@@ -8,7 +8,7 @@ subtitle: Hack the planet!
 description: 這裡是CX330的部落格，記載了有關於CTF、資安、開發、程式設計等等的文章，也會記錄我個人的生活。相信你會在這邊找到有用的東西。
 keywords: CX330, 陳子雋, CX330 universe, CX330 Blog, Blog, CTF, CX330 hacker, hacker, 資安, 駭客, 黑客, 程式設計, 程式設計師, 程式設計博客, 程式設計部落格, 程式設計日誌, 程式設計師日誌, 程式設計部落格日誌
 author: CX330
-language: en
+language: zh-TW
 timezone: ""
 
 # URL
@@ -101,7 +101,6 @@ theme: my-anzhiyu
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-    type: ""
 
 # APlayer
 # https://github.com/MoePlayer/hexo-tag-aplayer/blob/master/docs/README-zh_cn.md

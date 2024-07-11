@@ -1,25 +1,27 @@
 menu:
-    Articles:
-        Archives: /archives/ || anzhiyu-icon-list-ul
-        Categories: /categories/ || anzhiyu-icon-shapes
-        Tags: /tags/ || anzhiyu-icon-tags
-        Random: javascript:toRandomPost() || anzhiyu-icon-dice
+    文章:
+        總覽: /archives/ || anzhiyu-icon-list-ul
+        分類: /categories/ || anzhiyu-icon-shapes
+        標籤: /tags/ || anzhiyu-icon-tags
+        抽一篇: javascript:toRandomPost() || anzhiyu-icon-dice
 
-    Social:
-        Link exchange: /link/ || anzhiyu-icon-link
+    社交中心:
+        友站: /link/ || anzhiyu-icon-link
         # Moments: /fcircle/ ||
-        Message board: /comments/ || anzhiyu-icon-message
+        留言板: /comments/ || anzhiyu-icon-message
 
-    My:
-        Music bar: /music/?id=7032963191&server=netease || anzhiyu-icon-music
-        Life snippets: /essay/ || anzhiyu-icon-lightbulb
-        Books: /bangumis/ || anzhiyu-icon-book
-        Photos: /album/ || anzhiyu-icon-images
+    我的:
+        音樂吧: /music/?id=7032963191&server=netease || anzhiyu-icon-music
+        生活碎片: /essay/ || anzhiyu-icon-lightbulb
+        Chasing: /bangumis/ || anzhiyu-icon-book
+        相簿: /album/ || anzhiyu-icon-images
         # Conditioning: /air-conditioner/ ||
 
-    About:
-        Whoami: /about/ || anzhiyu-icon-paper-plane
-        Subscribe: /subscribe/ || anzhiyu-icon-rss
+    關於:
+        我是誰: /about/ || anzhiyu-icon-paper-plane
+        訂閱: /subscribe/ || anzhiyu-icon-rss
+
+    # English: https://alt.cx330.tw/
 
 # nav相关配置
 nav:
@@ -27,7 +29,7 @@ nav:
     travelling: false
     clock: false
     menu:
-        - title: Contact
+        - title: 聯絡
           item:
               - name: Facebook
                 link: https://www.facebook.com/profile.php?id=100011698690769
@@ -177,7 +179,7 @@ error_img:
 # A simple 404 page
 error_404:
     enable: true
-    subtitle: "Country roads, take me home."
+    subtitle: "Not Found"
     background: /assets/404.gif
 
 post_meta:
@@ -502,37 +504,37 @@ footer:
             #       link: https://github.com/anzhiyu-c/hexo-theme-anzhiyu
             #     - title: 更新日志
             #       link: /update/
-            - title: Articles
+            - title: 文章導航
               links:
-                  - title: Archives
+                  - title: 總覽
                     link: /archives/
-                  - title: Categories
+                  - title: 分類
                     link: /categories/
-                  - title: Tags
+                  - title: 標籤
                     link: /tags/
-            - title: Social center
+            - title: 社交中心
               links:
-                  - title: Sites
+                  - title: 友站
                     link: /link/
-                  - title: Message board
+                  - title: 留言板
                     link: /comments/
-            - title: My
+            - title: 我的
               links:
-                  - title: Music bar
+                  - title: 音樂吧
                     link: /music/?id=7032963191&server=netease
-                  - title: Talks
+                  - title: 生活碎片
                     link: /essay/
-                  - title: Books
+                  - title: 書架
                     link: /notyet/
-                  - title: Photos
-                    link: /album/
-            - title: About
+                  - title: 相簿
+                    link: /notyet/
+            - title: 關於
               links:
-                  - title: Whoami
+                  - title: 我是誰
                     link: /about/
-                  - title: Subscribe
+                  - title: 訂閱
                     link: /subscribe/
-                  - title: Support me
+                  - title: 支持我
                     link: https://buymeacoffee.com/cx330
             # - title: 协议
             #   links:
@@ -1080,20 +1082,20 @@ home_top:
     timemode: date #date/updated
     title: Let's hack the
     subTitle: planet!
-    siteText: Hacking, Developing, Learning, Life
+    siteText: 資安、開發、學習、生活
     category:
         - name: CTF
           path: /categories/CTF/
           shadow: var(--anzhiyu-shadow-blue)
           class: blue
           icon: anzhiyu-icon-dice-d20
-        - name: DevCorner
-          path: /categories/DevCorner/
+        - name: 開發角
+          path: /categories/開發角/
           shadow: var(--anzhiyu-shadow-red)
           class: red
           icon: anzhiyu-icon-fire
-        - name: StudyNotes
-          path: /categories/StudyNotes/
+        - name: 學習筆記
+          path: /categories/學習筆記/
           shadow: var(--anzhiyu-shadow-green)
           class: green
           icon: anzhiyu-icon-book
@@ -1103,7 +1105,7 @@ home_top:
         swiper_css: https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css #swiper css依赖
         swiper_js: https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.js #swiper js依赖
     banner:
-        tips: Recommended reading
+        tips: 推薦閱讀
         title: Cryptography Notebook 密碼學任督二脈
         image: /images/cryptography.jpg
         link: https://cx330.tw/posts/39694de9/
@@ -1231,7 +1233,7 @@ accesskey:
 # 友情链接顶部相关配置
 linkPageTop:
     enable: false
-    title: Connect with others
+    title: 為一座座孤島搭橋
     # 添加博主友链的评论自定义格式
     addFriendPlaceholder: "暱稱：\n網站網址：\n頭貼URL：\n描述：\n網站截圖：\n"
 

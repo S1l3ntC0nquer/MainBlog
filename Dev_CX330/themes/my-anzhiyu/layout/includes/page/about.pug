@@ -23,13 +23,13 @@ if site.data.about
           .author-tag-right
             each item in avatarSkills.right
               span.author-tag=item
-      p.p.center.logo.large Whoami
+      p.p.center.logo.large 關於我
       p.p.center.small=subtitle
       .author-content
         .author-content-item.myInfoAndSayHello
-          .title1 Hey! Nice to meet you!👋
+          .title1 你好，很高興認識你👋
           .title2
-            | My name is 
+            | 我叫 
             span.inline-word=aboutName
           .title1=aboutDescription
         .aboutsiteTips.author-content-item
@@ -138,20 +138,19 @@ if site.data.about
       
       .author-content
         .author-content-item.personalities
-          - let { author_name, personality_type, photo_url, personality_img, name_url, personality_type_color } = item.personalities
-          .author-content-item-tips Personality
+          - let {author_name, personality_type, photo_url, personality_img, name_url, personality_type_color} = item.personalities
+          .author-content-item-tips 性格
           span.author-content-item-title= author_name
           .title2(style=`color:${personality_type_color ? personality_type_color : "#ac899c"}`)= personality_type
           .post-tips
-            | Find out more about 
-            a(target='_blank', rel='noopener external nofollow', href= name_url)= author_name
-            |  at 
+            | 在 
             a(href='https://www.16personalities.com/', target='_blank', rel='noopener nofollow') 16personalities
+            |  瞭解更多關於 
+            a(target='_blank', rel='noopener external nofollow', href= name_url)= author_name
           .image
             img.no-lightbox(src=url_for(personality_img), alt='人格')
         .author-content-item.myphoto
           img.author-content-img.no-lightbox(alt='自拍', src=url_for(photo_url))
-
       
       .author-content
         .author-content-item.maxim
@@ -208,12 +207,12 @@ if site.data.about
             .author-content-item-tips=music_tips
             span.author-content-item-title=music_title
             .content-bottom
-              .tips=`Enjoy more music with ${aboutName}`
+              .tips=`跟 ${aboutName} 一起欣賞更多音樂`
             .banner-button-group
               a.banner-button(onclick=`pjax.loadUrl("${music_link}")`)
                 i.anzhiyufont.anzhiyu-icon-arrow-circle-right
                 |  
-                span.banner-button-text More
+                span.banner-button-text 更多推薦
 
       if page.content
         .author-content

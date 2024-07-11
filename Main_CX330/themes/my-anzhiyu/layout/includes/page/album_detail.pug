@@ -15,7 +15,7 @@
           .banner-button-group
             a.banner-button(onclick=`pjax.loadUrl("${url_for(album_detail_top_link ? album_detail_top_link : '/about')}")`, data-pjax-state)
               i.anzhiyufont.anzhiyu-icon-arrow-circle-right(style='font-size: 1.5rem')
-              span.banner-button-text=album_detail_top_btn_text ? album_detail_top_btn_text : "關於我"
+              span.banner-button-text=album_detail_top_btn_text ? album_detail_top_btn_text : "Whoami"
       section.timeline.page-1
         if type == 1
           ul#waterfall.list

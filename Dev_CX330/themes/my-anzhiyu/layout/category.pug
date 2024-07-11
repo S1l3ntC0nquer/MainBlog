@@ -13,22 +13,11 @@ block content
         i.anzhiyufont.anzhiyu-icon-shapes
         #catalog-list
           .catalog-list-item
-            a(href="/") Home
+            a(href="/") 首頁
           !=catalog_list("categories")
         .category-bar-next#category-bar-next(onclick="anzhiyu.scrollCategoryBarToRight()")
           i.anzhiyufont.anzhiyu-icon-angle-double-right
-        a.catalog-more(href="/categories/")!= 'More'
+        a.catalog-more(href="/categories/")!= '更多'
       .article-sort-title= _p('page.category') + ' - ' + page.category
       +articleSort(page.posts, page.current)
       include includes/pagination.pug
-
-  script.
-      document.addEventListener("DOMContentLoaded", function() {
-        var pageLang = "#{page.lang || 'en'}";
-        document.documentElement.lang = pageLang || 'en';
-      });
-
-      document.addEventListener("pjax:complete", function() {
-        var pageLang = "#{page.lang || 'en'}";
-        document.documentElement.lang = pageLang || 'en';
-      });
