@@ -9,7 +9,6 @@ tags:
     - PicoCTF
 abbrlink: 94d4e36f
 date: 2024-07-07 16:13:43
-lang: zh-TW
 ---
 
 # 前言
