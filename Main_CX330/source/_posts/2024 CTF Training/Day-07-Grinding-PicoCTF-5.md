@@ -9,7 +9,6 @@ tags:
     - TechStreak30
 abbrlink: a9158ef3
 date: 2024-07-04 21:31:01
-lang: zh-TW
 ---
 
 # 前言

@@ -10,7 +10,6 @@ tags:
     - 資安
 abbrlink: 4f98706e
 date: 2024-06-01 10:27:03
-lang: zh-TW
 ---
 
 # 前言

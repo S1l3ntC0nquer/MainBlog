@@ -24,7 +24,7 @@ post:
     wordcount: Word count
     min2read: Reading time
     min2read_unit: min
-    page_pv: Post View
+    page_pv: Post views
     comments: Comments
     copyright:
         author: Author

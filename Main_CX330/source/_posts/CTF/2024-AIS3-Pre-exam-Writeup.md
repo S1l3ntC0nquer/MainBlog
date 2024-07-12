@@ -10,7 +10,6 @@ tag:
     - AIS3
 abbrlink: d01f5ccf
 date: 2024-06-02 21:42:41
-lang: zh-TW
 ---
 
 # Intro

@@ -13,7 +13,6 @@ copyright_url: "http://phrack.org/issues/7/3.html"
 sticky: 1337
 abbrlink: 5ed2c20
 date: 2024-07-07 18:11:39
-lang: zh-TW
 ---
 
 # 前言

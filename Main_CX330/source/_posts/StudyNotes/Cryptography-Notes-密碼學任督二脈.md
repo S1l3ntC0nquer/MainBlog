@@ -12,7 +12,6 @@ tags:
     - 筆記
 abbrlink: 39694de9
 date: 2024-06-27 20:05:01
-lang: zh-TW
 ---
 
 # 前言
