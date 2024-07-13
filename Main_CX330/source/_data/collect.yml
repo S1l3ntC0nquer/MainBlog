@@ -1,0 +1,9 @@
+- class_name: 📖 Books
+  class_desc: #分类描述
+  link_list:
+      - name: The pragmatic programmer #名字
+        img: https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/tpp20_hu7d9a813cf46675dfb7b1bf4930cee733_2802494_375x0_resize_q75_box.jpg #图片链接
+        score: 5 # 1-5星
+        icon: fa-solid fa-book #左上角图标
+        tip: Books # 右上角文字
+        url: # 可选

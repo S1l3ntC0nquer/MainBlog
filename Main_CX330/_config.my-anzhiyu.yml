@@ -13,8 +13,9 @@ menu:
     My:
         Music bar: /music/?id=12295857597&server=netease || anzhiyu-icon-music
         Life snippets: /essay/ || anzhiyu-icon-lightbulb
-        Books: /bangumis/ || anzhiyu-icon-book
+        # Books: /bangumis/ || anzhiyu-icon-book
         Photos: /album/ || anzhiyu-icon-images
+        Collections: /collect/ || anzhiyu-icon-book
         # Conditioning: /air-conditioner/ ||
 
     About:
