@@ -1,9 +1,15 @@
 - class_name: 📖 Books
-  class_desc: #分类描述
+  class_desc: Here are the books that I'm currently reading or plan to read. #分类描述
   link_list:
-      - name: The pragmatic programmer #名字
+      - name: The Pragmatic Programmer #名字
         img: https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/tpp20_hu7d9a813cf46675dfb7b1bf4930cee733_2802494_375x0_resize_q75_box.jpg #图片链接
         score: 5 # 1-5星
         icon: fa-solid fa-book #左上角图标
         tip: Books # 右上角文字
         url: # 可选
+      - name: Black Hat Python
+        img: https://m.media-amazon.com/images/I/91NJ0qC4vEL._AC_UF1000,1000_QL80_.jpg
+        score: 4.5
+        icon: fa-solid fa-book
+        tip: Books
+        url:
