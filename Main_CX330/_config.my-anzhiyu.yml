@@ -1080,7 +1080,7 @@ home_top:
     timemode: date #date/updated
     title: Let's hack the
     subTitle: planet!
-    siteText: Hacking, Developing, Learning, Life
+    siteText: Hack, Dev, Learn, Life
     category:
         - name: CTF
           path: /categories/CTF/
