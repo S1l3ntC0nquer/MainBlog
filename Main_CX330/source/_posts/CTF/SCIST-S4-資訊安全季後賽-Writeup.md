@@ -1,11 +1,14 @@
 ---
 title: SCIST S4 資訊安全季後賽 Writeup
+cover: >-
+  https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/306501105_421181870151313_2861616243724572793_n.jpg
 categories: CTF
 tags:
-- 資安
-- SCIST
-cover: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/306501105_421181870151313_2861616243724572793_n.jpg 
+  - 資安
+  - SCIST
+date: 2024-07-14 22:59:31
 ---
+
 
 # 0X00 前言
 
@@ -303,9 +306,10 @@ int __fastcall main(int argc, const char **argv, const char **envp)
 }
 ```
 
-打開後發現，這就是一個XOR加密。具體工作流程是會對Flag的每一個字元的ASCII值逐個+1，之後和`0xA9`做XOR，並寫入加密文件中加密文件中。
+打開後發現，這就是一個XOR加密。具體工作流程是會對Flag的每一個字元的ASCII值逐個+1，之後和`0xA9`做XOR，並寫入加密文件中加密文件中。下面是具體的流程圖。
 
-```mermaid
+{% mermaid %}
+
 graph TD
     A[Start] --> B[Read character from input file]
     B -->|Not EOF| C[Add 1 to ASCII value of character]
@@ -315,9 +319,80 @@ graph TD
     B -->|EOF| F[Close input file]
     F --> G[Close output file]
     G --> H[End]
+
+{% endmermaid %}
+
+所以要解密我們就反著來就行，寫了一個解密腳本，如下。
+
+```python
+from Crypto.Util.number import bytes_to_long
+
+def decrypt_character(enc_char):
+    return chr((enc_char ^ 0xA9) - 1)  # 將字元和0x49 做 XOR，然後 -1
+
+
+def decrypt_file(input_file, output_file):
+    with open(input_file, "rb") as enc_file, open(output_file, "w") as dec_file:
+        while True:
+            byte = enc_file.read(1)  # 以byte為單位讀取
+            if not byte:
+                break  
+
+            encrypted_char = bytes_to_long(byte)  
+            decrypted_char = decrypt_character(encrypted_char)
+            dec_file.write(decrypted_char)
+
+decrypt_file("encrypted.txt", "decrypted.txt")
 ```
 
+之後查看decrypted.txt，會看到以下的內容。
 
+```
+Trusted Computing (TC) is a technology developed and promoted by the Trusted Computing Group.[1] The term is taken from the field of trusted systems and has a specialized meaning that is distinct from the field of confidential computing.[2] With Trusted Computing, the computer will consistently behave in expected ways, and those behaviors will be enforced by computer hardware and software.[1] Enforcing this behavior is achieved by loading the hardware with a unique encryption key that is inaccessible to the rest of the system and the owner.
+
+TC is controversial as the hardware is not only secured for its owner, but also against its owner, leading opponents of the technology like free software activist Richard Stallman to deride it as "treacherous computing",[3][4] and certain scholarly articles to use scare quotes when referring to the technology.[5][6]
+
+Trusted Computing proponents such as International Data Corporation,[7] the Enterprise Strategy Group[8] and Endpoint Technologies Associates[9] state that the technology will make computers safer, less prone to viruses and malware, and thus more reliable from an end-user perspective. They also state that Trusted Computing will allow computers and servers to offer improved computer security over that which is currently available. Opponents often state that this technology will be used primarily to enforce digital rights management policies (imposed restrictions to the owner) and not to increase computer security.[3][10]:â23â
+
+Chip manufacturers Intel and AMD, hardware manufacturers such as HP and Dell, and operating system providers such as Microsoft include Trusted Computing in their products if enabled.[11][12] The U.S. Army requires that every new PC it purchases comes with a Trusted Platform Module (TPM).[13][14] As of July 3, 2007, so does virtually the entire United States Department of Defense.[15]
+
+Key concepts
+Trusted Computing encompasses six key technology concepts, of which all are required for a fully Trusted system, that is, a system compliant to the TCG specifications:
+
+Endorsement key
+Secure input and output
+Memory curtaining / protected execution
+Sealed storage
+Remote attestation
+Trusted Third Party (TTP)
+Endorsement key
+The endorsement key is a 2048-bit RSA public and private key pair that is created randomly on the chip at manufacture time and cannot be changed. The private key never leaves the chip, while the public key is used for attestation and for encryption of sensitive data sent to the chip, as occurs during the TPM_TakeOwnership command.[16]
+
+This key is used to allow the execution of secure transactions: every Trusted Platform Module (TPM) is required to be able to sign a random number (in order to allow the owner to show that he has a genuine trusted computer), using a particular protocol created by the Trusted Computing Group (the direct anonymous attestation protocol) in order to ensure its compliance of the TCG standard and to prove its identity; this makes it impossible for a software TPM emulator with an untrusted endorsement key (for example, a self-generated one) to start a secure transaction with a trusted entity. The TPM should be[vague] designed to make the extraction of this key by hardware analysis hard, but tamper resistance is not a strong requirement.
+
+Memory curtaining
+Memory curtaining extends common memory protection techniques to provide full isolation of sensitive areas of memoryâfor example, locations containing cryptographic keys. Even the operating system does not have full access to curtained memory. The exact implementation details are vendor specific.
+
+Sealed storage
+Sealed storage protects private information by binding it to platform configuration information including the software and hardware being used. This means the data can be released only to a particular combination of software and hardware. Sealed storage can be used for DRM enforcing. For example, users who keep a song on their computer that has not been licensed to be listened will not be able to play it. Currently, a user can locate the song, listen to it, and send it to someone else, play it in the software of their choice, or back it up (and in some cases, use circumvention software to decrypt it). Alternatively, the user may use software to modify the operating system's DRM routines to have it leak the song data once, say, a temporary license was acquired. Using sealed storage, the song is securely encrypted using a key bound to the trusted platform module so that only the unmodified and untampered music player on his or her computer can play it. In this DRM architecture, this might also prevent people from listening to the song after buying a new computer, or upgrading parts of their current one, except after explicit permission of the vendor of the song.
+
+Remote attestation
+Remote attestation allows changes to the user's computer to be detected by authorized parties. For example, software companies can identify unauthorized changes to software, including users modifying their software to circumvent commercial digital rights restrictions. It works by having the hardware generate a certificate stating what software is currently running. The computer can then present this certificate to a remote party to show that unaltered software is currently executing. Numerous remote attestation schemes have been proposed for various computer architectures, including Intel,[17] RISC-V,[18] and ARM.[19]
+
+Remote attestation is usually combined with public-key encryption so that the information sent can only be read by the programs that requested the attestation, and not by an eavesdropper.
+
+To take the song example again, the user's music player software could send the song to other machines, but only if they could attest that they were running an authorized copy of the music player software. Combined with the other technologies, this provides a more restricted path for the music: encrypted I/O prevents the user from recording it as it is transmitted to the audio subsystem, memory locking prevents it from being dumped to regular disk files as it is being worked on, sealed storage curtails unauthorized access to it when saved to the hard drive, and remote attestation prevents unauthorized software from accessing the song even when it is used on other computers. To preserve the privacy of attestation responders, Direct Anonymous Attestation has been proposed as a solution, which uses a group signature scheme to prevent revealing the identity of individual signers.
+
+Proof of space (PoS) have been proposed to be used for malware detection, by determining whether the L1 cache of a processor is empty (e.g., has enough space to evaluate the PoSpace routine without cache misses) or contains a routine that resisted being evicted.[20][21]
+
+Here's your flag: SCIST{br3ak_t3e_enCryp71on!}
+```
+
+Flag就找到啦！
+
+```
+SCIST{br3ak_t3e_enCryp71on!}
+```
 
 # 0X04 Pwn
 
