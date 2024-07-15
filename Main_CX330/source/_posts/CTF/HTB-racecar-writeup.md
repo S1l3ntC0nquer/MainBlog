@@ -12,7 +12,7 @@ abbrlink: 331a6b46
 date: 2024-07-12 15:44:21
 ---
 
-# 0X00 Challenge Info
+# 0x00 Challenge Info
 
 This challenge gives us an executable file, which is a binary file. And the challenge description is as follows.
 
@@ -20,7 +20,7 @@ This challenge gives us an executable file, which is a binary file. And the chal
 
 Ok, nothing helps. It's just a little fun fact.
 
-# 0X01 Analyse
+# 0x01 Analyse
 
 So first of all, we can run the file first to see what this program works and where can be vulnerable. Enter `./racecar` on the terminal to see what's going on.
 
@@ -190,7 +190,7 @@ The Man, the Myth, the Legend! The grand winner of the race wants the whole worl
 
 We can see that the first part of `41414141` appears at the 12th position, so the offset is 11. Now, let's hack the planet!
 
-# 0X02 Exploit
+# 0x02 Exploit
 
 Since we know the offset is 11, we can easily write a Python script to exploit it.
 
@@ -231,7 +231,7 @@ for hex in hex_list:
 print("".join(flag))
 ```
 
-Pwned!!!
+# 0x03 Pwned
 
 ```
 HTB{why_d1d_1_s4v3_th3_fl4g_0n_th3_5t4ck?!}
