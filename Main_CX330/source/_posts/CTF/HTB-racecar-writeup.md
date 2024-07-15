@@ -2,7 +2,7 @@
 title: "[HTB] Racecar Writeup \U0001F3CE️"
 lang: en
 cover: >-
-    https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240712111622838.png
+    https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/help-you-at-solving-hackthebox-htb-challenges-machines.png
 categories: CTF
 tags:
     - HTB
