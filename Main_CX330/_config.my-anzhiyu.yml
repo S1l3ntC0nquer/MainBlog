@@ -842,7 +842,7 @@ aside:
         name_link: /
     card_announcement:
         enable: true
-        content: 0xDEADBEEF
+        content: "0xDEADBEEF"
     card_weixin:
         enable: false
         face: https://bu.dusays.com/2023/01/13/63c02edf44033.png
