@@ -15,7 +15,7 @@
         tip: Books
         url:
 
-- classname: 🎬 Movies
+- class_name: 🎬 Movies
   class_desc: Here are the movies that I enjoyed.
   link_list:
       - name: Interstellar

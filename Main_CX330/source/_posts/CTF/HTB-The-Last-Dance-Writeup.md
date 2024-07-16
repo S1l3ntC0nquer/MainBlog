@@ -65,9 +65,11 @@ if __name__ == "__main__":
 Bingo, it's a ChaCha20 encryption. [ChaCha20](https://en.wikipedia.org/wiki/ChaCha20-Poly1305) is a stream cipher algorithm designed by Daniel J. Bernstein in 2008. It's a variant of Salsa20 and often used in encrypted communication such as TLS & VPN. The main concept of it is the XOR operation. Since it's a type of XOR cipher, it has the following properties.
 
 $$
+\begin{align*}
 Key = Ciphertext \oplus Plaintext \\
 Ciphertext = Plaintext \oplus Key \\
 Plaintext = Ciphertext \oplus Key
+\end{align*}
 $$
 
 In this challenge, it **reuses** the key and the initial vector (iv), and it also tells us the message, which is the first plaintext, so we can calculate the key by doing XOR to the 1st cipher and the 1st plaintext (check the code and you'll know why). And as long as we got the key, we can calculate the 2nd plaintext with the same key. So, let's hack the planet!
