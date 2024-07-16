@@ -842,7 +842,7 @@ aside:
         name_link: /
     card_announcement:
         enable: true
-        content: English site at <a href="https://en.cx330.tw" style="color:#f5a524;text-decoration:underline;font-weight:bold;">HERE</a>
+        content: 0xDEADBEEF
     card_weixin:
         enable: false
         face: https://bu.dusays.com/2023/01/13/63c02edf44033.png

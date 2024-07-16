@@ -14,3 +14,13 @@
         icon: fa-solid fa-book
         tip: Books
         url:
+
+- classname: 🎬 Movies
+  class_desc: Here are the movies that I enjoyed.
+  link_list:
+      - name: Interstellar
+        img: https://m.media-amazon.com/images/I/91vIHsL-zjL._AC_UF894,1000_QL80_.jpg
+        score: 5
+        icon: fa-solid fa-film
+        top: Movies
+        url:
