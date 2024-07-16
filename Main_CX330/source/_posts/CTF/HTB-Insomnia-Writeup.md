@@ -1,12 +1,14 @@
 ---
-title: "[HTB] Insomnia Writeup 💤"
-date: 2024-07-16 17:49:39
-cover: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/help-you-at-solving-hackthebox-htb-challenges-machines.png
+title: "[HTB] Insomnia Writeup \U0001F4A4"
+cover: >-
+  https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/help-you-at-solving-hackthebox-htb-challenges-machines.png
 categories: CTF
 tags:
-    - HTB
-    - Web
-    - HackTheBox 
+  - HTB
+  - Web
+  - HackTheBox
+abbrlink: cab519b8
+date: 2024-07-16 17:49:39
 ---
 
 # 0x00 Challeng Info
