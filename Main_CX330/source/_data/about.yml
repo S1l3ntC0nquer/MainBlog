@@ -31,13 +31,11 @@
       tips: Careers
       title: Let's go
       list:
-          - desc: EDU,软件工程专业
-            color: "#357ef5"
-          - desc: EDU,软件工程专业
-            color: "#357ef5"
-          - desc: EDU,软件工程专业
-            color: "#357ef5"
-      img: https://bu.dusays.com/2023/04/21/644287166329b.png
+          - desc: NCKU CCEP
+            color: "#5271ff"
+          - desc: NCKU CSIE
+            color: "#00bf63"
+      img: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/Careers.jpg
   statistic:
       link: /archives
       text: Archives
@@ -95,7 +93,7 @@
   like:
       like_tips: Following
       like_title: Tech news
-      like_bg: https://contentstatic.techgig.com/photo/88607432/a-to-z-of-technology-top-tech-news-of-2021-at-a-glance.jpg?32786
+      like_bg: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/technews.jpg
       like_bottom: CyberSec, CTF, Front end, Back end, AI, Mobile app
   music:
       music_tips: Music
