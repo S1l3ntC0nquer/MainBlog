@@ -2,7 +2,6 @@
 title: Why Do I Start Blogging
 categories:
     - LifeAndTalk
-sticky: 1
 cover: /images/CX330.jpg
 abbrlink: e6118152
 date: 2024-05-30 02:47:09
