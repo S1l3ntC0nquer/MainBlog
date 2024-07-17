@@ -1,12 +1,14 @@
 ---
 title: "[HTB] Insomnia Writeup \U0001F4A4"
 cover: >-
-  https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/help-you-at-solving-hackthebox-htb-challenges-machines.png
-categories: CTF
+    https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/help-you-at-solving-hackthebox-htb-challenges-machines.png
+categories:
+    - [HackTheBox]
+    - [CTF]
 tags:
-  - HTB
-  - Web
-  - HackTheBox
+    - HTB
+    - Web
+    - HackTheBox
 abbrlink: cab519b8
 date: 2024-07-16 17:49:39
 ---
@@ -21,7 +23,7 @@ Well, although it's not helpful, it's still a romantic setting for this challeng
 
 # 0x01 Analyze
 
-Since it gave us the source code, we should check it out first. The most important thing is under the **controller directory** (`Insomnia/web_insomnia/Insomnia/app/Controllers`), because it's where the backend interact with users. 
+Since it gave us the source code, we should check it out first. The most important thing is under the **controller directory** (`Insomnia/web_insomnia/Insomnia/app/Controllers`), because it's where the backend interact with users.
 
 I check out the `ProfileController.php`, and find something interesting.
 
@@ -45,12 +47,12 @@ So if we can login as **administrator**, then we can get the flag. Now the quest
 After analyzing the code, we can found that there's an logic error in the code that the developer doesn't notice it. In the `login()` function, the developer use `if (!count($json_data) == 2)` to check if the login data we passed has 2 arguments. But if we think it carefully, we can know that it's different to `if (count($json_data) !== 2)`. Here's are the differences.
 
 1. `if (!count($json_data) == 2)`
-   - First, it calculate `count($json_data)`, and it's an INT.
-   - Then, the "!" negates the result we get. So if `count($json_data)` does not equals to 0, the expression will get a **false**. Anyways, it will get a **BOOL** as it's data type.
-   - Finally, it checks whether the **BOOL** is equivalent to an **INT**, so the expression will always be a **false**, in other words, **the program will never go into this if statement**. 
+    - First, it calculate `count($json_data)`, and it's an INT.
+    - Then, the "!" negates the result we get. So if `count($json_data)` does not equals to 0, the expression will get a **false**. Anyways, it will get a **BOOL** as it's data type.
+    - Finally, it checks whether the **BOOL** is equivalent to an **INT**, so the expression will always be a **false**, in other words, **the program will never go into this if statement**.
 2. `if (count($json_data) !== 2)`
-   - It calculate the `count($json_data)` and properly compare the number with 2.
-   - So this is the correct way to check if the data count is legal.
+    - It calculate the `count($json_data)` and properly compare the number with 2.
+    - So this is the correct way to check if the data count is legal.
 
 The next thing you should know is everytime we sign in, the system will give us a token to verify our identitys. The following is the complete code of `ProfileController.php`
 
@@ -121,4 +123,3 @@ The final step is going to `/index.php/profile` and paste the token we just got 
 ```
 HTB{I_just_want_to_sleep_a_little_bit!!!!!}
 ```
-

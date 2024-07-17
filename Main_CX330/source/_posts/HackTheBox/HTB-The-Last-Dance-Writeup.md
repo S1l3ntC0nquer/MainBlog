@@ -2,7 +2,9 @@
 title: "[HTB] The Last Dance Writeup 💃"
 cover: >-
     https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/help-you-at-solving-hackthebox-htb-challenges-machines.png
-categories: CTF
+categories:
+    - [HackTheBox]
+    - [CTF]
 tags:
     - HTB
     - Crypto

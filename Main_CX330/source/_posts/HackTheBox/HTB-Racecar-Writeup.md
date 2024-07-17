@@ -3,7 +3,9 @@ title: "[HTB] Racecar Writeup \U0001F3CE️"
 lang: en
 cover: >-
     https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/help-you-at-solving-hackthebox-htb-challenges-machines.png
-categories: CTF
+categories:
+    - [HackTheBox]
+    - [CTF]
 tags:
     - HTB
     - Pwn
