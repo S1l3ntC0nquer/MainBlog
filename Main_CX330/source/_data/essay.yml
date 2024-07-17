@@ -7,18 +7,22 @@
   home_essay: true
   top_background: /assets/dark.webp
   essay_list:
-      - content: 換主題到這裡的第一天
+      - content: First day using this theme
         date: 2024/07/03
         address: CX330's Universe
-      - content: 差不多快要完成網站的重構了，終於！
+      - content: Finally, almost finish the refactoring！
         date: 2024/07/05
-        address: 床上
-      - content: 正在成為CTF六邊形戰士
+        address: My bed
+      - content: Keep learning CTF!!!
         date: 2024/07/10
-        address: 電腦前
+        address: My desk
       - content: I decided to use English as the default language here!
         date: 2024/07/12
         address: My room
+      - content: I'm gonna finish this course in this summer vacation!
+        date: 2024/07/18
+        address: My desk
+        link: https://youtube.com/playlist?list=PLhQjrBD2T383Cqo5I1oRrbC1EKRAKGKUE&si=uIjPfwb_OQheYoqB
       # - content: 支持了Accesskey快捷键，可以直接按下shift + ?组合键以查看快捷键选项。
       #   date: 2023/07/01
       #   video:

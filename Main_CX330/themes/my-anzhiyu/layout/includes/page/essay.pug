@@ -50,9 +50,9 @@ if site.data.essay
                         i.anzhiyufont.anzhiyu-icon-clock
                         time.datatime(datetime= item.date)= datedata
                       if item.link 
-                        a.bber-content-link(title="跳轉到短文指引的鏈接", href=url_for(item.link), rel="external nofollow")
+                        a.bber-content-link(title="Link", href=url_for(item.link), rel="external nofollow")
                           i.anzhiyufont.anzhiyu-icon-link
-                          | 鏈接
+                          | Link
                       if item.from
                         .bber-info-from
                           i.anzhiyufont.anzhiyu-icon-fw-fire
