@@ -7,26 +7,26 @@
   home_essay: true
   top_background: /assets/dark.webp
   essay_list:
-      - content: First day using this theme
-        date: 2024/07/03
-        address: CX330's Universe
-      - content: Finally, almost finish the refactoring！
-        date: 2024/07/05
-        address: My bed
-      - content: Keep learning CTF!!!
-        date: 2024/07/10
-        address: My desk
-      - content: I decided to use English as the default language here!
-        date: 2024/07/12
-        address: My room
-      - content: I'm gonna finish this course in this summer vacation!
-        date: 2024/07/18
-        address: My desk
-        link: https://youtube.com/playlist?list=PLhQjrBD2T383Cqo5I1oRrbC1EKRAKGKUE&si=uIjPfwb_OQheYoqB
       - content: Learning pwn from 0 to 1
         date: 2024/07/18
         address: My desk
         link: https://github.com/yuawn/NTU-Computer-Security
+      - content: I'm gonna finish this course in this summer vacation!
+        date: 2024/07/18
+        address: My desk
+        link: https://youtube.com/playlist?list=PLhQjrBD2T383Cqo5I1oRrbC1EKRAKGKUE&si=uIjPfwb_OQheYoqB
+      - content: I decided to use English as the default language here!
+        date: 2024/07/12
+        address: My room
+      - content: Keep learning CTF!!!
+        date: 2024/07/10
+        address: My desk
+      - content: Finally, almost finish the refactoring！
+        date: 2024/07/05
+        address: My bed
+      - content: First day using this theme
+        date: 2024/07/03
+        address: CX330's Universe
 
       # - content: 支持了Accesskey快捷键，可以直接按下shift + ?组合键以查看快捷键选项。
       #   date: 2023/07/01
