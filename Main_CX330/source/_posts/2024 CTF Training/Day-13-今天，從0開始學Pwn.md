@@ -1,12 +1,13 @@
 ---
-title: "[Day 13] 今天，從0開始學Pwn"
-date: 2024-07-18 20:39:09
+title: '[Day 13] 今天，從0開始學Pwn'
 cover: /images/hacker_in_the_universe.jpg
 categories: 2024 CTF Training
 tags:
-    - CTF
-    - CyberSec
-    - Pwn
+  - CTF
+  - CyberSec
+  - Pwn
+abbrlink: 98fc7fc6
+date: 2024-07-18 20:39:09
 ---
 
 # 前言
