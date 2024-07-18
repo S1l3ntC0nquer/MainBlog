@@ -1,6 +1,6 @@
 # Deployer
 
-This site is deploy on Vercel.
+This site is deploy on GitHub.
 
 # Music
 
@@ -26,3 +26,7 @@ Modify `util.js`
     anzhiyu.changeMusicBg(false);
   },
 ```
+
+# hexo-butterfly-envelope
+
+`main.js`中把中文改為英文
