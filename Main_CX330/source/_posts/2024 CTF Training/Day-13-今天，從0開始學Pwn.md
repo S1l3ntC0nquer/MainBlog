@@ -1,0 +1,28 @@
+---
+title: "[Day 13] 今天，從0開始學Pwn"
+date: 2024-07-18 20:39:09
+cover: /images/hacker_in_the_universe.jpg
+categories: 2024 CTF Training
+tags:
+    - CTF
+    - CyberSec
+    - Pwn
+---
+
+# 前言
+
+今天起來後去看了一下 HTB 的一題 Pwn 題，做了一下不太會，決定找 Writeup。結果 Writeup 也看不太懂，我才發現自己 Pwn 的基礎好像不是很扎實，這樣下去也是看一題做一題，所以決定要先從基礎開始學習。使用的資源是用 Yuawn 大佬的課程影片，我會把影片放在下面。希望暑假結束前可以變強！
+
+# 今日進度
+
+-   [Binary Exploitation (Pwn) - Basic](https://www.youtube.com/watch?v=U8N6aE-Nq-Q&t=128s)
+
+# 今日狀態
+
+-   起床時間：`12：00`
+
+-   知識量：⭐⭐⭐⭐
+
+-   疲勞程度：⭐⭐⭐⭐
+
+-   精神狀態：⭐⭐
