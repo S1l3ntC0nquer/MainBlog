@@ -16,7 +16,7 @@ date: 2024-07-18 20:39:09
 
 # 今日進度
 
-這些學習資源是練習 Pwn 基礎非常好的資料。看完 Yuawn 的影片之後去用 HTB 的 Room 做練習，收穫頗多。
+這些學習資源是練習 Pwn 基礎非常好的資料。看完 Yuawn 的影片之後去用 TryHackMe 的 Room 做練習，收穫頗多。
 
 -   [Binary Exploitation (Pwn) - Basic](https://www.youtube.com/watch?v=U8N6aE-Nq-Q&t=128s)
 -   [Intro To Pwntools](https://tryhackme.com/r/room/introtopwntools)
