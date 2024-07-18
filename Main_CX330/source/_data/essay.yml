@@ -23,6 +23,11 @@
         date: 2024/07/18
         address: My desk
         link: https://youtube.com/playlist?list=PLhQjrBD2T383Cqo5I1oRrbC1EKRAKGKUE&si=uIjPfwb_OQheYoqB
+      - content: Learning pwn from 0 to 1
+        date: 2024/07/18
+        address: My desk
+        link: https://github.com/yuawn/NTU-Computer-Security
+
       # - content: 支持了Accesskey快捷键，可以直接按下shift + ?组合键以查看快捷键选项。
       #   date: 2023/07/01
       #   video:
