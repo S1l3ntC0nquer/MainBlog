@@ -172,7 +172,7 @@ Goodbye!
 
 到這邊，我們大概知道這就是一個可以輸入選項然後有點小功能的東西。接著，既然是 Reverse 題我們就用 IDA 把他打開來看看吧。打開之後大概的內容我放在下面。
 
-```assembly
+```nasm
 ; int __fastcall main(int argc, const char **argv, const char **envp)
 public main
 main proc near
