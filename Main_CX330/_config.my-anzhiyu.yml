@@ -1050,7 +1050,7 @@ pangu:
 lazyload:
     enable: true
     field: site # site/post
-    placeholder:
+    placeholder: /assets/loading.svg
     blur: true
     progressive: true
 
