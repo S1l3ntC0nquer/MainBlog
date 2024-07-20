@@ -1,5 +1,5 @@
 ---
-title: Cryptography Notes 密碼學任督二脈
+title: Cryptography for Muggles 密碼學任督二脈
 mathjax: true
 cover: /images/cryptography.jpg
 categories:
