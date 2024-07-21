@@ -2,7 +2,7 @@
 title: Reading List
 categories:
     - LifeAndTalk
-cover:
+cover: "https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/Blog_cover (4).jpg"
 abbrlink: b01f9394
 date: 2024-06-11 12:09:43
 ---
