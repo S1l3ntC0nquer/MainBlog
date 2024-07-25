@@ -70,7 +70,7 @@ First, I use `checksec` to check the binary protection.
 
 ```bash
 ┌──(kali㉿kali)-[~/CTF/THM/pwn103]
-└─$ pwn checksec pwn 
+└─$ pwn checksec pwn
 [*] '/home/kali/CTF/THM/pwn103/pwn'
     Arch:     amd64-64-little
     RELRO:    Partial RELRO
@@ -115,7 +115,7 @@ int admins_only()
 }
 ```
 
-It open the shell for us! The thing is, how can we access this function? Until now, we can probably know that this is a ret2win problem. We need to cover the return address to gain access to the dangerous function. So  I use  `cyclic 100` to create the pattern to know the offset of the padding.
+It open the shell for us! The thing is, how can we access this function? Until now, we can probably know that this is a ret2win problem. We need to cover the return address to gain access to the dangerous function. So I use `cyclic 100` to create the pattern to know the offset of the padding.
 
 ![Find the offset by cyclic](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240725153412668.png)
 
@@ -130,7 +130,7 @@ Found at offset 40
 Next step is to find the address of `admins_only()`. Since the binary has no PIE, the address will be always fixed. To get the address, we can simply type in `print &admins_only` in gdb.
 
 ```bash
-pwndbg> print &admins_only 
+pwndbg> print &admins_only
 $1 = (<text variable, no debug info> *) 0x401554 <admins_only>
 ```
 
@@ -156,13 +156,13 @@ But when we execute the script, it won't give us the shell. After watching this 
 <div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
     <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/-VUtXwDm5yQ" frameborder="0" allowfullscreen></iframe>
 </div>
-
-So how do we solve the MOVAPS issue? [This articel](https://ropemporium.com/guide.html) tell us the answer.
+<br/>
+So how do we solve the MOVAPS issue? [This articel](https://ropemporium.com/guide.html) tells us the answer.
 
 > **The MOVAPS issue**
 > If you're segfaulting on a `movaps` instruction in `buffered_vfprintf()` or `do_system()` in the x86_64 challenges, then ensure the stack is 16-byte aligned before returning to GLIBC functions such as `printf()` or `system()`. Some versions of GLIBC uses `movaps` instructions to move data onto the stack in certain functions. The 64 bit calling convention requires the stack to be 16-byte aligned before a `call` instruction but this is easily violated during ROP chain execution, causing all further calls from that function to be made with a misaligned stack. `movaps` triggers a general protection fault when operating on unaligned data, so try padding your ROP chain with an extra `ret` before returning into a function or return further into a function to skip a `push` instruction.
 
-Here I use the first method, which is add a ret gadget in my ROP (*Return*-Oriented Programming) chain. To find the ret gadget, we can type `layout asm` in gdb.
+Here I use the first method, which is add a ret gadget in my ROP (Return-Oriented Programming) chain. To find the ret gadget, we can type `layout asm` in gdb.
 
 ![ret gadget](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240725162429324.png)
 
@@ -191,4 +191,3 @@ By running the script, we can get the shell and cat out the flag.txt!
 ```
 THM{w3lC0m3_4Dm1N}
 ```
-
