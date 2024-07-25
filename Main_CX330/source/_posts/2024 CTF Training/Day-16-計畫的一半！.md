@@ -1,12 +1,13 @@
 ---
-title: "[Day 16] 計畫的一半！"
-date: 2024-07-25 23:36:41
+title: '[Day 16] 計畫的一半！'
 cover: /images/hacker_in_the_universe.jpg
 categories: 2024 CTF Training
 tags:
-    - CTF
-    - CyberSec
-    - Pwn
+  - CTF
+  - CyberSec
+  - Pwn
+abbrlink: 86a224b6
+date: 2024-07-25 23:36:41
 ---
 
 # 前言
