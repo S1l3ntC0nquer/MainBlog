@@ -1,7 +1,7 @@
 ---
 title: "[Day 05] Grinding PicoCTF 3"
 mathjax: true
-cover: /images/hacker_in_the_universe.jpg
+cover: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/hackerTraining.jpg
 categories:
     - 2024 CTF Training
 tags:

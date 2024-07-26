@@ -9,7 +9,7 @@ tags:
     - Cryptography
     - CyberSec
     - TechStreak30
-cover: /images/hacker_in_the_universe.jpg
+cover: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/hackerTraining.jpg
 abbrlink: f9245dd2
 date: 2024-06-28 17:16:17
 ---

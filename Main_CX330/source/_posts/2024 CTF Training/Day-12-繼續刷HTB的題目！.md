@@ -1,11 +1,11 @@
 ---
-title: '[Day 12] 繼續刷HTB的題目！'
-cover: /images/hacker_in_the_universe.jpg
+title: "[Day 12] 繼續刷HTB的題目！"
+cover: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/hackerTraining.jpg
 categories: 2024 CTF Training
 tags:
-  - CTF
-  - CyberSec
-  - HTB
+    - CTF
+    - CyberSec
+    - HTB
 abbrlink: 11af25ee
 date: 2024-07-16 23:56:11
 ---

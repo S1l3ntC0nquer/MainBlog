@@ -1,6 +1,6 @@
 ---
 title: "[Day 13] 今天，從0開始學Pwn"
-cover: /images/hacker_in_the_universe.jpg
+cover: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/hackerTraining.jpg
 categories: 2024 CTF Training
 tags:
     - CTF

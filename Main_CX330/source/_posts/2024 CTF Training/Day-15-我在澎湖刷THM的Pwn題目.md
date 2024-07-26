@@ -1,11 +1,11 @@
 ---
-title: '[Day 15] 我在澎湖刷THM的Pwn題目'
-cover: /images/hacker_in_the_universe.jpg
+title: "[Day 15] 我在澎湖刷THM的Pwn題目"
+cover: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/hackerTraining.jpg
 categories: 2024 CTF Training
 tags:
-  - CTF
-  - CyberSec
-  - Pwn
+    - CTF
+    - CyberSec
+    - Pwn
 abbrlink: 9071560f
 date: 2024-07-20 23:38:54
 ---

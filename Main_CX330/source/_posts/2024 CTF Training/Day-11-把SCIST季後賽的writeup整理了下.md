@@ -1,11 +1,11 @@
 ---
-title: '[Day 11] 把SCIST季後賽的writeup整理了下'
-cover: /images/hacker_in_the_universe.jpg
+title: "[Day 11] 把SCIST季後賽的writeup整理了下"
+cover: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/hackerTraining.jpg
 categories: 2024 CTF Training
 tags:
-  - CTF
-  - CyberSec
-  - HTB
+    - CTF
+    - CyberSec
+    - HTB
 abbrlink: b5f171c7
 date: 2024-07-15 15:55:47
 ---

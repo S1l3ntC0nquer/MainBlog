@@ -8,7 +8,7 @@ tags:
     - PicoCTF
     - CyberSec
     - TechStreak30
-cover: /images/hacker_in_the_universe.jpg
+cover: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/hackerTraining.jpg
 abbrlink: 4c6f99b3
 date: 2024-06-29 16:44:33
 ---
