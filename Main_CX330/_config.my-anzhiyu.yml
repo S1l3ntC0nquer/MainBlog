@@ -1105,7 +1105,7 @@ home_top:
         swiper_js: https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.js #swiper js依赖
     banner:
         tips: Recommended reading
-        title: Cryptography Notebook 密碼學任督二脈
+        title: Cryptography for Muggles 密碼學任督二脈
         image: /images/cryptography.jpg
         link: https://cx330.tw/posts/39694de9/
 
