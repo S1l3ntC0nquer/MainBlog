@@ -1,6 +1,6 @@
 ---
 title: Hacker's Manifesto《駭客宣言》
-cover: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/HackersManifesto.jpg
+cover: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/hackersManifesto.jpg
 categories: Hacking
 tags:
     - 資安
