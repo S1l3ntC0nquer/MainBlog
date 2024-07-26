@@ -1,7 +1,7 @@
 ---
 title: "[THM] Pwn101 Writeup"
 cover: >-
-    https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/Blog_cover%20(3)-min.jpg
+    https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/TryHackMe.jpg
 categories:
     - [TryHackMe]
     - [CTF]
