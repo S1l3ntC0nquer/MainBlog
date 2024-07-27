@@ -27,7 +27,7 @@ date: 2024-07-07 18:11:39
 
 # 原文
 
-```
+```txt
                                ==Phrack Inc.==
 
                     Volume One, Issue 7, Phile 3 of 10

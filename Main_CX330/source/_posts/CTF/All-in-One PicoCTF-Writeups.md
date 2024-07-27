@@ -30,7 +30,7 @@ date: 2024-06-01 10:27:03
 
 ![利用開發者工具搜尋flag](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240701091535175.png)
 
-```
+```txt
 picoCTF{pr3tty_c0d3_dbe259ce}
 ```
 
@@ -59,7 +59,7 @@ time.sleep(1337)
 
 這樣就得到 flag 了！
 
-```
+```txt
 picoCTF{p1c0_s3cr3t_ag3nt_84f9c865}
 ```
 
@@ -87,7 +87,7 @@ SELECT * FROM users WHERE name='admin' AND password='admin'
 
 ![flag](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240701093133835.png)
 
-```
+```txt
 picoCTF{L00k5_l1k3_y0u_solv3d_it_d3c660ac}
 ```
 
@@ -103,7 +103,7 @@ picoCTF{L00k5_l1k3_y0u_solv3d_it_d3c660ac}
 
 圖片有點小，總之他顯示的內容就是像下面這樣:
 
-```
+```txt
 username: admin
 password: admin
 SQL query: SELECT id FROM users WHERE password = 'admin' AND username = 'admin'
@@ -143,7 +143,7 @@ SELECT city, address, phone FROM {TABLE_NAME} WHERE city = '' UNION SELECT name,
 
 flag 就找到囉！
 
-```
+```txt
 picoCTF{G3tting_5QL_1nJ3c7I0N_l1k3_y0u_sh0ulD_78d0583a}
 ```
 
@@ -155,7 +155,7 @@ picoCTF{G3tting_5QL_1nJ3c7I0N_l1k3_y0u_sh0ulD_78d0583a}
 
 ~~秉持著不知道要幹嘛的時候先掃路徑的精神~~，可以找到它的 robots.txt，它其中禁止了兩個路徑，如下:
 
-```
+```txt
 User-agent: *
 Disallow: /instructions.txt
 Disallow: /uploads/
@@ -163,7 +163,7 @@ Disallow: /uploads/
 
 既然它都禁止了，我們就去看看吧 XD。`/uploads/`應該就是它的上船後的文件路徑了，而它 instructions.txt 的內容如下:
 
-```
+```txt
 Let's create a web app for PNG Images processing.
 It needs to:
 Allow users to upload PNG images
@@ -198,7 +198,7 @@ after validation, store the uploaded files so that the admin can retrieve them l
 
 於是我們就成功找到了 flag 啦！如下:
 
-```
+```txt
 picoCTF{c3rt!fi3d_Xp3rt_tr1ckst3r_d3ac625b}
 ```
 
@@ -294,7 +294,7 @@ print(urlencode(base64_encode(serialize($payload))))
 
 上面這個代碼執行後會得到
 
-```
+```txt
 TzoxMDoiYWNjZXNzX2xvZyI6MTp7czo4OiJsb2dfZmlsZSI7czo3OiIuLi9mbGFnIjt9
 ```
 
@@ -302,7 +302,7 @@ TzoxMDoiYWNjZXNzX2xvZyI6MTp7czo4OiJsb2dfZmlsZSI7czo3OiIuLi9mbGFnIjt9
 
 ![Pwned!](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240706161944368.png)
 
-```
+```txt
 picoCTF{th15_vu1n_1s_5up3r_53r1ous_y4ll_405f4c0e}
 ```
 
@@ -327,7 +327,7 @@ picoCTF{th15_vu1n_1s_5up3r_53r1ous_y4ll_405f4c0e}
 
 ## Easy1
 
-```
+```txt
     A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
    +----------------------------------------------------
 A | A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
@@ -382,7 +382,7 @@ print(f"Message: {pt}")
 
 而最後的 flag 如下
 
-```
+```txt
 picoCTF{CRYPTOISFUN}
 ```
 
@@ -390,7 +390,7 @@ picoCTF{CRYPTOISFUN}
 
 如同題目所說，這題就是個基本的凱薩加密。題目給了加密過的 flag
 
-```
+```txt
 picoCTF{gvswwmrkxlivyfmgsrhnrisegl}
 ```
 
@@ -414,7 +414,7 @@ for i in range(26):
 
 跑出來的結果中，看起來是`crossingtherubicondjneoach`最合理，所以這就是 flag 了
 
-```
+```txt
 picoCTF{crossingtherubicondjneoach}
 ```
 
@@ -422,7 +422,7 @@ picoCTF{crossingtherubicondjneoach}
 
 題目給了一個密文和一個 Python 腳本。
 
-```
+```txt
 apbopjbobpnjpjnmnnnmnlnbamnpnononpnaaaamnlnkapndnkncamnpapncnbannaapncndnlnpna
 ```
 
@@ -512,7 +512,7 @@ for key in ALPHABET:
 
 暴力破解後，看起來最像 Flag 的就是`et_tu?_23217b54456fb10e908b5e87c6e89156`這個了。最後自己幫它包上`picoCTF{}`提交，果然是正確的。
 
-```
+```txt
 picoCTF{et_tu?_23217b54456fb10e908b5e87c6e89156}
 ```
 
@@ -520,7 +520,7 @@ picoCTF{et_tu?_23217b54456fb10e908b5e87c6e89156}
 
 這題給了一個加密後的密文。
 
-```
+```txt
 xqkwKBN{z0bib1wv_l3kzgxb3l_949in1i1}
 ```
 
@@ -528,7 +528,7 @@ xqkwKBN{z0bib1wv_l3kzgxb3l_949in1i1}
 
 ![Pwned!](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240706165309173.png)
 
-```
+```txt
 picoCTF{r0tat1on_d3crypt3d_949af1a1}
 ```
 
@@ -548,7 +548,7 @@ picoCTF{r0tat1on_d3crypt3d_949af1a1}
 
 複習完後，看一下題目的說明。
 
-```
+```txt
 Description:
 In RSA, a small e value can be problematic, but what about N? Can you decrypt this?
 ==============================
@@ -594,7 +594,7 @@ print(f"Decrypted message: m = {long2str(m)}")
 
 最後找到的明文會是一個很大的數字，這時候再用 Crypto.Util.number 的 long_to_bytes 並 decode，將其轉為字符串，就可以得到 flag 了。
 
-```
+```txt
 picoCTF{sma11_N_n0_g0od_55304594}
 ```
 
@@ -614,7 +614,7 @@ $$
 
 所以我們利用題目給的 c 和 n 相加後，輸入到他的程式會得到:
 
-```
+```txt
 Here you go: 290275030195850039473456618367455885069965748851278076756743720446703314517401359267322769037469251445384426639837648598397
 ```
 
@@ -638,7 +638,7 @@ r.close()
 print(long_to_bytes(m))
 ```
 
-```
+```txt
 picoCTF{m4yb3_Th0se_m3s54g3s_4r3_difurrent_1772735}
 ```
 
@@ -646,7 +646,7 @@ picoCTF{m4yb3_Th0se_m3s54g3s_4r3_difurrent_1772735}
 
 題目給了密文 enc_flag，如下。
 
-```
+```txt
 YidkM0JxZGtwQlRYdHFhR3g2YUhsZmF6TnFlVGwzWVROclh6YzRNalV3YUcxcWZRPT0nCg==
 ```
 
@@ -654,7 +654,7 @@ YidkM0JxZGtwQlRYdHFhR3g2YUhsZmF6TnFlVGwzWVROclh6YzRNalV3YUcxcWZRPT0nCg==
 
 ![b64 decode](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240704163439113.png)
 
-```
+```txt
 d3BqdkpBTXtqaGx6aHlfazNqeTl3YTNrXzc4MjUwaG1qfQ==
 ```
 
@@ -662,7 +662,7 @@ d3BqdkpBTXtqaGx6aHlfazNqeTl3YTNrXzc4MjUwaG1qfQ==
 
 ![b64 decode](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240704163700571.png)
 
-```
+```txt
 wpjvJAM{jhlzhy_k3jy9wa3k_78250hmj}
 ```
 
@@ -685,7 +685,7 @@ for i in range(1, 27):
         print(dec_flag)
 ```
 
-```
+```txt
 picoCTF{caesar_d3cr9pt3d_78250afc}
 ```
 
@@ -695,7 +695,7 @@ picoCTF{caesar_d3cr9pt3d_78250afc}
 
 先看題目。
 
-```
+```txt
 ******************Welcome to our OTP implementation!******************
 This is the encrypted flag!
 551e6c4c5e55644b56566d1b5100153d4004026a4b52066b4a5556383d4b0007
@@ -705,7 +705,7 @@ What data would you like to encrypt?
 
 在這題中，我們要先閱讀他給我們的 Code。在 encrypt 函式中我們可以看到一些事情。因為題目給的 Cipher 的長度為 64，又因為他是以十六進制的方式輸出 Cipher，所以我們可以知道他用掉的`key_location`長度為 32，也就是說，我們下次在加密的時候是用第 33 位開始的 key。
 
-```pytho=
+```python
 def encrypt(key_location):
     ui = input("What data would you like to encrypt? ").rstrip()
     if len(ui) == 0 or len(ui) > KEY_LEN:
@@ -862,7 +862,7 @@ if __name__ == "__main__":
 
 解密的話就反過來，先去除以 311 再除以 key（這裡為 12），得到一個半密文（semi_cipher）。接下來這個半密文要先反轉，再用它寫好的 function 去做 XOR（因為它的 function 裡面又有一次反轉，所以這樣剛好會是和加密時相同的順序），最後得到的這個明文還要再反轉一次，才會得到正確的 flag。至於為甚麼要反轉兩次，解釋如下：
 
-```
+```txt
 假設題目的dynamic_xor_encrypt為f，明文為ABC
 
 加密：
@@ -928,7 +928,7 @@ plaintext = decrypt(cipher, 12, "trudeau")  # since we know the key is 12
 print(f"plaintext is: {plaintext[::-1]}")
 ```
 
-```
+```txt
 picoCTF{custom_d2cr0pt6d_dc499538}
 ```
 
@@ -936,7 +936,7 @@ picoCTF{custom_d2cr0pt6d_dc499538}
 
 題目給了一組 RSA 加密的密文，還有公鑰（n, e），如下。
 
-```
+```txt
 N: 1615765684321463054078226051959887884233678317734892901740763321135213636796075462401950274602405095138589898087428337758445013281488966866073355710771864671726991918706558071231266976427184673800225254531695928541272546385146495736420261815693810544589811104967829354461491178200126099661909654163542661541699404839644035177445092988952614918424317082380174383819025585076206641993479326576180793544321194357018916215113009742654408597083724508169216182008449693917227497813165444372201517541788989925461711067825681947947471001390843774746442699739386923285801022685451221261010798837646928092277556198145662924691803032880040492762442561497760689933601781401617086600593482127465655390841361154025890679757514060456103104199255917164678161972735858939464790960448345988941481499050248673128656508055285037090026439683847266536283160142071643015434813473463469733112182328678706702116054036618277506997666534567846763938692335069955755244438415377933440029498378955355877502743215305768814857864433151287
 e: 3
 
@@ -979,7 +979,7 @@ print(long_to_bytes(m).decode())
 
 ![Flag](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240702161343132.png)
 
-```
+```txt
 picoCTF{e_sh0u1d_b3_lArg3r_7adb35b1}
 ```
 
@@ -1008,7 +1008,7 @@ while True:
 print(long_to_bytes(m).decode())
 ```
 
-```
+```txt
 picoCTF{n33d_a_lArg3r_e_d0cd6eae}
 ```
 
@@ -1016,7 +1016,7 @@ picoCTF{n33d_a_lArg3r_e_d0cd6eae}
 
 這題給了一個 Netcat 連接方式`nc jupiter.challenges.picoctf.org 57464`。先連進去主機看看吧。連進去後可以得到公鑰（e, n）跟密文 C。
 
-```
+```txt
 c: 34445152657892770965998909208982810010756495888304322276986171688963957553047312382212965383503534206383273951160130679579064667281298014647933151624988393675732505770685953145935008017740630822545491396331269103186466894080672218590474311310524848042116230603776754439341606635542489964403857509012413327600
 n: 68119657260892882095325897664190568273401102037961904922092525598421583896728037063388427153386051029888075348478917163527609699475528597669779479757588723783858410926089233944915463760773669961431608182207070211704104302242228666666950454789023679482670607533342993172566630254264627616929496230133089420521
 e: 37080866881034431981182406871995949206609767233841813908107646836499839869322256469420054910921271502986970536597423895034064361029486896285600240175045808110268909882526287214985406985265436522819284777174250321264328876332147142628536767687999620602780344780826878645902905435208326564999474536627301460973
@@ -1044,7 +1044,7 @@ python RsaCtfTool.py -e 37080866881034431981182406871995949206609767233841813908
 
 總之就是把參數都設定好，就可以成功得到 Flag 了。
 
-```
+```txt
 picoCTF{bad_1d3a5_2152720}
 ```
 
@@ -1052,7 +1052,7 @@ picoCTF{bad_1d3a5_2152720}
 
 這題和上一題一樣，先用 Netcat 連線到主機，得到資訊如下。
 
-```
+```txt
 c: 1155413374658603081887942538070618568058048531029758454280998255793925425541835159695263849863790503010031220771999047690488595295467625987010931696477313386062384452816188902386984531395080585643524053777943484599038478398898775019494628236550977835910935567524611329303821647514235510296512723444159728500460371101677191814101634547011569775
 n: 3009815969095519381043948515174929441467634594821498333858615496361783804562611599728570248270874306617036697889577813844217713194056663725350522605669349001546826005570895246471872723077264759401472551915667965016802426155245585986786567513487278588996436597960321248870612409759311004096684257474660765774013406405351078796165091907796029759
 e: 65537
@@ -1095,7 +1095,7 @@ $\phi(n) = p_1^{k_1 - 1} \times (p_1 - 1) \times p_2^{k_2 - 1} \times (p_2 - 1) 
 
 這樣求出來 $\phi(n)$ 後就可以用正常計算流程找到明文 $m$ 了。
 
-```
+```txt
 picoCTF{too_many_fact0rs_8606199}
 ```
 
@@ -1183,7 +1183,7 @@ int main()
 
 因為`input`和`num`都是區域變數，所以會存在 Stack 中。並且因為是先宣告`input`緊接著宣告`num`，所以在 Stack 中會像下面這樣：
 
-```
+```txt
 High Address
 |
 |---------------------|
@@ -1203,7 +1203,7 @@ Low Address
 
 ![Flag](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240704141242017.png)
 
-```
+```txt
 picoCTF{l0c4l5_1n_5c0p3_fee8ef05}
 ```
 
@@ -1279,7 +1279,7 @@ man 手冊裡面也寫了，程式設計師要負起責任，指派一個足夠�
 
 ![Flag](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240702150413588.png)
 
-```
+```txt
 picoCTF{ov3rfl0ws_ar3nt_that_bad_9f2364bc}
 ```
 
@@ -1350,7 +1350,7 @@ if __name__ == "__main__":
     find_pico_ctf(hidden_message)
 ```
 
-```
+```txt
 picoCTF{15_y0ur_que57_qu1x071c_0r_h3r01c_ea7deb4c}
 ```
 
@@ -1389,7 +1389,7 @@ picoCTF{15_y0ur_que57_qu1x071c_0r_h3r01c_ea7deb4c}
 
 這樣就得到 flag 啦。
 
-```
+```txt
 picoCTF{d3bugg3r_dr1v3_72bd8355}
 ```
 
@@ -1399,7 +1399,7 @@ picoCTF{d3bugg3r_dr1v3_72bd8355}
 
 這題比較簡單，就是一些基礎的 Binary operations 和最後把 bin 轉為 hexadecimal 就行了，它主要有六題的邏輯運算和一題 bin to hexadecimal。我是直接使用 picoCTF 提供的 Webshell 進行 nc 連接，然後用[這個線上工具](https://www.rapidtables.com/calc/math/binary-calculator.html)運算。題目如下。
 
-```
+```txt
 Binary Number 1: 00101010
 Binary Number 2: 00101011
 

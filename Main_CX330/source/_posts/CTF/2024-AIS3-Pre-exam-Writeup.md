@@ -68,7 +68,7 @@ expression = data["expression"].replace(" ", "").replace("_", "")
 
 (圖片的字可能有點小，flag 我放在下面)
 
-```
+```txt
  AIS3{7RiANG13_5NAK3_I5_50_3Vi1}
 ```
 
@@ -86,13 +86,13 @@ expression = data["expression"].replace(" ", "").replace("_", "")
 
 這個題目給了個網站，上面有很多甚麼 MyGO 的東西(我不知道這啥但我室友一直很開心??)，然後稍微亂點一下之後會發現沒有甚麼東西，就是三個介面:簡介、成員介紹、原創曲。點到原創曲那邊後會發現網址好像有個 SQLi 的機會，如下:
 
-```
+```txt
 http://chals1.ais3.org:11454/song?id=2
 ```
 
 嘗試過後發現如果把網址改為
 
-```
+```txt
 http://chals1.ais3.org:11454/song?id=5-3
 ```
 
@@ -237,7 +237,7 @@ int __fastcall main(int argc, const char **argv, const char **envp)
 
 理解了這段程式碼後，第一件事當然是去看看這個 secret 跟 key 到底是甚麼東西囉。在 secret 上點兩下，然後點選 hex view 之後，發現了神奇的東西。
 
-```
+```txt
 46 41 4B 45 0B 00 00 00  7B 68 6F 6F 0A 00 00 00  FAKE....{hoo....
 72 61 79 5F 02 00 00 00  73 74 72 69 08 00 00 00  ray_....stri....
 6E 67 73 5F 06 00 00 00  69 73 5F 61 05 00 00 00  ngs_....is_a....
@@ -392,7 +392,7 @@ print(decode())
 
 執行之後 flag 就被 print 出來啦！
 
-```
+```txt
 AIS3{You_are_the_master_of_time_management!!!!?}
 ```
 
@@ -446,7 +446,7 @@ G1 X174.043 Y135.473 E2064.98511
 
 (然後因為我偷懶+怕打錯字所以用了 OCR 把它的文字題取出來)
 
-```
+```txt
 AIS3{b4d1y_tun3d PriN73r}
 ```
 
@@ -458,7 +458,7 @@ AIS3{b4d1y_tun3d PriN73r}
 
 在這邊，我嘗試點了一些不同的 emoji，發現會對應到右邊不同的字符，組成不同的命令，所以我先用了
 
-```
+```txt
 🐱 ⭐
 ```
 
@@ -803,13 +803,13 @@ if __name__ == "__main__":
 
 至此，我們已經知道了每個符號所對應到的字符，我馬上嘗試使用
 
-```
+```txt
 🐱 🚩 (cat flag)
 ```
 
 但可惜題目回應`cat: flag: Is a directory`，代表這層目錄的 flag 是一個目錄而不是個文件，沒辦法 cat。我推測真正的 flag 是在`flag/flag`的位置，於是我又嘗試了
 
-```
+```txt
 🐱 🚩/🚩 (cat flag/flag)
 ```
 

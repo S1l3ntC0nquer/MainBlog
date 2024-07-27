@@ -120,6 +120,6 @@ The final step is going to `/index.php/profile` and paste the token we just got 
 
 # 0x03 Pwned
 
-```
+```txt
 HTB{I_just_want_to_sleep_a_little_bit!!!!!}
 ```

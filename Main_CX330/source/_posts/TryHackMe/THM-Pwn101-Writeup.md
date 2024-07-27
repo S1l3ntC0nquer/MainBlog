@@ -33,7 +33,7 @@ r.interactive()
 
 ![Flag](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240720141712693.png)
 
-```
+```txt
 THM{7h4t's_4n_3zy_oveRflowwwww}
 ```
 
@@ -60,7 +60,7 @@ By running this script, we can get the shell to cat the flag out.
 
 ![Flag](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240720144940194.png)
 
-```
+```txt
 THM{y3s_1_n33D_C0ff33_to_C0d3_<3}
 ```
 
@@ -189,7 +189,7 @@ By running the script, we can get the shell and cat out the flag.txt!
 
 ![Pwned!](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240725163326781.png)
 
-```
+```txt
 THM{w3lC0m3_4Dm1N}
 ```
 
@@ -241,7 +241,7 @@ According to the code, we can know the following things.
 1. This program takes two int as the input & stored them as `unsigned int`.
 2. If the MSB (sign bit) of `num1` or `num2` is not equal to 0, which means one of the num is less than 0, the program will output "\n[o.O] Hmmm... that was a Good try!\n" and exit the program.
 3. Else if the MSB of the sum is less than 0, the program will return a shell, which is the winning condition.
-4. Else the program will  outuput the sum and exit.
+4. Else the program will outuput the sum and exit.
 
 Since we can't input any negative number or it will exit, we need another way to make the sum negative. We know that the maximum of an `unsigned int` is $2^{31}-1$ and the MSB represents a sign, so we can input the maximum of the unsigned int as one of the num and input another int less than $2^{31}-1$ to make the `sum` overflow, then it will be a negative int! The following is the exploit.
 
@@ -259,7 +259,6 @@ Here, I send 2147483647 and 1 to make the sum overflow to be -2147483648. That w
 
 ![Pwned](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240727180209127.png)
 
-```
+```txt
 THM{VerY_b4D_1n73G3rsss}
 ```
-

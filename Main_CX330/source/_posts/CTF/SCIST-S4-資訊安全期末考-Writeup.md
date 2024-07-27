@@ -43,7 +43,7 @@ if (key.hasAttribute("data-input")) {
 
 我們用一般打字的方法，用 shift 切換大小寫，嘗試輸入 Passphrase。經過以上的轉換，便可以得到 flag。
 
-```
+```txt
 flag = SCIST{G0oD_1u(k_!}
 ```
 
@@ -88,7 +88,7 @@ app.post('/report', (req, res) => {
 
 接著先在網站嘗試隨意 POST 一個正常的 note，會發現網址變成了以下的形式。
 
-```
+```txt
 http://lab.scist.org:20001/note/732733d42c28d7060c71be53a4dd491b
 ```
 
@@ -136,7 +136,7 @@ app.get('/note/:noteId', (req, res) => {
 
 最後，在經過一番搜尋、查找資料後，發現只剩下一個方法，就是上傳圖片馬。所謂的圖片馬，就是把圖片和木馬組合在一起上傳。於是我準備了一張正常的 png(normal.png)和惡意的 php 代碼(shell.php)，將其放在同一個路徑底下。接著利用以下的指令將其組合為惡意圖片馬(pwn.png):
 
-```
+```txt
 copy normal.png/b + shell.php/a pwn.png
 ```
 
@@ -146,7 +146,7 @@ copy normal.png/b + shell.php/a pwn.png
 
 這題的題目給了三個 e(公鑰)，三個 c(密文)，還有一個 n(質數因子相乘)，如果有其中兩個 e 是互質，也就是 gcd(e1, e2) = 1 的話，就可以利用一般的共模攻擊，去求得 m(明文)，就是利用會有一組 s1 和 s2 滿足 s1 _ e1 + s2 _ e2 = 1 的條件，加上一點計算，去找出原本的 m，如下。
 
-```
+```txt
 已知 s1 * e1 + s2 * e2 = 1
 ==========================
 c1 ^ s1 * c2 ^ s2 mod n
@@ -158,7 +158,7 @@ c1 ^ s1 * c2 ^ s2 mod n
 
 可惜這題的三個 e 都不是互質的，所以要用其他的方法，我就找到了[一篇文章][7]，裡面的方法是這樣:
 
-```
+```txt
 gcd(e1, e2) = gcd
 c1 = (m ^ e1') ^ gcd mod n
 c2 = (m ^ e2') ^ gcd mod n

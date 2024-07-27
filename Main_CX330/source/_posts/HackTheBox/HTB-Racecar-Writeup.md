@@ -175,7 +175,7 @@ After doing that, we run the program and try to enter some malicious input after
 
 Voila! The program output the value of the pointer which is caused by `%p`. So now we know that there is a vulnerability to be exploited here. In the next step, we need to know where is the offset of the flag. To obtain the offset, we use a lot of `%p` to see at which the program outputs the flag, which is `41414141 41414141` in our case. Here's the output.
 
-```
+```txt
 Select race:
 1. Highway battle
 2. Circuit
@@ -235,6 +235,6 @@ print("".join(flag))
 
 # 0x03 Pwned
 
-```
+```txt
 HTB{why_d1d_1_s4v3_th3_fl4g_0n_th3_5t4ck?!}
 ```

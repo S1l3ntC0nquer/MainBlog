@@ -62,7 +62,7 @@ npm install
 
 這樣就完成了初步的建立啦！建立完成後，專案資料夾下的檔案會像是以下這樣：
 
-```
+```bash
 .
 ├── _config.yml
 ├── package.json
