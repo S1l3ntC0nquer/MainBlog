@@ -1,13 +1,13 @@
 ---
-title: "[Day 17] HTB和THM幫助我學Pwn"
+title: '[Day 17] HTB和THM幫助我學Pwn'
 cover: >-
-    https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/hackerTraining.jpg
+  https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/hackerTraining.jpg
 categories: 2024 CTF Training
 tags:
-    - CTF
-    - CyberSec
-    - Pwn
-abbrlink: "0"
+  - CTF
+  - CyberSec
+  - Pwn
+abbrlink: db00a960
 date: 2024-07-28 02:07:05
 ---
 
