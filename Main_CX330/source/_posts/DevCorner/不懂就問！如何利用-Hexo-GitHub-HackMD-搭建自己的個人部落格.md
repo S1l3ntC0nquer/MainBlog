@@ -109,7 +109,7 @@ npm install
 hexo new "<文章標題>"
 ```
 
-這個指令會生成一份**markdown**文件到**\_post**資料夾中。
+這個指令會生成一份**markdown**文件到`_post`資料夾中。
 
 ### 本地預覽
 
@@ -155,7 +155,7 @@ hexo clean
 
 建立 Repo 的時候，請遵循以下幾個要點：
 
-1. Repo 名稱設定為**USERNAME.github.io**，**USERNAME**記得改為你自己的使用者名稱。
+1. Repo 名稱設定為**USERNAME.github\.io**，**USERNAME**記得改為你自己的使用者名稱。
 2. Repo 請設定為**公開**
 
 完成後，我們就來把這個 Repo（以下簡稱為 GitHub Repo）連結到你的 Hexo 專案吧！開始前你需要先安裝一個部署的外掛。
