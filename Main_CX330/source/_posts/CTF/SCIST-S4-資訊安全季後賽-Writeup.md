@@ -1,7 +1,6 @@
 ---
 title: SCIST S4 資訊安全季後賽 Writeup
-cover: >-
-    https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/306501105_421181870151313_2861616243724572793_n.jpg
+cover: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/SCIST.jpg
 categories: CTF
 tags:
     - 資安
