@@ -168,7 +168,7 @@ cover:
     # left/right/both
     position: left
     # When cover is not set, the default cover is displayed (当没有设置cover时，默认的封面显示)
-    default_cover: https://cx330.tw/images/default_cover.jpg
+    default_cover: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/CX330_Green.jpg
 
 # Replace Broken Images (替换无法显示的图片)
 error_img:
@@ -1106,7 +1106,7 @@ home_top:
     banner:
         tips: Recommended reading
         title: Cryptography for Muggles 密碼學任督二脈
-        image: /images/cryptography.jpg
+        image: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/CryptoForMuggles.jpg
         link: https://cx330.tw/posts/39694de9/
 
 # 朋友圈配置

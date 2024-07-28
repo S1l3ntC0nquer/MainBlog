@@ -24,3 +24,9 @@
         icon: fa-solid fa-film
         top: Movies
         url:
+      - name: Twilight
+        img: https://m.media-amazon.com/images/I/61Kj9BFDBfL._AC_UF894,1000_QL80_.jpg
+        score: 5
+        icon: fa-solid fa-film
+        top: Movies
+        url:

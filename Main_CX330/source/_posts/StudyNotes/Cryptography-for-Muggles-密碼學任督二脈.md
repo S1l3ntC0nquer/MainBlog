@@ -1,7 +1,7 @@
 ---
 title: Cryptography for Muggles 密碼學任督二脈
 mathjax: true
-cover: /images/cryptography.jpg
+cover: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/CryptoForMuggles.jpg
 categories:
     - StudyNotes
 tags:

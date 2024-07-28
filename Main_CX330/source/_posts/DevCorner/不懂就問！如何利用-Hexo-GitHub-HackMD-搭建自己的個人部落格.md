@@ -1,7 +1,7 @@
 ---
 title: 不懂就問！如何利用 Hexo + GitHub + HackMD 搭建自己的個人部落格
 mathjax: true
-cover: /images/hackers_blog.jpg
+cover: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/HexoTutorial.jpg
 categories: DevCorner
 tags:
     - Blog
@@ -58,7 +58,7 @@ cd <資料夾名稱>
 npm install
 ```
 
-![image-20240630165915129](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240630165915129.png)
+![image](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240630165915129.png)
 
 這樣就完成了初步的建立啦！建立完成後，專案資料夾下的檔案會像是以下這樣：
 
