@@ -1264,12 +1264,13 @@ dynamicEffect:
 # 插入代码到头部 </head> 之前 和 底部 </body> 之前
 inject:
     head:
-        - <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="cx330" data-description="Support me on Buy me a coffee!" data-message="" data-color="#5F7FFF" data-position="Right" data-x_margin="18" data-y_margin="18"></script> # 自定义css
-          # - <link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'">
+        # 自定义css
+        # - <link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'">
 
     bottom:
-        # 自定义js
-        # - <script src="/js/xxx"></script>
+        - <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="cx330" data-description="Support me on Buy me a coffee!" data-message="Hackers need COFFEE ☕" data-color="#f5a524" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+          # 自定义js
+          # - <script src="/js/xxx"></script>
 
 # CDN
 # Don't modify the following settings unless you know how they work
