@@ -1,13 +1,14 @@
 ---
-title: "[Day 19] 上完Yuawn的Pwn第一堂課！"
-date: 2024-07-30 02:19:31
+title: '[Day 19] 上完Yuawn的Pwn第一堂課！'
 cover: >-
-    https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/hackerTraining.jpg
+  https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/hackerTraining.jpg
 categories: 2024 CTF Training
 tags:
-    - CTF
-    - CyberSec
-    - Pwn
+  - CTF
+  - CyberSec
+  - Pwn
+abbrlink: 289c779a
+date: 2024-07-30 02:19:31
 ---
 
 # 前言
