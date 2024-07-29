@@ -9,7 +9,7 @@
       # - name: Photoshop
       #   color: "#4082c3"
       #   icon: https://bu.dusays.com/2022/12/15/639aa3a5c240e.png
-      - name: Node
+      - name: Node.js
         color: "#222"
         icon: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/nodejs.png
       # - name: Webpack
@@ -47,13 +47,13 @@
         icon: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/639aa3a5c241c.png
       - name: Next.js
         color: "#000"
-        icon: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/next-js-icon-2048x2048-5dqjgeku.png
+        icon: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/nextjs.jpg
       - name: Git
         color: "#df5b40"
         icon: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/git.png
       - name: IDA
         color: "#fff"
-        icon: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/ida-pro.png
+        icon: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/ida.png
       - name: Burp Suite
         color: "#00a2b9"
         icon: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/burp-suite-community-edition.jpg
