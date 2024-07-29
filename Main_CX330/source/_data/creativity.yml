@@ -60,6 +60,9 @@
       - name: Ghidra
         color: "#000"
         icon: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/1200px-Ghidra_logo.svg.png
+      - name: Kali Linux
+        color: "#2778ff"
+        icon: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/kalilinux.svg
       # - name: Apifox
       #   color: "#e65164"
       #   icon: https://bu.dusays.com/2022/11/19/6378d6458c6b6.png
