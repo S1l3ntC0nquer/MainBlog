@@ -39,11 +39,11 @@ nav:
               - name: LinkedIn
                 link: https://www.linkedin.com/in/%E5%AD%90%E9%9B%8B-%E9%99%B3-11087825b/
                 icon: /assets/linkedin.png
-        - title: English site
-          item:
-              - name: CX330's Universe
-                link: https://en.cx330.tw
-                icon: /assets/me.jpg
+        # - title: English site
+        #   item:
+        #       - name: CX330's Universe
+        #         link: https://en.cx330.tw
+        #         icon: /assets/me.jpg
 
 # mourn （哀悼日，指定日期网站简单变灰，不包括滚动条）
 # 注意： 仅网站首页变灰，其他页面正常显示
@@ -756,7 +756,7 @@ ClickShowText:
 
 # Default display mode (网站默认的显示模式)
 # light (default) / dark
-display_mode: dark
+display_mode: light
 
 # Beautify (美化页面显示)
 beautify:
