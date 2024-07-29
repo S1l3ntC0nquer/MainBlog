@@ -1,4 +1,6 @@
 body[data-type="music"]
+  #bmc-wbtn
+    display none
   background rgb(13, 13, 13)
   #body-wrap
     justify-content: flex-start;
@@ -374,4 +376,7 @@ if hexo-config('nav_music.enable') == false
                   right 25px
                   top -90px
 
-      
+// 音樂界面隱藏一些音樂按鈕
+#anMusic-page
+  #anMusicRefreshBtn, #anMusicBtnGetSong, #anMusicSwitching
+    display none

@@ -27,6 +27,15 @@ Modify `util.js`
   },
 ```
 
+music.styl 添加以下
+
+```stylus
+// 音樂界面隱藏一些音樂按鈕
+#anMusic-page
+  #anMusicRefreshBtn, #anMusicBtnGetSong, #anMusicSwitching
+    display none
+```
+
 # hexo-butterfly-envelope
 
 `main.js`中把中文改為英文
