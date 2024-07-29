@@ -36,12 +36,20 @@ music.styl 添加以下
     display none
 ```
 
-並且把 aplayer-icon-loop、aplayer-icon-order
+並且把 aplayer-icon-loop、aplayer-icon-order、aplayer-volume-wrap 設為不可見
 
 ```stylus
 &.aplayer-icon-loop, &.aplayer-icon-order
-                  display none
-                  margin-right 15px
+  display none
+  margin-right 15px
+```
+
+```stylus
+.aplayer-volume-wrap
+  display none
+  .aplayer-volume-bar-wrap
+    bottom: 0;
+    right: -5px;
 ```
 
 # hexo-butterfly-envelope
