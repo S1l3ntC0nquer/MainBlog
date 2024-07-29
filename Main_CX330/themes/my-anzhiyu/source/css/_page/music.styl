@@ -212,7 +212,8 @@ if hexo-config('nav_music.enable') == false
                 path
                   fill var(--anzhiyu-white)
                   opacity 0.8
-                &.aplayer-icon-loop
+                &.aplayer-icon-loop, &.aplayer-icon-order
+                  display none
                   margin-right 15px
               .aplayer-time-inner
                 margin-right 18px
@@ -368,6 +369,7 @@ if hexo-config('nav_music.enable') == false
                   position absolute
                   left 22px
                 .aplayer-icon-loop
+                  display none
                   position absolute
                   right 25px
                 .aplayer-icon-menu

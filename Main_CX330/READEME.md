@@ -36,6 +36,14 @@ music.styl 添加以下
     display none
 ```
 
+並且把 aplayer-icon-loop、aplayer-icon-order
+
+```stylus
+&.aplayer-icon-loop, &.aplayer-icon-order
+                  display none
+                  margin-right 15px
+```
+
 # hexo-butterfly-envelope
 
 `main.js`中把中文改為英文
