@@ -11,7 +11,7 @@ menu:
         Message board: /comments/ || anzhiyu-icon-message
 
     My:
-        Music bar: /music/?id=12295857597&server=netease || anzhiyu-icon-music
+        Music bar: /music/ || anzhiyu-icon-music
         Life snippets: /essay/ || anzhiyu-icon-lightbulb
         # Books: /bangumis/ || anzhiyu-icon-book
         Collections: /collect/ || anzhiyu-icon-book
@@ -908,7 +908,7 @@ translate:
     # The text of a button
     default: 简
     # Right-click menu default text
-    rightMenuMsgDefault: "转为简体"
+    rightMenuMsgDefault: "繁转简"
     # the language of website (1 - Traditional Chinese/ 2 - Simplified Chinese）
     defaultEncoding: 1
     # Time delay
@@ -918,9 +918,9 @@ translate:
     # The text of the button when the language is Traditional Chinese
     msgToSimplifiedChinese: "简"
     # Right-click the menu to traditional Chinese
-    rightMenuMsgToTraditionalChinese: "轉為繁體"
+    rightMenuMsgToTraditionalChinese: "簡轉繁"
     # Right-click menu to simplified Chinese
-    rightMenuMsgToSimplifiedChinese: "转为简体"
+    rightMenuMsgToSimplifiedChinese: "繁转简"
 
 # Read Mode (閲读模式)
 readmode: true
@@ -1246,7 +1246,7 @@ agreementPopup:
 
 # 右键菜单
 rightClickMenu:
-    enable: false
+    enable: true
 
 # 首页随便逛逛people模式 而非技能点模式，关闭后为技能点模式需要配置creativity.yml
 peoplecanvas:
