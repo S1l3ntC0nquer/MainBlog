@@ -67,4 +67,5 @@ highlight.styl 修改如下
 
 # 魔改資源
 
-[文章主色调(插件)](https://www.naokuo.top/p/fb2f8d77.html)
+-   [文章主色调(插件)](https://www.naokuo.top/p/fb2f8d77.html)
+-   [为主页文章卡片添加擦亮动画效果](https://blog.kouseki.cn/posts/dda6.html)
