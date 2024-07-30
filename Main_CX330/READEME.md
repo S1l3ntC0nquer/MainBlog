@@ -2,7 +2,7 @@
 
 This site is deploy on GitHub.
 
-# Music
+# 魔改
 
 Modify `util.js`
 
@@ -52,6 +52,19 @@ music.styl 添加以下
     right: -5px;
 ```
 
+highlight.styl 修改如下
+
+```stylus
+&.expand-done
+  i.anzhiyufont.anzhiyu-icon-angle-double-down
+    transform: rotate(180deg)
+    transition: all 0s, background 0.3s
+```
+
 # hexo-butterfly-envelope
 
 `main.js`中把中文改為英文
+
+# 魔改資源
+
+[文章主色调(插件)](https://www.naokuo.top/p/fb2f8d77.html)
