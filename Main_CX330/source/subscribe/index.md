@@ -1,14 +1,14 @@
 ---
-title: 訂閱
+title: Subscirbe
 date: 2024-06-16 16:33:46
 ---
 
-本站有兩種訂閱方式，如果您不知道甚麼是 RSS，推薦使用 Email 訂閱。
+This site offers two subscription methods. If you are unfamiliar with what RSS is, I recommend subscribing via Email.
 
-## Email 訂閱
+## Email Subscription
 
--   您將收到一封**確認信**以驗證您的訂閱，請至你的電子郵件信箱**點擊確認**。
--   如果您沒收到電子郵件，請檢查**垃圾郵件**。
+-   You will receive a **confirmation email** to verify your subscription. Please go to your email inbox and **click to confirm**.
+-   If you do not receive the email, please check your **spam folder**.
 
 <style>
     .followit--follow-form-container[attr-a][attr-b][attr-c][attr-d][attr-e][attr-f] .form-preview {
@@ -100,9 +100,9 @@ date: 2024-06-16 16:33:46
 
   </style>
 <div class="followit--follow-form-container" attr-a attr-b attr-c attr-d attr-e attr-f>
-  <form data-v-fa193b23="" action="https://api.follow.it/subscription-form/SEZOejNzUzZ2K3dIUS80K1BVK01QNG9QMUJyTHA2WE1uQ0JSblJ0amFYczNDd2oyVjBFd29hWVNES254bFVVNUtQUktBV1NRalA5MVBsUnpqMk9ocWd1OUV3VEh1dUM1UUxvL0dEc2ZFK1lFLzNIQldvSFhQdGhGall5Wlk3VlJ8dlZrT2NRNnZHSkFhcFZtQkR3azQzUkhJRFMvcGlyM3J5dzBiQm9qQWxJdz0=/8" method="post" data-np-autofill-form-type="subscribe" data-np-checked="1" data-np-watching="1"><div data-v-fa193b23="" class="form-preview" style="background-color: rgb(255, 255, 255); position: relative; border-style: solid; border-width: 1px; border-color: rgb(204, 204, 204);"><div data-v-fa193b23="" class="preview-heading"><h5 data-v-fa193b23="" style="text-transform: none !important; font-family: Arial; font-weight: 700; color: rgb(0, 0, 0); font-size: 18px; text-align: center;">訂閱 CX330，獲取最新的文章通知！</h5></div><div data-v-fa193b23="" class="preview-input-field"><input data-v-fa193b23="" type="email" name="email" required="" placeholder="請輸入您的 Email" spellcheck="false" style="text-transform: none !important; font-family: Arial; font-weight: normal; color: rgb(0, 0, 0); font-size: 14px; text-align: center; background-color: rgb(255, 255, 255);" data-np-uid="0d216973-697c-4c56-9e3e-96653f2c6f89" data-np-autofill-field-type="email"><nordpass-icon data-np-uid="0d216973-697c-4c56-9e3e-96653f2c6f89"></nordpass-icon></div><div data-v-fa193b23="" class="preview-submit-button"><button data-v-fa193b23="" type="submit" style="text-transform: none !important; font-family: Arial; font-weight: bold; color: rgb(255, 255, 255); font-size: 16px; text-align: center; background-color: rgb(0, 0, 0);">訂閱！</button></div></div></form>
+  <form data-v-fa193b23="" action="https://api.follow.it/subscription-form/SEZOejNzUzZ2K3dIUS80K1BVK01QNG9QMUJyTHA2WE1uQ0JSblJ0amFYczNDd2oyVjBFd29hWVNES254bFVVNUtQUktBV1NRalA5MVBsUnpqMk9ocWd1OUV3VEh1dUM1UUxvL0dEc2ZFK1lFLzNIQldvSFhQdGhGall5Wlk3VlJ8dlZrT2NRNnZHSkFhcFZtQkR3azQzUkhJRFMvcGlyM3J5dzBiQm9qQWxJdz0=/8" method="post" data-np-autofill-form-type="subscribe" data-np-checked="1" data-np-watching="1"><div data-v-fa193b23="" class="form-preview" style="background-color: rgb(255, 255, 255); position: relative; border-style: solid; border-width: 1px; border-color: rgb(204, 204, 204);"><div data-v-fa193b23="" class="preview-heading"><h5 data-v-fa193b23="" style="text-transform: none !important; font-family: Arial; font-weight: 700; color: rgb(0, 0, 0); font-size: 18px; text-align: center;">Get latest posts of CX330!</h5></div><div data-v-fa193b23="" class="preview-input-field"><input data-v-fa193b23="" type="email" name="email" required="" placeholder="Please enter your email" spellcheck="false" style="text-transform: none !important; font-family: Arial; font-weight: normal; color: rgb(0, 0, 0); font-size: 14px; text-align: center; background-color: rgb(255, 255, 255);" data-np-uid="0d216973-697c-4c56-9e3e-96653f2c6f89" data-np-autofill-field-type="email"><nordpass-icon data-np-uid="0d216973-697c-4c56-9e3e-96653f2c6f89"></nordpass-icon></div><div data-v-fa193b23="" class="preview-submit-button"><button data-v-fa193b23="" type="submit" style="text-transform: none !important; font-family: Arial; font-weight: bold; color: rgb(255, 255, 255); font-size: 16px; text-align: center; background-color: rgb(0, 0, 0);">Subscribe</button></div></div></form>
 </div>
 
-## RSS 訂閱
+## RSS Subscription
 
--   您可以用 RSS 訂閱器訂閱本站的文章，以便及時收到最新文章的更新通知。 [**點擊訂閱**](https://cx330.tw/atom.xml)
+-   You can subscribe to this site's articles via an RSS reader to receive timely notifications of the latest updates. [**Click to subscribe**](https://cx330.tw/atom.xml)
