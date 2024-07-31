@@ -1,13 +1,14 @@
 ---
-title: "[Day 20] HTB Academy - Stack-Based Buffer Overflows on Linux x86"
-date: 2024-07-31 14:48:54
+title: '[Day 20] HTB Academy - Stack-Based Buffer Overflows on Linux x86'
 cover: >-
-    https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/hackerTraining.jpg
+  https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/hackerTraining.jpg
 categories: 2024 CTF Training
 tags:
-    - CTF
-    - CyberSec
-    - Pwn
+  - CTF
+  - CyberSec
+  - Pwn
+abbrlink: 4e5b6228
+date: 2024-07-31 14:48:54
 ---
 
 # 前言
