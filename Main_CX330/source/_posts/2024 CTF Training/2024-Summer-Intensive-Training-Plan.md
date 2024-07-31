@@ -1,8 +1,9 @@
 ---
 title: 2024 Summer Intensive Training Plan
-cover:
+cover: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/hackerTraining.jpg
 categories:
-    - LifeAndTalk
+    - [LifeAndTalk]
+    - [2024 CTF Training]
 tags:
     - CTF
     - Security

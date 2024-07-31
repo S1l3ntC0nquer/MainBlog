@@ -2,7 +2,7 @@
 title: Why Do I Start Blogging
 categories:
     - LifeAndTalk
-cover: /images/CX330.jpg
+cover: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/whydoistartblogging.jpg
 abbrlink: e6118152
 date: 2024-05-30 02:47:09
 ---
