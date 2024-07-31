@@ -648,8 +648,9 @@ theme_color:
     link_color: "var(--anzhiyu-fontcolor)"
     meta_color: "var(--anzhiyu-fontcolor)"
     hr_color: "#4259ef23"
-    code_foreground: "#fff"
-    code_background: "var(--anzhiyu-code-stress)"
+    # 設置單行代碼樣式
+    code_foreground: "var(--anzhiyu-theme);" # "#fff"
+    code_background: "transparent" # "var(--anzhiyu-code-stress)"
     toc_color: "#425AEF"
     #   blockquote_padding_color: "#425AEF"
     #   blockquote_background_color: "#425AEF"
