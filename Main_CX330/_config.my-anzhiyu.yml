@@ -910,7 +910,7 @@ translate:
     # The text of a button
     default: 简
     # Right-click menu default text
-    rightMenuMsgDefault: "Simp/Trad"
+    rightMenuMsgDefault: "Simp / Trad"
     # the language of website (1 - Traditional Chinese/ 2 - Simplified Chinese）
     defaultEncoding: 1
     # Time delay
@@ -920,9 +920,9 @@ translate:
     # The text of the button when the language is Traditional Chinese
     msgToSimplifiedChinese: "简"
     # Right-click the menu to traditional Chinese
-    rightMenuMsgToTraditionalChinese: "Simp/Trad"
+    rightMenuMsgToTraditionalChinese: "Simp / Trad"
     # Right-click menu to simplified Chinese
-    rightMenuMsgToSimplifiedChinese: "Simp/Trad"
+    rightMenuMsgToSimplifiedChinese: "Simp / Trad"
 
 # Read Mode (閲读模式)
 readmode: true
