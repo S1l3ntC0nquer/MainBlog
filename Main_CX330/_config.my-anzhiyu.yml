@@ -1,18 +1,19 @@
 menu:
     Articles:
-        Archives: /archives/ || anzhiyu-icon-list-ul
-        Categories: /categories/ || anzhiyu-icon-shapes
-        Tags: /tags/ || anzhiyu-icon-tags
-        Random: javascript:toRandomPost() || anzhiyu-icon-dice
+        Archives: /archives/ || fa-solid fa-file-zipper
+        Categories: /categories/ || fa-duotone fa-solid fa-icons
+        Tags: /tags/ || fa-solid fa-hashtag
+        Random: javascript:toRandomPost() || fa-regular fa-dice
+        Statistics: /statistics/ || fa-solid fa-chart-simple
 
     Social:
-        Link exchange: /link/ || anzhiyu-icon-link
+        Link exchange: /link/ || fa-duotone fa-solid fa-link
         # Moments: /fcircle/ ||
-        Message board: /comments/ || anzhiyu-icon-message
+        Message board: /comments/ || fa-solid fa-message
 
     My:
-        Music bar: /music/ || anzhiyu-icon-music
-        Life snippets: /essay/ || anzhiyu-icon-lightbulb
+        Music bar: /music/ || fa-solid fa-music
+        Life snippets: /essay/ || fa-solid fa-lightbulb
         # Books: /bangumis/ || anzhiyu-icon-book
         Collections: /collect/ || anzhiyu-icon-book
         Photos: /album/ || anzhiyu-icon-images
@@ -20,7 +21,7 @@ menu:
 
     About:
         Whoami: /about/ || anzhiyu-icon-paper-plane
-        Subscribe: /subscribe/ || anzhiyu-icon-rss
+        Subscribe: /subscribe/ || fa-solid fa-bell
 
 # nav相关配置
 nav:
@@ -1359,3 +1360,16 @@ CDN:
         # waterfall:
         # ali_iconfont_css:
         # accesskey_js:
+
+#see https://www.npmjs.com/package/hexo-butterfly-charts
+charts:
+    enable: true
+    postsChart:
+        title:
+        interval: 1
+    tagsChart:
+        title: Top 5 tags
+        interval: 0
+    postsCalendar_Title: Posts Calendar
+    categoriesChart_Title: 分類統計
+    categoriesRadar_Title: 分類雷達
