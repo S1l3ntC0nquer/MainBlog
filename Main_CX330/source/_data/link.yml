@@ -20,16 +20,16 @@
         descr: 分享設計與科技生活
         color: speed
         tag: UI/UX
+      - name: Evan Luo
+        link: https://ohevan.com/
+        avatar: https://evan.beee.top/avatars/avatar-min.png
+        descr: Evan 的部落格，用香港記者的速度更新文章
+        color:
+        tag: Tech
       - name: Leonus
         link: https://blog.leonus.cn/
         avatar: https://q1.qlogo.cn/g?b=qq&nk=990320751&s=5
         descr: 進一寸有近一寸的歡喜。
-        color:
-        tag: Tech
-      - name: EvanNotFound
-        link: https://ohevan.com/
-        avatar: https://evan.beee.top/avatars/avatar-min.png
-        descr: Evan的部落格，用香港記者的速度更新文章
         color:
         tag: Tech
       - name: Kazma

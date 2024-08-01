@@ -1236,7 +1236,7 @@ linkPageTop:
     enable: false
     title: Connect with others
     # 添加博主友链的评论自定义格式
-    addFriendPlaceholder: "暱稱：\n網站網址：\n頭貼URL：\n描述：\n網站截圖：\n"
+    addFriendPlaceholder: "Nickname：\nSite URL：\nAvatar URL：\nDescription："
 
 # 缩略图后缀 archive/tag/category 页面单独开启后缀
 pageThumbnailSuffix: ""
