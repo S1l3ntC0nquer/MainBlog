@@ -61,6 +61,13 @@ highlight.styl 修改如下
     transition: all 0s, background 0.3s
 ```
 
+sidebar.styl 新增以下
+
+```stylus
+.fa, .fa-solid, .fab, .far, .fas
+  line-height inherit !important // 或者您想要设置的其他值
+```
+
 # hexo-butterfly-envelope
 
 `main.js`中把中文改為英文

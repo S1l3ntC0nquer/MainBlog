@@ -1,9 +1,9 @@
 menu:
     Articles:
         Archives: /archives/ || fa-solid fa-file-zipper
-        Categories: /categories/ || fa-duotone fa-solid fa-icons
+        Categories: /categories/ || fa-solid fa-icons
         Tags: /tags/ || fa-solid fa-hashtag
-        Random: javascript:toRandomPost() || fa-regular fa-dice
+        Random: javascript:toRandomPost() || fa-solid fa-dice
         Statistics: /statistics/ || fa-solid fa-chart-simple
 
     Social:
@@ -15,12 +15,12 @@ menu:
         Music bar: /music/ || fa-solid fa-music
         Life snippets: /essay/ || fa-solid fa-lightbulb
         # Books: /bangumis/ || anzhiyu-icon-book
-        Collections: /collect/ || anzhiyu-icon-book
-        Photos: /album/ || anzhiyu-icon-images
+        Collections: /collect/ || fa-solid fa-book
+        Photos: /album/ || fa-solid fa-image
         # Conditioning: /air-conditioner/ ||
 
     About:
-        Whoami: /about/ || anzhiyu-icon-paper-plane
+        Whoami: /about/ || fa-solid fa-paper-plane
         Subscribe: /subscribe/ || fa-solid fa-bell
 
 # nav相关配置
