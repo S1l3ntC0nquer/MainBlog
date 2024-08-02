@@ -1,13 +1,14 @@
 ---
-title: "[Day 22] 今天嘗試了自己做出Pwn107！"
-date: 2024-08-02 23:17:54
+title: '[Day 22] 今天嘗試了自己做出Pwn107！'
 cover: >-
-    https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/hackerTraining.jpg
+  https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/hackerTraining.jpg
 categories: 2024 CTF Training
 tags:
-    - CTF
-    - CyberSec
-    - Pwn
+  - CTF
+  - CyberSec
+  - Pwn
+abbrlink: 26c65734
+date: 2024-08-02 23:17:54
 ---
 
 # 前言
