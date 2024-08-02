@@ -408,3 +408,6 @@ Thanks 0x7ffd43b908a0 (nil) (nil) 0x55e71b068380 0x7f3191483b30 0x5b5858587b4d48
 ```
 
 It seems to be a format string vulnerability! ([See here for more info](https://ctf101.org/binary-exploitation/what-is-a-format-string-vulnerability/))
+
+So I first 
+

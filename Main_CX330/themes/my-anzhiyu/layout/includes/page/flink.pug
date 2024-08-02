@@ -3,7 +3,7 @@
     #flink-banners
       .banner-top-box
         .flink-banners-title
-          .banners-title-small 友情鏈接
+          .banners-title-small Link exchange
           .banners-title-big=theme.linkPageTop ? theme.linkPageTop.title : "與數百名博主無限進步"
         .banner-button-group
           if (theme.friends_vue.apiurl)
@@ -13,7 +13,7 @@
           if theme.linkPageTop.addFriendPlaceholder && theme.comments.use == 'Twikoo' && theme.twikoo.envId
             a.banner-button.no-text-decoration(onclick="anzhiyu.addFriendLink()")
               i.anzhiyufont.anzhiyu-icon-arrow-circle-right
-              span.banner-button-text 申請友鏈
+              span.banner-button-text Request
       #skills-tags-group-all
         .tags-group-wrapper
           - function getAvatarWithoutExclamationMark(url) {

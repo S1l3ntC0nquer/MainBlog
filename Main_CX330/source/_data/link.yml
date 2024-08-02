@@ -91,9 +91,109 @@
         descr: A CTF player from Los Angeles
         tag: Hack
         color: "#eb0038"
+      - name: Matt Spraggs
+        link: https://www.mattspraggs.co.uk/
+        avatar: https://www.mattspraggs.co.uk/theme/images/portrait.jpg
+        descr: Software engineer. Ex-physicist. Funny surname.
+        tag: Hack
+        color: "#eb0038"
+      - name: Hakune
+        link: https://www.akihakune.com/
+        avatar: https://www.akihakune.com/static/avatar.webp
+        descr: Write-ups, softwares, Linux, and everything
+        tag: Hack
+        color: "#eb0038"
+      - name: remoteshell.zip
+        link: https://remoteshell.zip/
+        avatar: https://remoteshell.zip/images/avatar.png
+        descr: Someone told me cybersecurity is important.
+        tag: Hack
+        color: "#eb0038"
+      - name: Jaybailey
+        link: https://jaybailey216.com/
+        avatar: https://cdn.buymeacoffee.com/uploads/profile_pictures/2022/07/k5vEUsVgw9AAstaY.jpg@300w_0e.webp
+        descr: Reverse Engineering Tutorials and Walkthrough
+        tag: Hack
+        color: "#eb0038"
+      - name: Huli
+        link: https://huli.tw/
+        avatar: https://life.huli.tw/img/huli_logo.jpg
+        descr: 沒那麼技術的部落格，記錄生活以及各種瑣事
+        tag: Hack
+        color: "#eb0038"
+      - name: KaiBro
+        link: http://blog.30cm.club/
+        avatar: https://blog.kaibro.tw/img/head.jpg
+        descr: Security Researcher / CTFer / Bug Bounty Hunter
+        tag: Hack
+        color: "#eb0038"
+      - name: 杜老師說
+        link: https://dusays.com/
+        avatar: https://cdn.dusays.com/avatar.png
+        descr: 師者，傳道，授業，解惑！
+        tag: Tech
+      - name: Ariasakaの小窩
+        link: https://blog.yaria.top
+        avatar: https://weavatar.com/avatar/795ce413eb6c7485954b78283ffa3e00
+        descr: 人有悲歡離合，月有陰晴圓缺
+        tag: Tech
+        siteshot: https://vercel.yaria.top/img/siteshot.png
+      - name: Prong
+        link: https://prong.ltd/
+        avatar: https://prong-1316442664.cos.ap-nanjing.myqcloud.com/picgo/202301242359645.webp
+        descr: 這是尖頭叉子在霍格華茲的休息室~
+        tag: Tech
+      - name: Splitline's blog
+        link: https://blog.splitline.tw/
+        avatar: https://blog.splitline.tw/content/images/2022/09/avatar.jpg
+        descr: 是一個隨處可見的魔化異能行者。
+        tag: Hack
+        color: "#eb0038"
+      - name: ChiLin.H
+        link: https://neko70.net/
+        avatar: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/avatar.jpg
+        descr: 一個重度社恐的資安小白/音遊宅
+        tag: Hack
+        color: "#eb0038"
+      - name: dkri3c1's Blog
+        link: https://dkri3c1.github.io/
+        avatar: https://dkri3c1.github.io/img/avatar_hu0fd796befda1b1bce6509fce4d514560_19902_300x0_resize_box_3.png
+        descr: 一個對於資安充滿興趣的屁孩
+        tag: Hack
+        color: "#eb0038"
+      - name: 貝坦betan
+        link: https://betan423.github.io/
+        avatar: https://betan423.github.io/img/betan_logo_huc0cf00769729bef14a4ca55a1a95e602_4709_288x288_fill_box_center_3.png
+        descr: 嗨我是貝坦，一個誤打誤撞跑去學資安的怪人
+        tag: Hack
+        color: "#eb0038"
+      - name: Whale120
+        link: https://wha13.github.io/
+        avatar: https://wha13.github.io/images/logo.png
+        descr: Is it possible to put a whale into a fridge?
+        tag: Hack
+        color: "#eb0038"
+      - name: TriangleSnake
+        link: https://blog.trianglesnake.com/
+        avatar: https://avatars.githubusercontent.com/u/46417323
+        descr: Hacker from NCKU
+        tag: Hack
+        color: "#eb0038"
+      - name: Ethan.Tzy
+        link: https://fe32.top/
+        avatar: https://bu.dusays.com/2022/05/02/626f92e193879.jpg
+        descr: 古今之成大事者，不惟有超世之才，亦必有堅忍不拔之志
+        screenshot: https://bu.dusays.com/2023/07/16/64b400bf8e546.jpg
+        tag: Tech
+      - name: Squarer
+        link: https://squarepants0.github.io/
+        avatar: https://squarepants0.github.io/medias/matrix.jpg
+        descr: Fight Against Your Fate!
+        tag: Hack
+        color: "#eb0038"
 # - class_name: 小伙伴
 #   class_desc: 那些人，那些事
-#   flink_style: flexcard
+#   flink_style: flexcard/anzhiyu
 #   hundredSuffix: ""
 #   link_list:
 #       - name: 安知鱼
