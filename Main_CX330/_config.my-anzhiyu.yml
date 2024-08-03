@@ -460,6 +460,7 @@ footer:
     socialBar:
         enable: true
         centerImg: /assets/me.jpg
+        # 這裡的icon不能用fa-solid
         left:
             - title: GitHub
               link: https://github.com/CX330Blake
@@ -469,7 +470,7 @@ footer:
               icon: fa-brands fa-facebook
             - title: Email
               link: mailto:timchen975@gmail.com
-              icon: fa-solid fa-envelope
+              icon: fa-regular fa-envelope
 
         right:
             - title: LinkedIn
