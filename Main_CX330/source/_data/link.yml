@@ -191,6 +191,12 @@
         descr: Fight Against Your Fate!
         tag: Hack
         color: "#eb0038"
+      - name: 忘返
+        link: https://7mitu.github.io/
+        avatar: https://7mitu.github.io/img/profile.jpg
+        descr: 正經人誰寫日記啊。
+        tag: Hack
+        color: "#eb0038"
 # - class_name: 小伙伴
 #   class_desc: 那些人，那些事
 #   flink_style: flexcard/anzhiyu
