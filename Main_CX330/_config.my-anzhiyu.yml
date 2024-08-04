@@ -470,7 +470,7 @@ footer:
               icon: fa-brands fa-facebook
             - title: Email
               link: mailto:timchen975@gmail.com
-              icon: fa-regular fa-envelope
+              icon: fa-solid fa-envelope
 
         right:
             - title: LinkedIn
@@ -1090,7 +1090,7 @@ home_top:
           path: /categories/CTF/
           shadow: var(--anzhiyu-shadow-blue)
           class: blue
-          icon: anzhiyu-icon-dice-d20
+          icon: fa-solid fa-flag
         - name: DevCorner
           path: /categories/DevCorner/
           shadow: var(--anzhiyu-shadow-red)
