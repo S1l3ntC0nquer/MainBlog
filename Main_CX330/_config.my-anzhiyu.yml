@@ -1046,7 +1046,7 @@ instantpage: true
 # Insert a space between Chinese character and English character (中英文之间添加空格)
 pangu:
     enable: true
-    field: site # site/post
+    field: post # site/post
 
 # Lazyload (图片懒加载)
 # https://github.com/verlok/vanilla-lazyload
@@ -1234,7 +1234,7 @@ accesskey:
 
 # 友情链接顶部相关配置
 linkPageTop:
-    enable: false
+    enable: true
     title: Connect with others
     # 添加博主友链的评论自定义格式
     addFriendPlaceholder: "Nickname：\nSite URL：\nAvatar URL：\nDescription："
