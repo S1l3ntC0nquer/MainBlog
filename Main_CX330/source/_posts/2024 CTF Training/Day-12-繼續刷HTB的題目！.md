@@ -1,5 +1,5 @@
 ---
-title: "[Day 12] 繼續刷HTB的題目！"
+title: "[Day 12] 繼續刷 HTB 的題目！"
 cover: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/hackerTraining.jpg
 categories: 2024 CTF Training
 tags:

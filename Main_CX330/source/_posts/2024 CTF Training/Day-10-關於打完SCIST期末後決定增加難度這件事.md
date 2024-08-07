@@ -1,5 +1,5 @@
 ---
-title: "[Day 10] 關於打完SCIST期末後決定增加難度這件事"
+title: "[Day 10] 關於打完 SCIST 期末後決定增加難度這件事"
 cover: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/hackerTraining.jpg
 categories: 2024 CTF Training
 tags:

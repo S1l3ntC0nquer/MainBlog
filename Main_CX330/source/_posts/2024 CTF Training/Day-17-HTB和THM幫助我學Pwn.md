@@ -1,5 +1,5 @@
 ---
-title: "[Day 17] HTB和THM幫助我學Pwn"
+title: "[Day 17] HTB 和 THM 幫助我學 Pwn"
 cover: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/hackerTraining.jpg
 categories: 2024 CTF Training
 tags:

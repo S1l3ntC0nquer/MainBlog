@@ -1,5 +1,5 @@
 ---
-title: "[Day 11] 把SCIST季後賽的writeup整理了下"
+title: "[Day 11] 把 SCIST 季後賽的 writeup 整理了下"
 cover: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/hackerTraining.jpg
 categories: 2024 CTF Training
 tags:

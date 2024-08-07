@@ -1,12 +1,12 @@
 ---
-title: '[Day 18] Yuawn的課真的上的不錯，大推大推'
+title: "[Day 18] Yuawn 的課真的上的不錯，大推大推"
 cover: >-
-  https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/hackerTraining.jpg
+    https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/hackerTraining.jpg
 categories: 2024 CTF Training
 tags:
-  - CTF
-  - CyberSec
-  - Pwn
+    - CTF
+    - CyberSec
+    - Pwn
 abbrlink: dfbc9f18
 date: 2024-07-28 23:42:12
 ---

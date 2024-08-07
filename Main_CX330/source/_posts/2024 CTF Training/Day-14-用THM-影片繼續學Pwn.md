@@ -1,5 +1,5 @@
 ---
-title: "[Day 14] 用THM+影片繼續學Pwn"
+title: "[Day 14] 用 THM + 影片繼續學 Pwn"
 cover: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/hackerTraining.jpg
 categories: 2024 CTF Training
 tags:

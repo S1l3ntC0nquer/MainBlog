@@ -1,5 +1,5 @@
 ---
-title: "[Day 15] 我在澎湖刷THM的Pwn題目"
+title: "[Day 15] 我在澎湖刷 THM 的 Pwn 題目"
 cover: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/hackerTraining.jpg
 categories: 2024 CTF Training
 tags:

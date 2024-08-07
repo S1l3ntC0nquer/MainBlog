@@ -1,5 +1,5 @@
 ---
-title: "[Day 13] 今天，從0開始學Pwn"
+title: "[Day 13] 今天，從 0 開始學 Pwn"
 cover: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/hackerTraining.jpg
 categories: 2024 CTF Training
 tags:

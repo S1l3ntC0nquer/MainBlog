@@ -1,12 +1,12 @@
 ---
-title: '[Day 21] Pwn好難...但我會加油的'
+title: "[Day 21] Pwn 好難...但我會加油的"
 cover: >-
-  https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/hackerTraining.jpg
+    https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/hackerTraining.jpg
 categories: 2024 CTF Training
 tags:
-  - CTF
-  - CyberSec
-  - Pwn
+    - CTF
+    - CyberSec
+    - Pwn
 abbrlink: ab8b10a3
 date: 2024-08-01 01:58:02
 ---
