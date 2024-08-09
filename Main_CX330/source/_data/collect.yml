@@ -7,10 +7,27 @@
         icon: fa-solid fa-book #左上角图标
         tip: Books # 右上角文字
         url: # 可选
-
       - name: Black Hat Python
         img: https://m.media-amazon.com/images/I/91NJ0qC4vEL._AC_UF1000,1000_QL80_.jpg
         score: 4.5
+        icon: fa-solid fa-book
+        tip: Books
+        url:
+      - name: Ghost in the wires
+        img: https://m.media-amazon.com/images/I/41OUme2LKgL._SY445_SX342_.jpg
+        score: 5
+        icon: fa-solid fa-book
+        tip: Books
+        url:
+      - name: The Hacker Playbook 3
+        img: https://m.media-amazon.com/images/I/81+0VLwOfIL._AC_UF1000,1000_QL80_.jpg
+        score: 5
+        icon: fa-solid fa-book
+        tip: Books
+        url:
+      - name: Real-World Bug Hunting
+        img: https://m.media-amazon.com/images/I/81jAGZDGuyL._AC_UF1000,1000_QL80_.jpg
+        score: 5
         icon: fa-solid fa-book
         tip: Books
         url:
