@@ -1,13 +1,14 @@
 ---
-title: "[Day 23] 刷一些 PicoCTF 的 Pwn 題"
-date: 2024-08-10 14:49:33
+title: '[Day 23] 刷一些 PicoCTF 的 Pwn 題'
 cover: >-
-    https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/hackerTraining.jpg
+  https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/hackerTraining.jpg
 categories: 2024 CTF Training
 tags:
-    - CTF
-    - CyberSec
-    - Pwn
+  - CTF
+  - CyberSec
+  - Pwn
+abbrlink: 51f13f41
+date: 2024-08-10 14:49:33
 ---
 
 # 前言
