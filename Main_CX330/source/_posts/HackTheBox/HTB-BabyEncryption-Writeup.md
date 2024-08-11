@@ -1,15 +1,16 @@
 ---
-title: "[HTB] BabyEncryption Writeup"
-date: 2024-08-11 17:41:48
+title: '[HTB] BabyEncryption Writeup'
 cover: >-
-    https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/help-you-at-solving-hackthebox-htb-challenges-machines.png
+  https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/help-you-at-solving-hackthebox-htb-challenges-machines.png
 categories:
-    - [HackTheBox]
-    - [CTF]
+  - - HackTheBox
+  - - CTF
 tags:
-    - HTB
-    - Crypto
-    - HackTheBox
+  - HTB
+  - Crypto
+  - HackTheBox
+abbrlink: 3df19469
+date: 2024-08-11 17:41:48
 ---
 
 # 0x00 Challenge Info
