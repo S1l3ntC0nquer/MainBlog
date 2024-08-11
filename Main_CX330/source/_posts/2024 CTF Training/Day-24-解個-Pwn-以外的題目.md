@@ -1,12 +1,13 @@
 ---
-title: "[Day 24] 解個 Pwn 以外的題目"
-date: 2024-08-11 23:34:37
+title: '[Day 24] 解個 Pwn 以外的題目'
 cover: >-
-    https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/hackerTraining.jpg
+  https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/hackerTraining.jpg
 categories: 2024 CTF Training
 tags:
-    - CTF
-    - CyberSec
+  - CTF
+  - CyberSec
+abbrlink: 726c0654
+date: 2024-08-11 23:34:37
 ---
 
 # 前言
