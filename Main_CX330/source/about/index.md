@@ -22,7 +22,7 @@ Knowing that I'm just an ordinary person, I often wonder if my dreams are too bi
 
 As NASA researchers mentioned, CX330 is a young and isolated star. I chose it as my ID because I deeply understand the importance of embracing solitude on the path to becoming a hacker. Only in solitude can I achieve a state of complete focus, and this intense isolation allows me to reach a state of flow. I hope this ID constantly reminds me to cherish and enjoy every moment of solitude, aspiring to become a young and brilliant star (and that's why I say you can call me The Star).
 
-# My dreams
+# My Dreams
 
 I have a lot of dreams so it's hard to list all of them here. But one of them is that I hope one day I can become a hacker remembered by the world.
 
@@ -31,3 +31,9 @@ I'm not a good hacker yet, and I also don't know how long it will take to become
 I hope one day, people will remember my name and my ID, remember Matthew Chen, remeber The Star, remeber CX330.
 
 > "Dreams feel real while we're in them. It's only when we wake up that we realize something was actually strange." — **_Inception_**
+
+# My GitHub Stats
+
+[![CX330's GitHub stats](https://github-readme-stats.vercel.app/api?username=CX330Blake&count_private=true&theme=radical&show_icons=true&hide_border=true)](https://github.com/CX330Blake)
+
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=CX330Blake&hide=html,css,scss&theme=radical)](https://github.com/CX330Blake)
