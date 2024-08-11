@@ -68,6 +68,19 @@ sidebar.styl 新增以下
   line-height inherit !important // 或者您想要设置的其他值
 ```
 
+code.css 修改如下
+
+```css
+#article-container code {
+    /* padding: 0.2rem 0.4rem; */
+    border-radius: 4px;
+    /* margin: 0 4px; */
+    line-height: 2;
+    /* color: var(--anzhiyu-theme); 更改行內代碼樣式 */
+    /* box-shadow: var(--anzhiyu-shadow-border); */
+}
+```
+
 # hexo-butterfly-envelope
 
 `main.js`中把中文改為英文
