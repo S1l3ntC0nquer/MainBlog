@@ -81,6 +81,12 @@ code.css 修改如下
 }
 ```
 
+en.yml 修改如下
+
+```yaml
+sticky: Pinned
+```
+
 # hexo-butterfly-envelope
 
 `main.js`中把中文改為英文
