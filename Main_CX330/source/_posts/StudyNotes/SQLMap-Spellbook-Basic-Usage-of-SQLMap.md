@@ -52,7 +52,7 @@ The following are some parameters commonly used in SQLMap.
 ## Options
 
 | Flag       | Description                         |
-| ---------- | ----------------------------------- |
+| :--------- | :---------------------------------- |
 | -h, --help | Show basic help message and exit    |
 | -hh        | Show advanced help message and exit |
 | -v VERBOSE | Verbosity level: 0-6 (default 1)    |
@@ -62,7 +62,7 @@ The following are some parameters commonly used in SQLMap.
 At least one of these options has to be provided to define the target(s).
 
 | Flag              | Description                                           |
-| ----------------- | ----------------------------------------------------- |
+| :---------------- | :---------------------------------------------------- |
 | -u URL, --url=URL | Target URL (e.g. "http://www.site.com/vuln.php?id=1") |
 
 ## Request
@@ -70,7 +70,7 @@ At least one of these options has to be provided to define the target(s).
 These options can be used to specify how to connect to the target URL.
 
 | Flag            | Description                                           |
-| --------------- | ----------------------------------------------------- |
+| :-------------- | :---------------------------------------------------- |
 | --data=DATA     | Data string to be sent through POST (e.g. "id=1")     |
 | --cookie=COOKIE | HTTP Cookie header value (e.g. "PHPSESSID=a8d127e..") |
 | --random-agent  | Use randomly selected HTTP User-Agent header value    |
@@ -83,7 +83,7 @@ These options can be used to specify how to connect to the target URL.
 These options can be used to specify which parameters to test for, provide custom injection payloads and optional tampering scripts.
 
 | Flag             | Description                                              |
-| ---------------- | -------------------------------------------------------- |
+| :--------------- | :------------------------------------------------------- |
 | -p TESTPARAMETER | Testable parameter(s) (eg. -p username)                  |
 | --dbms=DBMS      | Force back-end DBMS to provided value (eg. --dbms=mysql) |
 
@@ -92,7 +92,7 @@ These options can be used to specify which parameters to test for, provide custo
 These options can be used to customize the detection phase.
 
 | Flag          | Description                                |
-| ------------- | ------------------------------------------ |
+| :------------ | :----------------------------------------- |
 | --level=LEVEL | Level of tests to perform (1-5, default 1) |
 | --risk=RISK   | Risk of tests to perform (1-3, default 1)  |
 
@@ -101,7 +101,7 @@ These options can be used to customize the detection phase.
 These options can be used to enumerate the back-end database management system information, structure and data contained in the tables.
 
 | Flag           | Description                                |
-| -------------- | ------------------------------------------ |
+| :------------- | :----------------------------------------- |
 | -a, --all      | Retrieve everything                        |
 | -b, --banner   | Retrieve DBMS banner                       |
 | --current-user | Retrieve DBMS current user                 |
@@ -123,7 +123,7 @@ These options can be used to enumerate the back-end database management system i
 These options can be used to access the back-end database management system underlying operating system.
 
 | Flag       | Description                                      |
-| ---------- | ------------------------------------------------ |
+| :--------- | :----------------------------------------------- |
 | --os-shell | Prompt for an interactive operating system shell |
 | --os-pwn   | Prompt for an OOB shell, Meterpreter or VNC      |
 | --priv-esc | Database process user privilege escalation       |
@@ -133,14 +133,14 @@ These options can be used to access the back-end database management system unde
 These options can be used to set some general working parameters.
 
 | Flag            | Description                                        |
-| --------------- | -------------------------------------------------- |
+| :-------------- | :------------------------------------------------- |
 | --batch         | Never ask for user input, use the default behavior |
 | --flush-session | Flush session files for current target             |
 
 ## Miscellaneous
 
 | Flag     | Description                                |
-| -------- | ------------------------------------------ |
+| :------- | :----------------------------------------- |
 | --wizard | Simple wizard interface for beginner users |
 
 # More About The Spells
