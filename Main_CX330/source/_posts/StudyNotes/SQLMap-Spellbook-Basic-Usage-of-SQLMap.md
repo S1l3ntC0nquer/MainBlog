@@ -132,10 +132,12 @@ These options can be used to access the back-end database management system unde
 
 These options can be used to set some general working parameters.
 
-| Flag            | Description                                        |
-| :-------------- | :------------------------------------------------- |
-| --batch         | Never ask for user input, use the default behavior |
-| --flush-session | Flush session files for current target             |
+| Flag               | Description                                                  |
+| :----------------- | :----------------------------------------------------------- |
+| --batch            | Never ask for user input, use the default behavior           |
+| --crawl=CRAWLDEPTH | Crawl the website starting from the target URL (usually use 2) |
+| --forms            | Parse and test forms on target URL                           |
+| --flush-session    | Flush session files for current target                       |
 
 ## Miscellaneous
 
