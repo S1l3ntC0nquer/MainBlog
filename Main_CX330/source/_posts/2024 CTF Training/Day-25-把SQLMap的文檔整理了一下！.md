@@ -1,5 +1,5 @@
 ---
-title: '[Day 25] 把SQLMap的文檔整理了一下！'
+title: '[Day 25] 把 SQLMap 的文檔整理了一下！'
 cover: >-
   https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/hackerTraining.jpg
 categories: 2024 CTF Training
