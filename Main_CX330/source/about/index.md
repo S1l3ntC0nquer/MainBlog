@@ -10,7 +10,7 @@ type: "about"
 
 # Whoami
 
-Hello world. My name is **Matthew Chen**, and the IDs I often use in the cyber world are **CX330** & **The Star** (since CX330 is hard to pronounce). I am currently a college student, majoring in computer science. I want to become a really great hacker, just like Condor or The Mentor.
+Hello world. My name is **Blake Chen**, and the IDs I often use in the cyber world are **CX330** & **The Star** (since CX330 is hard to pronounce). I am currently a college student, majoring in computer science. I want to become a really great hacker, just like Condor or The Mentor.
 
 Also, I'm a perfectionist. So that's why I always try to optimize everything in my short life. Every time I can't reach my expectations, I'll be a little upset, although I know that it's not possible to let everything being perfect. Due to this, I sometimes try too hard and make a lot of things overflow, such as my brain, my schedule, my emotions, etc.
 
@@ -28,7 +28,7 @@ I have a lot of dreams so it's hard to list all of them here. But one of them is
 
 I'm not a good hacker yet, and I also don't know how long it will take to become one. But the one thing I know is that I will keep staying on my path. Even if people laugh at me and don't believe in me, I still believe in myself and my talent. Yes, I'm not the smartest. But I'm the one who has dreams. And to achieve them, I will keep learning and keep hacking.
 
-I hope one day, people will remember my name and my ID, remember Matthew Chen, remeber The Star, remeber CX330.
+I hope one day, people will remember my name and my ID, remember Blake Chen, remeber The Star, remeber CX330.
 
 > "Dreams feel real while we're in them. It's only when we wake up that we realize something was actually strange." — **_Inception_**
 
