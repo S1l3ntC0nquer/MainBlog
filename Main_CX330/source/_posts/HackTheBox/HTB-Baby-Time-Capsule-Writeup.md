@@ -1,14 +1,14 @@
 ---
 title: "[HTB] Baby Time Capsule Writeup \U0001F48A"
 cover: >-
-  https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/help-you-at-solving-hackthebox-htb-challenges-machines.png
+    https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/help-you-at-solving-hackthebox-htb-challenges-machines.png
 categories:
-  - - HackTheBox
-  - - CTF
+    - - HackTheBox
+    - - CTF
 tags:
-  - HTB
-  - Crypto
-  - HacktTheBox
+    - HTB
+    - Crypto
+    - HacktTheBox
 abbrlink: 67b7db12
 date: 2024-08-16 20:44:06
 ---
@@ -122,7 +122,6 @@ So here's the exploit.
 from gmpy2 import iroot
 from sympy.ntheory.modular import crt
 from Crypto.Util.number import long_to_bytes
-from sympy import integer_nthroot
 
 # Here are the given ciphertexts and public keys
 c1 = 0x2B9562DA73EA4B61F4A34C9B73A4F51AA20E31311E07F16CF8975B9AF095C3168EFFF0DC17FCA34BC0510AC2A5A0D4FF40428F70A384FED8DD0FC317E3CF86BE08FFB7A607E18ACBC0B4A1E20CCA4D506427C28480931D86AE897A38FB4B1A2EAAD68E2D031FFE0C86328AFD5381B1A3DF53286675D51D954AF4B95B32439F4A
@@ -146,4 +145,3 @@ print(long_to_bytes(m))
 ```txt
 HTB{t3h_FuTUr3_15_bR1ghT_1_H0p3_y0uR3_W34r1nG_5h4d35!}
 ```
-
