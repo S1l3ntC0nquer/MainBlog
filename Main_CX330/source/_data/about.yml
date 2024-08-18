@@ -53,11 +53,11 @@
       selfInfoTips3: Now
       selfInfoContent3: Undergraduate
   personalities:
-      author_name: Mediator
-      personality_type: INFP
+      author_name: Architect
+      personality_type: INTJ-A
       photo_url: https://cx330.tw/assets/real_me.jpg
-      personality_img: https://static.neris-assets.com/images/personality-types/avatars/infp-mediator-s3-female.svg
-      name_url: https://www.16personalities.com/infp-personality
+      personality_img: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/Mediamodifier-Design.svg
+      name_url: https://www.16personalities.com/intj-personality
   maxim:
       maxim_tips: Motto
       maxim_top: Information wants
