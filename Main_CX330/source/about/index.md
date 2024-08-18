@@ -28,7 +28,7 @@ I have a lot of dreams so it's hard to list all of them here. But one of them is
 
 I'm not a good hacker yet, and I also don't know how long it will take to become one. But the one thing I know is that I will keep staying on my path. Even if people laugh at me and don't believe in me, I still believe in myself and my talent. Yes, I'm not the smartest. But I'm the one who has dreams. And to achieve them, I will keep learning and keep hacking.
 
-I hope one day, people will remember my name and my ID, remember Blake Chen, remeber The Star, remeber CX330.
+I hope one day, people will remember my name and my ID, remember **Blake Chen**, remeber The Star, remeber **CX330**.
 
 > "Dreams feel real while we're in them. It's only when we wake up that we realize something was actually strange." — **_Inception_**
 
