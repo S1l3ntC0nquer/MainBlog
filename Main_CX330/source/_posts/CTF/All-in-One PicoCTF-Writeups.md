@@ -149,7 +149,7 @@ picoCTF{G3tting_5QL_1nJ3c7I0N_l1k3_y0u_sh0ulD_78d0583a}
 
 ## Trickster
 
-這題的題目是一個可以上傳 png 的網頁，看起來就是文件上船漏洞，頁面如下:
+這題的題目是一個可以上傳 png 的網頁，看起來就是文件上傳漏洞，頁面如下:
 
 ![題目](https://hackmd.io/_uploads/HkocKNtIA.png)
 
@@ -161,7 +161,7 @@ Disallow: /instructions.txt
 Disallow: /uploads/
 ```
 
-既然它都禁止了，我們就去看看吧 XD。`/uploads/`應該就是它的上船後的文件路徑了，而它 instructions.txt 的內容如下:
+既然它都禁止了，我們就去看看吧 XD。`/uploads/`應該就是它的上傳後的文件路徑了，而它 instructions.txt 的內容如下:
 
 ```txt
 Let's create a web app for PNG Images processing.
