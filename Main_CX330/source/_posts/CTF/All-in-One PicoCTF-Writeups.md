@@ -320,6 +320,28 @@ picoCTF{th15_vu1n_1s_5up3r_53r1ous_y4ll_405f4c0e}
 
 **// TODO**
 
+## IntroToBurp
+
+這題要用到 BurpSuite 來攔截封包。首先先把 Burp 的攔截給打開。
+
+![打開攔截](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240819164944293.png)
+
+接著把 Browser 打開並連接到題目給的 URL。發現是個註冊頁面，先亂填一些東西試試。填完後按下 Register 會發現 Burp 攔截了我們的封包，這邊不用對封包做修改，直接按下 Forward 送過去。接著會跳到一個 OTP 驗證頁面，一樣先隨便輸入一些東西。
+
+![2FA Auth](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240819165409960.png)
+
+接著到 Burp 裡面修改 OTP 的數據，直接把整行刪掉。
+
+![BurpSuite](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240819165507475.png)
+
+刪掉後直接 Forward 把封包送過去就行啦！如果只是留空白按 Submit，還是會發送一個 OTP 的 Data，所以要用 Burp 直接刪掉。就如同題目給的提示一樣。
+
+> Try mangling the request, maybe their server-side code doesn't handle malformed requests very well.
+
+```txt
+picoCTF{#0TP_Bypvss_SuCc3$S_e1eb16ed}
+```
+
 # Crypto
 
 -   [My scripts & note on Github](https://github.com/CX330Blake/Crypto_Notebook)
