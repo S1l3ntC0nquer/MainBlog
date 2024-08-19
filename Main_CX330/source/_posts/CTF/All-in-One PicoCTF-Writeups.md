@@ -1796,3 +1796,15 @@ The flag is: picoCTF{b1tw^3se_0p3eR@tI0n_su33essFuL_d6f8047e}
 ```
 
 這樣就得到 flag 啦！Easy peasy。
+
+### endianness
+
+這題 nc 到題目後會教你輸入某個字串的小端序和大端序，如下。這邊題目要求是 Hex 形式，並且字元中間不要有空格。
+
+![題目](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240819171802197.png)
+
+這邊我用 [CyberChef](https://gchq.github.io/CyberChef/) 就可以把這個字串轉為 Hex，轉換完後就是大端序的形式了，最後只要手動轉換為小端序，並且發送給 server 就可以了。
+
+```txt
+picoCTF{3ndi4n_sw4p_su33ess_02999450}
+```
