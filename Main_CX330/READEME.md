@@ -87,6 +87,57 @@ en.yml 修改如下
 sticky: Pinned
 ```
 
+card_webinfo.pug 修改如下
+
+```pug
+if theme.aside.card_webinfo.enable
+  .card-webinfo
+    .item-headline
+      i.anzhiyufont.anzhiyu-icon-chart-line
+      span= _p('aside.card_webinfo.headline')
+    .webinfo
+      if theme.aside.card_webinfo.post_count
+        .webinfo-item
+          .webinfo-item-title
+            i.fa-solid.fa-file-lines
+            .item-name= _p('aside.card_webinfo.article_name') + " :"
+          .item-count= site.posts.length
+      if theme.runtimeshow.enable
+        .webinfo-item
+          .webinfo-item-title
+            i.fa-solid.fa-stopwatch
+            .item-name= _p('aside.card_webinfo.runtime.name') + " :"
+          .item-count#runtimeshow(data-publishDate=date_xml(theme.runtimeshow.publish_date))
+            i.anzhiyufont.anzhiyu-icon-spinner.anzhiyu-spin
+      if theme.wordcount.enable && theme.wordcount.total_wordcount
+        .webinfo-item
+          .webinfo-item-title
+            i.fa-solid.fa-font
+            .item-name=_p('aside.card_webinfo.site_wordcount') + " :"
+          .item-count=totalcount(site)
+      if theme.busuanzi.site_uv
+        .webinfo-item
+          .webinfo-item-title
+            i.fa-solid.fa-universal-access
+            .item-name= _p('aside.card_webinfo.site_uv_name') + " :"
+          .item-count#busuanzi_value_site_uv
+            i.anzhiyufont.anzhiyu-icon-spinner.anzhiyu-spin
+      if theme.busuanzi.site_pv
+        .webinfo-item
+          .webinfo-item-title
+            i.fa-solid.fa-square-poll-vertical
+            .item-name= _p('aside.card_webinfo.site_pv_name') + " :"
+          .item-count#busuanzi_value_site_pv
+            i.anzhiyufont.anzhiyu-icon-spinner.anzhiyu-spin
+      if theme.aside.card_webinfo.last_push_date
+        .webinfo-item
+          .webinfo-item-title
+            i.fa-solid.fa-hourglass-start
+            .item-name= _p('aside.card_webinfo.last_push_date.name') + " :"
+          .item-count#last-push-date(data-lastPushDate=date_xml(Date.now()))
+            i.anzhiyufont.anzhiyu-icon-spinner.anzhiyu-spin
+```
+
 # hexo-butterfly-envelope
 
 `main.js`中把中文改為英文
@@ -95,3 +146,4 @@ sticky: Pinned
 
 -   [文章主色调(插件)](https://www.naokuo.top/p/fb2f8d77.html)
 -   [为主页文章卡片添加擦亮动画效果](https://blog.kouseki.cn/posts/dda6.html)
+-   [重构记录 - 4](https://meuicat.com/blog/42/)
