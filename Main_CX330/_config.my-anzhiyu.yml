@@ -1108,10 +1108,10 @@ home_top:
         swiper_css: https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css #swiper css依赖
         swiper_js: https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.js #swiper js依赖
     banner:
-        tips: Recommended reading
-        title: Cryptography for Muggles 密碼學任督二脈
-        image: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/CryptoForMuggles.jpg
-        link: https://cx330.tw/posts/39694de9/
+        tips: Hey astronauts!
+        title: Now landing on CX330.
+        image: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/cover.gif
+        link: https://cx330.tw
 
 # 朋友圈配置
 friends_vue:
