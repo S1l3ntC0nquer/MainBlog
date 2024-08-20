@@ -1,12 +1,13 @@
 ---
-title: "[Day 27] 玩玩 PicoCTF 建立信心 XD"
-date: 2024-08-21 01:18:10
+title: '[Day 27] 玩玩 PicoCTF 建立信心 XD'
 cover: >-
-    https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/hackerTraining.jpg
+  https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/hackerTraining.jpg
 categories: 2024 CTF Training
 tags:
-    - CTF
-    - CyberSec
+  - CTF
+  - CyberSec
+abbrlink: 37bd2e1d
+date: 2024-08-21 01:18:10
 ---
 
 # 前言
