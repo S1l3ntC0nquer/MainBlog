@@ -1375,3 +1375,8 @@ charts:
     postsCalendar_Title: Posts Calendar
     categoriesChart_Title: 分類統計
     categoriesRadar_Title: 分類雷達
+
+# 昼夜切换按钮
+Day_night_toggle_button:
+    console: false # 中控台
+    nav: true # 导航栏
