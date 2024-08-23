@@ -2,12 +2,6 @@
   flink_style: telescopic
   hundredSuffix: ""
   link_list:
-      - name: CX330
-        link: https://cx330.tw/
-        avatar: https://cx330.tw/assets/me.jpg
-        descr: Hack the planet!
-        tag: Hack
-        color: "#eb0038"
       - name: Buntalk Universe
         link: https://www.setbun.com/
         avatar: https://cdn.jsdelivr.net/gh/FrederickBun/upyun-rhimgcdn@img/upload/202406272229074.png
