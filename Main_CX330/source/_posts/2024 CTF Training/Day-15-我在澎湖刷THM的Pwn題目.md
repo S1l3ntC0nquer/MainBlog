@@ -18,7 +18,7 @@ date: 2024-07-20 23:38:54
 
 今天寫了兩題，他是一個 Room，裡面共有十題。都是簡單的 BOF，所以說也沒花太多時間，
 
-1. [[THM] Pwn101 Writeup](https://cx330.tw/posts/83b7f1b/)
+1. [[THM] Pwn101 Writeup](https://blog.cx330.tw/posts/83b7f1b/)
 
 # 今日狀態
 

@@ -105,4 +105,4 @@ This site offers two subscription methods. If you are unfamiliar with what RSS i
 
 ## RSS Subscription
 
--   You can subscribe to this site's articles via an RSS reader to receive timely notifications of the latest updates. [**Click to subscribe**](https://cx330.tw/atom.xml)
+-   You can subscribe to this site's articles via an RSS reader to receive timely notifications of the latest updates. [**Click to subscribe**](https://blog.cx330.tw/atom.xml)

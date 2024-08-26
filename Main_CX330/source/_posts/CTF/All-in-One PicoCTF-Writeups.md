@@ -345,7 +345,7 @@ picoCTF{#0TP_Bypvss_SuCc3$S_e1eb16ed}
 # Crypto
 
 -   [My scripts & note on Github](https://github.com/CX330Blake/Crypto_Notebook)
--   [Cryptography Notebook 密碼學任督二脈](https://cx330.tw/StudyNotes/Cryptography-Notes-%E5%AF%86%E7%A2%BC%E5%AD%B8%E4%BB%BB%E7%9D%A3%E4%BA%8C%E8%84%88/)
+-   [Cryptography Notebook 密碼學任督二脈](https://blog.cx330.tw/StudyNotes/Cryptography-Notes-%E5%AF%86%E7%A2%BC%E5%AD%B8%E4%BB%BB%E7%9D%A3%E4%BA%8C%E8%84%88/)
 
 ## Easy1
 
@@ -1641,7 +1641,7 @@ picoCTF{Tw0_Sum_Integer_Bu773R_0v3rfl0w_bc0adfd1}
 
 ## MSB
 
-看這個題目名稱，然後又出現在 Forensics，應該是跟隱寫術有關了。如果你還不知道 LSB 和 MSB 都是個啥，可以先去看看 [Cryptography Notes 密碼學任督二脈](https://cx330.tw/Notebooks/Cryptography-Notebook-%E5%AF%86%E7%A2%BC%E5%AD%B8%E4%BB%BB%E7%9D%A3%E4%BA%8C%E8%84%88/)，裡面有解釋了甚麼是 LSB 和 MSB。
+看這個題目名稱，然後又出現在 Forensics，應該是跟隱寫術有關了。如果你還不知道 LSB 和 MSB 都是個啥，可以先去看看 [Cryptography Notes 密碼學任督二脈](https://blog.cx330.tw/Notebooks/Cryptography-Notebook-%E5%AF%86%E7%A2%BC%E5%AD%B8%E4%BB%BB%E7%9D%A3%E4%BA%8C%E8%84%88/)，裡面有解釋了甚麼是 LSB 和 MSB。
 
 題目的題幹說，This image passes LSB statistical analysis。那相反的，它其實就是在暗示 flag 可能藏在 RGB 像素值的 MSB 中，所以就來提取它每個像素中的的 MSB 吧。這邊用到了 Python 中的 Pillow 這個庫，如果覺得太麻煩，也可以直接用這個現成的工具 [Stegsolve](https://github.com/zardus/ctf-tools/tree/master/stegsolve)。
 

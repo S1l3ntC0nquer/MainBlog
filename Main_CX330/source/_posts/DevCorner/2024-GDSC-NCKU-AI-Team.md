@@ -67,4 +67,4 @@ date: 2024-06-22 03:33:41
 
 > Code your goal, Fuel your soul! — **_2024 GDSC NCKU_**
 
-如果這篇文章對你有幫助，歡迎[訂閱我的 Blog](https://cx330.tw/subscribe/)，會在有新文章的時候通知你，十分感謝！
+如果這篇文章對你有幫助，歡迎[訂閱我的 Blog](https://blog.cx330.tw/subscribe/)，會在有新文章的時候通知你，十分感謝！

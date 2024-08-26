@@ -1,12 +1,12 @@
 ---
-title: '[Day 26] 看了看甚麼是中國剩餘定理'
+title: "[Day 26] 看了看甚麼是中國剩餘定理"
 cover: >-
-  https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/hackerTraining.jpg
+    https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/hackerTraining.jpg
 categories: 2024 CTF Training
 tags:
-  - CTF
-  - CyberSec
-  - Crypto
+    - CTF
+    - CyberSec
+    - Crypto
 abbrlink: 4640530a
 date: 2024-08-18 15:12:27
 ---
@@ -19,8 +19,8 @@ date: 2024-08-18 15:12:27
 
 # 今日進度
 
-1. [Intro to Chinese Remainder Theorem](https://cx330.tw/posts/72a59deb/)
-2. [[HTB] Baby Time Capsule Writeup 💊](https://cx330.tw/posts/67b7db12/)
+1. [Intro to Chinese Remainder Theorem](https://blog.cx330.tw/posts/72a59deb/)
+2. [[HTB] Baby Time Capsule Writeup 💊](https://blog.cx330.tw/posts/67b7db12/)
 
 # 今日狀態
 

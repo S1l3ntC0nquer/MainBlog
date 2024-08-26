@@ -17,7 +17,7 @@ date: 2024-08-01 01:58:02
 
 # 今日進度
 
-1. [[HTB] You know 0xDiablos Writeup](https://cx330.tw/posts/ca279614/)
+1. [[HTB] You know 0xDiablos Writeup](https://blog.cx330.tw/posts/ca279614/)
 
 # 今日狀態
 

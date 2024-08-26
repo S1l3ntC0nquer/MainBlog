@@ -43,8 +43,8 @@
   map:
       title: "pwd: "
       StrengthenTitle: /Earth/Taiwan
-      background: https://cx330.tw/assets/taiwan.png
-      backgroundDark: https://cx330.tw/assets/taiwan.png
+      background: https://blog.cx330.tw/assets/taiwan.png
+      backgroundDark: https://blog.cx330.tw/assets/taiwan.png
   selfInfo:
       selfInfoTips1: Born in
       selfInfoContentYear: 2004
@@ -55,7 +55,7 @@
   personalities:
       author_name: Architect
       personality_type: INTJ-A
-      photo_url: https://cx330.tw/assets/real_me.jpg
+      photo_url: https://blog.cx330.tw/assets/real_me.jpg
       personality_img: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/Mediamodifier-Design.svg
       name_url: https://www.16personalities.com/intj-personality
   maxim:

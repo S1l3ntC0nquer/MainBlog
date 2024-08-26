@@ -16,8 +16,8 @@ date: 2024-07-16 23:56:11
 
 # 今日進度
 
-1. [[HTB] The Last Dance Writeup 💃](https://cx330.tw/posts/acba6120/)
-2. [[HTB] Insomnia Writeup 💤](https://cx330.tw/posts/cab519b8/)
+1. [[HTB] The Last Dance Writeup 💃](https://blog.cx330.tw/posts/acba6120/)
+2. [[HTB] Insomnia Writeup 💤](https://blog.cx330.tw/posts/cab519b8/)
 
 # 今日狀態
 

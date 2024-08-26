@@ -17,7 +17,7 @@ date: 2024-08-02 23:17:54
 
 # 今日進度
 
-1. [THM 的 Pwn101 的 Pwn106](https://cx330.tw/posts/83b7f1b/)
+1. [THM 的 Pwn101 的 Pwn106](https://blog.cx330.tw/posts/83b7f1b/)
 
 # 今日狀態
 

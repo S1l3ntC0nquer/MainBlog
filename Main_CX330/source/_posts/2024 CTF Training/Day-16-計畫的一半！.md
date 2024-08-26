@@ -18,7 +18,7 @@ date: 2024-07-25 23:36:41
 
 今天寫了題 Pwn 題，然後中間遇到了些 MOVAPS 的問題所以卡了一些時間，上網找了影片和 Writeup 才寫出來的，總之挺坎坷。不過也是學到挺多的。反正今天是寫到了 Pwn101 裡面的 Pwn103 啦。
 
-1. [[THM] Pwn101 Writeup](https://cx330.tw/posts/83b7f1b/)
+1. [[THM] Pwn101 Writeup](https://blog.cx330.tw/posts/83b7f1b/)
 
 # 今日狀態
 

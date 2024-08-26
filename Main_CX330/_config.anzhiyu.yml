@@ -258,7 +258,7 @@ reward:
           link: https://buymeacoffee.com/cx330
           text: Buy Me a Coffee
         - img: /assets/me.jpg
-          link: https://cx330.tw
+          link: https://blog.cx330.tw
           text: CX330
         # - img: https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png
         #   link:
@@ -1251,7 +1251,7 @@ rightClickMenu:
 # 首页随便逛逛people模式 而非技能点模式，关闭后为技能点模式需要配置creativity.yml
 peoplecanvas:
     enable: false
-    img: https://cx330.tw/assets/dark.webp
+    img: https://blog.cx330.tw/assets/dark.webp
 
 # 动效
 dynamicEffect:

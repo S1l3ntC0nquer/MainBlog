@@ -100,7 +100,7 @@ if __name__ == "__main__":
     main()
 ```
 
-The most important part of this code is the `__init__()` function, cause it defined the public key exponent e to be always 5. And the server lets the users to get the different key pairs multiple times, so we can infer the plaintext by the [Chinese Remainder Theorem](https://cx330.tw/posts/72a59deb/).
+The most important part of this code is the `__init__()` function, cause it defined the public key exponent e to be always 5. And the server lets the users to get the different key pairs multiple times, so we can infer the plaintext by the [Chinese Remainder Theorem](https://blog.cx330.tw/posts/72a59deb/).
 
 In RSA, we know that $c = m^e \bmod n$, which $c$ is ciphertext, $m$ is message and $e$ is the public exponent.
 

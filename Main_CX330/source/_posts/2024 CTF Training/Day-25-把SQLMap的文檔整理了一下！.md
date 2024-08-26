@@ -1,12 +1,12 @@
 ---
-title: '[Day 25] 把 SQLMap 的文檔整理了一下！'
+title: "[Day 25] 把 SQLMap 的文檔整理了一下！"
 cover: >-
-  https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/hackerTraining.jpg
+    https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/hackerTraining.jpg
 categories: 2024 CTF Training
 tags:
-  - CTF
-  - CyberSec
-  - Web
+    - CTF
+    - CyberSec
+    - Web
 abbrlink: 6c120880
 date: 2024-08-13 01:04:30
 ---
@@ -17,7 +17,7 @@ date: 2024-08-13 01:04:30
 
 # 今日進度
 
-1. [SQLMap Spellbook: Basic Usage of SQLMap](https://cx330.tw/posts/97052569/)
+1. [SQLMap Spellbook: Basic Usage of SQLMap](https://blog.cx330.tw/posts/97052569/)
 
 # 今日狀態
 

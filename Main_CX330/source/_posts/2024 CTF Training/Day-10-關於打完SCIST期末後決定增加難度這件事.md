@@ -18,7 +18,7 @@ date: 2024-07-12 20:40:10
 
 # 今日進度
 
-1. [HTB 的 Racecar](https://cx330.tw/posts/331a6b46/)
+1. [HTB 的 Racecar](https://blog.cx330.tw/posts/331a6b46/)
 
 # 今日狀態
 

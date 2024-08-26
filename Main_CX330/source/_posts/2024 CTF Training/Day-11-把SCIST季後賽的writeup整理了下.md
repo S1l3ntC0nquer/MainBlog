@@ -16,7 +16,7 @@ date: 2024-07-15 15:55:47
 
 # 今日進度
 
-1. [SCIST S4 資訊安全季後賽 Writeup](https://cx330.tw/posts/9deb0a60/)
+1. [SCIST S4 資訊安全季後賽 Writeup](https://blog.cx330.tw/posts/9deb0a60/)
 
 # 今日狀態
 
