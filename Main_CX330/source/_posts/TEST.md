@@ -6,7 +6,7 @@ date: '2024-08-27T20:12:53.122089+08:00'
 excerpt: \begin{align*} &amp;Ch(x, y, z) = (x \land y) \oplus (\neg x \land z) \\ &amp;Maj(x, y, z) = (x \land y) \oplus (x \land z) \oplus (y \land z) \\ &amp;\Sigma_0(x) = S^2(x) \oplus S^{13}(x) \oplus S^{2...
 tags: []
 title: TEST
-updated: '2024-08-27T20:32:33.076+08:00'
+updated: '2024-08-27T20:32:42.244+08:00'
 ---
 $$
 \begin{align*}
