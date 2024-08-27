@@ -42,6 +42,15 @@ nav:
               - name: LinkedIn
                 link: https://www.linkedin.com/in/%E5%AD%90%E9%9B%8B-%E9%99%B3-11087825b/
                 icon: /assets/linkedin.png
+        - title: Others        
+          item:
+              - name: Portfolio
+                link: https://cx330.tw
+                icon: /assets/me.jpg
+              - name: Admin
+                link: https://admin.cx330.tw
+                icon: /assets/me.jpg
+              
         # - title: English site
         #   item:
         #       - name: CX330's Universe
