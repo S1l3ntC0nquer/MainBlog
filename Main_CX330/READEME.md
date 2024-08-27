@@ -138,6 +138,23 @@ if theme.aside.card_webinfo.enable
             i.anzhiyufont.anzhiyu-icon-spinner.anzhiyu-spin
 ```
 
+nav.styl 修改如下
+
+```stylus
+.back-home-button
+  display none
+  width 35px
+  height 35px
+  padding 0 !important
+  align-items center
+  justify-content center
+  margin-right 4px
+  transition 0.3s
+  border-radius 8px
+  @media (min-width: 770px)
+    display flex
+```
+
 # hexo-butterfly-envelope
 
 `main.js`中把中文改為英文

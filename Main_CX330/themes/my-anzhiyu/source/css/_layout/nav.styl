@@ -420,7 +420,7 @@
   color var(--anzhiyu-white) !important
 
 .back-home-button
-  display flex
+  display none
   width 35px
   height 35px
   padding 0 !important
@@ -429,6 +429,8 @@
   margin-right 4px
   transition 0.3s
   border-radius 8px
+  @media (min-width: 770px)
+    display flex
 
 .back-home-button:hover .back-menu-list-groups
   display: flex;
