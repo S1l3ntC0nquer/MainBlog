@@ -12,7 +12,8 @@ type: "about"
 
 Hello world. My name is **Blake Chen**, and the IDs I often use in the cyber world are **CX330** & **The Star** (since CX330 is hard to pronounce). I am currently a college student, majoring in computer science. I want to become a really great hacker, just like Condor or The Mentor.
 
-Also, I'm a perfectionist. So that's why I always try to optimize everything in my short life. Every time I can't reach my expectations, I'll be a little upset, although I know that it's not possible to let everything being perfect. Due to this, I sometimes try too hard and make a lot of things overflow, such as my brain, my schedule, my emotions, etc.
+I'm a perfectionist, always striving to optimize everything in my life. When I fall short of my own expectations, it frustrates me, even though I know perfection is unattainable. Sometimes I try too hard and
+make a lot of things overflow, such as my brain, my schedule, my emotions, etc.
 
 Knowing that I'm just an ordinary person, I often wonder if my dreams are too big or too ambitious. But even so, I'll still keep trying to reach the goals just because of fun and my curiousity.
 
