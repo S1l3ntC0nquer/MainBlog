@@ -5,7 +5,7 @@ cover: null
 date: '2024-08-27T20:12:53.122089+08:00'
 tags: []
 title: TEST
-updated: '2024-08-27T20:12:54.010+08:00'
+updated: '2024-08-27T20:32:20.668+08:00'
 ---
 $$
 \begin{align*}
@@ -16,7 +16,6 @@ $$
 &\sigma_0(x) = S^7(x) \oplus S^{18}(x) \oplus R^3(x) \\
 &\sigma_1(x) = S^{17}(x) \oplus S^{19}(x) \oplus R^{10}(x)
 \end{align*}
-
 $$
 
 ![https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/24/8/image_d41d5b1c1e845505e96925da18e724b4.png](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/24/8/image_d41d5b1c1e845505e96925da18e724b4.png)
