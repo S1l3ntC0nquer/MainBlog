@@ -23,6 +23,7 @@ menu:
     About:
         Whoami: /about/ || fa-solid fa-paper-plane
         Subscribe: /subscribe/ || fa-solid fa-bell
+        Portfolio: https://cx330.tw/ || fa-solid fa-user
 
 # nav相关配置
 nav:
@@ -536,6 +537,8 @@ footer:
                     link: /about/
                   - title: Subscribe
                     link: /subscribe/
+                  - title: Portfolio
+                    link: https://cx330.tw/
                   - title: Support me
                     link: https://buymeacoffee.com/cx330
             # - title: 协议
