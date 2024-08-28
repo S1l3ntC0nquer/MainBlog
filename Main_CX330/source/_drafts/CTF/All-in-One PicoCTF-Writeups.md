@@ -345,9 +345,11 @@ picoCTF{#0TP_Bypvss_SuCc3$S_e1eb16ed}
 
 題目介紹如下：
 
-> Can you get the flag? We know that the website files live in `/usr/share/nginx/html/` and the flag is at** `/flag.txt` but the website is filtering absolute file paths. Can you get past the filter to read the flag?
+> Can you get the flag? We know that the website files live in `/usr/share/nginx/html/` and the flag is at `/flag.txt` but the website is filtering absolute file paths. Can you get past the filter to read the flag?
 >
 > Additional details will be available after launching your challenge instance.
+
+把題目給的網站點開來看長這樣。
 
 # Crypto
 
