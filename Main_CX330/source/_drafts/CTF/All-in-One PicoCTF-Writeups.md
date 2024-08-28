@@ -351,6 +351,20 @@ picoCTF{#0TP_Bypvss_SuCc3$S_e1eb16ed}
 
 把題目給的網站點開來看長這樣。
 
+![題目](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/24/8/image_73025f05e72f6debf09b6484921102bd.png)
+
+測試一下上面這些 txt 檔案後後發現就是一個可以讀檔案的程式，既然題目都告訴我們這個網站專案路徑了，那就只需要回推回根目錄就可以了。因為是 `/usr/share/nginx/html/`有四層，那就回去四層前的目錄並讀取 `flag.txt`就可以了。最終Payload如下。
+
+```txt
+../../../../flag.txt
+```
+
+Flag 就跑出來啦！如下。
+
+```txt
+picoCTF{7h3_p47h_70_5ucc355_e5a6fcbc}
+```
+
 # Crypto
 
 - [My scripts & note on Github](https://github.com/CX330Blake/Crypto_Notebook)
