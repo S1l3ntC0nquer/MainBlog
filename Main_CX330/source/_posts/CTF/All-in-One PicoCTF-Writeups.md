@@ -9,7 +9,7 @@ tags:
 - PicoCTF
 - 資安
 title: All-in-One PicoCTF Writeups
-updated: '2024-08-29T16:30:07.467+08:00'
+updated: '2024-08-29T22:50:23.589+08:00'
 ---
 # 前言
 
@@ -1761,11 +1761,39 @@ if __name__ == "__main__":
 picoCTF{15_y0ur_que57_qu1x071c_0r_h3r01c_ea7deb4c}
 ```
 
+## Verify
+
+先連接到題目給的主機。
+
+![Connect to the host](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/24/8/image_1446d103ab2481cd2a91af64ed316881.png)
+
+之後用`ls`看一下有甚麼文件。
+
+```bash
+ctf-player@pico-chall$ ls
+checksum.txt  decrypt.sh  files
+```
+
+其中題目有說`decrypt.sh`是用來解密檔案的腳本，`checksum.txt`是紀錄了正確的 hash 值得文件，最後files是一個目錄，裡面有很多文件，但只有一個是可以用來被解密的正確腳本。所以我們要做的就是去比對每個文件的哈希值和`checksum.txt`的值。我們利用下面這兩個命令，先`cat`出正確的雜湊值，再去用`sha256sum`去計算每個`files`裡面的檔案的雜湊，最後比對。
+
+```bash
+ctf-player@pico-chall$ cat checksum.txt 
+5848768e56185707f76c1d74f34f4e03fb0573ecc1ca7b11238007226654bcda
+ctf-player@pico-chall$ sha256sum files/* | grep 5848768e56185707f76c1d74f34f4e03fb0573ecc1ca7b11238007226654bcda
+5848768e56185707f76c1d74f34f4e03fb0573ecc1ca7b11238007226654bcda  files/8eee7195
+```
+
+最後一行顯示正確的文件是`8eee7195`，那就用`./decrypt.sh`解密他。就得到Flag啦。
+
+```txt
+picoCTF{trust_but_verify_8eee7195}
+```
+
 # Reverse
 
 ## GDB Test Drive
 
-這題的話先用 `wget`把題目這個二進制檔案抓下來。
+這題的話先用 `wget` 把題目這個二進制檔案抓下來。
 
 ![Wget](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240701212911463.png)
 
