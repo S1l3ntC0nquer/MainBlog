@@ -387,6 +387,15 @@ picoCTF{c0ngr4ts_u_r_1nv1t3d_aebcbf39}
 
 ![debug=0](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/24/8/image_ca9db2efbbd073e8976545347ab4bac9.png)
 
+所以使用BurpSuite打開網頁並修改參數。把`debug=0`改為`debug=1`，然後Forward請求後會發現傳回來的debug訊息。
+
+![Debug Mode](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/24/8/image_00819763eb396b4830a7d6e748ed4e98.png)
+
+既然知道他的SQL語句，就可以直接SQLi啦。Payload是`' OR 1=1--`，順利得到Flag。
+
+```txt
+picoCTF{s0m3_SQL_c218b685}
+```
 
 # Crypto
 
