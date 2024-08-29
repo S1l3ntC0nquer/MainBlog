@@ -383,7 +383,9 @@ picoCTF{c0ngr4ts_u_r_1nv1t3d_aebcbf39}
 
 > There is a website running at `https://jupiter.challenges.picoctf.org/problem/39720/` ([link](https://jupiter.challenges.picoctf.org/problem/39720/)) or http://jupiter.challenges.picoctf.org:39720. Do you think you can log us in? Try to see if you can login!
 
-所以就是要登入啦。先到Login的頁面看看，發現他傳到後端的參數中有一個`debug=0`，如下。
+所以就是要登入啦。先到Login的頁面看看，發現他傳到`login.php`的參數中有一個`debug=0`，如下。
+
+![debug=0](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/24/8/image_ca9db2efbbd073e8976545347ab4bac9.png)
 
 # Crypto
 
