@@ -9,7 +9,7 @@ tags:
 - PicoCTF
 - 資安
 title: All-in-One PicoCTF Writeups
-updated: '2024-08-29T22:50:23.589+08:00'
+updated: '2024-08-30T01:06:03.983+08:00'
 ---
 # 前言
 
@@ -1892,4 +1892,12 @@ The flag is: picoCTF{b1tw^3se_0p3eR@tI0n_su33essFuL_d6f8047e}
 
 ```txt
 picoCTF{3ndi4n_sw4p_su33ess_02999450}
+```
+
+## Binary Search
+
+這題好像沒有甚麼好講的，就是Binary Search。其實就有點像是小時候玩的終極密碼啦笑死，就這樣。
+
+```txt
+picoCTF{g00d_gu355_3af33d18}
 ```
