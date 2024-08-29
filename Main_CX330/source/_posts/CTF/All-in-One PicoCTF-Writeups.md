@@ -9,7 +9,7 @@ tags:
 - PicoCTF
 - 資安
 title: All-in-One PicoCTF Writeups
-updated: '2024-08-29T02:40:49.832+08:00'
+updated: '2024-08-29T14:50:15.099+08:00'
 ---
 # 前言
 
@@ -363,6 +363,18 @@ Flag 就跑出來啦！如下。
 
 ```txt
 picoCTF{7h3_p47h_70_5ucc355_e5a6fcbc}
+```
+
+## It is my Birthday
+
+題目敘述
+
+> I sent out 2 invitations to all of my friends for my birthday! I'll know if they get stolen because the two invites look similar, and they even have the same md5 hash, but they are slightly different! You wouldn't believe how long it took me to find a collision. Anyway, see if you're invited by submitting 2 PDFs to my website.
+
+看了敘述後可以發現應該是要上傳兩個具有相同 MD5 Hash 值得 PDF 文件。這邊我們可以直接使用[這個 Github Repo](https://github.com/corkami/collisions/tree/master/examples/free) 裡面的 md5-1.pdf 和 md5-2.pdf。把這兩個檔案下載下來後上傳到題目的網站就可以了。
+
+```txt
+picoCTF{c0ngr4ts_u_r_1nv1t3d_aebcbf39}
 ```
 
 # Crypto
