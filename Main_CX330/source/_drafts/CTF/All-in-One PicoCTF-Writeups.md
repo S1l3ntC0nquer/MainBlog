@@ -373,6 +373,10 @@ picoCTF{7h3_p47h_70_5ucc355_e5a6fcbc}
 
 看了敘述後可以發現應該是要上傳兩個具有相同 MD5 Hash 值得 PDF 文件。這邊我們可以直接使用[這個 Github Repo](https://github.com/corkami/collisions/tree/master/examples/free) 裡面的 md5-1.pdf 和 md5-2.pdf。把這兩個檔案下載下來後上傳到題目的網站就可以了。
 
+```txt
+picoCTF{c0ngr4ts_u_r_1nv1t3d_aebcbf39}
+```
+
 # Crypto
 
 - [My scripts & note on Github](https://github.com/CX330Blake/Crypto_Notebook)
