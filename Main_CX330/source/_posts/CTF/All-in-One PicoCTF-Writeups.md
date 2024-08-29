@@ -9,7 +9,7 @@ tags:
 - PicoCTF
 - 資安
 title: All-in-One PicoCTF Writeups
-updated: '2024-08-29T15:01:21.484+08:00'
+updated: '2024-08-29T16:30:07.467+08:00'
 ---
 # 前言
 
@@ -375,6 +375,26 @@ picoCTF{7h3_p47h_70_5ucc355_e5a6fcbc}
 
 ```txt
 picoCTF{c0ngr4ts_u_r_1nv1t3d_aebcbf39}
+```
+
+## Irish-Name-Repo 1
+
+題目敘述
+
+> There is a website running at `https://jupiter.challenges.picoctf.org/problem/39720/` ([link](https://jupiter.challenges.picoctf.org/problem/39720/)) or http://jupiter.challenges.picoctf.org:39720. Do you think you can log us in? Try to see if you can login!
+
+所以就是要登入啦。先到Login的頁面看看，發現他傳到`login.php`的參數中有一個`debug=0`，如下。
+
+![debug=0](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/24/8/image_ca9db2efbbd073e8976545347ab4bac9.png)
+
+所以使用BurpSuite打開網頁並修改參數。把`debug=0`改為`debug=1`，然後Forward請求後會發現傳回來的debug訊息。
+
+![Debug Mode](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/24/8/image_00819763eb396b4830a7d6e748ed4e98.png)
+
+既然知道他的SQL語句，就可以直接SQLi啦。Payload是`' OR 1=1--`，順利得到Flag。
+
+```txt
+picoCTF{s0m3_SQL_c218b685}
 ```
 
 # Crypto
