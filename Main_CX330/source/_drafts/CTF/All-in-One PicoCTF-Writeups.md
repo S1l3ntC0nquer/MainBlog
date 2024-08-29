@@ -379,6 +379,11 @@ picoCTF{c0ngr4ts_u_r_1nv1t3d_aebcbf39}
 
 ## Irish-Name-Repo 1
 
+題目敘述
+
+> There is a website running at `https://jupiter.challenges.picoctf.org/problem/39720/` ([link](https://jupiter.challenges.picoctf.org/problem/39720/)) or http://jupiter.challenges.picoctf.org:39720. Do you think you can log us in? Try to see if you can login!
+
+所以就是要登入啦。先到
 
 # Crypto
 
