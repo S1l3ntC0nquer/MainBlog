@@ -1,17 +1,16 @@
 ---
-title: 2024 AIS3 Pre-exam Writeup
-mathjax: true
-cover: >-
-    https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/upload_81ff509e73230b8e44daafad39fe99e0.jpg
-categories:
-    - CTF
-tag:
-    - 資安
-    - AIS3
 abbrlink: d01f5ccf
-date: 2024-06-02 21:42:41
+categories:
+- CTF
+cover: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/24/8/Blog_cover%20(16)%20(1)_2fdc2382942f5aef8475bf32d3e8ab3d.jpg
+date: '2024-06-02T21:42:41+08:00'
+mathjax: true
+tags:
+- 資安
+- AIS3
+title: 2024 AIS3 Pre-exam Writeup
+updated: '2024-08-29T16:27:29.066+08:00'
 ---
-
 # Intro
 
 請容我先自我介紹一下！我今年大一，在高中的時候並不是理工背景的學生，相反，我原本是打算去唸法律系的。但是在高三下的時候意外接觸到了 CTF 的資訊，自己稍微摸索了一下，也學了一點程式設計後發現自己對這個領域更為有興趣。可惜當時已經來不及報名學測的自然科目，我就下定決心要到成大不分系，利用他們的選課權利多修習資工系的課程。最終，我如願進到了成大，也在這將近一年的時間裡，修著和資工系一樣的課程，也更加地堅定了自己的選擇是正確的。
@@ -246,7 +245,7 @@ int __fastcall main(int argc, const char **argv, const char **envp)
 63 6F 6D 6D 01 00 00 00  61 6E 7A 7D 03 00 00 00  comm....anz}....
 ```
 
-我當時瞬間以為這就是 flag，提交了之後，想當然，沒那麼簡單 🥹。所以繼續往下看看。這樣看起來剛剛那串東西就是我們需要的 secret 了。再來我們在 key 上面點兩下，就可以發現 key 的值是下面這樣:
+我當時瞬間以為這就是 flag，提交了之後，想當然，沒那麼簡單 U0001f979。所以繼續往下看看。這樣看起來剛剛那串東西就是我們需要的 secret 了。再來我們在 key 上面點兩下，就可以發現 key 的值是下面這樣:
 
 ```
 .rodata:0000000000002080 key             dd 3A011001h, 4C4C1B0Dh, 3A0B002Dh, 454F40h, 3104321Ah
@@ -939,22 +938,22 @@ def menu():
 
 不僅僅是為了致敬及感謝，更要提醒自己，自己的不足及渺小。
 
--   [駭客廝殺不講武德：CTF 強者攻防大戰直擊](https://www.books.com.tw/products/0010884220)
--   [2020/10/24 Web Security 基礎 題解](https://scist.org/blog/2020/10/27/2020%20SCIST%20Web/)
--   [CTF Crypto RSA 算法 入门总结（全）](https://blog.csdn.net/vanarrow/article/details/107846987)
--   [CTF-RSA 加密-1](https://blog.csdn.net/orchid_sea/article/details/134164177)
--   [CTF-Crypto-RSA 基本原理及常见攻击方法](https://blog.csdn.net/ISHobbyst/article/details/108918079)
--   [CTF 学习笔记——RSA 加密](https://blog.csdn.net/qq_45198339/article/details/128741483)
--   [『 Day 29』拜託別 Pwn 我啦！ - Buffer Overflow](https://ithelp.ithome.com.tw/articles/10227814)
--   [PWN 入門 - buffer overflow 是什麼？](https://tech-blog.cymetrics.io/posts/crystal/pwn-intro/)
--   [[資訊安全] 從毫無基礎開始 Pwn – Buffer Overflow 實作](https://mks.tw/2976/%E8%B3%87%E8%A8%8A%E5%AE%89%E5%85%A8-%E5%BE%9E%E6%AF%AB%E7%84%A1%E5%9F%BA%E7%A4%8E%E9%96%8B%E5%A7%8B-pwn-buffer-overflow)
--   [rsa-wiener-attack](https://github.com/pablocelayes/rsa-wiener-attack)
--   [Linux 的 cut 擷取部份字元、欄位指令教學與常用範例整理](https://blog.gtwang.org/linux/linux-cut-command-tutorial-and-examples/)
--   [Bash Script 語法解析](https://medium.com/vswe/bash-shell-script-cheat-sheet-15ce3cb1b2c7)
--   [linux 特殊符号大全](https://www.cnblogs.com/balaamwe/archive/2012/03/15/2397998.html)
--   [Linux 中特殊符号的作用](https://blog.csdn.net/u012060033/article/details/104310372)
--   [[新手入門] 003 Linux 指令教學](https://feifei.tw/learn-linux/)
--   [【CTF 攻略】FlappyPig HCTF2016 Writeup](https://www.anquanke.com/post/id/85007)
--   [BUUCTF：[CFI-CTF 2018]webLogon capture](https://blog.csdn.net/mochu7777777/article/details/110004233)
+- [駭客廝殺不講武德：CTF 強者攻防大戰直擊](https://www.books.com.tw/products/0010884220)
+- [2020/10/24 Web Security 基礎 題解](https://scist.org/blog/2020/10/27/2020%20SCIST%20Web/)
+- [CTF Crypto RSA 算法 入门总结（全）](https://blog.csdn.net/vanarrow/article/details/107846987)
+- [CTF-RSA 加密-1](https://blog.csdn.net/orchid_sea/article/details/134164177)
+- [CTF-Crypto-RSA 基本原理及常见攻击方法](https://blog.csdn.net/ISHobbyst/article/details/108918079)
+- [CTF 学习笔记——RSA 加密](https://blog.csdn.net/qq_45198339/article/details/128741483)
+- [『 Day 29』拜託別 Pwn 我啦！ - Buffer Overflow](https://ithelp.ithome.com.tw/articles/10227814)
+- [PWN 入門 - buffer overflow 是什麼？](https://tech-blog.cymetrics.io/posts/crystal/pwn-intro/)
+- [[資訊安全] 從毫無基礎開始 Pwn – Buffer Overflow 實作](https://mks.tw/2976/%E8%B3%87%E8%A8%8A%E5%AE%89%E5%85%A8-%E5%BE%9E%E6%AF%AB%E7%84%A1%E5%9F%BA%E7%A4%8E%E9%96%8B%E5%A7%8B-pwn-buffer-overflow)
+- [rsa-wiener-attack](https://github.com/pablocelayes/rsa-wiener-attack)
+- [Linux 的 cut 擷取部份字元、欄位指令教學與常用範例整理](https://blog.gtwang.org/linux/linux-cut-command-tutorial-and-examples/)
+- [Bash Script 語法解析](https://medium.com/vswe/bash-shell-script-cheat-sheet-15ce3cb1b2c7)
+- [linux 特殊符号大全](https://www.cnblogs.com/balaamwe/archive/2012/03/15/2397998.html)
+- [Linux 中特殊符号的作用](https://blog.csdn.net/u012060033/article/details/104310372)
+- [[新手入門] 003 Linux 指令教學](https://feifei.tw/learn-linux/)
+- [【CTF 攻略】FlappyPig HCTF2016 Writeup](https://www.anquanke.com/post/id/85007)
+- [BUUCTF：[CFI-CTF 2018]webLogon capture](https://blog.csdn.net/mochu7777777/article/details/110004233)
 
 雖然已經盡力回想及搜尋過程中有用到的資源，但可能還是會有些漏網之魚，還請見諒。
