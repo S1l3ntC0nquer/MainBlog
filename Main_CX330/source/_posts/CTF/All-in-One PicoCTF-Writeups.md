@@ -9,7 +9,7 @@ tags:
 - PicoCTF
 - 資安
 title: All-in-One PicoCTF Writeups
-updated: '2024-08-30T01:40:42.030+08:00'
+updated: '2024-08-30T09:48:43.961+08:00'
 ---
 # 前言
 
@@ -183,7 +183,7 @@ after validation, store the uploaded files so that the admin can retrieve them l
 
 ![一句話木馬](https://hackmd.io/_uploads/Sy7rFrYU0.png)
 
-上傳完成後，現在這個 shell 就會位於 `https://my_instance_url/uploads/hack.png.php`這個位置上啦。
+上傳完成後，現在這個 shell 就會位於 `a`這個位置上啦。
 
 接下來再用[中國蟻劍](https://github.com/AntSwordProject/antSword)這款工具去連接那個 web shell 就可以啦，連接過程如下:
 
@@ -381,17 +381,17 @@ picoCTF{c0ngr4ts_u_r_1nv1t3d_aebcbf39}
 
 題目敘述
 
-> There is a website running at `https://jupiter.challenges.picoctf.org/problem/39720/` ([link](https://jupiter.challenges.picoctf.org/problem/39720/)) or http://jupiter.challenges.picoctf.org:39720. Do you think you can log us in? Try to see if you can login!
+> There is a website running at `a` ([link](https://jupiter.challenges.picoctf.org/problem/39720/)) or [http://jupiter.challenges.picoctf.org:39720](http://jupiter.challenges.picoctf.org:39720). Do you think you can log us in? Try to see if you can login!
 
-所以就是要登入啦。先到Login的頁面看看，發現他傳到`login.php`的參數中有一個`debug=0`，如下。
+所以就是要登入啦。先到Login的頁面看看，發現他傳到 `login.php`的參數中有一個 `debug=0`，如下。
 
 ![debug=0](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/24/8/image_ca9db2efbbd073e8976545347ab4bac9.png)
 
-所以使用BurpSuite打開網頁並修改參數。把`debug=0`改為`debug=1`，然後Forward請求後會發現傳回來的debug訊息。
+所以使用BurpSuite打開網頁並修改參數。把 `debug=0`改為 `debug=1`，然後Forward請求後會發現傳回來的debug訊息。
 
 ![Debug Mode](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/24/8/image_00819763eb396b4830a7d6e748ed4e98.png)
 
-既然知道他的SQL語句，就可以直接SQLi啦。Payload是`' OR 1=1--`，順利得到Flag。
+既然知道他的SQL語句，就可以直接SQLi啦。Payload是 `' OR 1=1--`，順利得到Flag。
 
 ```txt
 picoCTF{s0m3_SQL_c218b685}
@@ -409,7 +409,7 @@ picoCTF{s0m3_SQL_c218b685}
 
 ![封包內容](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/24/8/image_4ebeddb4957c4760a8cdeab8f7c2a778.png)
 
-因為題目有說要讀取`/etc/passwd`這個路徑，所以我們把封包修改一下變成下面這樣。
+因為題目有說要讀取 `/etc/passwd`這個路徑，所以我們把封包修改一下變成下面這樣。
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -1802,14 +1802,14 @@ picoCTF{15_y0ur_que57_qu1x071c_0r_h3r01c_ea7deb4c}
 
 ![Connect to the host](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/24/8/image_1446d103ab2481cd2a91af64ed316881.png)
 
-之後用`ls`看一下有甚麼文件。
+之後用 `ls`看一下有甚麼文件。
 
 ```bash
 ctf-player@pico-chall$ ls
 checksum.txt  decrypt.sh  files
 ```
 
-其中題目有說`decrypt.sh`是用來解密檔案的腳本，`checksum.txt`是紀錄了正確的 hash 值得文件，最後files是一個目錄，裡面有很多文件，但只有一個是可以用來被解密的正確腳本。所以我們要做的就是去比對每個文件的哈希值和`checksum.txt`的值。我們利用下面這兩個命令，先`cat`出正確的雜湊值，再去用`sha256sum`去計算每個`files`裡面的檔案的雜湊，最後比對。
+其中題目有說 `decrypt.sh`是用來解密檔案的腳本，`checksum.txt`是紀錄了正確的 hash 值得文件，最後files是一個目錄，裡面有很多文件，但只有一個是可以用來被解密的正確腳本。所以我們要做的就是去比對每個文件的哈希值和 `checksum.txt`的值。我們利用下面這兩個命令，先 `cat`出正確的雜湊值，再去用 `sha256sum`去計算每個 `files`裡面的檔案的雜湊，最後比對。
 
 ```bash
 ctf-player@pico-chall$ cat checksum.txt 
@@ -1818,7 +1818,7 @@ ctf-player@pico-chall$ sha256sum files/* | grep 5848768e56185707f76c1d74f34f4e03
 5848768e56185707f76c1d74f34f4e03fb0573ecc1ca7b11238007226654bcda  files/8eee7195
 ```
 
-最後一行顯示正確的文件是`8eee7195`，那就用`./decrypt.sh`解密他。就得到Flag啦。
+最後一行顯示正確的文件是 `8eee7195`，那就用 `./decrypt.sh`解密他。就得到Flag啦。
 
 ```txt
 picoCTF{trust_but_verify_8eee7195}
