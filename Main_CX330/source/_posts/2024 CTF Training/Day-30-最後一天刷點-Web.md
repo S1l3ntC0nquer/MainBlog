@@ -1,12 +1,13 @@
 ---
-title: "[Day 30] 最後一天刷點 Web"
-date: 2024-08-29 16:49:51
+title: '[Day 30] 最後一天刷點 Web'
 cover: >-
-    https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/hackerTraining.jpg
+  https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/hackerTraining.jpg
 categories: 2024 CTF Training
 tags:
-    - CTF
-    - CyberSec
+  - CTF
+  - CyberSec
+abbrlink: '1759791'
+date: 2024-08-29 16:49:51
 ---
 
 # 前言

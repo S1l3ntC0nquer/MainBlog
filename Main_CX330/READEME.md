@@ -68,7 +68,7 @@ sidebar.styl 新增以下
   line-height inherit !important // 或者您想要设置的其他值
 ```
 
-code.css 修改如下
+code.css 修改如下（背景色和字體顏色在 yml 改）
 
 ```css
 #article-container code {

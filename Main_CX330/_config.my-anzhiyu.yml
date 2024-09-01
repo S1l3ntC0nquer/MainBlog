@@ -21,7 +21,7 @@ menu:
         # Conditioning: /air-conditioner/ ||
 
     About:
-        Whoami: /about/ || fa-solid fa-paper-plane
+        Whoami: /about/ || fa-solid fa-id-badge
         Subscribe: /subscribe/ || fa-solid fa-bell
         Portfolio: https://cx330.tw/ || fa-solid fa-user
 
@@ -42,7 +42,7 @@ nav:
               - name: LinkedIn
                 link: https://www.linkedin.com/in/%E5%AD%90%E9%9B%8B-%E9%99%B3-11087825b/
                 icon: /assets/linkedin.png
-        - title: Others        
+        - title: Others
           item:
               - name: Portfolio
                 link: https://cx330.tw
@@ -50,7 +50,7 @@ nav:
               - name: Admin
                 link: https://admin.cx330.tw
                 icon: /assets/hacker.png
-              
+
         # - title: English site
         #   item:
         #       - name: CX330's Universe
