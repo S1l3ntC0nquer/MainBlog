@@ -1941,6 +1941,30 @@ base64 -d <<< cGljb0NURntNRTc0RDQ3QV9ISUREM05fYjMyMDQwYjh9Cg==
 picoCTF{ME74D47A_HIDD3N_b32040b8}
 ```
 
+## Secret of the Polyglot
+
+這題給了個PDF檔案，打開後發現了一半的Flag。
+
+![一半的 Flag](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240902021611952.png)
+
+```txt
+1n_pn9_&_pdf_1f991f77}
+```
+
+之後用`file flag2of2-final.pdf`這個命令檢查一下這個檔案。發現他其實是一個PNG檔案。所以我們用`mv flag2of2-final.pdf flag2of2-final.png`把檔名改掉後打開這張圖片。
+
+![另一半的 Flag](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240902021848978.png)
+
+```txt
+picoCTF{f1u3n7_
+```
+
+最後把兩個組合起來就好了。
+
+```txt
+picoCTF{f1u3n7_1n_pn9_&_pdf_1f991f77}
+```
+
 # Misc (General Skills)
 
 ## binhexa
