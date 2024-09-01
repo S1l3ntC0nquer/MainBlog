@@ -9,7 +9,7 @@ tags:
 - PicoCTF
 - 資安
 title: All-in-One PicoCTF Writeups
-updated: '2024-08-30T09:48:43.961+08:00'
+updated: '2024-09-01T20:06:47.030+08:00'
 ---
 # 前言
 
@@ -1727,6 +1727,28 @@ int main() {
 
 ```txt
 picoCTF{Tw0_Sum_Integer_Bu773R_0v3rfl0w_bc0adfd1}
+```
+
+## format string 0
+
+先連接到題目，然後看一下題目長怎樣。
+
+```bash
+┌──(kali㉿kali)-[~]
+└─$ nc mimas.picoctf.net 57925
+
+Welcome to our newly-opened burger place Pico 'n Patty! Can you help the picky customers find their favorite burger?
+Here comes the first customer Patrick who wants a giant bite.
+Please choose from the following burgers: Breakf@st_Burger, Gr%114d_Cheese, Bac0n_D3luxe
+Enter your recommendation:
+```
+
+我在測試題目漏洞的時候輸入了一堆j，結果就直接得到flag了XD。
+
+![Pwned](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/24/9/image_c66965b327bfcda4b0d23b31fca87bfe.png)
+
+```txt
+picoCTF{7h3_cu570m3r_15_n3v3r_SEGFAULT_c8362f05}
 ```
 
 # Forensics
