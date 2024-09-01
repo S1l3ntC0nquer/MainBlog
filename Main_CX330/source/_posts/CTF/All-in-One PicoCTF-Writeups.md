@@ -1751,6 +1751,45 @@ Enter your recommendation:
 picoCTF{7h3_cu570m3r_15_n3v3r_SEGFAULT_c8362f05}
 ```
 
+# Reverse
+
+## GDB Test Drive
+
+這題的話先用 `wget` 把題目這個二進制檔案抓下來。
+
+![Wget](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240701212911463.png)
+
+然後後面的步驟基本上就照著題目給的指令一步一步來就可以了。
+
+![Instructions](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240701213346170.png)
+
+這邊來稍微解釋一下每個指令的意義，他到底是做了哪些事情呢？
+
+- `chmod +x gdbme`
+  - 修改 gdbme 檔案的權限，新增執行權限（x）
+- `gdb gdbme`
+  - 使用 gdb（GNU Debugger）打開 gdbme 這個可執行檔案。
+- `layout asm`
+  - 啟用組合語言（Assembly, ASM）視圖
+- `break *(main+99)`
+  - 在 main 函數開始偏移 99 的位元組的地方設置斷點（Breakpoint）。
+- `jump *(main+104)`
+  - 跳到 main 函數開始偏移 104 位元組的地方繼續執行。
+
+至於這邊為甚麼要在 main+99 的地方設定斷點，是因為這裡他調用了一個函式叫做 `sleep`，所以當我們直接執行 gdbme 的時候會進入到**sleep**的狀態，讓我們以為這個程式沒有做任何事。
+
+![Sleep function](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/H1IxfrlvA.png)
+
+所以在這邊我們才要把斷點設在 main+99，讓他執行到這邊的時候暫停一下，然後我們直接使用 jump 叫到下面一個地方，也就是 main+104 繼續執行。
+
+![Flag](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240701213211218.png)
+
+這樣就得到 flag 啦。
+
+```txt
+picoCTF{d3bugg3r_dr1v3_72bd8355}
+```
+
 # Forensics
 
 ## MSB
@@ -1846,43 +1885,60 @@ ctf-player@pico-chall$ sha256sum files/* | grep 5848768e56185707f76c1d74f34f4e03
 picoCTF{trust_but_verify_8eee7195}
 ```
 
-# Reverse
+## CanYouSee
 
-## GDB Test Drive
-
-這題的話先用 `wget` 把題目這個二進制檔案抓下來。
-
-![Wget](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240701212911463.png)
-
-然後後面的步驟基本上就照著題目給的指令一步一步來就可以了。
-
-![Instructions](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240701213346170.png)
-
-這邊來稍微解釋一下每個指令的意義，他到底是做了哪些事情呢？
-
-- `chmod +x gdbme`
-  - 修改 gdbme 檔案的權限，新增執行權限（x）
-- `gdb gdbme`
-  - 使用 gdb（GNU Debugger）打開 gdbme 這個可執行檔案。
-- `layout asm`
-  - 啟用組合語言（Assembly, ASM）視圖
-- `break *(main+99)`
-  - 在 main 函數開始偏移 99 的位元組的地方設置斷點（Breakpoint）。
-- `jump *(main+104)`
-  - 跳到 main 函數開始偏移 104 位元組的地方繼續執行。
-
-至於這邊為甚麼要在 main+99 的地方設定斷點，是因為這裡他調用了一個函式叫做 `sleep`，所以當我們直接執行 gdbme 的時候會進入到**sleep**的狀態，讓我們以為這個程式沒有做任何事。
-
-![Sleep function](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/H1IxfrlvA.png)
-
-所以在這邊我們才要把斷點設在 main+99，讓他執行到這邊的時候暫停一下，然後我們直接使用 jump 叫到下面一個地方，也就是 main+104 繼續執行。
-
-![Flag](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240701213211218.png)
-
-這樣就得到 flag 啦。
+這題的Handout解壓縮之後是一張圖片，我一開始嘗試了steghide去提取隱寫資訊，但是提取出來後的東西是下面這個。
 
 ```txt
-picoCTF{d3bugg3r_dr1v3_72bd8355}
+The flag is not here maybe think in simpler terms. Data that explains data.
+```
+
+Data that explains data. 這就告訴我們要找他的Metadata啦。這邊使用下面這個命令。
+
+```bash
+exiftool ukn_reality.jpg 
+```
+
+執行後的結果為：
+
+```bash
+ExifTool Version Number         : 12.76
+File Name                       : ukn_reality.jpg
+Directory                       : .
+File Size                       : 2.3 MB
+File Modification Date/Time     : 2024:03:11 20:05:53-04:00
+File Access Date/Time           : 2024:09:01 13:25:54-04:00
+File Inode Change Date/Time     : 2024:09:01 13:25:46-04:00
+File Permissions                : -rw-r--r--
+File Type                       : JPEG
+File Type Extension             : jpg
+MIME Type                       : image/jpeg
+JFIF Version                    : 1.01
+Resolution Unit                 : inches
+X Resolution                    : 72
+Y Resolution                    : 72
+XMP Toolkit                     : Image::ExifTool 11.88
+Attribution URL                 : cGljb0NURntNRTc0RDQ3QV9ISUREM05fYjMyMDQwYjh9Cg==
+Image Width                     : 4308
+Image Height                    : 2875
+Encoding Process                : Baseline DCT, Huffman coding
+Bits Per Sample                 : 8
+Color Components                : 3
+Y Cb Cr Sub Sampling            : YCbCr4:2:0 (2 2)
+Image Size                      : 4308x2875
+Megapixels                      : 12.4
+```
+
+Attribution URL看起來很可疑，拿去base64解碼一下。
+
+```bash
+base64 -d <<< cGljb0NURntNRTc0RDQ3QV9ISUREM05fYjMyMDQwYjh9Cg==
+```
+
+果然，得到Flag啦。
+
+```txt
+picoCTF{ME74D47A_HIDD3N_b32040b8}
 ```
 
 # Misc (General Skills)
