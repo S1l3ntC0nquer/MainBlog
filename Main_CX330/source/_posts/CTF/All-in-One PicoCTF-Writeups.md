@@ -1313,6 +1313,26 @@ for i in range(width1):
 i3.save("test.png", "PNG")
 ```
 
+## HideToSee
+
+這題給了一個圖片，圖片上寫的字說這是一個Atbash Cipher，查了一下，就是一種把字母順序反過來的Substitution Cipher。提示有說要Extract it，所以猜測是用Steghide，這邊先把資料提取出來。
+
+```bash
+steghide extract -sf atbash.jpg
+```
+
+這會提取出一個`encrypted.txt`文件，看一下內容。
+
+```txt
+krxlXGU{zgyzhs_xizxp_8z0uvwwx}
+```
+
+直接把這個拿去[網路上的解密工具](https://www.dcode.fr/atbash-cipher)，Flag就出來了。
+
+```txt
+picoCTF{atbash_crack_8a0feddc}
+```
+
 # Pwn (Binary Exploitation)
 
 ## Local Target
