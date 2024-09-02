@@ -2146,6 +2146,35 @@ picoCTF{f1u3n7_
 picoCTF{f1u3n7_1n_pn9_&_pdf_1f991f77}
 ```
 
+## Scan Surprise
+
+先用SSH連接到題目。
+
+```bash
+ssh -p 51523 ctf-player@atlas.picoctf.net
+```
+
+然後發現他給了一張QR Code的圖片叫做Flag.png。但因為我手邊沒有手機，用`zbarimg`把其中的資訊提取出來。
+
+```bash
+zbarimg flag.png
+```
+
+他輸出的東西像這樣：
+
+```bash
+Connection Error (Failed to connect to socket /var/run/dbus/system_bus_socket: No such file or directory)
+Connection Null
+QR-Code:picoCTF{p33k_@_b00_b5ce2572}
+scanned 1 barcode symbols from 1 images in 0 seconds
+```
+
+果然Flag就出來了！
+
+```txt
+picoCTF{p33k_@_b00_b5ce2572}
+```
+
 # Misc (General Skills)
 
 ## binhexa
