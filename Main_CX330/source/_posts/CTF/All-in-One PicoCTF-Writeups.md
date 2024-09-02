@@ -432,6 +432,42 @@ picoCTF{s0m3_SQL_c218b685}
 picoCTF{XML_3xtern@l_3nt1t1ty_0dcf926e}
 ```
 
+## SQL Direct
+
+這題要連接到PostgreSQL的資料庫，先打開Kali。打開後輸入以下命令連接到資料庫，密碼為`postgres`。
+
+```bash
+psql -h saturn.picoctf.net -p 51152 -U postgres pico
+```
+
+- `-h`代表Host
+- `-p`代表Port
+- `-U`代表Username
+- `pico`代表資料庫名稱
+
+連接到後可以先輸入`\d`查看Tables。
+
+```txt
+pico=# \d
+         List of relations
+ Schema | Name  | Type  |  Owner   
+--------+-------+-------+----------
+ public | flags | table | postgres
+(1 row)
+```
+
+可以看到有一個叫做`flags`的表，這邊直接用以下命令把資料查詢出來。
+
+```postgresql
+SELECT * FROM flags;
+```
+
+果然看到Flag了。
+
+```txt
+picoCTF{L3arN_S0m3_5qL_t0d4Y_73b0678f}
+```
+
 # Crypto
 
 - [My scripts & note on Github](https://github.com/CX330Blake/Crypto_Notebook)
