@@ -1213,6 +1213,16 @@ $\phi(n) = p_1^{k_1 - 1} \times (p_1 - 1) \times p_2^{k_2 - 1} \times (p_2 - 1) 
 picoCTF{too_many_fact0rs_8606199}
 ```
 
+## Vigenere
+
+這題給了一個加密後的密文跟Key，然後題目也告訴我們是Vigenere Cipher，直接拿去Online decoder解就行。（我也不知道為甚麼他難度是Medium LMAO）
+
+![Pwned](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240902145151045.png)
+
+```txt
+picoCTF{D0NT_US3_V1G3N3R3_C1PH3R_d85729g7}
+```
+
 # Pwn (Binary Exploitation)
 
 ## Local Target
