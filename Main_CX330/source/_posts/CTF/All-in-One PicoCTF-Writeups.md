@@ -1932,6 +1932,45 @@ print(decoded_flag)
 picoCTF{16_bits_inst34d_of_8_e703b486}
 ```
 
+## vault-door-training
+
+這題就是把Java檔下載下來就解出來了。他的原始碼如下。
+
+```java
+import java.util.*;
+
+class VaultDoorTraining {
+    public static void main(String args[]) {
+        VaultDoorTraining vaultDoor = new VaultDoorTraining();
+        Scanner scanner = new Scanner(System.in); 
+        System.out.print("Enter vault password: ");
+        String userInput = scanner.next();
+	String input = userInput.substring("picoCTF{".length(),userInput.length()-1);
+	if (vaultDoor.checkPassword(input)) {
+	    System.out.println("Access granted.");
+	} else {
+	    System.out.println("Access denied!");
+	}
+   }
+
+    // The password is below. Is it safe to put the password in the source code?
+    // What if somebody stole our source code? Then they would know what our
+    // password is. Hmm... I will think of some ways to improve the security
+    // on the other doors.
+    //
+    // -Minion #9567
+    public boolean checkPassword(String password) {
+        return password.equals("w4rm1ng_Up_w1tH_jAv4_3808d338b46");
+    }
+}
+```
+
+在倒數第三行那個東西就是Flag了，自己把它加上Flag的格式就可以。這題主要是在提醒說不要把密碼等重要資訊放在原始碼裡面。
+
+```txt
+picoCTF{w4rm1ng_Up_w1tH_jAv4_3808d338b46}
+```
+
 # Forensics
 
 ## MSB
