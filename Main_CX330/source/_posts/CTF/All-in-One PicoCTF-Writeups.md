@@ -1890,6 +1890,48 @@ picoCTF{7h3_cu570m3r_15_n3v3r_SEGFAULT_c8362f05}
 picoCTF{d3bugg3r_dr1v3_72bd8355}
 ```
 
+## Transformation
+
+這題給了一個文字檔案叫做enc，以及一段Python程式碼告訴你他的加密邏輯。如下。
+
+```python
+''.join([chr((ord(flag[i]) << 8) + ord(flag[i + 1])) for i in range(0, len(flag), 2)])
+```
+
+然後enc長這樣。
+
+```txt
+灩捯䍔䙻ㄶ形楴獟楮獴㌴摟潦弸彥㜰㍢㐸㙽
+```
+
+看起來像亂碼，不過那是因為Python把它兩個字元的ASCII合併成16個Bytes，再轉回字元，所以看起來亂糟糟。那解碼就是要把16個Bytes分別拆回去兩個8個Bytes的字元。
+
+```python
+def decode(encoded_string):
+    decoded_flag = []
+    for char in encoded_string:
+        # 取得 Unicode 字符的 16 位整數值
+        value = ord(char)
+        # 提取高 8 位和低 8 位
+        high_byte = value >> 8       # 取高 8 位
+        low_byte = value & 0xFF      # 取低 8 位
+        # 將其轉換回原來的兩個字符
+        decoded_flag.append(chr(high_byte))
+        decoded_flag.append(chr(low_byte))
+    return ''.join(decoded_flag)
+
+# 測試範例
+encoded_string = "灩捯䍔䙻ㄶ形楴獟楮獴㌴摟潦弸彥㜰㍢㐸㙽"
+decoded_flag = decode(encoded_string)
+print(decoded_flag)
+```
+
+這樣就出來啦！
+
+```txt
+picoCTF{16_bits_inst34d_of_8_e703b486}
+```
+
 # Forensics
 
 ## MSB
