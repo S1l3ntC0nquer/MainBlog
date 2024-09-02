@@ -1223,6 +1223,60 @@ picoCTF{too_many_fact0rs_8606199}
 picoCTF{D0NT_US3_V1G3N3R3_C1PH3R_d85729g7}
 ```
 
+## Pixelated
+
+這題給了兩張圖片，並且是一個叫做Visual Cryptography的東西。題目圖片如下。
+
+![scrambled1](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/scrambled1.png)
+
+![scrambled2](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/scrambled2.png)
+
+這邊我用[Stegsolve](https://github.com/zardus/ctf-tools/blob/master/stegsolve/install)去Combine兩張圖片。先打開第一張圖片後點選 Analyze > Image Combiner，再點選第二張圖片。之後它會跳出一個介面讓你選擇Combine的方式，預設是XOR，一直點向右的箭頭直到方法變成ADD的時候就可以看到Flag啦。
+
+![Pwned](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240902152127776.png)
+
+```txt
+picoCTF{d562333d}
+```
+
+解完後我有看了一下其他人的Writeups，我發現有人是用Python解的覺得很酷，附上來給大家看看。（[Writeup](https://ctftime.org/writeup/28930)）
+
+```python
+# import Image
+from PIL import Image
+
+# open both photos
+i1 = Image.open('scrambled1.png')
+i2 = Image.open('scrambled2.png')
+
+# get width and height
+width1, height1 = i1.size
+
+# open new image
+i3 = Image.new('RGB', (width1, height1))
+
+# load the pixels
+pixels = i3.load()
+
+# loop through all pixels
+for i in range(width1):
+    for j in range(height1):
+        # xor the values
+        x = i1.getpixel((i,j))[0] ^ i2.getpixel((i,j))[0]
+        y = i1.getpixel((i,j))[1] ^ i2.getpixel((i,j))[1]
+        z = i1.getpixel((i,j))[2] ^ i2.getpixel((i,j))[2]
+
+        # if all white then convert to black
+        if (x,y,z) == (255,255,255):
+            (x,y,z) = (0,0,0)
+
+        # put the new pixels in place
+        i3.putpixel((i,j), (x,y,z))
+
+# save the image
+i3.save("test.png", "PNG")
+```
+
 # Pwn (Binary Exploitation)
 
 ## Local Target
