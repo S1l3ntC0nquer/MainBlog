@@ -1,8 +1,9 @@
 ---
-abbrlink: ''
+abbrlink: 4e56d65
 categories:
-- - Hacking
-cover: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/24/9/Blog_cover%20(17)%20(1)_3e1f0c91c61253af1f2670f4341e7d33.jpg
+  - - Hacking
+cover: >-
+  https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/24/9/Blog_cover%20(17)%20(1)_3e1f0c91c61253af1f2670f4341e7d33.jpg
 date: '2024-09-03T23:50:41.047232+08:00'
 tags: []
 title: My Hacking Toolkit
