@@ -1,18 +1,17 @@
 ---
-title: 2024 GDSC NCKU AI Team
-mathjax: true
-categories:
-    - DevCorner
-tags:
-    - AI
-    - GDSC
-description: Sharing the experience of being a member of 2024 GDSC NCKU AI Team.
-cover: >-
-    https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/upload_97e1adcfafc9b114ef3a964245a78c25.png
 abbrlink: 23950b86
-date: 2024-06-22 03:33:41
+categories:
+- DevCorner
+cover: ''
+date: '2024-06-22T03:33:41+08:00'
+description: Sharing the experience of being a member of 2024 GDSC NCKU AI Team.
+mathjax: true
+tags:
+- AI
+- GDSC
+title: 2024 GDSC NCKU AI Team
+updated: '2024-09-04T16:32:23.115+08:00'
 ---
-
 # Intro — What is GDSC
 
 [GDSC](https://gdg.tw/about/gdsc/)(Google Developer Student Clubs)是一個由 Google 支持的學生社群，旨在通過學生與專業開發人員聯繫，促進學生對 Google 開發人員技術的學習和應用，並為學生提供與技術專家互動和學習的機會。 GDSC 在全球有超過 100 個國家/地區的 1000 多個社群。GDSC 是學生們學習和分享技術的理想社群，並且能夠與技術行業的其他開發人員和專家建立聯繫。(以上皆是 Ctrl+c & Ctrl+v)
