@@ -180,7 +180,7 @@ cover:
     # left/right/both
     position: left
     # When cover is not set, the default cover is displayed (当没有设置cover时，默认的封面显示)
-    default_cover: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/CX330_Green.jpg
+    default_cover: https://blog.cx330.tw/assets/astronaut.svg # https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/CX330_Green.jpg
 
 # Replace Broken Images (替换无法显示的图片)
 error_img:
