@@ -1122,7 +1122,7 @@ home_top:
     banner:
         tips: Hey astronauts!
         title: Now landing on CX330.
-        image: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/cover.gif
+        image: https://blog.cx330.tw/assets/astronaut.svg # https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/cover.gif
         link: https://cx330.tw
 
 # 朋友圈配置
