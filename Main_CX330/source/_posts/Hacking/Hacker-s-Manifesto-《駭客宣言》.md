@@ -10,7 +10,6 @@ copyright_author: The Mentor (Loyd Blankenship)
 copyright_author_href: "https://en.wikipedia.org/wiki/Loyd_Blankenship"
 copyright_info: This article is a repost or translation of the original work. All rights belong to the original author.
 copyright_url: "http://phrack.org/issues/7/3.html"
-sticky: 1337
 abbrlink: 5ed2c20
 date: 2024-07-07 18:11:39
 ---

@@ -1,13 +1,15 @@
 ---
 abbrlink: 4e56d65
 categories:
-- - Hacking
+    - - Hacking
 cover: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/24/9/Blog_cover%20(17)%20(1)_3e1f0c91c61253af1f2670f4341e7d33.jpg
-date: '2024-09-03T23:50:41.047232+08:00'
-tags: []
+date: "2024-09-03T23:50:41.047232+08:00"
+sticky: 1337
+tags: CTF
 title: My Hacking Toolkit
-updated: '2024-09-04T16:33:10.514+08:00'
+updated: "2024-09-04T16:33:10.514+08:00"
 ---
+
 # Temp Server (Python)
 
 ```python
@@ -56,11 +58,11 @@ if __name__ == '__main__':
 
 # Hash Collision
 
-- [Hash Collisions](https://github.com/CX330Blake/Hash-Collisions/)
+-   [Hash Collisions](https://github.com/CX330Blake/Hash-Collisions/)
 
 # LFI & RFI
 
 ## LFI2RCE
 
-- [Advanced Local File Inclusion to RCE in 2022](https://blog.stevenyu.tw/2022/05/07/advanced-local-file-inclusion-2-rce-in-2022/)
-- [PHP_INCLUDE_TO_SHELL_CHAR_DICT](https://github.com/CX330Blake/PHP_INCLUDE_TO_SHELL_CHAR_DICT)
+-   [Advanced Local File Inclusion to RCE in 2022](https://blog.stevenyu.tw/2022/05/07/advanced-local-file-inclusion-2-rce-in-2022/)
+-   [PHP_INCLUDE_TO_SHELL_CHAR_DICT](https://github.com/CX330Blake/PHP_INCLUDE_TO_SHELL_CHAR_DICT)
