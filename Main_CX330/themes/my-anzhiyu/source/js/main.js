@@ -988,12 +988,12 @@ document.addEventListener("DOMContentLoaded", function () {
                     : "dark";
             if (willChangeMode === "dark") {
                 activateDarkMode();
-                GLOBAL_CONFIG.Snackbar !== undefined &&
-                    anzhiyu.snackbarShow(GLOBAL_CONFIG.Snackbar.day_to_night);
+                // GLOBAL_CONFIG.Snackbar !== undefined &&
+                //     anzhiyu.snackbarShow(GLOBAL_CONFIG.Snackbar.day_to_night);
             } else {
                 activateLightMode();
-                GLOBAL_CONFIG.Snackbar !== undefined &&
-                    anzhiyu.snackbarShow(GLOBAL_CONFIG.Snackbar.night_to_day);
+                // GLOBAL_CONFIG.Snackbar !== undefined &&
+                //     anzhiyu.snackbarShow(GLOBAL_CONFIG.Snackbar.night_to_day);
             }
             saveToLocal.set("theme", willChangeMode, 2);
             handleThemeChange(willChangeMode);

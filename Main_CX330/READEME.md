@@ -155,6 +155,20 @@ nav.styl 修改如下
     display flex
 ```
 
+main.js 修改如下
+
+```javascript
+if (willChangeMode === "dark") {
+    activateDarkMode();
+    // GLOBAL_CONFIG.Snackbar !== undefined &&
+    //     anzhiyu.snackbarShow(GLOBAL_CONFIG.Snackbar.day_to_night);
+} else {
+    activateLightMode();
+    // GLOBAL_CONFIG.Snackbar !== undefined &&
+    //     anzhiyu.snackbarShow(GLOBAL_CONFIG.Snackbar.night_to_day);
+}
+```
+
 # hexo-butterfly-envelope
 
 `main.js`中把中文改為英文
@@ -164,3 +178,4 @@ nav.styl 修改如下
 -   [文章主色调(插件)](https://www.naokuo.top/p/fb2f8d77.html)
 -   [为主页文章卡片添加擦亮动画效果](https://blog.kouseki.cn/posts/dda6.html)
 -   [重构记录 - 4](https://meuicat.com/blog/42/)
+-   [好看的昼夜切换按钮](https://www.naokuo.top/p/1c3b759a.html)

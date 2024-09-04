@@ -1123,7 +1123,7 @@ home_top:
         tips: Hey astronauts!
         title: Now landing on CX330.
         image: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/cover.gif
-        link: https://blog.cx330.tw
+        link: https://cx330.tw
 
 # 朋友圈配置
 friends_vue:
