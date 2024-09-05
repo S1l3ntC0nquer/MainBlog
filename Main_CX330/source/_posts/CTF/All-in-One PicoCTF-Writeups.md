@@ -2408,3 +2408,30 @@ picoCTF{3ndi4n_sw4p_su33ess_02999450}
 ```txt
 picoCTF{g00d_gu355_3af33d18}
 ```
+
+## Blame Game
+
+這題給了個zip，解壓後我們把整個專案目錄丟進VSCode看看。
+
+![Handout](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240906034638052.png)
+
+就一個檔案，但是是不能運行的。這邊題目要求我們找出是誰在搞鬼，因為我有裝VSCode的插件，所以直接點旁邊的git，再點選Contributors就出來了。
+
+![Pwned](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240906034831808.png)
+
+```txt
+picoCTF{@sk_th3_1nt3rn_2c6bf174}
+```
+
+## Commitment Issues
+
+這題和上一題差不多，也是打開丟VSCode就出來了。
+
+![Pwned](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240906035110911.png)
+
+```txt
+picoCTF{s@n1t1z3_ea83ff2a}
+```
+
+
+
