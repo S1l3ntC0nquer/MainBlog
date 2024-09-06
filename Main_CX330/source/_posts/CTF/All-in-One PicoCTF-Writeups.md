@@ -1528,6 +1528,37 @@ openssl req -in <yourcsr.csr> -noout -text
 picoCTF{read_mycert_693f7c03}
 ```
 
+## transposition-trial
+
+先看題目敘述。
+
+>Our data got corrupted on the way here. Luckily, nothing got replaced, but every block of 3 got scrambled around! The first word seems to be three letters long, maybe you can use that to recover the rest of the message.
+
+這代表每三個字為一個區塊，並且每個區塊都被相同的方式打亂了。密文長下面這樣。
+
+```txt
+heTfl g as iicpCTo{7F4NRP051N5_16_35P3X51N3_V091B0AE}2
+```
+
+我們可以發現前三個字是`The`，所以能推測出他打亂的方式是每個Block中的最後一個變為第一個，其餘不變。那就來構造Exploit吧。
+
+```python
+cipher = "heTfl g as iicpCTo{7F4NRP051N5_16_35P3X51N3_V091B0AE}2"
+
+flag = ""
+for i in range(0, len(cipher), 3):
+    block = cipher[i : i + 3]
+    flag += block[-1] + block[0:-1]
+
+print(flag)
+```
+
+這樣就出來啦！
+
+```txt
+picoCTF{7R4N5P051N6_15_3XP3N51V3_109AB02E}
+```
+
 # Pwn (Binary Exploitation)
 
 ## Local Target
