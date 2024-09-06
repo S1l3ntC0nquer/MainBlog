@@ -1473,6 +1473,61 @@ Voila! Flag就出來啦~
 picoCTF{1_gu3ss_p30pl3_p4d_m3ss4g3s_f0r_4_r34s0n}
 ```
 
+## substitution0
+
+這題給了一個加密後的密文，如下。
+
+```txt
+DECKFMYIQJRWTZPXGNABUSOLVH 
+
+Ifnfuxpz Wfyndzk dnpaf, oqbi d yndsf dzk abdbfwv dqn, dzk enpuyib tf bif effbwf
+mnpt d ywdaa cdaf qz oiqci qb oda fzcwpafk. Qb oda d efdubqmuw acdndedfua, dzk, db
+bidb bqtf, uzrzpoz bp zdbundwqaba—pm cpunaf d ynfdb xnqhf qz d acqfzbqmqc xpqzb
+pm sqfo. Bifnf ofnf bop npuzk ewdcr axpba zfdn pzf flbnftqbv pm bif edcr, dzk d
+wpzy pzf zfdn bif pbifn. Bif acdwfa ofnf flcffkqzywv idnk dzk ywpaav, oqbi dww bif
+dxxfdndzcf pm eunzqaifk ypwk. Bif ofqyib pm bif qzafcb oda sfnv nftdnrdewf, dzk,
+bdrqzy dww biqzya qzbp cpzaqkfndbqpz, Q cpuwk idnkwv ewdtf Juxqbfn mpn iqa pxqzqpz
+nfaxfcbqzy qb.
+
+Bif mwdy qa: xqcpCBM{5UE5717U710Z_3S0WU710Z_59533D2F}
+```
+
+最後一行看起來很像Flag，但因為他給的是很大段的文字，所以可以直接去用暴力破解。我推薦使用[這個網站](https://planetcalc.com/8047/)，直接把整段輸入進去，他就會幫你找出最可能的解。
+
+![Pwned](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240906212752945.png)
+
+```txt
+picoCTF{5UB5717U710N_3V0LU710N_59533A2E}
+```
+
+## substitution1
+
+這題照理說應該跟上一題一樣，但是我覺得他題目可能有改過然後答案忘了改，因為我看了好多人的writeup都是這樣解，可是每個人的Flag都不一樣XD，所以就先跳過了。
+
+## substitution2
+
+這題也一樣用那個線上工具。
+
+```txt
+picoCTF{N6R4M_4N41Y515_15_73D10U5_42EA1770}
+```
+
+## ReadMyCert
+
+這題給了一個 CSR (Certificate Signing Request) 文件，要我們去檢查這份文件。因為CSR文件的編碼方式是一種特定格式，不是單純的Base64編碼，我們可以用以下命令查看他。
+
+```bash
+openssl req -in <yourcsr.csr> -noout -text
+```
+
+但為了方便，我們可以直接使用[線上的CSR Decoder](https://www.sslshopper.com/csr-decoder.html)幫我們解碼。
+
+![Pwned](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240906220109679.png)
+
+```txt
+picoCTF{read_mycert_693f7c03}
+```
+
 # Pwn (Binary Exploitation)
 
 ## Local Target
