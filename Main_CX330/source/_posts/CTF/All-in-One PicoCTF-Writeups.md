@@ -1559,6 +1559,41 @@ print(flag)
 picoCTF{7R4N5P051N6_15_3XP3N51V3_109AB02E}
 ```
 
+## spelling-quiz
+
+這題給了三個文件，`encrypt.py`、`flag.txt`和`study-guide.txt`。先來看看加密腳本。
+
+```python
+import random
+import os
+
+files = [
+    os.path.join(path, file)
+    for path, dirs, files in os.walk(".")
+    for file in files
+    if file.split(".")[-1] == "txt"
+]
+
+alphabet = list("abcdefghijklmnopqrstuvwxyz")
+random.shuffle(shuffled := alphabet[:])
+dictionary = dict(zip(alphabet, shuffled))
+
+for filename in files:
+    text = open(filename, "r").read()
+    encrypted = "".join([dictionary[c] if c in dictionary else c for c in text])
+    open(filename, "w").write(encrypted)
+```
+
+可以看出他就是一個Substitution Cipher。然後因為我們確定`study-guide.txt`裡面都是正常的單字（題目說的），所以我們可以直接把`flag.txt`接在`study-guide.txt`後面，接著拿去給一些線上工具解密就可以了（Frequency Attack）。這邊我用的是[這個工具](https://www.guballa.de/substitution-solver)。
+
+![Pwned](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240907030426060.png)
+
+最後記得用`picoCTF{}`包起來。
+
+```txt
+picoCTF{perhaps_the_dog_jumped_over_was_just_tired}
+```
+
 # Pwn (Binary Exploitation)
 
 ## Local Target
