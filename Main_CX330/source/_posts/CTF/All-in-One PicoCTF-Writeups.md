@@ -2618,3 +2618,48 @@ picoCTF{t1m3m@ch1n3_8defe16a}
 picoCTF{t3@mw0rk_m@k3s_th3_dr3@m_w0rk_2c91ca76}
 ```
 
+## Based
+
+有三關，分別是bin to ascii、oct to ascii、hex to ascii。如下。推薦用CyberChef的magic recipe。
+
+```txt
+┌──(kali㉿kali)-[~]
+└─$ nc jupiter.challenges.picoctf.org 29956.
+Let us see how data is stored
+chair
+Please give the 01100011 01101000 01100001 01101001 01110010 as a word.
+...
+you have 45 seconds.....
+
+Input:
+chair
+Please give me the  163 165 142 155 141 162 151 156 145 as a word.
+Input:
+submarine
+Please give me the 737472656574 as a word.
+Input:
+street
+You've beaten the challenge
+Flag: picoCTF{learning_about_converting_values_b375bb16}
+```
+
+```txt
+picoCTF{learning_about_converting_values_b375bb16}
+```
+
+## plumbing
+
+這題使用`nc jupiter.challenges.picoctf.org 4427`連接到題目主機後會發現它不斷的輸出很多字串，像這樣。
+
+![題目](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240906143752460.png)
+
+推測Flag應該就藏於其中，然後題目叫做plumbing，可以聯想到要用pipe，所以用這行命令就可以了。
+
+```bash
+nc jupiter.challenges.picoctf.org 4427 | grep picoCTF
+```
+
+```txt
+picoCTF{digital_plumb3r_5ea1fbd7}
+```
+
