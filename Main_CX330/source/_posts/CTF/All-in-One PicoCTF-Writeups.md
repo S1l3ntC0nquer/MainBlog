@@ -2610,3 +2610,11 @@ picoCTF{s@n1t1z3_ea83ff2a}
 picoCTF{t1m3m@ch1n3_8defe16a}
 ```
 
+## Collaborative Development
+
+這題就是去各個不同的Branch裡面看`flag.py`，把三個拼湊在一起就可以了。
+
+```txt
+picoCTF{t3@mw0rk_m@k3s_th3_dr3@m_w0rk_2c91ca76}
+```
+
