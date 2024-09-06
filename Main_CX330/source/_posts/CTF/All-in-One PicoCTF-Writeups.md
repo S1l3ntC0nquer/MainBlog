@@ -2600,5 +2600,13 @@ picoCTF{@sk_th3_1nt3rn_2c6bf174}
 picoCTF{s@n1t1z3_ea83ff2a}
 ```
 
+## Time Machine
 
+這題更簡單，打開後直接看Commit紀錄就找到了。
+
+![Pwned](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240906132115701.png)
+
+```txt
+picoCTF{t1m3m@ch1n3_8defe16a}
+```
 
