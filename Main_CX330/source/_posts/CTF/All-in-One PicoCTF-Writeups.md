@@ -468,6 +468,18 @@ SELECT * FROM flags;
 picoCTF{L3arN_S0m3_5qL_t0d4Y_73b0678f}
 ```
 
+## Cookies
+
+打開題目給的網頁後，按下`F12`並進到Application裡面查看Cookies，看到有一個叫做name的cookie，他的value是-1，把他的value改為0試試看，發現頁面變了，顯示I love snickerdoodle cookies!。那把這個value一直往上加，一直試到18就會發現Flag了。
+
+```txt
+picoCTF{3v3ry1_l0v3s_c00k135_cc9110ba}
+```
+
+## More Cookies
+
+TODO
+
 # Crypto
 
 - [My scripts & note on Github](https://github.com/CX330Blake/Crypto_Notebook)
