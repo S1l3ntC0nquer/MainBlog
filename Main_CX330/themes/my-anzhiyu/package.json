@@ -23,8 +23,9 @@
     "email": "me@anheyu.com"
   },
   "dependencies": {
+    "hexo-renderer-pug": "^3.0.0",
     "hexo-renderer-stylus": "^3.0.0",
-    "hexo-renderer-pug": "^3.0.0"
+    "hexo-theme-anzhiyu": "file:"
   },
   "homepage": "https://blog.anheyu.com/",
   "author": "anzhiyu <me@anheyu.com>",
