@@ -1,15 +1,16 @@
 ---
-title: "[HTB] Photon Lockdown Writeup 🚫"
-date: 2024-09-09 10:49:21
+title: "[HTB] Photon Lockdown Writeup \U0001F6AB"
 cover: >-
-    https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/help-you-at-solving-hackthebox-htb-challenges-machines.png
+  https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/help-you-at-solving-hackthebox-htb-challenges-machines.png
 categories:
-    - [HackTheBox]
-    - [CTF]
+  - - HackTheBox
+  - - CTF
 tags:
-    - HTB
-    - Hardware
-    - HackTheBox 
+  - HTB
+  - Hardware
+  - HackTheBox
+abbrlink: a42f8edc
+date: 2024-09-09 10:49:21
 ---
 
 # 0x00 Challenge Info

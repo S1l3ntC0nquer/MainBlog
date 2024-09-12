@@ -1,15 +1,16 @@
 ---
 title: '[HTB] Behind the Scenes Writeup'
-date: 2024-09-09 19:45:08
 cover: >-
-    https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/help-you-at-solving-hackthebox-htb-challenges-machines.png
+  https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/help-you-at-solving-hackthebox-htb-challenges-machines.png
 categories:
-    - [HackTheBox]
-    - [CTF]
+  - - HackTheBox
+  - - CTF
 tags:
-    - HTB
-    - Reverse
-    - HackTheBox
+  - HTB
+  - Reverse
+  - HackTheBox
+abbrlink: e18c2f54
+date: 2024-09-09 19:45:08
 ---
 
 # 0x00 Challenge Info
