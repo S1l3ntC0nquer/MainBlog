@@ -7,6 +7,13 @@ cover: >-
 date: '2024-08-29T15:03:18.568316+08:00'
 tags: []
 title: Data Structures for Muggles
-updated: '2024-08-29T15:39:10.351+08:00'
+updated: '2024-08-29T15:39:10.351+08:00' 
 ---
-PLACEHOLDER
+# Prologue
+
+This is the note when I was taking the course in NCKU, 2024. Blablabla.....
+
+# Arrays
+
+{% mermaid %}
+
