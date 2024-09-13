@@ -124,10 +124,81 @@ The following is the diagram of the **push** and **pop** operation of stacks.
 
 If we want to dynamically allocate the size of the stack, we should still use `malloc()`. Here's an example using dynamic arrays.
 
-TODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODOTODO
+- Headers and declarations
 
 ```c
+int *stack;
+int capacity = 1; // Initial capacity
+int top = -1; // Representing empty stack
+```
 
+- Create stack
+
+```c
+void createStack() {
+    stack = (int*)malloc(capacity * sizeof(int));
+    if (stack == NULL) {
+        printf("Memory allocation failed\n");
+        exit(1);
+    }
+}
+```
+
+- Array doubling when stack is full
+
+```c
+void stackFull() {
+    capacity *= 2;  // Double the capacity
+    stack = (int*)realloc(stack, capacity * sizeof(int));
+    if (stack == NULL) {
+        printf("Memory allocation failed\n");
+        exit(1);
+    }
+    printf("Stack expanded to capacity: %d\n", capacity);
+}
+```
+
+- Check if the stack is empty
+
+```c
+int isEmpty() {
+    return top == -1;
+}
+```
+
+- Push
+
+```c
+void push(int value) {
+    if (top == capacity - 1) {  // If the stack is full, double it
+        stackFull();
+    }
+    stack[++top] = value;
+}
+```
+
+- Pop
+
+```c
+int pop() {
+    if (isEmpty()) {
+        printf("Stack underflow. No elements to pop.\n");
+        return -1; 
+    }
+    return stack[top--];
+}
+```
+
+- Peek (or Top)
+
+```c
+int peek() {
+    if (isEmpty()) {
+        printf("Stack is empty.\n");
+        return -1; 
+    }
+    return stack[top];
+}
 ```
 
 # Queues
