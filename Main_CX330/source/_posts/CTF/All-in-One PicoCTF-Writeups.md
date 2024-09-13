@@ -3378,6 +3378,105 @@ Please enter new value of variable: win
 picoCTF{7h15_15_wh47_w3_g37_w17h_u53r5_1n_ch4rg3_c20f5222}
 ```
 
+## Classic Crackme 0x100
+
+把binary丟進IDA看一下。以下是反編譯後的代碼。
+
+```c
+int __fastcall main(int argc, const char **argv, const char **envp)
+{
+  char input[51]; // [rsp+0h] [rbp-A0h] BYREF
+  char output[51]; // [rsp+40h] [rbp-60h] BYREF
+  int random2; // [rsp+7Ch] [rbp-24h]
+  int random1; // [rsp+80h] [rbp-20h]
+  char fix; // [rsp+87h] [rbp-19h]
+  int secret3; // [rsp+88h] [rbp-18h]
+  int secret2; // [rsp+8Ch] [rbp-14h]
+  int secret1; // [rsp+90h] [rbp-10h]
+  int len; // [rsp+94h] [rbp-Ch]
+  int i_0; // [rsp+98h] [rbp-8h]
+  int i; // [rsp+9Ch] [rbp-4h]
+
+  strcpy(output, "apijaczhzgtfnyjgrdvqrjbmcurcmjczsvbwgdelvxxxjkyigy");
+  setvbuf(_bss_start, 0LL, 2, 0LL);
+  printf("Enter the secret password: ");
+  __isoc99_scanf("%50s", input);
+  i = 0;
+  len = strlen(output);
+  secret1 = 85;
+  secret2 = 51;
+  secret3 = 15;
+  fix = 97;
+  while ( i <= 2 )
+  {
+    for ( i_0 = 0; i_0 < len; ++i_0 )
+    {
+      random1 = (secret1 & (i_0 % 255)) + (secret1 & ((i_0 % 255) >> 1));
+      random2 = (random1 & secret2) + (secret2 & (random1 >> 2));
+      input[i_0] = ((random2 & secret3) + input[i_0] - fix + (secret3 & (random2 >> 4))) % 26 + fix;
+    }
+    ++i;
+  }
+  if ( !memcmp(input, output, len) )
+    printf("SUCCESS! Here is your flag: %s\n", "picoCTF{sample_flag}");
+  else
+    puts("FAILED!");
+  return 0;
+}
+```
+
+總之他就是把使用者的輸入做了一堆複雜的運算後，去比較和15行的那串字串是否一致，若一致就吐Flag。所以我們要逆推回去，找到輸入甚麼才可以在做了一堆運算後等於那串字串。這邊我請ChatGPT寫了一個腳本，果然可行。
+
+```python
+def decrypt(encrypted_str):
+    secret1 = 85
+    secret2 = 51
+    secret3 = 15
+    fix = 97
+    output = list(encrypted_str)
+    len_str = len(output)
+
+    # 需要反轉加密過程
+    for _ in range(3):  # 解密過程也重複三次
+        for i in range(len_str):
+            random1 = (secret1 & (i % 255)) + (secret1 & ((i % 255) >> 1))
+            random2 = (random1 & secret2) + (secret2 & (random1 >> 2))
+            output[i] = chr(
+                (
+                    (
+                        ord(output[i])
+                        - fix
+                        - (random2 & secret3)
+                        - (secret3 & (random2 >> 4))
+                    )
+                    % 26
+                )
+                + fix
+            )
+
+    return "".join(output)
+
+
+# 固定輸出字符串
+output = "apijaczhzgtfnyjgrdvqrjbmcurcmjczsvbwgdelvxxxjkyigy"
+
+# 解密測試
+decrypted_input = decrypt(output)
+print(f"解密結果: {decrypted_input}")
+```
+
+這樣跑出來後，他說我們要輸入的東西是：
+
+```txt
+amfdxwtywanwhpauoxphlasawliqdxqkppvnauvzpoolaymtap
+```
+
+接著就連到題目Server，輸入這串，果然就得到Flag了。
+
+```txt
+picoCTF{s0lv3_angry_symb0ls_e1ad09b7}
+```
+
 # Forensics
 
 ## MSB
