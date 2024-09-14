@@ -86,6 +86,7 @@ These options can be used to specify which parameters to test for, provide custo
 | :----------------- | :------------------------------------------------------- |
 | `-p TESTPARAMETER` | Testable parameter(s) (eg. -p username)                  |
 | `--dbms=DBMS`      | Force back-end DBMS to provided value (eg. --dbms=mysql) |
+| `--tamper=TAMPER`  | Use given script(s) for tampering injection data         |
 
 ## Detection
 
