@@ -66,7 +66,7 @@ date: 2024-06-27 20:05:01
 
 ### Python Code
 
-```python=
+```python
 # 將字符串轉換為 ASCII 編碼
 def ascii_encode(input_string):
     return [ord(char) for char in input_string]
@@ -99,7 +99,7 @@ Base64 編碼這個名稱代表著它**基於 64 個可列印字元**所形成�
 
 ### Python Code
 
-```python=
+```python
 import base64
 
 
@@ -140,7 +140,7 @@ URL Encoding 也稱作為 Percent-encoding，是一種將 URL 中的特殊字符
 
 ### Python Code
 
-```python=
+```python
 import urllib.parse
 
 # URL 編碼
@@ -253,7 +253,7 @@ MD5 的全名是 Message Digest Algorithm 5，它能將任意長度的數據轉�
 
 ### Python Code
 
-```python=
+```python
 import hashlib
 
 # 要雜湊的消息
@@ -333,7 +333,7 @@ SHA-256 和 MD5 其實流程是差不多的，大概的流程如下：
 
 ### Python Code
 
-```python=
+```python
 import hashlib
 
 def sha256(message):
@@ -367,9 +367,11 @@ TODO
 
 儘管這些古典密碼在過去被廣泛使用，但它們都存在易受攻擊的缺陷，因此在現代密碼學中已經不再安全。現代密碼學使用基於覆雜數學運算和密鑰管理的加密算法來確保更高的安全性（且在現代密碼學中的觀點，他們更像是**編碼**而不是加密）。
 
-以下是幾種常見的古典密碼。
+以下是幾種常見的古典密碼的類型。
 
-## 凱薩加密 Caesar Cipher
+## 凱薩加密與替換式密碼 Caesar Cipher & Substitution Cipher
+
+> 替換式密碼，又名取代加密法，**是密碼學中按規律將文字加密的一種方式**。 替換式密碼中可以用不同字母數為一單元，例如每一個或兩個字母為一單元，然後再作加密。 密文接收者解密時需用原加密方式解碼才可取得原文本。
 
 ### 簡介
 
@@ -377,7 +379,7 @@ TODO
 
 ### Python Code
 
-```python=
+```python
 def caesar_encrypt(plaintext, key):
     ciphertext = ""
     for char in plaintext:
@@ -407,7 +409,7 @@ print("Encrypted:", encrypted_text)
 
 ### 暴力破解 Brute Force
 
-```python=
+```python
 # 嘗試所有可能的密鑰進行破解
 for possible_key in range(1, 26):  # 因為凱撒密碼只有 26 種可能的密鑰
     decrypted_text = caesar_decrypt(encrypted_text, possible_key)
@@ -430,7 +432,9 @@ for possible_key in range(1, 26):  # 因為凱撒密碼只有 26 種可能的密
 
 ### 簡介
 
-柵欄密碼將明文中的字母沿著特定的線排列，然後以不同的方式讀取以生成密文。例如，3 欄柵欄密碼將字母交替排列成三行，然後以從上到下、從左到右的順序讀取。
+柵欄密碼將明文中的字母沿著特定的線排列，然後以不同的方式讀取以生成密文。例如，3 欄柵欄密碼將字母交替排列成三行，然後以從上到下、從左到右的順序讀取。以下是圖例。
+
+![Rail Fence Cipher. Source: https://www.101computing.net/the-rail-fence-cipher](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/191761175-4e4f2b76-1702-4ada-93cf-de238915a7d8.png)
 
 # 對稱式加密 Symmetric Cryptography
 

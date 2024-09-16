@@ -1390,7 +1390,7 @@ picoCTF{D0NT_US3_V1G3N3R3_C1PH3R_d85729g7}
 
 ![scrambled2](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/scrambled2.png)
 
-這邊我用[Stegsolve](https://github.com/zardus/ctf-tools/blob/master/stegsolve/install)去Combine兩張圖片。先打開第一張圖片後點選 Analyze > Image Combiner，再點選第二張圖片。之後它會跳出一個介面讓你選擇Combine的方式，預設是XOR，一直點向右的箭頭直到方法變成ADD的時候就可以看到Flag啦。
+這邊我用 [Stegsolve](https://github.com/zardus/ctf-tools/blob/master/stegsolve/install) 去 Combine 兩張圖片。先打開第一張圖片後點選 Analyze > Image Combiner，再點選第二張圖片。之後它會跳出一個介面讓你選擇 Combine 的方式，預設是 XOR，一直點向右的箭頭直到方法變成 ADD 的時候就可以看到 Flag 啦。
 
 ![Pwned](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240902152127776.png)
 
@@ -1398,7 +1398,7 @@ picoCTF{D0NT_US3_V1G3N3R3_C1PH3R_d85729g7}
 picoCTF{d562333d}
 ```
 
-解完後我有看了一下其他人的Writeups，我發現有人是用Python解的覺得很酷，附上來給大家看看。（[Writeup](https://ctftime.org/writeup/28930)）
+解完後我有看了一下其他人的 Writeups，我發現有人是用 Python 解的覺得很酷，附上來給大家看看。（[Writeup](https://ctftime.org/writeup/28930)）
 
 ```python
 # import Image
@@ -1715,6 +1715,921 @@ for filename in files:
 
 ```txt
 picoCTF{perhaps_the_dog_jumped_over_was_just_tired}
+```
+
+## rail-fence
+
+這題給了一個密文，如下。
+
+```txt
+Ta _7N6D8Dhlg:W3D_H3C31N__387ef sHR053F38N43DFD i33___N6
+```
+
+他就是一個經典的柵欄密碼，可以直接拿去 [線上工具](https://www.dcode.fr/rail-fence-cipher) 解密，記得要把下面這個選項開啟。然後就可以解出 Flag 啦。
+
+![Pwned](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240916092440581.png)
+
+```txt
+picoCTF{WH3R3_D035_7H3_F3NC3_8361N_4ND_3ND_83F6D8D7}
+```
+
+## Dachshund Attacks
+
+TODO: Wiener's attack
+
+```python
+from Crypto.Util.number import *
+from pwn import *
+import gmpy2
+
+
+def continued_fraction(n, d):
+    """Returns the continued fraction representation of a rational number n/d"""
+    cf = []
+    while d != 0:
+        cf.append(n // d)
+        n, d = d, n % d
+    return cf
+
+
+def convergents(cf):
+    """Returns the convergents from a continued fraction"""
+    n0, d0 = 0, 1
+    n1, d1 = 1, 0
+    convergents = []
+
+    for q in cf:
+        n2 = q * n1 + n0
+        d2 = q * d1 + d0
+        convergents.append((n2, d2))
+        n0, d0 = n1, d1
+        n1, d1 = n2, d2
+
+    return convergents
+
+
+def wiener_attack(e, n):
+    """Performs Wiener's attack using gmpy2 to recover d"""
+    cf = continued_fraction(e, n)
+    convs = convergents(cf)
+
+    for k, d in convs:
+        if k == 0:
+            continue
+        # Calculate phi using the convergent d
+        if (e * d - 1) % k == 0:
+            phi = (e * d - 1) // k
+            # Calculate the discriminant of the quadratic equation
+            b = n - phi + 1
+            discriminant = b**2 - 4 * n
+            if discriminant >= 0:
+                sqrt_disc = gmpy2.isqrt(discriminant)
+                if sqrt_disc * sqrt_disc == discriminant:
+                    print(f"Private key found: d = {d}")
+                    return d
+    return None
+
+
+r = remote("mercury.picoctf.net", 37455)
+r.recvuntil(b"e: ")
+e = int(r.recvline().strip())
+r.recvuntil(b"n: ")
+n = int(r.recvline().strip())
+r.recvuntil(b"c: ")
+c = int(r.recvline().strip())
+
+
+d = wiener_attack(e, n)
+m = pow(c, d, n)
+print(long_to_bytes(m))
+```
+
+
+
+# Reverse
+
+## GDB Test Drive
+
+這題的話先用 `wget` 把題目這個二進制檔案抓下來。
+
+![Wget](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240701212911463.png)
+
+然後後面的步驟基本上就照著題目給的指令一步一步來就可以了。
+
+![Instructions](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240701213346170.png)
+
+這邊來稍微解釋一下每個指令的意義，他到底是做了哪些事情呢？
+
+- `chmod +x gdbme`
+  - 修改 gdbme 檔案的權限，新增執行權限（x）
+- `gdb gdbme`
+  - 使用 gdb（GNU Debugger）打開 gdbme 這個可執行檔案。
+- `layout asm`
+  - 啟用組合語言（Assembly, ASM）視圖
+- `break *(main+99)`
+  - 在 main 函數開始偏移 99 的位元組的地方設置斷點（Breakpoint）。
+- `jump *(main+104)`
+  - 跳到 main 函數開始偏移 104 位元組的地方繼續執行。
+
+至於這邊為甚麼要在 main+99 的地方設定斷點，是因為這裡他調用了一個函式叫做 `sleep`，所以當我們直接執行 gdbme 的時候會進入到**sleep**的狀態，讓我們以為這個程式沒有做任何事。
+
+![Sleep function](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/H1IxfrlvA.png)
+
+所以在這邊我們才要把斷點設在 main+99，讓他執行到這邊的時候暫停一下，然後我們直接使用 jump 叫到下面一個地方，也就是 main+104 繼續執行。
+
+![Flag](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240701213211218.png)
+
+這樣就得到 flag 啦。
+
+```txt
+picoCTF{d3bugg3r_dr1v3_72bd8355}
+```
+
+## Transformation
+
+這題給了一個文字檔案叫做enc，以及一段Python程式碼告訴你他的加密邏輯。如下。
+
+```python
+''.join([chr((ord(flag[i]) << 8) + ord(flag[i + 1])) for i in range(0, len(flag), 2)])
+```
+
+然後enc長這樣。
+
+```txt
+灩捯䍔䙻ㄶ形楴獟楮獴㌴摟潦弸彥㜰㍢㐸㙽
+```
+
+看起來像亂碼，不過那是因為Python把它兩個字元的ASCII合併成16個Bytes，再轉回字元，所以看起來亂糟糟。那解碼就是要把16個Bytes分別拆回去兩個8個Bytes的字元。
+
+```python
+def decode(encoded_string):
+    decoded_flag = []
+    for char in encoded_string:
+        # 取得 Unicode 字符的 16 位整數值
+        value = ord(char)
+        # 提取高 8 位和低 8 位
+        high_byte = value >> 8       # 取高 8 位
+        low_byte = value & 0xFF      # 取低 8 位
+        # 將其轉換回原來的兩個字符
+        decoded_flag.append(chr(high_byte))
+        decoded_flag.append(chr(low_byte))
+    return ''.join(decoded_flag)
+
+# 測試範例
+encoded_string = "灩捯䍔䙻ㄶ形楴獟楮獴㌴摟潦弸彥㜰㍢㐸㙽"
+decoded_flag = decode(encoded_string)
+print(decoded_flag)
+```
+
+這樣就出來啦！
+
+```txt
+picoCTF{16_bits_inst34d_of_8_e703b486}
+```
+
+## vault-door-training
+
+這題就是把Java檔下載下來就解出來了。他的原始碼如下。
+
+```java
+import java.util.*;
+
+class VaultDoorTraining {
+    public static void main(String args[]) {
+        VaultDoorTraining vaultDoor = new VaultDoorTraining();
+        Scanner scanner = new Scanner(System.in); 
+        System.out.print("Enter vault password: ");
+        String userInput = scanner.next();
+	String input = userInput.substring("picoCTF{".length(),userInput.length()-1);
+	if (vaultDoor.checkPassword(input)) {
+	    System.out.println("Access granted.");
+	} else {
+	    System.out.println("Access denied!");
+	}
+   }
+
+    // The password is below. Is it safe to put the password in the source code?
+    // What if somebody stole our source code? Then they would know what our
+    // password is. Hmm... I will think of some ways to improve the security
+    // on the other doors.
+    //
+    // -Minion #9567
+    public boolean checkPassword(String password) {
+        return password.equals("w4rm1ng_Up_w1tH_jAv4_3808d338b46");
+    }
+}
+```
+
+在倒數第三行那個東西就是Flag了，自己把它加上Flag的格式就可以。這題主要是在提醒說不要把密碼等重要資訊放在原始碼裡面。
+
+```txt
+picoCTF{w4rm1ng_Up_w1tH_jAv4_3808d338b46}
+```
+
+## Picker I
+
+這題是直接給了一個Python的原代碼，甚至不是執行檔。直接打開來看看。
+
+```python
+import sys
+
+
+def getRandomNumber():
+    print(4)  # Chosen by fair die roll.
+    # Guaranteed to be random.
+    # (See XKCD)
+
+
+def exit():
+    sys.exit(0)
+
+
+def esoteric1():
+    esoteric = """
+  int query_apm_bios(void)
+{
+	struct biosregs ireg, oreg;
+
+	/* APM BIOS installation check */
+	initregs(&ireg);
+	ireg.ah = 0x53;
+	intcall(0x15, &ireg, &oreg);
+
+	if (oreg.flags & X86_EFLAGS_CF)
+		return -1;		/* No APM BIOS */
+
+	if (oreg.bx != 0x504d)		/* "PM" signature */
+		return -1;
+
+	if (!(oreg.cx & 0x02))		/* 32 bits supported? */
+		return -1;
+
+	/* Disconnect first, just in case */
+	ireg.al = 0x04;
+	intcall(0x15, &ireg, NULL);
+
+	/* 32-bit connect */
+	ireg.al = 0x03;
+	intcall(0x15, &ireg, &oreg);
+
+	boot_params.apm_bios_info.cseg        = oreg.ax;
+	boot_params.apm_bios_info.offset      = oreg.ebx;
+	boot_params.apm_bios_info.cseg_16     = oreg.cx;
+	boot_params.apm_bios_info.dseg        = oreg.dx;
+	boot_params.apm_bios_info.cseg_len    = oreg.si;
+	boot_params.apm_bios_info.cseg_16_len = oreg.hsi;
+	boot_params.apm_bios_info.dseg_len    = oreg.di;
+
+	if (oreg.flags & X86_EFLAGS_CF)
+		return -1;
+
+	/* Redo the installation check as the 32-bit connect;
+	   some BIOSes return different flags this way... */
+
+	ireg.al = 0x00;
+	intcall(0x15, &ireg, &oreg);
+
+	if ((oreg.eflags & X86_EFLAGS_CF) || oreg.bx != 0x504d) {
+		/* Failure with 32-bit connect, try to disconnect and ignore */
+		ireg.al = 0x04;
+		intcall(0x15, &ireg, NULL);
+		return -1;
+	}
+
+	boot_params.apm_bios_info.version = oreg.ax;
+	boot_params.apm_bios_info.flags   = oreg.cx;
+	return 0;
+}
+  """
+    print(esoteric)
+
+
+def win():
+    # This line will not work locally unless you create your own 'flag.txt' in
+    #   the same directory as this script
+    flag = open("flag.txt", "r").read()
+    # flag = flag[:-1]
+    flag = flag.strip()
+    str_flag = ""
+    for c in flag:
+        str_flag += str(hex(ord(c))) + " "
+    print(str_flag)
+
+
+def esoteric2():
+    esoteric = """
+#include "boot.h"
+
+#define MAX_8042_LOOPS	100000
+#define MAX_8042_FF	32
+
+static int empty_8042(void)
+{
+	u8 status;
+	int loops = MAX_8042_LOOPS;
+	int ffs   = MAX_8042_FF;
+
+	while (loops--) {
+		io_delay();
+
+		status = inb(0x64);
+		if (status == 0xff) {
+			/* FF is a plausible, but very unlikely status */
+			if (!--ffs)
+				return -1; /* Assume no KBC present */
+		}
+		if (status & 1) {
+			/* Read and discard input data */
+			io_delay();
+			(void)inb(0x60);
+		} else if (!(status & 2)) {
+			/* Buffers empty, finished! */
+			return 0;
+		}
+	}
+
+	return -1;
+}
+
+/* Returns nonzero if the A20 line is enabled.  The memory address
+   used as a test is the int $0x80 vector, which should be safe. */
+
+#define A20_TEST_ADDR	(4*0x80)
+#define A20_TEST_SHORT  32
+#define A20_TEST_LONG	2097152	/* 2^21 */
+
+static int a20_test(int loops)
+{
+	int ok = 0;
+	int saved, ctr;
+
+	set_fs(0x0000);
+	set_gs(0xffff);
+
+	saved = ctr = rdfs32(A20_TEST_ADDR);
+
+	while (loops--) {
+		wrfs32(++ctr, A20_TEST_ADDR);
+		io_delay();	/* Serialize and make delay constant */
+		ok = rdgs32(A20_TEST_ADDR+0x10) ^ ctr;
+		if (ok)
+			break;
+	}
+
+	wrfs32(saved, A20_TEST_ADDR);
+	return ok;
+}
+
+/* Quick test to see if A20 is already enabled */
+static int a20_test_short(void)
+{
+	return a20_test(A20_TEST_SHORT);
+}
+  """
+    print(esoteric)
+
+
+while True:
+    try:
+        print('Try entering "getRandomNumber" without the double quotes...')
+        user_input = input("==> ")
+        eval(user_input + "()")
+    except Exception as e:
+        print(e)
+        break
+```
+
+這裡我最感興趣的部份是在最後的while循環裡面會直接使用`eval(user_input + "()")`去調用函數，所以可以直接連接到題目後輸入win去觸發`win()`函數，就會輸出hex的flag，再拿去CyberChef轉回字串就可以囉。
+
+![Pwned](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240910160443473.png)
+
+```txt
+picoCTF{4_d14m0nd_1n_7h3_r0ugh_b523b2a1}
+```
+
+## Picker II
+
+這題的代碼長這樣。
+
+```python
+import sys
+
+
+def getRandomNumber():
+    print(4)  # Chosen by fair die roll.
+    # Guaranteed to be random.
+    # (See XKCD)
+
+
+def exit():
+    sys.exit(0)
+
+
+def esoteric1():
+    esoteric = """
+  int query_apm_bios(void)
+{
+	struct biosregs ireg, oreg;
+
+	/* APM BIOS installation check */
+	initregs(&ireg);
+	ireg.ah = 0x53;
+	intcall(0x15, &ireg, &oreg);
+
+	if (oreg.flags & X86_EFLAGS_CF)
+		return -1;		/* No APM BIOS */
+
+	if (oreg.bx != 0x504d)		/* "PM" signature */
+		return -1;
+
+	if (!(oreg.cx & 0x02))		/* 32 bits supported? */
+		return -1;
+
+	/* Disconnect first, just in case */
+	ireg.al = 0x04;
+	intcall(0x15, &ireg, NULL);
+
+	/* 32-bit connect */
+	ireg.al = 0x03;
+	intcall(0x15, &ireg, &oreg);
+
+	boot_params.apm_bios_info.cseg        = oreg.ax;
+	boot_params.apm_bios_info.offset      = oreg.ebx;
+	boot_params.apm_bios_info.cseg_16     = oreg.cx;
+	boot_params.apm_bios_info.dseg        = oreg.dx;
+	boot_params.apm_bios_info.cseg_len    = oreg.si;
+	boot_params.apm_bios_info.cseg_16_len = oreg.hsi;
+	boot_params.apm_bios_info.dseg_len    = oreg.di;
+
+	if (oreg.flags & X86_EFLAGS_CF)
+		return -1;
+
+	/* Redo the installation check as the 32-bit connect;
+	   some BIOSes return different flags this way... */
+
+	ireg.al = 0x00;
+	intcall(0x15, &ireg, &oreg);
+
+	if ((oreg.eflags & X86_EFLAGS_CF) || oreg.bx != 0x504d) {
+		/* Failure with 32-bit connect, try to disconnect and ignore */
+		ireg.al = 0x04;
+		intcall(0x15, &ireg, NULL);
+		return -1;
+	}
+
+	boot_params.apm_bios_info.version = oreg.ax;
+	boot_params.apm_bios_info.flags   = oreg.cx;
+	return 0;
+}
+  """
+    print(esoteric)
+
+
+def win():
+    # This line will not work locally unless you create your own 'flag.txt' in
+    #   the same directory as this script
+    flag = open("flag.txt", "r").read()
+    # flag = flag[:-1]
+    flag = flag.strip()
+    str_flag = ""
+    for c in flag:
+        str_flag += str(hex(ord(c))) + " "
+    print(str_flag)
+
+
+def esoteric2():
+    esoteric = """
+#include "boot.h"
+
+#define MAX_8042_LOOPS	100000
+#define MAX_8042_FF	32
+
+static int empty_8042(void)
+{
+	u8 status;
+	int loops = MAX_8042_LOOPS;
+	int ffs   = MAX_8042_FF;
+
+	while (loops--) {
+		io_delay();
+
+		status = inb(0x64);
+		if (status == 0xff) {
+			/* FF is a plausible, but very unlikely status */
+			if (!--ffs)
+				return -1; /* Assume no KBC present */
+		}
+		if (status & 1) {
+			/* Read and discard input data */
+			io_delay();
+			(void)inb(0x60);
+		} else if (!(status & 2)) {
+			/* Buffers empty, finished! */
+			return 0;
+		}
+	}
+
+	return -1;
+}
+
+/* Returns nonzero if the A20 line is enabled.  The memory address
+   used as a test is the int $0x80 vector, which should be safe. */
+
+#define A20_TEST_ADDR	(4*0x80)
+#define A20_TEST_SHORT  32
+#define A20_TEST_LONG	2097152	/* 2^21 */
+
+static int a20_test(int loops)
+{
+	int ok = 0;
+	int saved, ctr;
+
+	set_fs(0x0000);
+	set_gs(0xffff);
+
+	saved = ctr = rdfs32(A20_TEST_ADDR);
+
+	while (loops--) {
+		wrfs32(++ctr, A20_TEST_ADDR);
+		io_delay();	/* Serialize and make delay constant */
+		ok = rdgs32(A20_TEST_ADDR+0x10) ^ ctr;
+		if (ok)
+			break;
+	}
+
+	wrfs32(saved, A20_TEST_ADDR);
+	return ok;
+}
+
+/* Quick test to see if A20 is already enabled */
+static int a20_test_short(void)
+{
+	return a20_test(A20_TEST_SHORT);
+}
+  """
+    print(esoteric)
+
+
+def filter(user_input):
+    if "win" in user_input:
+        return False
+    return True
+
+
+while True:
+    try:
+        user_input = input("==> ")
+        if filter(user_input):
+            eval(user_input + "()")
+        else:
+            print("Illegal input")
+    except Exception as e:
+        print(e)
+        break
+```
+
+其實和上面那題很類似，但是多了一個`filter()`函數去檢查輸入不能有win，但是我們可以直接使用
+
+```python
+print(open("flag.txt", "r").read())
+```
+
+雖然後面會多出一個`()`，但是不會影響前面的`print()`函數執行。所以還是可以得到Flag。
+
+```txt
+picoCTF{f1l73r5_f41l_c0d3_r3f4c70r_m1gh7_5ucc33d_b924e8e5}
+```
+
+## Picker III
+
+這題一樣先來看一下代碼。
+
+```python
+import re
+
+
+USER_ALIVE = True
+FUNC_TABLE_SIZE = 4
+FUNC_TABLE_ENTRY_SIZE = 32
+CORRUPT_MESSAGE = "Table corrupted. Try entering 'reset' to fix it"
+
+func_table = ""
+
+
+def reset_table():
+    global func_table
+
+    # This table is formatted for easier viewing, but it is really one line
+    func_table = """\
+print_table                     \
+read_variable                   \
+write_variable                  \
+getRandomNumber                 \
+"""
+
+
+def check_table():
+    global func_table
+
+    if len(func_table) != FUNC_TABLE_ENTRY_SIZE * FUNC_TABLE_SIZE:
+        return False
+
+    return True
+
+
+def get_func(n):
+    global func_table
+
+    # Check table for viability
+    if not check_table():
+        print(CORRUPT_MESSAGE)
+        return
+
+    # Get function name from table
+    func_name = ""
+    func_name_offset = n * FUNC_TABLE_ENTRY_SIZE
+    for i in range(func_name_offset, func_name_offset + FUNC_TABLE_ENTRY_SIZE):
+        if func_table[i] == " ":
+            func_name = func_table[func_name_offset:i]
+            break
+
+    if func_name == "":
+        func_name = func_table[
+            func_name_offset : func_name_offset + FUNC_TABLE_ENTRY_SIZE
+        ]
+
+    return func_name
+
+
+def print_table():
+    # Check table for viability
+    if not check_table():
+        print(CORRUPT_MESSAGE)
+        return
+
+    for i in range(0, FUNC_TABLE_SIZE):
+        j = i + 1
+        print(str(j) + ": " + get_func(i))
+
+
+def filter_var_name(var_name):
+    r = re.search("^[a-zA-Z_][a-zA-Z_0-9]*$", var_name)
+    if r:
+        return True
+    else:
+        return False
+
+
+def read_variable():
+    var_name = input("Please enter variable name to read: ")
+    if filter_var_name(var_name):
+        eval("print(" + var_name + ")")
+    else:
+        print("Illegal variable name")
+
+
+def filter_value(value):
+    if ";" in value or "(" in value or ")" in value:
+        return False
+    else:
+        return True
+
+
+def write_variable():
+    var_name = input("Please enter variable name to write: ")
+    if filter_var_name(var_name):
+        value = input("Please enter new value of variable: ")
+        if filter_value(value):
+            exec("global " + var_name + "; " + var_name + " = " + value)
+        else:
+            print("Illegal value")
+    else:
+        print("Illegal variable name")
+
+
+def call_func(n):
+    """
+    Calls the nth function in the function table.
+    Arguments:
+      n: The function to call. The first function is 0.
+    """
+
+    # Check table for viability
+    if not check_table():
+        print(CORRUPT_MESSAGE)
+        return
+
+    # Check n
+    if n < 0:
+        print("n cannot be less than 0. Aborting...")
+        return
+    elif n >= FUNC_TABLE_SIZE:
+        print(
+            "n cannot be greater than or equal to the function table size of "
+            + FUNC_TABLE_SIZE
+        )
+        return
+
+    # Get function name from table
+    func_name = get_func(n)
+
+    # Run the function
+    eval(func_name + "()")
+
+
+def dummy_func1():
+    print("in dummy_func1")
+
+
+def dummy_func2():
+    print("in dummy_func2")
+
+
+def dummy_func3():
+    print("in dummy_func3")
+
+
+def dummy_func4():
+    print("in dummy_func4")
+
+
+def getRandomNumber():
+    print(4)  # Chosen by fair die roll.
+    # Guaranteed to be random.
+    # (See XKCD)
+
+
+def win():
+    # This line will not work locally unless you create your own 'flag.txt' in
+    #   the same directory as this script
+    flag = open("flag.txt", "r").read()
+    # flag = flag[:-1]
+    flag = flag.strip()
+    str_flag = ""
+    for c in flag:
+        str_flag += str(hex(ord(c))) + " "
+    print(str_flag)
+
+
+def help_text():
+    print(
+        """
+This program fixes vulnerabilities in its predecessor by limiting what
+functions can be called to a table of predefined functions. This still puts
+the user in charge, but prevents them from calling undesirable subroutines.
+
+* Enter 'quit' to quit the program.
+* Enter 'help' for this text.
+* Enter 'reset' to reset the table.
+* Enter '1' to execute the first function in the table.
+* Enter '2' to execute the second function in the table.
+* Enter '3' to execute the third function in the table.
+* Enter '4' to execute the fourth function in the table.
+
+Here's the current table:
+  """
+    )
+    print_table()
+
+
+reset_table()
+
+while USER_ALIVE:
+    choice = input("==> ")
+    if choice == "quit" or choice == "exit" or choice == "q":
+        USER_ALIVE = False
+    elif choice == "help" or choice == "?":
+        help_text()
+    elif choice == "reset":
+        reset_table()
+    elif choice == "1":
+        call_func(0)
+    elif choice == "2":
+        call_func(1)
+    elif choice == "3":
+        call_func(2)
+    elif choice == "4":
+        call_func(3)
+    else:
+        print('Did not understand "' + choice + '" Have you tried "help"?')
+```
+
+這裡有趣的地方在於它的`write_variable`可以讓我們去把函式的名稱給替換掉，所以我們這邊使用table上的3去呼叫`write_variable`，並且把`print_table`覆寫為`win`，然後再執行1，就可以得到Flag了。
+
+```txt
+┌──(kali㉿kali)-[~/CTF]
+└─$  nc saturn.picoctf.net 55745
+==> 3
+Please enter variable name to write: print_table
+Please enter new value of variable: win
+==> 1
+0x70 0x69 0x63 0x6f 0x43 0x54 0x46 0x7b 0x37 0x68 0x31 0x35 0x5f 0x31 0x35 0x5f 0x77 0x68 0x34 0x37 0x5f 0x77 0x33 0x5f 0x67 0x33 0x37 0x5f 0x77 0x31 0x37 0x68 0x5f 0x75 0x35 0x33 0x72 0x35 0x5f 0x31 0x6e 0x5f 0x63 0x68 0x34 0x72 0x67 0x33 0x5f 0x63 0x32 0x30 0x66 0x35 0x32 0x32 0x32 0x7d 
+==> 
+```
+
+然後一樣再拿去轉回printable就可以了。
+
+```txt
+picoCTF{7h15_15_wh47_w3_g37_w17h_u53r5_1n_ch4rg3_c20f5222}
+```
+
+## Classic Crackme 0x100
+
+把binary丟進IDA看一下。以下是反編譯後的代碼。
+
+```c
+int __fastcall main(int argc, const char **argv, const char **envp)
+{
+  char input[51]; // [rsp+0h] [rbp-A0h] BYREF
+  char output[51]; // [rsp+40h] [rbp-60h] BYREF
+  int random2; // [rsp+7Ch] [rbp-24h]
+  int random1; // [rsp+80h] [rbp-20h]
+  char fix; // [rsp+87h] [rbp-19h]
+  int secret3; // [rsp+88h] [rbp-18h]
+  int secret2; // [rsp+8Ch] [rbp-14h]
+  int secret1; // [rsp+90h] [rbp-10h]
+  int len; // [rsp+94h] [rbp-Ch]
+  int i_0; // [rsp+98h] [rbp-8h]
+  int i; // [rsp+9Ch] [rbp-4h]
+
+  strcpy(output, "apijaczhzgtfnyjgrdvqrjbmcurcmjczsvbwgdelvxxxjkyigy");
+  setvbuf(_bss_start, 0LL, 2, 0LL);
+  printf("Enter the secret password: ");
+  __isoc99_scanf("%50s", input);
+  i = 0;
+  len = strlen(output);
+  secret1 = 85;
+  secret2 = 51;
+  secret3 = 15;
+  fix = 97;
+  while ( i <= 2 )
+  {
+    for ( i_0 = 0; i_0 < len; ++i_0 )
+    {
+      random1 = (secret1 & (i_0 % 255)) + (secret1 & ((i_0 % 255) >> 1));
+      random2 = (random1 & secret2) + (secret2 & (random1 >> 2));
+      input[i_0] = ((random2 & secret3) + input[i_0] - fix + (secret3 & (random2 >> 4))) % 26 + fix;
+    }
+    ++i;
+  }
+  if ( !memcmp(input, output, len) )
+    printf("SUCCESS! Here is your flag: %s\n", "picoCTF{sample_flag}");
+  else
+    puts("FAILED!");
+  return 0;
+}
+```
+
+總之他就是把使用者的輸入做了一堆複雜的運算後，去比較和15行的那串字串是否一致，若一致就吐Flag。所以我們要逆推回去，找到輸入甚麼才可以在做了一堆運算後等於那串字串。這邊我請ChatGPT寫了一個腳本，果然可行。
+
+```python
+def decrypt(encrypted_str):
+    secret1 = 85
+    secret2 = 51
+    secret3 = 15
+    fix = 97
+    output = list(encrypted_str)
+    len_str = len(output)
+
+    # 需要反轉加密過程
+    for _ in range(3):  # 解密過程也重複三次
+        for i in range(len_str):
+            random1 = (secret1 & (i % 255)) + (secret1 & ((i % 255) >> 1))
+            random2 = (random1 & secret2) + (secret2 & (random1 >> 2))
+            output[i] = chr(
+                (
+                    (
+                        ord(output[i])
+                        - fix
+                        - (random2 & secret3)
+                        - (secret3 & (random2 >> 4))
+                    )
+                    % 26
+                )
+                + fix
+            )
+
+    return "".join(output)
+
+
+# 固定輸出字符串
+output = "apijaczhzgtfnyjgrdvqrjbmcurcmjczsvbwgdelvxxxjkyigy"
+
+# 解密測試
+decrypted_input = decrypt(output)
+print(f"解密結果: {decrypted_input}")
+```
+
+這樣跑出來後，他說我們要輸入的東西是：
+
+```txt
+amfdxwtywanwhpauoxphlasawliqdxqkppvnauvzpoolaymtap
+```
+
+接著就連到題目Server，輸入這串，果然就得到Flag了。
+
+```txt
+picoCTF{s0lv3_angry_symb0ls_e1ad09b7}
 ```
 
 # Pwn (Binary Exploitation)
@@ -2651,832 +3566,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAApico
 picoCTF{starting_to_get_the_hang_21306688}
 ```
 
-# Reverse
-
-## GDB Test Drive
-
-這題的話先用 `wget` 把題目這個二進制檔案抓下來。
-
-![Wget](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240701212911463.png)
-
-然後後面的步驟基本上就照著題目給的指令一步一步來就可以了。
-
-![Instructions](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240701213346170.png)
-
-這邊來稍微解釋一下每個指令的意義，他到底是做了哪些事情呢？
-
-- `chmod +x gdbme`
-  - 修改 gdbme 檔案的權限，新增執行權限（x）
-- `gdb gdbme`
-  - 使用 gdb（GNU Debugger）打開 gdbme 這個可執行檔案。
-- `layout asm`
-  - 啟用組合語言（Assembly, ASM）視圖
-- `break *(main+99)`
-  - 在 main 函數開始偏移 99 的位元組的地方設置斷點（Breakpoint）。
-- `jump *(main+104)`
-  - 跳到 main 函數開始偏移 104 位元組的地方繼續執行。
-
-至於這邊為甚麼要在 main+99 的地方設定斷點，是因為這裡他調用了一個函式叫做 `sleep`，所以當我們直接執行 gdbme 的時候會進入到**sleep**的狀態，讓我們以為這個程式沒有做任何事。
-
-![Sleep function](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/H1IxfrlvA.png)
-
-所以在這邊我們才要把斷點設在 main+99，讓他執行到這邊的時候暫停一下，然後我們直接使用 jump 叫到下面一個地方，也就是 main+104 繼續執行。
-
-![Flag](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240701213211218.png)
-
-這樣就得到 flag 啦。
-
-```txt
-picoCTF{d3bugg3r_dr1v3_72bd8355}
-```
-
-## Transformation
-
-這題給了一個文字檔案叫做enc，以及一段Python程式碼告訴你他的加密邏輯。如下。
-
-```python
-''.join([chr((ord(flag[i]) << 8) + ord(flag[i + 1])) for i in range(0, len(flag), 2)])
-```
-
-然後enc長這樣。
-
-```txt
-灩捯䍔䙻ㄶ形楴獟楮獴㌴摟潦弸彥㜰㍢㐸㙽
-```
-
-看起來像亂碼，不過那是因為Python把它兩個字元的ASCII合併成16個Bytes，再轉回字元，所以看起來亂糟糟。那解碼就是要把16個Bytes分別拆回去兩個8個Bytes的字元。
-
-```python
-def decode(encoded_string):
-    decoded_flag = []
-    for char in encoded_string:
-        # 取得 Unicode 字符的 16 位整數值
-        value = ord(char)
-        # 提取高 8 位和低 8 位
-        high_byte = value >> 8       # 取高 8 位
-        low_byte = value & 0xFF      # 取低 8 位
-        # 將其轉換回原來的兩個字符
-        decoded_flag.append(chr(high_byte))
-        decoded_flag.append(chr(low_byte))
-    return ''.join(decoded_flag)
-
-# 測試範例
-encoded_string = "灩捯䍔䙻ㄶ形楴獟楮獴㌴摟潦弸彥㜰㍢㐸㙽"
-decoded_flag = decode(encoded_string)
-print(decoded_flag)
-```
-
-這樣就出來啦！
-
-```txt
-picoCTF{16_bits_inst34d_of_8_e703b486}
-```
-
-## vault-door-training
-
-這題就是把Java檔下載下來就解出來了。他的原始碼如下。
-
-```java
-import java.util.*;
-
-class VaultDoorTraining {
-    public static void main(String args[]) {
-        VaultDoorTraining vaultDoor = new VaultDoorTraining();
-        Scanner scanner = new Scanner(System.in); 
-        System.out.print("Enter vault password: ");
-        String userInput = scanner.next();
-	String input = userInput.substring("picoCTF{".length(),userInput.length()-1);
-	if (vaultDoor.checkPassword(input)) {
-	    System.out.println("Access granted.");
-	} else {
-	    System.out.println("Access denied!");
-	}
-   }
-
-    // The password is below. Is it safe to put the password in the source code?
-    // What if somebody stole our source code? Then they would know what our
-    // password is. Hmm... I will think of some ways to improve the security
-    // on the other doors.
-    //
-    // -Minion #9567
-    public boolean checkPassword(String password) {
-        return password.equals("w4rm1ng_Up_w1tH_jAv4_3808d338b46");
-    }
-}
-```
-
-在倒數第三行那個東西就是Flag了，自己把它加上Flag的格式就可以。這題主要是在提醒說不要把密碼等重要資訊放在原始碼裡面。
-
-```txt
-picoCTF{w4rm1ng_Up_w1tH_jAv4_3808d338b46}
-```
-
-## Picker I
-
-這題是直接給了一個Python的原代碼，甚至不是執行檔。直接打開來看看。
-
-```python
-import sys
-
-
-def getRandomNumber():
-    print(4)  # Chosen by fair die roll.
-    # Guaranteed to be random.
-    # (See XKCD)
-
-
-def exit():
-    sys.exit(0)
-
-
-def esoteric1():
-    esoteric = """
-  int query_apm_bios(void)
-{
-	struct biosregs ireg, oreg;
-
-	/* APM BIOS installation check */
-	initregs(&ireg);
-	ireg.ah = 0x53;
-	intcall(0x15, &ireg, &oreg);
-
-	if (oreg.flags & X86_EFLAGS_CF)
-		return -1;		/* No APM BIOS */
-
-	if (oreg.bx != 0x504d)		/* "PM" signature */
-		return -1;
-
-	if (!(oreg.cx & 0x02))		/* 32 bits supported? */
-		return -1;
-
-	/* Disconnect first, just in case */
-	ireg.al = 0x04;
-	intcall(0x15, &ireg, NULL);
-
-	/* 32-bit connect */
-	ireg.al = 0x03;
-	intcall(0x15, &ireg, &oreg);
-
-	boot_params.apm_bios_info.cseg        = oreg.ax;
-	boot_params.apm_bios_info.offset      = oreg.ebx;
-	boot_params.apm_bios_info.cseg_16     = oreg.cx;
-	boot_params.apm_bios_info.dseg        = oreg.dx;
-	boot_params.apm_bios_info.cseg_len    = oreg.si;
-	boot_params.apm_bios_info.cseg_16_len = oreg.hsi;
-	boot_params.apm_bios_info.dseg_len    = oreg.di;
-
-	if (oreg.flags & X86_EFLAGS_CF)
-		return -1;
-
-	/* Redo the installation check as the 32-bit connect;
-	   some BIOSes return different flags this way... */
-
-	ireg.al = 0x00;
-	intcall(0x15, &ireg, &oreg);
-
-	if ((oreg.eflags & X86_EFLAGS_CF) || oreg.bx != 0x504d) {
-		/* Failure with 32-bit connect, try to disconnect and ignore */
-		ireg.al = 0x04;
-		intcall(0x15, &ireg, NULL);
-		return -1;
-	}
-
-	boot_params.apm_bios_info.version = oreg.ax;
-	boot_params.apm_bios_info.flags   = oreg.cx;
-	return 0;
-}
-  """
-    print(esoteric)
-
-
-def win():
-    # This line will not work locally unless you create your own 'flag.txt' in
-    #   the same directory as this script
-    flag = open("flag.txt", "r").read()
-    # flag = flag[:-1]
-    flag = flag.strip()
-    str_flag = ""
-    for c in flag:
-        str_flag += str(hex(ord(c))) + " "
-    print(str_flag)
-
-
-def esoteric2():
-    esoteric = """
-#include "boot.h"
-
-#define MAX_8042_LOOPS	100000
-#define MAX_8042_FF	32
-
-static int empty_8042(void)
-{
-	u8 status;
-	int loops = MAX_8042_LOOPS;
-	int ffs   = MAX_8042_FF;
-
-	while (loops--) {
-		io_delay();
-
-		status = inb(0x64);
-		if (status == 0xff) {
-			/* FF is a plausible, but very unlikely status */
-			if (!--ffs)
-				return -1; /* Assume no KBC present */
-		}
-		if (status & 1) {
-			/* Read and discard input data */
-			io_delay();
-			(void)inb(0x60);
-		} else if (!(status & 2)) {
-			/* Buffers empty, finished! */
-			return 0;
-		}
-	}
-
-	return -1;
-}
-
-/* Returns nonzero if the A20 line is enabled.  The memory address
-   used as a test is the int $0x80 vector, which should be safe. */
-
-#define A20_TEST_ADDR	(4*0x80)
-#define A20_TEST_SHORT  32
-#define A20_TEST_LONG	2097152	/* 2^21 */
-
-static int a20_test(int loops)
-{
-	int ok = 0;
-	int saved, ctr;
-
-	set_fs(0x0000);
-	set_gs(0xffff);
-
-	saved = ctr = rdfs32(A20_TEST_ADDR);
-
-	while (loops--) {
-		wrfs32(++ctr, A20_TEST_ADDR);
-		io_delay();	/* Serialize and make delay constant */
-		ok = rdgs32(A20_TEST_ADDR+0x10) ^ ctr;
-		if (ok)
-			break;
-	}
-
-	wrfs32(saved, A20_TEST_ADDR);
-	return ok;
-}
-
-/* Quick test to see if A20 is already enabled */
-static int a20_test_short(void)
-{
-	return a20_test(A20_TEST_SHORT);
-}
-  """
-    print(esoteric)
-
-
-while True:
-    try:
-        print('Try entering "getRandomNumber" without the double quotes...')
-        user_input = input("==> ")
-        eval(user_input + "()")
-    except Exception as e:
-        print(e)
-        break
-```
-
-這裡我最感興趣的部份是在最後的while循環裡面會直接使用`eval(user_input + "()")`去調用函數，所以可以直接連接到題目後輸入win去觸發`win()`函數，就會輸出hex的flag，再拿去CyberChef轉回字串就可以囉。
-
-![Pwned](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240910160443473.png)
-
-```txt
-picoCTF{4_d14m0nd_1n_7h3_r0ugh_b523b2a1}
-```
-
-## Picker II
-
-這題的代碼長這樣。
-
-```python
-import sys
-
-
-def getRandomNumber():
-    print(4)  # Chosen by fair die roll.
-    # Guaranteed to be random.
-    # (See XKCD)
-
-
-def exit():
-    sys.exit(0)
-
-
-def esoteric1():
-    esoteric = """
-  int query_apm_bios(void)
-{
-	struct biosregs ireg, oreg;
-
-	/* APM BIOS installation check */
-	initregs(&ireg);
-	ireg.ah = 0x53;
-	intcall(0x15, &ireg, &oreg);
-
-	if (oreg.flags & X86_EFLAGS_CF)
-		return -1;		/* No APM BIOS */
-
-	if (oreg.bx != 0x504d)		/* "PM" signature */
-		return -1;
-
-	if (!(oreg.cx & 0x02))		/* 32 bits supported? */
-		return -1;
-
-	/* Disconnect first, just in case */
-	ireg.al = 0x04;
-	intcall(0x15, &ireg, NULL);
-
-	/* 32-bit connect */
-	ireg.al = 0x03;
-	intcall(0x15, &ireg, &oreg);
-
-	boot_params.apm_bios_info.cseg        = oreg.ax;
-	boot_params.apm_bios_info.offset      = oreg.ebx;
-	boot_params.apm_bios_info.cseg_16     = oreg.cx;
-	boot_params.apm_bios_info.dseg        = oreg.dx;
-	boot_params.apm_bios_info.cseg_len    = oreg.si;
-	boot_params.apm_bios_info.cseg_16_len = oreg.hsi;
-	boot_params.apm_bios_info.dseg_len    = oreg.di;
-
-	if (oreg.flags & X86_EFLAGS_CF)
-		return -1;
-
-	/* Redo the installation check as the 32-bit connect;
-	   some BIOSes return different flags this way... */
-
-	ireg.al = 0x00;
-	intcall(0x15, &ireg, &oreg);
-
-	if ((oreg.eflags & X86_EFLAGS_CF) || oreg.bx != 0x504d) {
-		/* Failure with 32-bit connect, try to disconnect and ignore */
-		ireg.al = 0x04;
-		intcall(0x15, &ireg, NULL);
-		return -1;
-	}
-
-	boot_params.apm_bios_info.version = oreg.ax;
-	boot_params.apm_bios_info.flags   = oreg.cx;
-	return 0;
-}
-  """
-    print(esoteric)
-
-
-def win():
-    # This line will not work locally unless you create your own 'flag.txt' in
-    #   the same directory as this script
-    flag = open("flag.txt", "r").read()
-    # flag = flag[:-1]
-    flag = flag.strip()
-    str_flag = ""
-    for c in flag:
-        str_flag += str(hex(ord(c))) + " "
-    print(str_flag)
-
-
-def esoteric2():
-    esoteric = """
-#include "boot.h"
-
-#define MAX_8042_LOOPS	100000
-#define MAX_8042_FF	32
-
-static int empty_8042(void)
-{
-	u8 status;
-	int loops = MAX_8042_LOOPS;
-	int ffs   = MAX_8042_FF;
-
-	while (loops--) {
-		io_delay();
-
-		status = inb(0x64);
-		if (status == 0xff) {
-			/* FF is a plausible, but very unlikely status */
-			if (!--ffs)
-				return -1; /* Assume no KBC present */
-		}
-		if (status & 1) {
-			/* Read and discard input data */
-			io_delay();
-			(void)inb(0x60);
-		} else if (!(status & 2)) {
-			/* Buffers empty, finished! */
-			return 0;
-		}
-	}
-
-	return -1;
-}
-
-/* Returns nonzero if the A20 line is enabled.  The memory address
-   used as a test is the int $0x80 vector, which should be safe. */
-
-#define A20_TEST_ADDR	(4*0x80)
-#define A20_TEST_SHORT  32
-#define A20_TEST_LONG	2097152	/* 2^21 */
-
-static int a20_test(int loops)
-{
-	int ok = 0;
-	int saved, ctr;
-
-	set_fs(0x0000);
-	set_gs(0xffff);
-
-	saved = ctr = rdfs32(A20_TEST_ADDR);
-
-	while (loops--) {
-		wrfs32(++ctr, A20_TEST_ADDR);
-		io_delay();	/* Serialize and make delay constant */
-		ok = rdgs32(A20_TEST_ADDR+0x10) ^ ctr;
-		if (ok)
-			break;
-	}
-
-	wrfs32(saved, A20_TEST_ADDR);
-	return ok;
-}
-
-/* Quick test to see if A20 is already enabled */
-static int a20_test_short(void)
-{
-	return a20_test(A20_TEST_SHORT);
-}
-  """
-    print(esoteric)
-
-
-def filter(user_input):
-    if "win" in user_input:
-        return False
-    return True
-
-
-while True:
-    try:
-        user_input = input("==> ")
-        if filter(user_input):
-            eval(user_input + "()")
-        else:
-            print("Illegal input")
-    except Exception as e:
-        print(e)
-        break
-```
-
-其實和上面那題很類似，但是多了一個`filter()`函數去檢查輸入不能有win，但是我們可以直接使用
-
-```python
-print(open("flag.txt", "r").read())
-```
-
-雖然後面會多出一個`()`，但是不會影響前面的`print()`函數執行。所以還是可以得到Flag。
-
-```txt
-picoCTF{f1l73r5_f41l_c0d3_r3f4c70r_m1gh7_5ucc33d_b924e8e5}
-```
-
-## Picker III
-
-這題一樣先來看一下代碼。
-
-```python
-import re
-
-
-USER_ALIVE = True
-FUNC_TABLE_SIZE = 4
-FUNC_TABLE_ENTRY_SIZE = 32
-CORRUPT_MESSAGE = "Table corrupted. Try entering 'reset' to fix it"
-
-func_table = ""
-
-
-def reset_table():
-    global func_table
-
-    # This table is formatted for easier viewing, but it is really one line
-    func_table = """\
-print_table                     \
-read_variable                   \
-write_variable                  \
-getRandomNumber                 \
-"""
-
-
-def check_table():
-    global func_table
-
-    if len(func_table) != FUNC_TABLE_ENTRY_SIZE * FUNC_TABLE_SIZE:
-        return False
-
-    return True
-
-
-def get_func(n):
-    global func_table
-
-    # Check table for viability
-    if not check_table():
-        print(CORRUPT_MESSAGE)
-        return
-
-    # Get function name from table
-    func_name = ""
-    func_name_offset = n * FUNC_TABLE_ENTRY_SIZE
-    for i in range(func_name_offset, func_name_offset + FUNC_TABLE_ENTRY_SIZE):
-        if func_table[i] == " ":
-            func_name = func_table[func_name_offset:i]
-            break
-
-    if func_name == "":
-        func_name = func_table[
-            func_name_offset : func_name_offset + FUNC_TABLE_ENTRY_SIZE
-        ]
-
-    return func_name
-
-
-def print_table():
-    # Check table for viability
-    if not check_table():
-        print(CORRUPT_MESSAGE)
-        return
-
-    for i in range(0, FUNC_TABLE_SIZE):
-        j = i + 1
-        print(str(j) + ": " + get_func(i))
-
-
-def filter_var_name(var_name):
-    r = re.search("^[a-zA-Z_][a-zA-Z_0-9]*$", var_name)
-    if r:
-        return True
-    else:
-        return False
-
-
-def read_variable():
-    var_name = input("Please enter variable name to read: ")
-    if filter_var_name(var_name):
-        eval("print(" + var_name + ")")
-    else:
-        print("Illegal variable name")
-
-
-def filter_value(value):
-    if ";" in value or "(" in value or ")" in value:
-        return False
-    else:
-        return True
-
-
-def write_variable():
-    var_name = input("Please enter variable name to write: ")
-    if filter_var_name(var_name):
-        value = input("Please enter new value of variable: ")
-        if filter_value(value):
-            exec("global " + var_name + "; " + var_name + " = " + value)
-        else:
-            print("Illegal value")
-    else:
-        print("Illegal variable name")
-
-
-def call_func(n):
-    """
-    Calls the nth function in the function table.
-    Arguments:
-      n: The function to call. The first function is 0.
-    """
-
-    # Check table for viability
-    if not check_table():
-        print(CORRUPT_MESSAGE)
-        return
-
-    # Check n
-    if n < 0:
-        print("n cannot be less than 0. Aborting...")
-        return
-    elif n >= FUNC_TABLE_SIZE:
-        print(
-            "n cannot be greater than or equal to the function table size of "
-            + FUNC_TABLE_SIZE
-        )
-        return
-
-    # Get function name from table
-    func_name = get_func(n)
-
-    # Run the function
-    eval(func_name + "()")
-
-
-def dummy_func1():
-    print("in dummy_func1")
-
-
-def dummy_func2():
-    print("in dummy_func2")
-
-
-def dummy_func3():
-    print("in dummy_func3")
-
-
-def dummy_func4():
-    print("in dummy_func4")
-
-
-def getRandomNumber():
-    print(4)  # Chosen by fair die roll.
-    # Guaranteed to be random.
-    # (See XKCD)
-
-
-def win():
-    # This line will not work locally unless you create your own 'flag.txt' in
-    #   the same directory as this script
-    flag = open("flag.txt", "r").read()
-    # flag = flag[:-1]
-    flag = flag.strip()
-    str_flag = ""
-    for c in flag:
-        str_flag += str(hex(ord(c))) + " "
-    print(str_flag)
-
-
-def help_text():
-    print(
-        """
-This program fixes vulnerabilities in its predecessor by limiting what
-functions can be called to a table of predefined functions. This still puts
-the user in charge, but prevents them from calling undesirable subroutines.
-
-* Enter 'quit' to quit the program.
-* Enter 'help' for this text.
-* Enter 'reset' to reset the table.
-* Enter '1' to execute the first function in the table.
-* Enter '2' to execute the second function in the table.
-* Enter '3' to execute the third function in the table.
-* Enter '4' to execute the fourth function in the table.
-
-Here's the current table:
-  """
-    )
-    print_table()
-
-
-reset_table()
-
-while USER_ALIVE:
-    choice = input("==> ")
-    if choice == "quit" or choice == "exit" or choice == "q":
-        USER_ALIVE = False
-    elif choice == "help" or choice == "?":
-        help_text()
-    elif choice == "reset":
-        reset_table()
-    elif choice == "1":
-        call_func(0)
-    elif choice == "2":
-        call_func(1)
-    elif choice == "3":
-        call_func(2)
-    elif choice == "4":
-        call_func(3)
-    else:
-        print('Did not understand "' + choice + '" Have you tried "help"?')
-```
-
-這裡有趣的地方在於它的`write_variable`可以讓我們去把函式的名稱給替換掉，所以我們這邊使用table上的3去呼叫`write_variable`，並且把`print_table`覆寫為`win`，然後再執行1，就可以得到Flag了。
-
-```txt
-┌──(kali㉿kali)-[~/CTF]
-└─$  nc saturn.picoctf.net 55745
-==> 3
-Please enter variable name to write: print_table
-Please enter new value of variable: win
-==> 1
-0x70 0x69 0x63 0x6f 0x43 0x54 0x46 0x7b 0x37 0x68 0x31 0x35 0x5f 0x31 0x35 0x5f 0x77 0x68 0x34 0x37 0x5f 0x77 0x33 0x5f 0x67 0x33 0x37 0x5f 0x77 0x31 0x37 0x68 0x5f 0x75 0x35 0x33 0x72 0x35 0x5f 0x31 0x6e 0x5f 0x63 0x68 0x34 0x72 0x67 0x33 0x5f 0x63 0x32 0x30 0x66 0x35 0x32 0x32 0x32 0x7d 
-==> 
-```
-
-然後一樣再拿去轉回printable就可以了。
-
-```txt
-picoCTF{7h15_15_wh47_w3_g37_w17h_u53r5_1n_ch4rg3_c20f5222}
-```
-
-## Classic Crackme 0x100
-
-把binary丟進IDA看一下。以下是反編譯後的代碼。
-
-```c
-int __fastcall main(int argc, const char **argv, const char **envp)
-{
-  char input[51]; // [rsp+0h] [rbp-A0h] BYREF
-  char output[51]; // [rsp+40h] [rbp-60h] BYREF
-  int random2; // [rsp+7Ch] [rbp-24h]
-  int random1; // [rsp+80h] [rbp-20h]
-  char fix; // [rsp+87h] [rbp-19h]
-  int secret3; // [rsp+88h] [rbp-18h]
-  int secret2; // [rsp+8Ch] [rbp-14h]
-  int secret1; // [rsp+90h] [rbp-10h]
-  int len; // [rsp+94h] [rbp-Ch]
-  int i_0; // [rsp+98h] [rbp-8h]
-  int i; // [rsp+9Ch] [rbp-4h]
-
-  strcpy(output, "apijaczhzgtfnyjgrdvqrjbmcurcmjczsvbwgdelvxxxjkyigy");
-  setvbuf(_bss_start, 0LL, 2, 0LL);
-  printf("Enter the secret password: ");
-  __isoc99_scanf("%50s", input);
-  i = 0;
-  len = strlen(output);
-  secret1 = 85;
-  secret2 = 51;
-  secret3 = 15;
-  fix = 97;
-  while ( i <= 2 )
-  {
-    for ( i_0 = 0; i_0 < len; ++i_0 )
-    {
-      random1 = (secret1 & (i_0 % 255)) + (secret1 & ((i_0 % 255) >> 1));
-      random2 = (random1 & secret2) + (secret2 & (random1 >> 2));
-      input[i_0] = ((random2 & secret3) + input[i_0] - fix + (secret3 & (random2 >> 4))) % 26 + fix;
-    }
-    ++i;
-  }
-  if ( !memcmp(input, output, len) )
-    printf("SUCCESS! Here is your flag: %s\n", "picoCTF{sample_flag}");
-  else
-    puts("FAILED!");
-  return 0;
-}
-```
-
-總之他就是把使用者的輸入做了一堆複雜的運算後，去比較和15行的那串字串是否一致，若一致就吐Flag。所以我們要逆推回去，找到輸入甚麼才可以在做了一堆運算後等於那串字串。這邊我請ChatGPT寫了一個腳本，果然可行。
-
-```python
-def decrypt(encrypted_str):
-    secret1 = 85
-    secret2 = 51
-    secret3 = 15
-    fix = 97
-    output = list(encrypted_str)
-    len_str = len(output)
-
-    # 需要反轉加密過程
-    for _ in range(3):  # 解密過程也重複三次
-        for i in range(len_str):
-            random1 = (secret1 & (i % 255)) + (secret1 & ((i % 255) >> 1))
-            random2 = (random1 & secret2) + (secret2 & (random1 >> 2))
-            output[i] = chr(
-                (
-                    (
-                        ord(output[i])
-                        - fix
-                        - (random2 & secret3)
-                        - (secret3 & (random2 >> 4))
-                    )
-                    % 26
-                )
-                + fix
-            )
-
-    return "".join(output)
-
-
-# 固定輸出字符串
-output = "apijaczhzgtfnyjgrdvqrjbmcurcmjczsvbwgdelvxxxjkyigy"
-
-# 解密測試
-decrypted_input = decrypt(output)
-print(f"解密結果: {decrypted_input}")
-```
-
-這樣跑出來後，他說我們要輸入的東西是：
-
-```txt
-amfdxwtywanwhpauoxphlasawliqdxqkppvnauvzpoolaymtap
-```
-
-接著就連到題目Server，輸入這串，果然就得到Flag了。
-
-```txt
-picoCTF{s0lv3_angry_symb0ls_e1ad09b7}
-```
-
 # Forensics
 
 ## MSB
@@ -3685,7 +3774,7 @@ picoCTF{p33k_@_b00_b5ce2572}
 
 ## binhexa
 
-這題比較簡單，就是一些基礎的 Binary operations 和最後把 bin 轉為 hexadecimal 就行了，它主要有六題的邏輯運算和一題 bin to hexadecimal。我是直接使用 picoCTF 提供的 Webshell 進行 nc 連接，然後用[這個線上工具](https://www.rapidtables.com/calc/math/binary-calculator.html)運算。題目如下。
+這題比較簡單，就是一些基礎的 Binary operations 和最後把 bin 轉為 hexadecimal 就行了，它主要有六題的邏輯運算和一題 bin to hexadecimal。我是直接使用 picoCTF 提供的 Webshell 進行 nc 連接，然後用 [這個線上工具](https://www.rapidtables.com/calc/math/binary-calculator.html) 運算。題目如下。
 
 ```txt
 Binary Number 1: 00101010
