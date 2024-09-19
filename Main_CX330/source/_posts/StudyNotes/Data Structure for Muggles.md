@@ -17,6 +17,49 @@ This is the note when I was taking the course in NCKU, 2024. Blablabla.....
 
 Finally, I would like to declare that almost every photo I use comes from the handouts of my course at NCKU, provided by the professor. If any photo comes from another source, I will give proper credit in the caption or description of the image.
 
+# Complexity
+
+## Space Complextiy
+
+- The amount of memory that it needs to run to completion.
+- $S(P)=c+S_P(I)$
+- Total space requirement $S(P)$ = Fixed space requirement + Variable space requirements
+- We usually care more about the **Variable space requirements**.
+
+For example, we have the following code like this.
+
+```c
+float sum(float list[], int n)
+{
+	float tempsum=0;
+	int i;
+	for (i = 0; i < n; i++)
+	tempsum += list[i];
+	return tempsum;
+}
+```
+
+In this code, we DO NOT copy the array list, we just passes all parameters by value, so the variable space requirements $S_{sum}(I)=0$. Here's another example, let's look at the code first. 
+
+```c
+float rsum(float list[], int n)
+{
+ if (n) return rsum(list,n-1)+list[n-1];
+ return 0;
+}
+```
+
+In this case, 1 recursive call requires **K** bytes for *2 parameters* and the *return address*. If the initial length of `list[]` is **N**, the variable space requirements $S_{rsum}(N)=N\times K$ bytes.
+
+## Time Complextity
+
+- The amount of computer time that it needs to run to completion.
+- $T(P)=c+T_P(I)$
+- Total time requirement $T(P)$ = Compile time + Execution time
+- We usually care more about the **Execution time**.
+
+
+
 # Arrays
 
 ## Intro
@@ -277,3 +320,6 @@ Here's some of the solutions, but there are still a lot of ways to conquer this.
 2. Set another variable `count` and modify it everytime we delete or add something.
 3. Save an empty slot in the circular queue, so that when the queue is full, the rear will be at the position "just before the front" (because one empty slot is reserved), thus avoiding the confusion with the condition `rear == front` which indicates an empty queue.
 
+# Linked Lists
+
+# Trees & Binary Trees
