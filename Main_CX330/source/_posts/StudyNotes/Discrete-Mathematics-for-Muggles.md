@@ -14,10 +14,10 @@ cover:
 - Set: A well-defined collection of objects. Neither order nor repetition is relevant for a  general set.
 - Element: Objects inside the set is called elements. They are said to be members of the set.
 - Universe: 
-- Subset: If every element of C is an element of  D, then C is a subset of D, which will be denoted by $C \subseteq D$.
-- Proper subset: If, in addition, D contains an element that is  not in C, then C is called a proper subset of D. It will be denoted by $C \subset D$.
+- Subset: If every element of $C$ is an element of  $D$, then $C$ is a subset of $D$, which will be denoted by $C \subseteq D$.
+- Proper subset: If, in addition, $D$ contains an element that is not in $C$, then $C$ is called a proper subset of $D$. It will be denoted by $C \subset D$.
 - Cardinality: Also called size, the number of elements in a set, denoted by $|A|$.
-- Equal: C & D are said to be equal when $C \subseteq D$ and $D \subseteq C$.
+- Equal: $C$ & $D$ are said to be equal when $C \subseteq D$ and $D \subseteq C$.
 
 ## Subset Relations
 

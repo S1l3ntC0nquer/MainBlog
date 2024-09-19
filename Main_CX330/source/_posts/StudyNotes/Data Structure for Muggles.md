@@ -19,14 +19,16 @@ Finally, I would like to declare that almost every photo I use comes from the ha
 
 # Complexity
 
-## Space Complextiy
+## Space Complexity
 
 - The amount of memory that it needs to run to completion.
 - $S(P)=c+S_P(I)$
-- Total space requirement $S(P)$ = Fixed space requirement + Variable space requirements
+- Total space requirement = Fixed space requirement + Variable space requirements
 - We usually care more about the **Variable space requirements**.
 
 For example, we have the following code like this.
+
+**Iterative**
 
 ```c
 float sum(float list[], int n)
@@ -39,26 +41,121 @@ float sum(float list[], int n)
 }
 ```
 
-In this code, we DO NOT copy the array list, we just passes all parameters by value, so the variable space requirements $S_{sum}(I)=0$. Here's another example, let's look at the code first. 
+In this code, we DO NOT copy the array list, we just passes all parameters by value, so the variable space requirements $S_{sum}(I)=0$. Here's another example, let's look at the code first.
+
+**Recursive** 
 
 ```c
 float rsum(float list[], int n)
 {
- if (n) return rsum(list,n-1)+list[n-1];
- return 0;
+    if (n) return rsum(list,n-1)+list[n-1];
+    return 0;
 }
 ```
 
 In this case, 1 recursive call requires **K** bytes for *2 parameters* and the *return address*. If the initial length of `list[]` is **N**, the variable space requirements $S_{rsum}(N)=N\times K$ bytes.
 
-## Time Complextity
+## Time Complexity
 
 - The amount of computer time that it needs to run to completion.
 - $T(P)=c+T_P(I)$
-- Total time requirement $T(P)$ = Compile time + Execution time
+- Total time requirement = Compile time + Execution time
 - We usually care more about the **Execution time**.
 
+For example, this is a segment with execution time independent from the instance characteristics.
 
+```c
+float sum(float list[], int n)
+{
+    float tempsum=0;
+    int i;
+    for (i = 0; i < n; i++)
+    tempsum += list[i];
+    return tempsum;
+}
+```
+
+![Time Complexity](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240919210100272.png)
+
+On the other hand, a segment with execution time dependent on the instance characteristics will be like this.
+
+```c
+float rsum(float list[], int n)
+{
+    if (n)
+    return rsum(list,n-1)+list[n-1];
+
+    return 0;
+}
+```
+
+![Time Complexity](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240919210321397.png)
+
+For given parameters, computing time might not be the same. So, we should know the following cases.
+
+- Best-case count: Minimum number of steps that can be executed.
+- Worst-case count: Maximum number of steps that can be executed.
+- Average count: Average number of steps executed.
+
+Here, I'm going to use **insertion sort** to show you the difference between the best-case & the worst-case. If you don't know what it is, you can go check it out [here](https://www.geeksforgeeks.org/insertion-sort-algorithm/). Following is a snippet of the insertion sort algorithm in C.
+
+```c
+for (j = i - 1; j >= 0 && t < a[j]; j--){
+	a[j + 1] = a[j];
+}
+```
+
+![Insertion Sort](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240919211111351.png)
+
+**Worst-case**
+
+- a[0 : i-1] = [1, 2, 3, 4] and t = 0
+    - 4 compares
+- a[0 : i-1] = [1, 2, 3, …, i] and t = 0
+    - i compares
+
+For a list in **decreasing** order, the total compares will be $1+2+3+4+\dots+(n-1)=\frac{n(n-1)}{2}=\frac{1}{2}n^2-\frac{1}{2}n$.
+
+**Best-case**
+
+- a[0 : i-1] = [1, 2, 3, 4] and t = 5
+    - 1 compare
+- a[0 : i-1] = [1, 2, 3, …, i] and t = i + 1
+    - 1 compare
+
+For a list in **increasing** order, the total compares will be $1+1+1+\dots+1=n-1$​. 
+
+## Asymptotic Complexity
+
+Sometimes determining exact step counts is difficult and not useful, so we will use the Big-O notation to represent space and time complexity. Here's a question, which algorithm is better? The one with $\frac{1}{2}n^2-\frac{1}{2}n$ or $n^2+3n-4$. The answer is, both of them are $O(n^2)$​, so the performances are similar.
+
+Now, we jump back to the example in previous part. What is the time complexity of insertion sort in the Big-O representation?
+
+- Worst case
+    - $\frac{1}{2}n^2-\frac{1}{2}n\Rightarrow O(n^2)$
+- Best case
+    - $n-1\Rightarrow O(n)$
+
+## Why Algorithm Is Important
+
+This is a table of how various functions grow with $n$.
+
+![How various function grow with n](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240919213305045.png)
+
+As you can see, the exponential one grows exponentially, which means a little variation of n can increase a lot of computing time. In fact, on a computer performing 1 billion (109 ) steps per second. $2^{40}$ steps require 18.3 mins, $2^{50}$ steps require 13 days, and $2^{60}$​ steps require 310 years! So that's why improving algorithm may be more useful than improving hardware sometimes.
+
+## Summary
+
+- Space and time complexity
+    - Best case, worst case, and average
+    - Variable and fixed requirements
+- Asymptotic complexity
+    - Big-O
+- Example:
+    - Insertion sort
+    - Selection sort
+
+More information about complexity will be introduce when I take the algorithm course next year, or you can search for some sources if you really want to learn more about it.
 
 # Arrays
 
@@ -321,5 +418,208 @@ Here's some of the solutions, but there are still a lot of ways to conquer this.
 3. Save an empty slot in the circular queue, so that when the queue is full, the rear will be at the position "just before the front" (because one empty slot is reserved), thus avoiding the confusion with the condition `rear == front` which indicates an empty queue.
 
 # Linked Lists
+
+## Intro
+
+First, I want to talk about the deletion and insertion in sequential representation, which is mentioned a lot in the previous parts. When we deleting or inserting things in a queue or an array, there're always be some empty spaces created by the operations (See the picture below for details.) And that means we have to move many elements many times to maintain a sequential data structure.
+
+![We need to move elements very often](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240919214955011.png)
+
+So, to avoid this waste, we want to store data **dispersedly** in memory, just like the picture below.
+
+![Store Data Dispersedly](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240919215401686.png)
+
+But now, we are facing another problem. How do we know the order of the data if we store an sequential data like this? We use linked list! Let's start talking about linked list right away. Here is the features of it.
+
+- In memory, list elements are stored in an arbitrary order.
+- The fundamental unit is called a **node**.
+- In a normal linked list, a node contains **data** and **link/pointer**.
+- The **link** is used to point to the next element.
+
+To answer the previous question, we need to talk about why linked list is called linked list. It's because every element in the list **linked** to the very next data, so we can know the sequence even thought we didn't save them sequentially. To let you better understand, the following graph is the illustration of how it works.
+
+![Linked List](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240919220159098.png)
+
+Another way that usually seen to draw a linked list is like this.
+
+![Linked List by Arrows](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240919220259929.png)
+
+## Operations
+
+### Concept of Insertion
+
+To insert K between B and C, we have to follow the steps below.
+
+- Get an unused node *a*.
+- Set the data field of a to K.
+- Set the link of a to point to C.
+- Set the link of B to point to *a*.
+
+![Insertion of Linked List](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240919220608080.png)
+
+### Concept of Deletion
+
+To delete C in the linked list, we have to follow the steps below.
+
+- Find the element precedes C.
+- Set the link of the element to the position of D.
+
+![Deletion in Linked List](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240919220726626.png)
+
+### Define A Node in C
+
+```c
+typedef struct listNode *listPointer;
+typedef struct {
+    char data;
+    listPointer link;
+} listNode;
+```
+
+![Node](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240919221150498.png)
+
+### Get(0)
+
+```c
+desiredNode = first; // get the first node
+return desiredNode->data;
+```
+
+![Get(0)](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240919221125762.png)
+
+### Get(1)
+
+```c
+desiredNode = first->link; // get the second node
+return desiredNode->data;
+```
+
+![Get(1)](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240919221242223.png)
+
+### Delete "C"
+
+- Step 1: find the node before the node to be removed
+
+```c
+beforeNode = first->link;
+```
+
+![Step 1 of Deletion](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240919221635938.png)
+
+- Step 2: save pointer to node that will be deleted
+
+```c
+deleteNode = beforeNode->link;
+```
+
+![Step 2 of Deletion](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240919221729705.png)
+
+- Step 3: change pointer in *beforeNode*
+
+```c
+beforeNode->link = beforeNode->link->link;
+free(deleteNode);
+```
+
+![Step 3 of Deletion](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240919221819687.png)
+
+### Insert “K” before “A"
+
+- Step 1: get an unused node, set its data and link fields
+
+```c
+MALLOC( newNode, sizeof(*newNode));
+newNode->data = ‘K’;
+newNode->link = first;
+```
+
+![Step 1](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240919221941849.png)
+
+- Step2: update *first*
+
+```c
+first = newNode
+```
+
+![Step 2](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240919222029915.png)
+
+### Insert “K” after “B”
+
+![Insert After](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240919222334002.png)
+
+```c
+beforeNode = first->link;
+MALLOC( newNode, sizeof(*newNode));
+newNode->data = ‘K’;
+newNode->link = beforeNode->link;
+beforeNode->link = newNode;
+```
+
+## Circular Linked List
+
+- The last node points to the first node.
+
+![Circular Linked List](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240919222430801.png)
+
+## Doubly Linked List
+
+In general linked list, to find an element will always start at the beginning of the list, but it's not the case in doubly linked list!
+
+- Right link: forward direction
+- Left link: backward direction
+
+![Doubly Linked List](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240919222723904.png)
+
+### Node in Doubly Linked List
+
+```c
+typedef struct node *nodePointer;
+typedef struct node{
+ nodePointer llink;
+ element data;
+ nodePointer rlink;
+ };
+```
+
+![Node in Doubly Linked List](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240919222811745.png)
+
+### Insert “K” after “B”
+
+```c
+newNode->llink = node;
+newNode->rlink = node->rlink;
+```
+
+![Step 1](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/螢幕擷取畫面 2024-09-19 223329.png)
+
+```c
+node->rlink->llink = newNode;
+node->rlink = newNode;
+```
+
+![Step 2](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/223556.png)
+
+## Linked Stacks & Queues
+
+- Linked stack
+    - Push: add to a linked list
+    - Pop: delete from a linked list
+- Linked queue
+    - AddQ: add to a rear of a linked list
+    - DeleteQ: delete the front of a linked list
+
+![Linked Stack](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240919223932702.png)
+
+![Linked Queue](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240919224001363.png)
+
+## Summary
+
+- Linked lists
+- Doubly linked lists
+- Doubly circular linked lists
+- Operations: Get, Insert, and Delete
+- Applications:
+    - Linked stacks
+    - Linked queues
 
 # Trees & Binary Trees
