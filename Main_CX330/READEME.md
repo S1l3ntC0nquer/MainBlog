@@ -169,6 +169,14 @@ if (willChangeMode === "dark") {
 }
 ```
 
+sidebar.styl 修改如下
+
+```stylus
+#aside-content #card-toc span.toc-number {
+  display: inline;
+}
+```
+
 # hexo-butterfly-envelope
 
 `main.js`中把中文改為英文
