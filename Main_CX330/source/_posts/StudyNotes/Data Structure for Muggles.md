@@ -676,12 +676,63 @@ A full binary tree is a tree that has height $h$ and $2^h-1$ nodes. This is the 
 
 ![Full Binary Tree](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240920105214535.png)
 
-Please note that each full binary tree of the same height will only have one type.
+Please note that each full binary tree of the same height will only have one type. If we numbering the nodes in a full binary tree from **top to bottom**, **left to right**, then we will have the following properties.
 
-## Skewed Binary Tree
+- Let $n$ be the number of nodes in a FULL binary tree
+  - Parent node of $i$ is node $floor(\frac{i}{2})$
+  - Left child of node $i$ is node $2i$
+  - Right child of node $i$ is node $2i+1$ 
 
-- At least one node at each of first h levels
-- Minimum number of nodes for a height h
+## Skewed Binary Trees
+
+- At least one node at each of first $h$ levels
+- Minimum number of nodes for a height $h$
 
 ![Skewed Binary Tree](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240920105648862.png)
+
+## Number of Nodes and Height
+
+- Let $n$ be the number of nodes in a binary tree whose height is $h$.
+  - $h\le n\le 2^h-1$
+  - $\log_2(n+1)\le h$
+  - The height **h** of a binary tree is at least $log_2(n+1)$.
+
+## Complete Binary Trees
+
+How to create a complete binary tree? Just follow the steps and check out the graph below.
+
+1. Create a full binary tree which has at least $n$ nodes.
+2. Number the nodes sequentially.
+3. The binary tree defined by the node numbered $1$ through $n$ is the n-node complete binary tree. 
+
+![Complete Binary Tree](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240920143648565.png)
+
+## Binary Tree Representations
+
+### Array Representation
+
+- Number the nodes using the numbering scheme for a full binary tree. The node that is numbered `i` is stored in `tree[i]`.
+
+![Array Representation](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240920144242000.png)
+
+Since the number should be placed in the FULL binary tree, sometimes there will be some memory waste. For example, if we create a 4-level right-skewed binary tree, it will has the length 15, but only 4 being used.
+
+![Worst Case for Required Space](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240920144539000.png)
+
+### Linked List Representation
+
+- Each binary tree node is represented as an object whose data type is `TreeNode`.
+- The space required by an `n` node binary tree is `n * (space required by one node)`.
+
+```c
+typedef struct node *treePointer;
+typedef struct node{
+    char data;
+    treePointer leftChild, rightChild;
+};
+```
+
+![Node](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240920145031720.png)
+
+![Linked List Representation](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/145204.jpg)
 
