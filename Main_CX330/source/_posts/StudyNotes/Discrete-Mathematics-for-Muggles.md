@@ -9,7 +9,7 @@ cover:
 
 # Chapter 3 - Set Theory
 
-## Definitions
+## Terms Definitions
 
 - Set: A well-defined collection of objects. Neither order nor repetition is relevant for a  general set.
 - Element: Objects inside the set is called elements. They are said to be members of the set.
@@ -41,8 +41,11 @@ For any universe $U$, let $A \subseteq U$. Then $\phi \subseteq A$, and if $A\ne
 ## Power Set
 
 - If $A$ is a set from universe $U$, the  power set of $A$, denoted $P(A)$, is the collection (or set) of all subsets of $A$.
-- For the set $C=\{1,2,3,4\}, P(C)=$ $\{\varnothing,\{1\},\{2\},\{3\},\{4\},\{1,2\},\{1,3\},\{1,4\},\{2,3\},\{2$, $4\},\{3,4\},\{1,2,3\},\{1,2,4\}\{1,3,4\}\{2,3,4\}, C\}$.
 
+For the set $C=\{1, 2, 3, 4\}$
+$$
+P(C)=\{\varnothing,\{1\},\{2\},\{3\},\{4\},\{1,2\},\{1,3\},\{1,4\},\{2,3\},\{2, 4\},\{3,4\},\{1,2,3\},\{1,2,4\}\{1,3,4\}\{2,3,4\}, C\}
+$$
 For any finite set $A$ with $|A|=n \geq 0$, we find that $A$ has $2^n$ subsets and that $|P(A)|=2^n$. For any $0 \leq k \leq n$, there are $\binom{n}{k}$ subsets of size $k$. Counting the subsets of $A$ according to the number, $k$, of elements in a subset, we have the combinatorial identity $\binom{n}{0}+\binom{n}{1}+\binom{n}{2}+\cdots+\binom{n}{n}=\sum_{k=0}^n\binom{n}{k}=2^n$, for $n \geq 0$.
 
 ## Gray Code
@@ -95,9 +98,9 @@ If $S, T \subseteq U$, then $S, T \subseteq U$ are disjoint if and only if $S \c
 
 ## Complement
 
-- For a set $A \subseteq U$, the complement of A, denoted $U – A$, or $A$, is given by $\{x \mid x \in U \wedge x \notin A\}$.
+- For a set $A \subseteq U$, the complement of $A$, denoted $U - A$, or $A$, is given by $\{x \mid x \in U \wedge x \notin A\}$.
 
-- For $A, B \subseteq U$, the (relative) complement of $A$ in $B$, denoted $B – A$, is given by $\{x \mid x \in B \wedge x \notin A\}$.
+- For $A, B \subseteq U$, the (relative) complement of $A$ in $B$, denoted $B - A$, is given by $\{x \mid x \in B \wedge x \notin A\}$.
 
 ## Subset, Union, Intersection, and  Complement
 

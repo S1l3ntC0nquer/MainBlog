@@ -623,3 +623,65 @@ node->rlink = newNode;
     - Linked queues
 
 # Trees & Binary Trees
+
+## Intro
+
+Tree is an data structure that looks like a genealogy, so there's a lot of terms that similar to the terms in a family. Now, let's introduce some terms about the trees.
+
+- Degree of a node
+  -  number of subtrees
+- Degree of a tree
+  - maximum of the degree of the nodes in the tree
+- Height (depth) of a tree
+  - maximum level of any node in the tree
+- Leaf (or Terminal)
+  - nodes having degree zeros
+- Internal node
+  - not leaf & not root
+- Children
+  - roots of subtrees of a node X
+- Parent
+  -  X is a parent
+- Sibling
+  - children of the same parent
+- Ancestor
+  -  all the nodes along the path from the root to the node 
+
+![Tree](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240920103633068.png)
+
+## List Representation
+
+If we want to represent a tree in a list format, we can use this mathod. Following is an example of a tree and its list representation.
+
+![Tree](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240920104038203.png)
+
+It's list representation will be like $\text{(A (B (E (K, L), F), C (G), D (H (M), I, J)))}$.
+
+## Binary Trees
+
+Binary trees are trees that have the following characteristics.
+
+- Degree-2 tree
+- Recursive definition
+  - Each node has left subtree and/or right subtree.
+  - Left subtree (or right subtree) is a binary tree.
+
+This is an picture of a binary tree.
+
+![Binary Tree](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240920104751233.png)
+
+## Full Binary Trees
+
+A full binary tree is a tree that has height $h$ and $2^h-1$ nodes. This is the graph of the full binary tree.
+
+![Full Binary Tree](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240920105214535.png)
+
+Please note that each full binary tree of the same height will only have one type.
+
+## Skewed Binary Tree
+
+- At least one node at each of first h levels
+- Minimum number of nodes for a height h
+
+![Skewed Binary Tree](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240920105648862.png)
+
