@@ -7,7 +7,111 @@ date: 2024-09-19 09:09:44
 cover: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/discrete_math.jpg
 ---
 
-# Chapter 3 - Set Theory
+# Fundamentals of  Logic
+
+## Statements
+
+- Statements (or propositions)
+  - Declarative sentences that are either **true** or **false** but not both
+- Primitive statements
+  - There is really no way to  break them down into anything simpler
+
+New statements can be obtained from existing ones in two ways
+
+- Negation
+  - We do not consider the negation of a primitive statement to be a primitive statement
+  - The negation statement of $p$ is $\neg{p}$
+  - NOT
+- Compound statements, using the following *logical connectives*
+  - Conjunction $\wedge$
+    - AND
+  - Disjunction $\vee$
+    - $p\vee{q}$ means inclusive disjunction. True if one or the other of $p, q$ is true or if **both** of the statements $p, q$ are true
+    - $p\veebar{q}$ maens exclusive disjunction. True if one or the other of $p, q$ is  true but **not both** of the statements $p, q$ are true
+  - Implication $\to$
+    - THEN
+    - $p\to{q}$
+    - If $p$, then $q$
+    - $p$ is sufficient for $q$
+    - $p$ is a sufficient condition for $q$
+    - $q$ is necessary condition for $p$
+    - $q$ is a necessary condition for $p$
+    - $p$ only if $q$
+    - The statement $p$ is called the *hypothesis* of the implication; $q$ is called the *conclusion*.
+  - Biconditional $\leftrightarrow$
+    - IF AND ONLY IF
+    - IFF
+    - $p\leftrightarrow{q}$ means $p$ is necessary and sufficient for $q$.
+
+The following is the graph of the truth table.
+
+![Truth Table](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240921161747620.png)
+
+## Tautology and Contradiction
+
+- Tautology
+  - A compound statement is called  a tautology if it is true for all truth value  assignments for its component statement.
+- Contradiction
+  - If a compound statement is false for all such assignments, then it is called a contradiction.
+
+## Logical Equivalence
+
+Two statements $s1, s2$ are said to be logically equivalent, and we write $s1\Leftrightarrow s2$ ,  when the statement $s1$ is true (respectively, false) if and only if the statement $s2$ is true (respectively,  false).
+
+## The Laws of Logic
+
+For any primitive statements $p, q, r$, any tautology $T_0$ , and any contradiction $F_0$,
+
+$\text{Law of Double Negation}$
+
+- $\neg\neg{p}\Leftrightarrow{p}$
+
+$\text{DeMorgan's Laws}$
+
+- $\neg{(p\vee{q})}\Leftrightarrow\neg p \wedge\neg q$
+- $\neg{(p\wedge{q})}\Leftrightarrow\neg p \vee\neg q$
+
+$\text{Commutative Laws}$
+
+- $p\vee{q}\Leftrightarrow q\vee{p}$
+- $p\wedge{q}\Leftrightarrow q\wedge{p}$
+
+$\text{Associative Laws}$
+
+- $p\vee(q\vee r)\Leftrightarrow(p\vee q)\vee r$
+- $p\wedge(q\wedge r)\Leftrightarrow(p\wedge q)\wedge r $
+
+$\text{Distributive Laws}$
+
+- $p\vee(q\wedge r)\Leftrightarrow(p\vee q)\wedge(p\vee r)$
+- $p\wedge(q\vee r)\Leftrightarrow(p\wedge q)\vee(p\wedge r)$
+
+$\text{Idempotent Laws}$
+
+- $p\vee p\Leftrightarrow p$
+- $p\wedge p\Leftrightarrow p$
+
+$\text{Identity Laws}$
+
+- $p\vee F_0\Leftrightarrow p$
+- $p\wedge T_0\Leftrightarrow p$
+
+$\text{Inverse Laws}$
+
+- $p\vee\neg p\Leftrightarrow T_0$
+- $p\wedge\neg p\Leftrightarrow F_0$
+
+$\text{Domination Laws}$
+
+- $p\vee T_0\Leftrightarrow T_0$
+- $p\wedge F_0\Leftrightarrow F_0$
+
+$\text{Absorption Laws}$
+
+- $p\vee(p\wedge q)\Leftrightarrow p$
+- $p\wedge(p\vee q)\Leftrightarrow p$
+
+# Set Theory
 
 ## Terms Definitions
 
@@ -177,4 +281,26 @@ Let $s$ be a (general) statement dealing with the equality of two set expression
 
 ## Index Set
 
-Let $I$ be a nonempty set and $U$ a universe. For each $i\in I$ let $A_i \subseteq U$. Then $I$ is called an index set (or set of indices), and each $i \in I$ is called an index.
+Let $I$ be a nonempty set and $U$ a universe. For each $i\in I$ let $A_i \subseteq U$. Then $I$ is called an index set (or set of indices), and each $i \in I$ is called an **index**. Under these conditions, 
+
+$\displaystyle\bigcup_{i\in I}A_{i}=\{x\mid x\in A_{i}\quad \text{for at least one } i\in{I}\}$, 
+
+$\displaystyle\bigcap_{i\in I}A_i=\{x\mid x\in A_i\quad\text{for every }i\in{I}\}$.
+
+For example, let $I=\{3, 4, 5, 6, 7\}$, and for each $i\in{I}$ let $A_i=\{1, 2, 3, \dots, i\}\subseteq{U}=\mathbf{Z}^{+}$. Then $\bigcup_{i\in{I}}A_i=\bigcup^7_{i=3}A_i=\{1, 2, 3,\dots, 7\}=A_7$, whereas $\bigcap_{i\in{I}}A_i=\{1, 2, 3\}=A_3$.
+
+## Generalized DeMorgan’s Laws
+
+Let $I$ be an index set where for each $i \in I$, $A_i \subseteq U$. Then,
+
+- $\displaystyle\overline{\bigcup_{i\in I}A_i}=\bigcap_{i\in I}\overline{A_i}$
+-  $\displaystyle\overline{\bigcap_{i\in I}A_i}=\bigcup_{i\in I}\overline{A_i}$
+
+## Definition for Probability
+
+Under the assumption of equal likelihood, let $I$ be the sample space for an experiment $E$. Any subset $A$ of $I$, including the empty subset, is called an event. Each element of $I$ determines an outcome, so if $|I| = n$ and $a \in I, A \subseteq I$, then $Pr(\{a\})$ = The probability that $\{a\}$ (or, $a$) occurs = $\frac{|\{a\}|}{I} = \frac{1}{n}$, and $Pr(A)$ = The probability that $A$ occurs = $\frac{|A|}{|I|} = \frac{|A|}{n}$.
+
+## Cross Product
+
+For sets $A$, $B$, the **Cartesian product**, or **cross product**, of $A$ and $B$ is denoted by $A \times B$ and equals $\{(a, b)\mid a \in A, b \in B\}$.
+
