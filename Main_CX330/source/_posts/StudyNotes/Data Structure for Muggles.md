@@ -719,7 +719,7 @@ Since the number should be placed in the FULL binary tree, sometimes there will 
 
 ![Worst Case for Required Space](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240920144539000.png)
 
-### Linked List Representation
+### Linked Representation
 
 - Each binary tree node is represented as an object whose data type is `TreeNode`.
 - The space required by an `n` node binary tree is `n * (space required by one node)`.
@@ -734,5 +734,5 @@ typedef struct node{
 
 ![Node](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240920145031720.png)
 
-![Linked List Representation](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/145204.jpg)
+![Linked Representation](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/145204.jpg)
 
