@@ -177,15 +177,15 @@ sidebar.styl 修改如下
 }
 ```
 
-catalog_list.css 修改如下
+index.styl 新增如下
 
-```css
-#catalog-list {
-    /* 分類/標籤較少時，可以選擇不設置 width，居中顯示 catalog-list-item */
-    display: flex;
-    white-space: nowrap;
-    overflow-x: hidden; /* scroll */
-}
+```stylus
+#catalog-list
+    overflow hidden
+    scrollbar-width none /* Firefox 特有 */
+
+    &::-webkit-scrollbar
+        display none /* 完全隱藏滾動條 */
 ```
 
 # hexo-butterfly-envelope

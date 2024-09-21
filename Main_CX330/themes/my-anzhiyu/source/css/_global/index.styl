@@ -269,6 +269,13 @@ body
   scrollbar-width: thin
   scrollbar-color: var(--scrollbar-color) transparent
 
+#catalog-list
+    overflow hidden
+    scrollbar-width none /* Firefox 特有 */
+    
+    &::-webkit-scrollbar
+        display none /* 完全隱藏滾動條 */
+
 input::placeholder
   color: var(--font-color)
 
