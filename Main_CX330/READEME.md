@@ -177,6 +177,17 @@ sidebar.styl 修改如下
 }
 ```
 
+catalog_list.css 修改如下
+
+```css
+#catalog-list {
+    /* 分類/標籤較少時，可以選擇不設置 width，居中顯示 catalog-list-item */
+    display: flex;
+    white-space: nowrap;
+    overflow-x: hidden; /* scroll */
+}
+```
+
 # hexo-butterfly-envelope
 
 `main.js`中把中文改為英文
