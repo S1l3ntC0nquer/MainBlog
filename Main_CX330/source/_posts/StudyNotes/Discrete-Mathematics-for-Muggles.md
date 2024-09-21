@@ -79,7 +79,7 @@ $\text{Commutative Laws}$
 $\text{Associative Laws}$
 
 - $p\vee(q\vee r)\Leftrightarrow(p\vee q)\vee r$
-- $p\wedge(q\wedge r)\Leftrightarrow(p\wedge q)\wedge r $
+- $p\wedge(q\wedge r)\Leftrightarrow(p\wedge q)\wedge r$
 
 $\text{Distributive Laws}$
 
