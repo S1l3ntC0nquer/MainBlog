@@ -4,7 +4,7 @@ categories: StudyNotes
 tags: Math
 abbrlink: 6c0b3eb8
 date: 2024-09-19 09:09:44
-cover:
+cover: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/discrete_math.jpg
 ---
 
 # Chapter 3 - Set Theory
