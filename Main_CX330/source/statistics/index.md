@@ -22,4 +22,4 @@ aside: true
 
 ## Repobeats
 
-![Alt](https://repobeats.axiom.co/api/embed/122f7511f1ac302482a0a294cddbbe4eec27e027.svg "Repobeats analytics image")
+![Alt](https://repobeats.axiom.co/api/embed/05982c38ac7c33c643396d8b11cf07decfd64ea2.svg "Repobeats analytics image")
