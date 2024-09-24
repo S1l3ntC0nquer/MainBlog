@@ -46,11 +46,11 @@
         color: "#161d2d"
         icon: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/tailwind.png
       - name: JS
-        color: "#f7cb4f"
-        icon: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/643293b121f02.png
+        color: "#000"
+        icon: https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png
       - name: TypeScript
-        color: "#007acc"
-        icon: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/typescript.png
+        color: "#000"
+        icon: https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/768px-Typescript_logo_2020.svg.png #https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/typescript.png
       - name: HTML
         color: "#e9572b"
         icon: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/639aa3a5c241c.png
