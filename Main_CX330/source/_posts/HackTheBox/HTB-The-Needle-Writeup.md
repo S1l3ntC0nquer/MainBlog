@@ -1,15 +1,16 @@
 ---
-title: "[HTB] The Needle Writeup 🪡"
-date: 2024-09-22 01:31:01
+title: "[HTB] The Needle Writeup \U0001FAA1"
 cover: >-
-    https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/help-you-at-solving-hackthebox-htb-challenges-machines.png
+  https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/help-you-at-solving-hackthebox-htb-challenges-machines.png
 categories:
-    - - HackTheBox
-    - - CTF
+  - - HackTheBox
+  - - CTF
 tags:
-    - HTB
-    - Hardware
-    - HackTheBox 
+  - HTB
+  - Hardware
+  - HackTheBox
+abbrlink: b372fa96
+date: 2024-09-22 01:31:01
 ---
 
 # 0x00 Challenge Info

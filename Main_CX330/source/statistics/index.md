@@ -19,3 +19,7 @@ aside: true
 ## Categories Pie
 
 <div id="categories-chart" class="js-pjax"></div>
+
+## Repobeats
+
+![Alt](https://repobeats.axiom.co/api/embed/122f7511f1ac302482a0a294cddbbe4eec27e027.svg "Repobeats analytics image")
