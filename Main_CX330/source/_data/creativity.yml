@@ -48,6 +48,9 @@
       - name: JS
         color: "#f7cb4f"
         icon: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/643293b121f02.png
+      - name: TypeScript
+        color: "#007acc"
+        icon: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/typescript.png
       - name: HTML
         color: "#e9572b"
         icon: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/639aa3a5c241c.png
