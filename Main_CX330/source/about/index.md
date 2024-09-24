@@ -38,3 +38,7 @@ I hope one day, people will remember my name and my ID, remember **Blake Chen**,
 [![CX330's GitHub stats](https://github-readme-stats.vercel.app/api?username=CX330Blake&count_private=true&theme=radical&show_icons=true&hide_border=true)](https://github.com/CX330Blake)
 
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=CX330Blake&hide=html,css,scss&theme=radical)](https://github.com/CX330Blake)
+
+# My LeetCode Stats
+
+![LeetCode Stats](https://leetcard.jacoblin.cool/CX330Blake?theme=unicorn&font=Fira%20Code&ext=activity)
