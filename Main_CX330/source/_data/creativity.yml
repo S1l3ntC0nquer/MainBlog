@@ -33,12 +33,18 @@
       - name: C
         color: "#fff"
         icon: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/380px-C_Programming_Language.svg.png
+      - name: C#
+        color: "#151433"
+        icon: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/Csharp.png
       - name: React
         color: "#222"
         icon: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/pngwing.com (1).png
       - name: CSS3
         color: "#2c51db"
         icon: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/639aa3a5c251e.png
+      - name: Tailwind CSS
+        color: "#161d2d"
+        icon: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/tailwind.png
       - name: JS
         color: "#f7cb4f"
         icon: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/643293b121f02.png
