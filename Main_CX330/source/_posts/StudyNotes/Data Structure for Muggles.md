@@ -931,9 +931,75 @@ There two ways to do it. We can replace the deleted node with
 
 ## Rank of a Node in a BST
 
-Rank of node `x`
+Rank of node $x$
 
-- The number of the nodes whose key values are smaller than `x`
-- Position of `x` **inorder**
+- The number of the nodes whose key values are smaller than $x$
+- Position of $x$ **inorder**
 - Like the **index** of an array
 
+# Heaps
+
+## Intro
+
+Imagine that we have a program that records patients waiting in the hospital, if the data structure we use is a queue (FIFO), and a dying person comes, we cannot let him queue up to see the doctor first.
+
+So that's why we need a priority queue! But how to implement one? Let's dive into the heaps right away!
+
+![Source: https://www.udemy.com/course/js-algorithms-and-data-structures-masterclass/](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/1*A3D5yfJoI3G8qx-xQkwTEQ.png)
+
+## Min Tree & Max Tree
+
+First, we should know what is min tree and max tree to establish the concept we will use later.
+
+![Min Tree & Max Tree](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240927011129370.png)
+
+## Min Heap & Max Heap
+
+![Min Heap & Max Heap](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240927011217928.png)
+
+## Array Representation
+
+![Array Representation of a Heap](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240927011438942.png)
+
+## Operations
+
+Here I use max heap for example, but it's very similar with the min heap so you can try it by yourself!
+
+### Insert(key)
+
+1. Create a new node while keep the heap being a complete binary tree.
+2. Compare the key with the parent.
+    - If the key < parent, pass
+    - If the key > parent, switch place with parent and recursively compare the parent with parent's parent until it match the definition (key value in any node is the maximum value in the subtree)
+
+![Step 1](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240927012600455.png)
+
+![Step 2](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240927012631188.png)
+
+![Step 3](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240927012652095.png)
+
+This process is also called *bubbling up process* since it looks like a bubble goes up the water surface.
+
+After we know how to insert things to a heap, we also care about it's speed. The time complexity of the inseriton is $O(\log{n})$, which $n$ is the heap size (height/level).
+
+### Delete() or Pop()
+
+- Removing the **root** of the heap
+    - **Root** is the min element in a min heap
+    - **Root** is the max element in a max heap
+
+Following is the steps to do this operation
+
+1. Removing the **last node** and inserting it into the **root**
+2. Moving the node to a proper position
+    - Find the child containing max key value and exchange the position
+
+![Step 1](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240927013727411.png)
+
+![Step 2](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240927013759069.png)
+
+![Step 3](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/step3.pn.png)
+
+![Step 4](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240927014228044.png)
+
+And the time complextity of deletion is $O(\log{n})$, where $n$ is also the heap size.
