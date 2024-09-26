@@ -11,7 +11,7 @@ updated: '2024-08-29T15:39:10.351+08:00'
 ---
 # Prologue
 
-**All the following example will be shown in C Programming Language**.
+**All the following example will be shown in C Programming Language or pseado code.**
 
 This is the note when I was taking the course in NCKU, 2024. Blablabla.....
 
@@ -790,4 +790,96 @@ void postOrder(treePointer ptr){
 
 ![Postorder](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240926153303714.png)
 
+### Difference Between Inorder, Preorder & Postorder
+
+This is an illustration from GeeksforGeeks.
+
 ![Comparison between different order. Source: GeeksforGeeks](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/Preorder-from-Inorder-and-Postorder-traversals.jpg)
+
+### Level-Order
+
+- Visiting the nodes following the order of node numbering scheme (sequential numbering)
+
+![Level-Order](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240926210505026.png)
+
+### Iterative Traversal Using Stack
+
+The following is an *inorder* example.
+
+- Push **root** into stack
+- Push the **left** into stack until reaching a **null** node
+- Pop the **top** node from the stack
+  - If there's no node in stack, break
+- Push the **right child** of the pop-out node into stack
+- Go back to step 2 from the **right child**
+
+Here's the graph to let you more understand the workflow.
+
+![Inorder Iterative Traversal Using Stack](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240926211302158.png)
+
+### Convert Sequences Back to Trees
+
+If we are given a sequence of data and we try to turn it back to a tree, how should we do? The following is an example of turnning a very short sequence data back into trees.
+
+![Example](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240926211637534.png)
+
+We can clearly see that if we are only given a sequence in 1 specific order, then we cannot know which side (left or right) is the original tree grows. But if we are given 2 different orders with 1 of them is **inorder**, then we can do it by the inference.
+
+![image-20240926212026845](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240926212026845.png)
+
+![Step 1](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240926212346555.png)
+
+![Step 2](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240926212412466.png)
+
+![Step 3](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240926212439440.png)
+
+# Binary Search Trees
+
+## Intro
+
+The binary search tree, of course, it's an binary tree. But beside this, it has some unique properties so that we can call it a binary *search* tree.
+
+- Each node has a **(key, value)** pair
+- Keys in the tree are distinct
+- For every node `x`
+  - all keys in the **left** subtree are **smaller** than that in `x`
+  - all keys in the **right** subtree are **larger** than that in `x`
+- The subtrees are also binary search tree.
+
+## Operations
+
+### Search(root, k)
+
+- k == root's key, terminate
+- k < root's key, check left subtree
+- k > root's key, check right subtree
+- Time complexity is $O(height)=O(n)$, $n$ is number of nodes
+
+![Search](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240926213639144.png)
+
+#### Recursive
+
+```c
+if (!root) return NULL;
+if (k == root->data.key)
+	return root->data;
+if (k < root->data.key)
+	return search(root->leftChild, k);
+return search(root->rightChild,k)
+```
+
+> Variable space requirement: $O(height) = O(n)$, $n$ is the number of nodes.
+
+#### Iterative
+
+```pseudocode
+while(tree);
+	if (k == tree->data.key)
+		return tree->data;
+	if (k < tree->data.key)
+		tree = tree->leftChild;
+	else
+		tree = tree->rightChild;
+return NULL
+```
+
