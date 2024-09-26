@@ -738,10 +738,56 @@ typedef struct node{
 
 ## Binary Tree Traversal
 
-- Visiting each node in the tree exactly *once*.
-- A traversal produces a *linear order for the nodes* in a tree.
+- Visiting each node in the tree exactly *once*
+- A traversal produces a *linear order for the nodes* in a tree
   - LVR, LRV, VLR, VRL, RVL, and RLV
-  - L: moving left
-  - V: visiting the node
-  - R: moving right
+    - L: moving left
+    - V: visiting the node
+    - R: moving right
+  - L**V**R: Inorder
+  - **V**LR: Preorder
+  - LR**V**: Postorder
 
+### Inorder
+
+```c
+void inOrder(treePointer ptr){
+    if (ptr != NULL){
+        inOrder(ptr->leftChild);
+        visit(ptr);
+        inOrder(ptr->rightChild);
+    }
+}
+```
+
+![Inorder](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240926153006397.png)
+
+### Preorder
+
+```c
+void preOrder(treePointer ptr){
+    if (ptr != NULL){
+        visit(t);
+        preOrder(ptr->leftChild);
+        preOrder(ptr->rightChild);
+    }
+}
+```
+
+![Preorder](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240926153135561.png)
+
+### Postorder
+
+```c
+void postOrder(treePointer ptr){
+    if (ptr != NULL){
+        postOrder(ptr->leftChild);
+        postOrder(ptr->rightChild);
+        visit(t);
+    }
+}
+```
+
+![Postorder](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240926153303714.png)
+
+![Comparison between different order. Source: GeeksforGeeks](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/Preorder-from-Inorder-and-Postorder-traversals.jpg)

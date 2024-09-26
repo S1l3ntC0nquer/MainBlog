@@ -188,6 +188,17 @@ index.styl 新增如下
         display none /* 完全隱藏滾動條 */
 ```
 
+aside.styl 修改如下
+
+```stylus
+.toc-content
+      overflow-y: scroll
+      overflow-y: overlay
+      margin: 0 -24px
+      max-height: calc(100vh - 200px)
+      width: calc(100% + 48px)
+```
+
 # hexo-butterfly-envelope
 
 `main.js`中把中文改為英文
