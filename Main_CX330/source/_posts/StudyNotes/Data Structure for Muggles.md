@@ -575,10 +575,10 @@ In general linked list, to find an element will always start at the beginning of
 ```c
 typedef struct node *nodePointer;
 typedef struct node{
- nodePointer llink;
- element data;
- nodePointer rlink;
- };
+    nodePointer llink;
+    element data;
+    nodePointer rlink;
+};
 ```
 
 ![Node in Doubly Linked List](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240919222811745.png)
@@ -735,4 +735,13 @@ typedef struct node{
 ![Node](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240920145031720.png)
 
 ![Linked Representation](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/145204.jpg)
+
+## Binary Tree Traversal
+
+- Visiting each node in the tree exactly *once*.
+- A traversal produces a *linear order for the nodes* in a tree.
+  - LVR, LRV, VLR, VRL, RVL, and RLV
+  - L: moving left
+  - V: visiting the node
+  - R: moving right
 
