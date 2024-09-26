@@ -11,7 +11,7 @@ updated: '2024-08-29T15:39:10.351+08:00'
 ---
 # Prologue
 
-**All the following example will be shown in C Programming Language or pseado code.**
+**All the following example will be shown in C Programming Language or pseudo code.**
 
 This is the note when I was taking the course in NCKU, 2024. Blablabla.....
 
@@ -848,7 +848,7 @@ The binary search tree, of course, it's an binary tree. But beside this, it has 
 
 ## Operations
 
-### Search(root, k)
+### Search(root, key)
 
 - k == root's key, terminate
 - k < root's key, check left subtree
@@ -882,4 +882,58 @@ while(tree);
 		tree = tree->rightChild;
 return NULL
 ```
+
+### Insert(root, key, value)
+
+1. Search the tree
+   - Matched: Do nothing
+   - No match: Obtain `LastNode`, which is the last node during the search.
+2. Add new node
+   - Create a new node with (key, value)
+   - If key > the key of `LastNode`, add the new node as **right child**
+   - If key < the key of `LastNode`, add the new node as **left child**
+
+![Insert](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/insert.jpg)
+
+### Delete(key)
+
+ There're 4 cases in the deletion.
+
+- No element with delete key
+- Element is a *leaf*
+- Element is a degree-1 node
+- Element is a degree-2 node
+
+Since the 1st case means we don't do anything, we will start from the 2nd case.
+
+#### Delete a leaf
+
+![Delete a Leaf](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240926215517217.png)
+
+#### Delete a Degree-1 Node
+
+Link the single child of the `DeletedNode` to the parent of `DeletedNode`.
+
+![Delete a Degree-1 Node](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/del.jpg)
+
+#### Delete a Degree-2 Node
+
+There two ways to do it. We can replace the deleted node with 
+
+1. **Largest** pair in its **left** subtree
+2. **Smallest** pair in its **right** subtree
+
+> These two pairs must be leaf nodes or degree-one nodes. Why?
+
+![Step 1](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image.jpg)
+
+![Step 2](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/step2.jpg)
+
+## Rank of a Node in a BST
+
+Rank of node `x`
+
+- The number of the nodes whose key values are smaller than `x`
+- Position of `x` **inorder**
+- Like the **index** of an array
 
