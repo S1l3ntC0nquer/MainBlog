@@ -591,6 +591,160 @@ picoCTF{3v3ry1_l0v3s_c00k135_cc9110ba}
 
 TODO
 
+## Client-side-again
+
+這題在 F12 後可以看到一個很長很亂的 javascript，他是被混淆處理（obfuscation）過的。先把它給格式化一下，看起來比較舒服。
+
+```javascript
+var _0x5a46 = [
+    "f49bf}",
+    "_again_e",
+    "this",
+    "Password\x20Verified",
+    "Incorrect\x20password",
+    "getElementById",
+    "value",
+    "substring",
+    "picoCTF{",
+    "not_this",
+];
+(function (_0x4bd822, _0x2bd6f7) {
+    var _0xb4bdb3 = function (_0x1d68f6) {
+        while (--_0x1d68f6) {
+            _0x4bd822["push"](_0x4bd822["shift"]());
+        }
+    };
+    _0xb4bdb3(++_0x2bd6f7);
+})(_0x5a46, 0x1b3);
+var _0x4b5b = function (_0x2d8f05, _0x4b81bb) {
+    _0x2d8f05 = _0x2d8f05 - 0x0;
+    var _0x4d74cb = _0x5a46[_0x2d8f05];
+    return _0x4d74cb;
+};
+function verify() {
+    checkpass = document[_0x4b5b("0x0")]("pass")[_0x4b5b("0x1")];
+    split = 0x4;
+    if (checkpass[_0x4b5b("0x2")](0x0, split * 0x2) == _0x4b5b("0x3")) {
+        if (checkpass[_0x4b5b("0x2")](0x7, 0x9) == "{n") {
+            if (
+                checkpass[_0x4b5b("0x2")](split * 0x2, split * 0x2 * 0x2) ==
+                _0x4b5b("0x4")
+            ) {
+                if (checkpass[_0x4b5b("0x2")](0x3, 0x6) == "oCT") {
+                    if (
+                        checkpass[_0x4b5b("0x2")](
+                            split * 0x3 * 0x2,
+                            split * 0x4 * 0x2
+                        ) == _0x4b5b("0x5")
+                    ) {
+                        if (checkpass["substring"](0x6, 0xb) == "F{not") {
+                            if (
+                                checkpass[_0x4b5b("0x2")](
+                                    split * 0x2 * 0x2,
+                                    split * 0x3 * 0x2
+                                ) == _0x4b5b("0x6")
+                            ) {
+                                if (
+                                    checkpass[_0x4b5b("0x2")](0xc, 0x10) ==
+                                    _0x4b5b("0x7")
+                                ) {
+                                    alert(_0x4b5b("0x8"));
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    } else {
+        alert(_0x4b5b("0x9"));
+    }
+}
+```
+
+最重要的訊息在於`verify()`函式裡面，因為他就是負責檢查登入密碼的。那我們要怎麼像是`_0x4b5b("0x0")`這種東西呢？首先我們先把上面這全部的程式碼貼上網頁 F12 的 Console。
+
+![Paste on Console](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240927131226408.png)
+
+然後接著再把變數一個一個輸入進去就可以還原了！如下。
+
+![Deobfuscate](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240927131358856.png)
+
+還原後的程式碼如下。
+
+```javascript
+var strlist = [
+    "f49bf}",
+    "_again_e",
+    "this",
+    "Password\x20Verified",
+    "Incorrect\x20password",
+    "getElementById",
+    "value",
+    "substring",
+    "picoCTF{",
+    "not_this",
+];
+(function (_0x4bd822, _0x2bd6f7) {
+    var _0xb4bdb3 = function (_0x1d68f6) {
+        while (--_0x1d68f6) {
+            _0x4bd822["push"](_0x4bd822["shift"]());
+        }
+    };
+    _0xb4bdb3(++_0x2bd6f7);
+})(strlist, 0x1b3);
+var _0x4b5b = function (_0x2d8f05, _0x4b81bb) {
+    _0x2d8f05 = _0x2d8f05 - 0x0;
+    var _0x4d74cb = strlist[_0x2d8f05];
+    return _0x4d74cb;
+};
+function verify() {
+    checkpass = document["getElementById"]("pass")["value"];
+    split = 0x4;
+    if (checkpass["substring"](0x0, split * 0x2) == "picoCTF{") {
+        if (checkpass["substring"](0x7, 0x9) == "{n") {
+            if (
+                checkpass["substring"](split * 0x2, split * 0x2 * 0x2) ==
+                "not_this"
+            ) {
+                if (checkpass["substring"](0x3, 0x6) == "oCT") {
+                    if (
+                        checkpass["substring"](
+                            split * 0x3 * 0x2,
+                            split * 0x4 * 0x2
+                        ) == "f49bf}"
+                    ) {
+                        if (checkpass["substring"](0x6, 0xb) == "F{not") {
+                            if (
+                                checkpass["substring"](
+                                    split * 0x2 * 0x2,
+                                    split * 0x3 * 0x2
+                                ) == "_again_e"
+                            ) {
+                                if (
+                                    checkpass["substring"](0xc, 0x10) ==
+                                    "_again_e"
+                                ) {
+                                    alert("Password Verified");
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    } else {
+        alert("Incorrect password");
+    }
+}
+```
+
+這樣就可以找到 Flag 啦。
+
+```txt
+picoCTF{not_this_again_ef49bf}
+```
+
 # Crypto
 
 - [My scripts & note on Github](https://github.com/CX330Blake/Crypto_Notebook)
