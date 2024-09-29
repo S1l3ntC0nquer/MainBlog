@@ -33,6 +33,39 @@ updated: '2024-09-01T20:06:47.030+08:00'
 picoCTF{pr3tty_c0d3_dbe259ce}
 ```
 
+## Includes
+
+這個題目給了一個網站，長下面這樣。
+
+![Website](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240929233408223.png)
+
+只有一個東西，沒什麼資訊，只有這個點了say hello 會有一個 alert。直接點開 F12 先看一下有甚麼 JS 或其他東西，結果發現了 `script.js`，點開看後會發現有半個 Flag。
+
+```javascript
+function greetings()
+{
+  alert("This code is in a separate file!");
+}
+
+//  f7w_2of2_b8f4b022}
+```
+
+然後繼續看會發現還有一個 `style.css`，有前半部的 Flag。
+
+```css
+body {
+  background-color: lightblue;
+}
+
+/*  picoCTF{1nclu51v17y_1of2_  */
+```
+
+所以就可以拼出整個 Flag 啦。
+
+```txt
+picoCTF{1nclu51v17y_1of2_f7w_2of2_b8f4b022}
+```
+
 ## picobrowser
 
 這題我們點進 URL 後會看到一個 FLAG 的按鈕，按下去會發現我們不能得到 FLAG。![題目](https://hackmd.io/_uploads/SJB9S0p70.png)
