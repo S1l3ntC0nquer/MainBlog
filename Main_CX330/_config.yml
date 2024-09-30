@@ -203,3 +203,9 @@ markdown:
         level: 1
     plugins:
         - "@renbaoshuo/markdown-it-katex"
+
+search:
+    path: search.xml
+    field: post
+    content: true # 文章内容
+    template: source/_data/search.xml # 自定义模板
