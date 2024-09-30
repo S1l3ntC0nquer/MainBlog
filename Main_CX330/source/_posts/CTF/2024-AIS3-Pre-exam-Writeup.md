@@ -4,12 +4,11 @@ categories:
 - CTF
 cover: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/24/8/Blog_cover%20(16)%20(1)_2fdc2382942f5aef8475bf32d3e8ab3d.jpg
 date: '2024-06-02T21:42:41+08:00'
-mathjax: true
 tags:
 - 資安
 - AIS3
 title: 2024 AIS3 Pre-exam Writeup
-updated: '2024-08-29T16:27:29.066+08:00'
+updated: '2024-10-01T02:17:17.718+08:00'
 ---
 # Intro
 
