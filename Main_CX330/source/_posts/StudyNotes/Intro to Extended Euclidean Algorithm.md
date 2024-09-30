@@ -1,15 +1,14 @@
 ---
 abbrlink: 517a12d7
 categories:
-    - - StudyNotes
-cover: >-
-    https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/24/9/euclidean_9fab94cfbbb8a5c35339bd17b312eeb9.jpg
-date: "2024-09-30T16:42:22.924184+08:00"
+- - StudyNotes
+cover: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/24/9/euclidean_9fab94cfbbb8a5c35339bd17b312eeb9.jpg
+date: '2024-09-30T16:42:22.924184+08:00'
+excerpt: Prologue I decided to write this to help myself to better understand the attacks in RSA or other crypto system. And if this can help you, that would be my honor! Also, all the code in this note will i...
 tags: []
 title: Intro to Extended Euclidean Algorithm
-updated: "2024-09-30T19:40:05.799+08:00"
+updated: '2024-09-30T20:24:21.845+08:00'
 ---
-
 # Prologue
 
 I decided to write this to help myself to better understand the attacks in RSA or other crypto system. And if this can help you, that would be my honor! Also, all the code in this note will in Python since it's the most used exploit script language in CTFs.
