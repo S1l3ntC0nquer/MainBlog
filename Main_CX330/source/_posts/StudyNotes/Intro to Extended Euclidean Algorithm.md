@@ -1,13 +1,15 @@
 ---
-abbrlink: ''
+abbrlink: 517a12d7
 categories:
-- - StudyNotes
-cover: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/24/9/euclidean_9fab94cfbbb8a5c35339bd17b312eeb9.jpg
-date: '2024-09-30T16:42:22.924184+08:00'
+    - - StudyNotes
+cover: >-
+    https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/24/9/euclidean_9fab94cfbbb8a5c35339bd17b312eeb9.jpg
+date: "2024-09-30T16:42:22.924184+08:00"
 tags: []
 title: Intro to Extended Euclidean Algorithm
-updated: '2024-09-30T19:40:05.799+08:00'
+updated: "2024-09-30T19:40:05.799+08:00"
 ---
+
 # Prologue
 
 I decided to write this to help myself to better understand the attacks in RSA or other crypto system. And if this can help you, that would be my honor! Also, all the code in this note will in Python since it's the most used exploit script language in CTFs.
@@ -35,14 +37,14 @@ That is, $r_{k-2}$ should recursively minus $r_{k-1}$ until it's less than $r_{k
 In the first step ($k=0$), we set $r_{-2}$ and $r_{-1}$ are equal to $a$ and $b$. In the second step ($k=1$), we calculate the quotient and the remainder by dividing $r_{-1}$ (which is $b$) by $r_0$ (the remainder we obtained in the first step), and so on. The whole algorithm can be represented by the following equations.
 
 $$
-\begin{align}
+\begin{align*}
 a&= q_0 b+r_0 \\
 b&=q_1 r_0+r_1 \\
 r_0&=q_2 r_1+r_2\\
 r_1&=q_3 r_2+r_3\\
-& \vdotswithin{=} \\
+&\,\,\, \vdots \\
 r_n&=0
-\end{align}
+\end{align*}
 $$
 
 If $a<b$, the first step is actually switching those, since $a\div{b}=q_0=0\dots r_0=a$.
@@ -74,7 +76,7 @@ $$
 
 For arbitrary 2 integers $a, b$, there must be integers $x, y$ that satisfy this equation.
 
-By the way, the Extended Euclidean Algorithm is an *self-verifying algorithm*. We can simply use the $s_{i+1}$ and $t_{i+1}$ obtained in the last step to times $\gcd(a, b)$, and see if they're equal to $a$ and $b$ to verify the calculation is correct.
+By the way, the Extended Euclidean Algorithm is an _self-verifying algorithm_. We can simply use the $s_{i+1}$ and $t_{i+1}$ obtained in the last step to times $\gcd(a, b)$, and see if they're equal to $a$ and $b$ to verify the calculation is correct.
 
 And the most important thing for us (CTFers, or cybersecurity enthusiasts) is that this algorithm can be used to calculate the modular multiplicative inverse, which is necessary in RSA to obtain the keys.
 
@@ -83,13 +85,13 @@ And the most important thing for us (CTFers, or cybersecurity enthusiasts) is th
 In an standard Euclidean Algorithm, we mark the 2 numbers for which we want to calculate the GCD as $a$ and $b$, and the quotient we get in the $i^{th}$ step to be $q_i$, remainder to be $r_{i+1}$. Then we can write the Eulidean Algorithm as following.
 
 $$
-\begin{align}
+\begin{align*}
 r_0&=a \\
 r_1&=b \\
-&\vdotswithin{=} \\
+&\,\,\,\vdots \\
 r_{i+1}&=r_{i-1}-q_i r_i\quad\text{and}\quad0\leq{r_{i+1}}\leq|r_i| \\
-&\vdotswithin{=}
-\end{align}
+&\,\,\,\vdots
+\end{align*}
 $$
 
 When some step the $r_{i+1}=0$, the algorithm breaks. And the $r_i$ obtained in the last step is $\gcd(a, b)$.
@@ -110,7 +112,7 @@ To find the modular multiplicative inverse $a^{-1}$, we can use the following st
 For example, if we want to find the modular multiplicative inverse of 3 modulo 11.
 
 $$
-\begin{align}
+\begin{align*}
 &\text{Extended Euclidean Part} \nonumber \\\\
 &11 = 3 \cdot 3 + 2 \nonumber \\
 &3 = 2 \cdot 1 + 1 \nonumber \\
@@ -120,7 +122,7 @@ $$
 &1 = 3 - 1 \cdot (11 - 3 \cdot 3) \nonumber \\
 &1 = 4 \cdot 3 - 1 \cdot 11 \nonumber \\\\
 &\text{So } x = 4 \text{ is the modular multiplicative inverse of } 3.
-\end{align}
+\end{align*}
 $$
 
 To learn more about how the Extended Euclidean Algorithm is used in attacking RSA, I will put some challenge here ASAP.
