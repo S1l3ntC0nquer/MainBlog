@@ -428,3 +428,9 @@ themes/my-anzhiyu/source/css/\_search/index.styl 修改如下
 -   [为主页文章卡片添加擦亮动画效果](https://blog.kouseki.cn/posts/dda6.html)
 -   [重构记录 - 4](https://meuicat.com/blog/42/)
 -   [好看的昼夜切换按钮](https://www.naokuo.top/p/1c3b759a.html)
+
+# 安裝 hexo-all-minifier
+
+```bash
+npm install hexo-all-minifier --save
+```
