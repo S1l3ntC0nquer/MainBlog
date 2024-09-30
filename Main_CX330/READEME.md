@@ -221,7 +221,7 @@ search:
       <title>{{ post.title }}</title>
       <link href="{{ (url + post.path) | uriencode }}"/>
       <url>{{ (url + post.path) | uriencode }}</url>
-      <cover>{{ post.cover | uriencode }}</cover>
+      <cover>{{ post.cover }}</cover>
       <date>{{ post.date }}</date>
       {% if content %}
         <content type="html"><![CDATA[{{ post.content | noControlChars | safe }}]]></content>
@@ -251,7 +251,7 @@ search:
       <title>{{ page.title }}</title>
       <link href="{{ (url + page.path) | uriencode }}"/>
       <url>{{ (url + page.path) | uriencode }}</url>
-      <cover>{{ post.cover | uriencode }}</cover>
+      <cover>{{ post.cover }}</cover>
       <date>{{ post.date }}</date>
       {% if content %}
         <content type="html"><![CDATA[{{ page.content | noControlChars | safe }}]]></content>
