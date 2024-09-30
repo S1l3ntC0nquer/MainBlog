@@ -1995,6 +1995,65 @@ print(long_to_bytes(m))
 
 # Reverse
 
+## Safe Opener
+
+這題給了一個Java的原始碼，要我們幫他解出保險箱的密碼，並把它用picoCTF{}包起來就是Flag了，先來看看code。
+
+```java
+import java.io.*;
+import java.util.*;  
+public class SafeOpener {
+    public static void main(String args[]) throws IOException {
+        BufferedReader keyboard = new BufferedReader(new InputStreamReader(System.in));
+        Base64.Encoder encoder = Base64.getEncoder();
+        String encodedkey = "";
+        String key = "";
+        int i = 0;
+        boolean isOpen;
+        
+
+        while (i < 3) {
+            System.out.print("Enter password for the safe: ");
+            key = keyboard.readLine();
+
+            encodedkey = encoder.encodeToString(key.getBytes());
+            System.out.println(encodedkey);
+              
+            isOpen = openSafe(encodedkey);
+            if (!isOpen) {
+                System.out.println("You have  " + (2 - i) + " attempt(s) left");
+                i++;
+                continue;
+            }
+            break;
+        }
+    }
+    
+    public static boolean openSafe(String password) {
+        String encodedkey = "cGwzYXMzX2wzdF9tM18xbnQwX3RoM19zYWYz";
+        
+        if (password.equals(encodedkey)) {
+            System.out.println("Sesame open");
+            return true;
+        }
+        else {
+            System.out.println("Password is incorrect\n");
+            return false;
+        }
+    }
+}  
+```
+
+我們可以看到在第31行的地方有一串是被編碼過的key，然後在第6行的地方創建了一個Base64 encoder的實例。這邊救世會把使用者輸入的key編碼後和第31行的東西比對，所以只要把`cGwzYXMzX2wzdF9tM18xbnQwX3RoM19zYWYz`拿去解碼就可以了。
+
+```bash
+base64 -d <<< cGwzYXMzX2wzdF9tM18xbnQwX3RoM19zYWYz
+```
+
+```txt
+picoCTF{pl3as3_l3t_m3_1nt0_th3_saf3}
+```
+
 ## GDB Test Drive
 
 這題的話先用 `wget` 把題目這個二進制檔案抓下來。
@@ -2817,6 +2876,34 @@ amfdxwtywanwhpauoxphlasawliqdxqkppvnauvzpoolaymtap
 
 ```txt
 picoCTF{s0lv3_angry_symb0ls_e1ad09b7}
+```
+
+## packer
+
+載下來後先用 `checksec` 發現他有加殼，要先脫殼。
+
+![Checksec](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240930121126261.png)
+
+這邊是 UPX 殼，要脫殼的話只要用以下指令就可以了。
+
+```bash
+upx -d <FileName>
+```
+
+這邊我脫好殼後再檢查一次，就沒有出現 Packer 了。
+
+![Checksec](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240930121307082.png)
+
+接著，用 strings 去看看有沒有跟Flag有關的東西。（當然，這一步也可以用像是IDA、Ghidra等反組譯器去分析）
+
+![strings out | grep flag](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240930121451955.png)
+
+知道了Flag是7069636f4354467b5539585f556e5034636b314e365f42316e34526933535f31613561336633397d後，直接拿去賽博廚師就出來了。
+
+![Pwned](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240930121616805.png)
+
+```txt
+picoCTF{U9X_UnP4ck1N6_B1n4Ri3S_1a5a3f39}
 ```
 
 # Pwn (Binary Exploitation)
