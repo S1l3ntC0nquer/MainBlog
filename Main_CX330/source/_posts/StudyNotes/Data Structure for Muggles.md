@@ -114,8 +114,10 @@ for (j = i - 1; j >= 0 && t < a[j]; j--){
 - a[0 : i-1] = [1, 2, 3, …, i] and t = 0
     - i compares
 
-For a list in **decreasing** order, the total compares will be $1+2+3+4+\dots+(n-1)=\frac{n(n-1)}{2}=\frac{1}{2}n^2-\frac{1}{2}n$.
-
+For a list in **decreasing** order, the total compares will be 
+$$
+1+2+3+4+\dots+(n-1)=\frac{n(n-1)}{2}=\frac{1}{2}n^2-\frac{1}{2}n
+$$
 **Best-case**
 
 - a[0 : i-1] = [1, 2, 3, 4] and t = 5
@@ -123,7 +125,10 @@ For a list in **decreasing** order, the total compares will be $1+2+3+4+\dots+(n
 - a[0 : i-1] = [1, 2, 3, …, i] and t = i + 1
     - 1 compare
 
-For a list in **increasing** order, the total compares will be $1+1+1+\dots+1=n-1$​. 
+For a list in **increasing** order, the total compares will be
+$$
+1+1+1+\dots+1=n-1
+$$
 
 ## Asymptotic Complexity
 
