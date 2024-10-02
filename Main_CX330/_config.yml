@@ -188,8 +188,41 @@ abbrlink:
     force: false #enable force mode,in this mode, the plugin will ignore the cache, and calc the abbrlink for every post even it already had abbrlink. This only updates abbrlink rather than other front variables.
 
 # hexo-all-minifier
-all_minifier: true
+js_concator:
+    enable: false
+    bundle_path: "/js/bundle.js"
+    front: false
+    silent: false
+html_minifier:
+    enable: true
+    ignore_error: false
+    silent: false
+    exclude:
+css_minifier:
+    enable: true
+    silent: false
+    exclude:
+        - "*.min.css"
+js_minifier:
+    enable: true
+    mangle: true
+    silent: false
+    output:
+    compress:
+    exclude:
+        - "*.min.js"
+image_minifier:
+    enable: true
+    interlaced: false
+    multipass: false
+    optimizationLevel: 2
+    pngquant: false
+    progressive: false
+    silent: false
+    exclude:
+        - svg
 
+# hexo-renderer-kramed
 kramed:
     gfm: true
     pedantic: false
