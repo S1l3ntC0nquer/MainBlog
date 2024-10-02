@@ -19,7 +19,7 @@ date: 2024-08-11 17:41:48
 
 This is the description of the challenge, let's see the encrypting script and try to decrypt it!
 
-# 0x01 Analyze
+# 0x01 Reconnaissance
 
 The following is the encrypting script given by the challenge.
 

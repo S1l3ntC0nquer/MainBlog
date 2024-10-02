@@ -29,7 +29,7 @@ And also, the description of this challenge is as follows.
 
 According to this, we can probably know that it's a ChaCha20 encryption. To know more about it, we can analyze the source code given by the challenge.
 
-# 0x01 Analyze
+# 0x01 Reconnaissance
 
 So here's the code.
 

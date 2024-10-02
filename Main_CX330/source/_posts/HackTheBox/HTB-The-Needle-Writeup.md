@@ -1,14 +1,14 @@
 ---
 title: "[HTB] The Needle Writeup \U0001FAA1"
 cover: >-
-  https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/help-you-at-solving-hackthebox-htb-challenges-machines.png
+    https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/help-you-at-solving-hackthebox-htb-challenges-machines.png
 categories:
-  - - HackTheBox
-  - - CTF
+    - - HackTheBox
+    - - CTF
 tags:
-  - HTB
-  - Hardware
-  - HackTheBox
+    - HTB
+    - Hardware
+    - HackTheBox
 abbrlink: b372fa96
 date: 2024-09-22 01:31:01
 ---
@@ -17,9 +17,9 @@ date: 2024-09-22 01:31:01
 
 > As a part of our SDLC process, we've got our firmware ready for security testing. Can you help us by performing a security assessment?
 
-# 0x01 Analyze
+# 0x01 Reconnaissance
 
-We will get a file called `firmware.bin`, and we can use *binwak* to extract the data from the bin file.
+We will get a file called `firmware.bin`, and we can use _binwak_ to extract the data from the bin file.
 
 ```bash
 binwalk -e firmware.bin
@@ -31,9 +31,9 @@ Besides the file, we also got an IP from the challenge, let's connect to it to s
 
 ```bash
 ┌──(kali㉿kali)-[~/CTF/_firmware.bin.extracted]
-└─$ nc 94.237.59.63 59877 
+└─$ nc 94.237.59.63 59877
 ��������
-ng-1276942-hwtheneedle-czk1p-5786c5548b-gnm6v login: 
+ng-1276942-hwtheneedle-czk1p-5786c5548b-gnm6v login:
 ```
 
 It's a login service! So we should find something about the login info.
@@ -69,4 +69,3 @@ So our password is `qS6-X/n]u>fVfAt!`. Let's connect to the server and login as 
 # 0x03 Pwned
 
 ![Pwned](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240922015742719.png)
-

@@ -19,7 +19,7 @@ date: 2024-08-16 20:44:06
 
 It told us that this is a RSA question, so let's see the code on the server side.
 
-# 0x01 Analyze
+# 0x01 Reconnaissance
 
 ```python
 from Crypto.Util.number import bytes_to_long, getPrime

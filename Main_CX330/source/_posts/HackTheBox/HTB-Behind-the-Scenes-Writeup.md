@@ -1,14 +1,14 @@
 ---
-title: '[HTB] Behind the Scenes Writeup'
+title: "[HTB] Behind the Scenes Writeup"
 cover: >-
-  https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/help-you-at-solving-hackthebox-htb-challenges-machines.png
+    https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/help-you-at-solving-hackthebox-htb-challenges-machines.png
 categories:
-  - - HackTheBox
-  - - CTF
+    - - HackTheBox
+    - - CTF
 tags:
-  - HTB
-  - Reverse
-  - HackTheBox
+    - HTB
+    - Reverse
+    - HackTheBox
 abbrlink: e18c2f54
 date: 2024-09-09 19:45:08
 ---
@@ -17,13 +17,13 @@ date: 2024-09-09 19:45:08
 
 > After struggling to secure our secret strings for a long time, we finally figured out the solution to our problem: Make decompilation harder. It should now be impossible to figure out how our programs work!
 
-# 0x01 Analyze
+# 0x01 Reconnaissance
 
 First we can run the binary to see what's going on.
 
 ```bash
 ┌──(kali㉿kali)-[~/CTF/rev_behindthescenes]
-└─$ ./behindthescenes                       
+└─$ ./behindthescenes
 ./challenge <password>
 ```
 

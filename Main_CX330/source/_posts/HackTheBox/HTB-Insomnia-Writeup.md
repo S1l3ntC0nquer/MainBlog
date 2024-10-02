@@ -21,7 +21,7 @@ It's a web challenge, so it gives us a website and the source code for us to ana
 
 Well, although it's not helpful, it's still a romantic setting for this challenge (you know, programmers & hackers always work at night).
 
-# 0x01 Analyze
+# 0x01 Reconnaissance
 
 Since it gave us the source code, we should check it out first. The most important thing is under the **controller directory** (`Insomnia/web_insomnia/Insomnia/app/Controllers`), because it's where the backend interact with users.
 
