@@ -71,7 +71,7 @@ float sum(float list[], int n)
     float tempsum=0;
     int i;
     for (i = 0; i < n; i++){
-	    tempsum += list[i];
+		tempsum += list[i];
     }
     return tempsum;
 }
@@ -209,10 +209,10 @@ scanf("%d", &rows);
 
 // Allocate the first dimension (blue part in the diagram above)
 int **array = (int **)malloc(cols * sizeof(int *));
-	// For every rows, allocate the rows size for the row (orange part)
-    for (int i = 0; i < cols; i++) {
-        array[i] = (int *)malloc(rows * sizeof(int));
-    }
+// For every rows, allocate the rows size for the row (orange part)
+for (int i = 0; i < cols; i++) {
+    array[i] = (int *)malloc(rows * sizeof(int));
+}
 ```
 
 ## Row-Major and Column-Major
