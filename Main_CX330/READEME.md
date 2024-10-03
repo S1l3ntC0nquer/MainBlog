@@ -418,6 +418,155 @@ themes/my-anzhiyu/source/css/\_search/index.styl 修改如下
 +   transition: .3s;
 ```
 
+prismjs/diff.styl 修改如下
+
+```stylus
+if $highlight_theme == 'darker' || ($highlight_theme == 'mac')
+  // prism-atom-dark
+  /*
+  pre[class*='language-']
+    .token.comment,
+    .token.prolog,
+    .token.doctype,
+    .token.cdata
+      color: #7C7C7C
+
+    .token.punctuation
+      color: #c5c8c6
+
+    .namespace
+      opacity: .7
+
+    .token.property,
+    .token.keyword,
+    .token.tag
+      color: #96CBFE
+
+    .token.class-name
+      color: #FFFFB6
+
+    .token.boolean,
+    .token.constant
+      color: #99CC99
+
+    .token.symbol,
+    .token.deleted
+      color: #f92672
+
+    .token.number
+      color: #FF73FD
+
+    .token.selector,
+    .token.attr-name,
+    .token.string,
+    .token.char,
+    .token.builtin,
+    .token.inserted
+      color: #A8FF60
+
+    .token.variable
+      color: #C6C5FE
+
+    .token.operator
+      color: #EDEDED
+
+    .token.entity
+      color: #FFFFB6
+      cursor: help
+
+    .token.url
+      color: #96CBFE
+
+    .language-css .token.string,
+    .style .token.string
+      color: #87C38A
+
+    .token.atrule,
+    .token.attr-value
+      color: #F9EE98
+
+    .token.function
+      color: #DAD085
+
+    .token.regex
+      color: #E9C062
+
+    .token.important
+      color: #fd971f
+
+    .token.important,
+    .token.bold
+      font-weight: bold
+
+    .token.italic
+      font-style: italic
+      */
+
+      // prism-dracula
+  pre[class*='language-']
+    .token.comment,
+    .token.prolog,
+    .token.doctype,
+    .token.cdata
+      color: #6272a4
+
+    .token.punctuation
+      color: #f8f8f2
+
+    .namespace
+      opacity: .7
+
+    .token.property,
+    .token.tag,
+    .token.constant,
+    .token.symbol,
+    .token.deleted
+      color: #ff79c6
+
+    .token.boolean,
+    .token.number
+      color: #bd93f9
+
+    .token.selector,
+    .token.attr-name,
+    .token.string,
+    .token.char,
+    .token.builtin,
+    .token.inserted
+      color: #50fa7b
+
+    .token.operator,
+    .token.entity,
+    .token.url,
+    .language-css .token.string,
+    .style .token.string,
+    .token.variable
+      color: #f8f8f2
+
+    .token.atrule,
+    .token.attr-value,
+    .token.function,
+    .token.class-name
+      color: #f1fa8c
+
+    .token.keyword
+      color: #8be9fd
+
+    .token.regex,
+    .token.important
+      color: #ffb86c
+
+    .token.important,
+    .token.bold
+      font-weight: bold
+
+    .token.italic
+      font-style: italic
+
+    .token.entity
+      cursor: help
+```
+
 # hexo-butterfly-envelope
 
 `main.js`中把中文改為英文

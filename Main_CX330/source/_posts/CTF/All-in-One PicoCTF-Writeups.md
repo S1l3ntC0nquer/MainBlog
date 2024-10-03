@@ -68,7 +68,10 @@ picoCTF{1nclu51v17y_1of2_f7w_2of2_b8f4b022}
 
 ## picobrowser
 
-這題我們點進 URL 後會看到一個 FLAG 的按鈕，按下去會發現我們不能得到 FLAG。![題目](https://hackmd.io/_uploads/SJB9S0p70.png)
+這題我們點進 URL 後會看到一個 FLAG 的按鈕，按下去會發現我們不能得到 FLAG。
+
+![題目](https://hackmd.io/_uploads/SJB9S0p70.png)
+
 他說我們應該要是 picobrowser，所以我就寫了一個 selenium 的 Python 腳本來運行，看看能不能拿到 flag。
 
 ```python
@@ -776,6 +779,484 @@ function verify() {
 
 ```txt
 picoCTF{not_this_again_ef49bf}
+```
+
+## Some Assembly Required 1
+
+打開 Devtools 在 Sources 看到有一個 `G82XCw5CX3.js`，先把他打開來看看。
+
+```javascript
+const _0x402c = [
+    "value",
+    "2wfTpTR",
+    "instantiate",
+    "275341bEPcme",
+    "innerHTML",
+    "1195047NznhZg",
+    "1qfevql",
+    "input",
+    "1699808QuoWhA",
+    "Correct!",
+    "check_flag",
+    "Incorrect!",
+    "./JIFxzHyW8W",
+    "23SMpAuA",
+    "802698XOMSrr",
+    "charCodeAt",
+    "474547vVoGDO",
+    "getElementById",
+    "instance",
+    "copy_char",
+    "43591XxcWUl",
+    "504454llVtzW",
+    "arrayBuffer",
+    "2NIQmVj",
+    "result",
+];
+const _0x4e0e = function (_0x553839, _0x53c021) {
+    _0x553839 = _0x553839 - 0x1d6;
+    let _0x402c6f = _0x402c[_0x553839];
+    return _0x402c6f;
+};
+(function (_0x76dd13, _0x3dfcae) {
+    const _0x371ac6 = _0x4e0e;
+    while (!![]) {
+        try {
+            const _0x478583 =
+                -parseInt(_0x371ac6(0x1eb)) +
+                parseInt(_0x371ac6(0x1ed)) +
+                -parseInt(_0x371ac6(0x1db)) * -parseInt(_0x371ac6(0x1d9)) +
+                -parseInt(_0x371ac6(0x1e2)) * -parseInt(_0x371ac6(0x1e3)) +
+                -parseInt(_0x371ac6(0x1de)) * parseInt(_0x371ac6(0x1e0)) +
+                parseInt(_0x371ac6(0x1d8)) * parseInt(_0x371ac6(0x1ea)) +
+                -parseInt(_0x371ac6(0x1e5));
+            if (_0x478583 === _0x3dfcae) break;
+            else _0x76dd13["push"](_0x76dd13["shift"]());
+        } catch (_0x41d31a) {
+            _0x76dd13["push"](_0x76dd13["shift"]());
+        }
+    }
+})(_0x402c, 0x994c3);
+let exports;
+(async () => {
+    const _0x48c3be = _0x4e0e;
+    let _0x5f0229 = await fetch(_0x48c3be(0x1e9)),
+        _0x1d99e9 = await WebAssembly[_0x48c3be(0x1df)](
+            await _0x5f0229[_0x48c3be(0x1da)]()
+        ),
+        _0x1f8628 = _0x1d99e9[_0x48c3be(0x1d6)];
+    exports = _0x1f8628["exports"];
+})();
+function onButtonPress() {
+    const _0xa80748 = _0x4e0e;
+    let _0x3761f8 = document["getElementById"](_0xa80748(0x1e4))[
+        _0xa80748(0x1dd)
+    ];
+    for (let _0x16c626 = 0x0; _0x16c626 < _0x3761f8["length"]; _0x16c626++) {
+        exports[_0xa80748(0x1d7)](
+            _0x3761f8[_0xa80748(0x1ec)](_0x16c626),
+            _0x16c626
+        );
+    }
+    exports["copy_char"](0x0, _0x3761f8["length"]),
+        exports[_0xa80748(0x1e7)]() == 0x1
+            ? (document[_0xa80748(0x1ee)](_0xa80748(0x1dc))[_0xa80748(0x1e1)] =
+                  _0xa80748(0x1e6))
+            : (document[_0xa80748(0x1ee)](_0xa80748(0x1dc))[_0xa80748(0x1e1)] =
+                  _0xa80748(0x1e8));
+}
+```
+
+看起來是經過混淆（Obfuscation）的 JS 程式碼，先嘗試簡單逆向一下，說是逆向，其實只是簡單的變數重命名 & 16 進制轉 10 進制 XD。重命名後的代碼像下面這樣。
+
+```javascript
+const strArr = [
+    "value",
+    "2wfTpTR",
+    "instantiate",
+    "275341bEPcme",
+    "innerHTML",
+    "1195047NznhZg",
+    "1qfevql",
+    "input",
+    "1699808QuoWhA",
+    "Correct!",
+    "check_flag",
+    "Incorrect!",
+    "./JIFxzHyW8W",
+    "23SMpAuA",
+    "802698XOMSrr",
+    "charCodeAt",
+    "474547vVoGDO",
+    "getElementById",
+    "instance",
+    "copy_char",
+    "43591XxcWUl",
+    "504454llVtzW",
+    "arrayBuffer",
+    "2NIQmVj",
+    "result",
+];
+const getStr = function (idx, arg2) {
+    idx = idx - 470;
+    let tempStr = strArr[idx];
+    return tempStr;
+};
+
+// This IIFE (Immediately Invoked Function Expression) will shuffle the strArr
+(function (arg1, arg2) {
+    const func2 = getStr;
+    //This is True
+    while (!![]) {
+        try {
+            const tempConst =
+                -parseInt(func2(491)) +
+                parseInt(func2(493)) +
+                -parseInt(func2(475)) * -parseInt(func2(473)) +
+                -parseInt(func2(482)) * -parseInt(func2(483)) +
+                -parseInt(func2(478)) * parseInt(func2(480)) +
+                parseInt(func2(472)) * parseInt(func2(490)) +
+                -parseInt(func2(485));
+            if (tempConst === arg2) break;
+            else arg1["push"](arg1["shift"]());
+        } catch (error) {
+            arg1["push"](arg1["shift"]());
+        }
+    }
+})(strArr, 627907);
+let exports;
+(async () => {
+    const func3 = getStr;
+    let var1 = await fetch(func3(489)),
+        var2 = await WebAssembly[func3(479)](await var1[func3(474)]()),
+        var3 = var2[func3(470)];
+    exports = var3["exports"];
+})();
+function onButtonPress() {
+    const func4 = getStr;
+    let var1 = document["getElementById"](func4(484))[func4(477)];
+    for (let i = 0; i < var1["length"]; i++) {
+        exports[func4(471)](var1[func4(492)](i), i);
+    }
+    exports["copy_char"](0, var1["length"]),
+        exports[func4(487)]() == 1
+            ? (document[func4(494)](func4(476))[func4(481)] = func4(486))
+            : (document[func4(494)](func4(476))[func4(481)] = func4(488));
+}
+```
+
+在第 34 行的地方，我們發現這個自執行的匿名函式會打亂一開始的 `strArr` 陣列，所以為了搞清楚每個索引對應到的是甚麼，我們可以用瀏覽器的 Devtools 來幫忙。因為在一開始的代碼裡面，從 `strArr` 裡面找出其中一個元素的函式叫做 `_0x4e0e`，所以可以先幫他取個別名叫 `getStr`，並像下面這樣輸入在 Devtools 的 Console 裡面。之後就可以把每個索引帶進去，找到對應的字串了。
+
+```javascript
+>>> const getStr = _0x4e0e;
+undefined
+>>> getStr(489)
+'./JIFxzHyW8W'
+>>> getStr(479)
+'instantiate'
+```
+
+那我們就一個一個找回去，看看代碼會變怎樣。以下是我全部對應完後的代碼。
+
+```javascript
+(async () => {
+    const func3 = getStr;
+    let var1 = await fetch("./JIFxzHyW8W"),
+        var2 = await WebAssembly["instantiate"](await var1["arrayBuffer"]()),
+        var3 = var2["instance"];
+    exports = var3["exports"];
+})();
+function onButtonPress() {
+    const func4 = getStr;
+    let var1 = document["getElementById"]("input")["value"];
+    for (let i = 0; i < var1["length"]; i++) {
+        exports["copy_char"](var1["charCodeAt"](i), i);
+    }
+    exports["copy_char"](0, var1["length"]),
+        exports["check_flag"]() == 1
+            ? (document["getElementById"]("result")["innerHTML"] = "Correct!")
+            : (document["getElementById"]("result")["innerHTML"] =
+                  "Incorrect!");
+}
+```
+
+這樣我們大概就可以理解這個代碼會把使用者輸入的資訊透過 `copy_char` 傳給 WebAssembly 腳本，然後呼叫 `chech_flag` 來比對 Flag 是否正確，那我們就先來看看第 3 行的地方，他的 WebAssembly 腳本吧。這邊會用到的工具是 [這個](https://github.com/WebAssembly/wabt) 裡面的 `wasm2wat`，作者自己的描述是這樣：
+
+> [**wasm2wat**](https://webassembly.github.io/wabt/doc/wasm2wat.1.html): the inverse of wat2wasm, translate from the binary format back to the text format (also known as a .wat)
+
+照著官方的安裝說明裝好之後，使用以下命令就可以啦。（記得先用 `wget` 把檔案從 `http://mercury.picoctf.net:40226/JIFxzHyW8W` 抓下來）
+
+```bash
+~/Tools/wabt/build/wasm2wat JIFxzHyW8W
+```
+
+```wasm
+(module
+  (type (;0;) (func))
+  (type (;1;) (func (param i32 i32) (result i32)))
+  (type (;2;) (func (result i32)))
+  (type (;3;) (func (param i32 i32)))
+  (func (;0;) (type 0))
+  (func (;1;) (type 1) (param i32 i32) (result i32)
+    (local i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32)
+    global.get 0
+    local.set 2
+    i32.const 32
+    local.set 3
+    local.get 2
+    local.get 3
+    i32.sub
+    local.set 4
+    local.get 4
+    local.get 0
+    i32.store offset=24
+    local.get 4
+    local.get 1
+    i32.store offset=20
+    local.get 4
+    i32.load offset=24
+    local.set 5
+    local.get 4
+    local.get 5
+    i32.store offset=16
+    local.get 4
+    i32.load offset=20
+    local.set 6
+    local.get 4
+    local.get 6
+    i32.store offset=12
+    block  ;; label = @1
+      loop  ;; label = @2
+        local.get 4
+        i32.load offset=16
+        local.set 7
+        i32.const 1
+        local.set 8
+        local.get 7
+        local.get 8
+        i32.add
+        local.set 9
+        local.get 4
+        local.get 9
+        i32.store offset=16
+        local.get 7
+        i32.load8_u
+        local.set 10
+        local.get 4
+        local.get 10
+        i32.store8 offset=11
+        local.get 4
+        i32.load offset=12
+        local.set 11
+        i32.const 1
+        local.set 12
+        local.get 11
+        local.get 12
+        i32.add
+        local.set 13
+        local.get 4
+        local.get 13
+        i32.store offset=12
+        local.get 11
+        i32.load8_u
+        local.set 14
+        local.get 4
+        local.get 14
+        i32.store8 offset=10
+        local.get 4
+        i32.load8_u offset=11
+        local.set 15
+        i32.const 255
+        local.set 16
+        local.get 15
+        local.get 16
+        i32.and
+        local.set 17
+        block  ;; label = @3
+          local.get 17
+          br_if 0 (;@3;)
+          local.get 4
+          i32.load8_u offset=11
+          local.set 18
+          i32.const 255
+          local.set 19
+          local.get 18
+          local.get 19
+          i32.and
+          local.set 20
+          local.get 4
+          i32.load8_u offset=10
+          local.set 21
+          i32.const 255
+          local.set 22
+          local.get 21
+          local.get 22
+          i32.and
+          local.set 23
+          local.get 20
+          local.get 23
+          i32.sub
+          local.set 24
+          local.get 4
+          local.get 24
+          i32.store offset=28
+          br 2 (;@1;)
+        end
+        local.get 4
+        i32.load8_u offset=11
+        local.set 25
+        i32.const 255
+        local.set 26
+        local.get 25
+        local.get 26
+        i32.and
+        local.set 27
+        local.get 4
+        i32.load8_u offset=10
+        local.set 28
+        i32.const 255
+        local.set 29
+        local.get 28
+        local.get 29
+        i32.and
+        local.set 30
+        local.get 27
+        local.set 31
+        local.get 30
+        local.set 32
+        local.get 31
+        local.get 32
+        i32.eq
+        local.set 33
+        i32.const 1
+        local.set 34
+        local.get 33
+        local.get 34
+        i32.and
+        local.set 35
+        local.get 35
+        br_if 0 (;@2;)
+      end
+      local.get 4
+      i32.load8_u offset=11
+      local.set 36
+      i32.const 255
+      local.set 37
+      local.get 36
+      local.get 37
+      i32.and
+      local.set 38
+      local.get 4
+      i32.load8_u offset=10
+      local.set 39
+      i32.const 255
+      local.set 40
+      local.get 39
+      local.get 40
+      i32.and
+      local.set 41
+      local.get 38
+      local.get 41
+      i32.sub
+      local.set 42
+      local.get 4
+      local.get 42
+      i32.store offset=28
+    end
+    local.get 4
+    i32.load offset=28
+    local.set 43
+    local.get 43
+    return)
+  (func (;2;) (type 2) (result i32)
+    (local i32 i32 i32 i32 i32 i32 i32 i32 i32 i32 i32)
+    i32.const 0
+    local.set 0
+    i32.const 1072
+    local.set 1
+    i32.const 1024
+    local.set 2
+    local.get 2
+    local.get 1
+    call 1
+    local.set 3
+    local.get 3
+    local.set 4
+    local.get 0
+    local.set 5
+    local.get 4
+    local.get 5
+    i32.ne
+    local.set 6
+    i32.const -1
+    local.set 7
+    local.get 6
+    local.get 7
+    i32.xor
+    local.set 8
+    i32.const 1
+    local.set 9
+    local.get 8
+    local.get 9
+    i32.and
+    local.set 10
+    local.get 10
+    return)
+  (func (;3;) (type 3) (param i32 i32)
+    (local i32 i32 i32 i32 i32)
+    global.get 0
+    local.set 2
+    i32.const 16
+    local.set 3
+    local.get 2
+    local.get 3
+    i32.sub
+    local.set 4
+    local.get 4
+    local.get 0
+    i32.store offset=12
+    local.get 4
+    local.get 1
+    i32.store offset=8
+    local.get 4
+    i32.load offset=12
+    local.set 5
+    local.get 4
+    i32.load offset=8
+    local.set 6
+    local.get 6
+    local.get 5
+    i32.store8 offset=1072
+    return)
+  (table (;0;) 1 1 funcref)
+  (memory (;0;) 2)
+  (global (;0;) (mut i32) (i32.const 66864))
+  (global (;1;) i32 (i32.const 1072))
+  (global (;2;) i32 (i32.const 1024))
+  (global (;3;) i32 (i32.const 1328))
+  (global (;4;) i32 (i32.const 1024))
+  (global (;5;) i32 (i32.const 66864))
+  (global (;6;) i32 (i32.const 0))
+  (global (;7;) i32 (i32.const 1))
+  (export "memory" (memory 0))
+  (export "__wasm_call_ctors" (func 0))
+  (export "strcmp" (func 1))
+  (export "check_flag" (func 2))
+  (export "input" (global 1))
+  (export "copy_char" (func 3))
+  (export "__dso_handle" (global 2))
+  (export "__data_end" (global 3))
+  (export "__global_base" (global 4))
+  (export "__heap_base" (global 5))
+  (export "__memory_base" (global 6))
+  (export "__table_base" (global 7))
+  (data (;0;) (i32.const 1024) "picoCTF{cb688c00b5a2ede7eaedcae883735759}\00\00"))
+```
+
+最後一航就可以看到 Flag 了，這邊就不繼續逆向回去，想繼續的話一樣可以使用這個工具裡面的其他工具去完成。
+
+```txt
+picoCTF{cb688c00b5a2ede7eaedcae883735759}
 ```
 
 # Crypto
