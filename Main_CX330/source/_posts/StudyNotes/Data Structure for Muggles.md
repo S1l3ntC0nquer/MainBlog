@@ -69,8 +69,9 @@ float sum(float list[], int n)
 {
     float tempsum=0;
     int i;
-    for (i = 0; i < n; i++)
-    tempsum += list[i];
+    for (i = 0; i < n; i++){
+	    tempsum += list[i];
+    }
     return tempsum;
 }
 ```
@@ -82,9 +83,9 @@ On the other hand, a segment with execution time dependent on the instance chara
 ```c
 float rsum(float list[], int n)
 {
-    if (n)
-    return rsum(list,n-1)+list[n-1];
-
+    if (n){
+         return rsum(list,n-1)+list[n-1];   
+    }
     return 0;
 }
 ```
