@@ -3,6 +3,24 @@ window.addEventListener("load", () => {
     let dataObj = [];
     const $searchMask = document.getElementById("search-mask");
 
+    function capitalizeFirstLetter(str) {
+        if (!str) return str; // 確保字串不為空
+
+        // 輔助函數：將單詞的首字母大寫
+        const capitalize = (word) => {
+            if (!word) return word; // 確保單詞不為空
+            return word.charAt(0).toUpperCase() + word.slice(1);
+        };
+
+        // 將字串拆分為單詞，對每個單詞進行首字母大寫，然後重新組合
+        let temp = str.split(" ");
+        temp.forEach((item, index) => {
+            temp[index] = capitalize(item);
+        });
+
+        return temp.join(" "); // 返回首字母大寫後的字串
+    }
+
     const openSearch = () => {
         const bodyStyle = document.body.style;
         bodyStyle.width = "100%";
@@ -147,7 +165,8 @@ window.addEventListener("load", () => {
             dataObj.then((data) => {
                 data.forEach((data) => {
                     let isMatch = true;
-                    let dataTitle = data.title
+                    let dataTitle = data.title ? data.title.trim() : "";
+                    let dataTitleForSearch = data.title
                         ? data.title.trim().toLowerCase()
                         : "";
                     let dataTags = data.tags;
@@ -165,9 +184,9 @@ window.addEventListener("load", () => {
                     let indexContent = -1;
                     let firstOccur = -1;
                     // only match articles with not empty titles and contents
-                    if (dataTitle !== "" || dataContent !== "") {
+                    if (dataTitleForSearch !== "" || dataContent !== "") {
                         keywords.forEach((keyword, i) => {
-                            indexTitle = dataTitle.indexOf(keyword);
+                            indexTitle = dataTitleForSearch.indexOf(keyword);
                             indexContent = dataContent.indexOf(keyword);
                             if (indexTitle < 0 && indexContent < 0) {
                                 isMatch = false;
@@ -228,14 +247,14 @@ window.addEventListener("load", () => {
                                 dataTitle = dataTitle.replace(
                                     regS,
                                     '<span class="search-keyword">' +
-                                        keyword +
+                                        capitalizeFirstLetter(keyword) +
                                         "</span>"
                                 );
                             });
 
                             str += '<div class="local-search__hit-item">';
                             if (oneImage) {
-                                str += `<div class="search-left"><img src=${oneImage} data-fancybox='gallery'>`;
+                                str += `<div class="search-left"><a href='${dataUrl}'"><img src="${oneImage}" data-fancybox='gallery'></a>`;
                             } else {
                                 str +=
                                     '<div class="search-left" style="width:0">';
