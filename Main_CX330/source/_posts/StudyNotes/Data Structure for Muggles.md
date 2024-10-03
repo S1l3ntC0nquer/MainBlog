@@ -33,11 +33,12 @@ For example, we have the following code like this.
 ```c
 float sum(float list[], int n)
 {
-	float tempsum=0;
-	int i;
-	for (i = 0; i < n; i++)
-	tempsum += list[i];
-	return tempsum;
+    float tempsum=0;
+    int i;
+    for (i = 0; i < n; i++){
+        tempsum += list[i];
+    }
+    return tempsum;
 }
 ```
 
