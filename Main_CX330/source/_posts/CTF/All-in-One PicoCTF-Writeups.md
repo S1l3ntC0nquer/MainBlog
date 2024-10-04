@@ -2472,7 +2472,15 @@ m = pow(c, d, n)
 print(long_to_bytes(m))
 ```
 
+## waves over lambda
 
+這題連接上去後會吐密文，然後是個 Substitution cipher，直接拿去[線上的詞頻分析](https://www.guballa.de/substitution-solver)破解他。
+
+```txt
+frequency_is_c_over_lambda_agflcgtyue
+```
+
+然後這題並沒有用 `picoCTF{}` 包起來。
 
 # Reverse
 
