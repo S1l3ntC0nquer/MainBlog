@@ -590,7 +590,8 @@ footer:
             source: false
             # 如果关闭打字效果，subtitle 只会显示 sub 的第一行文字
             sub:
-                - Yes, I am a criminal. My crime is that of curiosity.
+                - Yes, I am a criminal. My crime is that of curiosity
+                - Join the dark side
                 - Happy hacking
                 - Build the universe with me
                 - Hack the planet!
@@ -656,7 +657,7 @@ site_verification:
 theme_color:
     enable: true
     main: "#425AEF"
-    dark_main: "#f5a524"
+    dark_main: "#BD93F9" # "#f5a524"
     paginator: "#425AEF"
     #   button_hover: "#FF7242"
     text_selection: "#2128bd"

@@ -875,6 +875,12 @@ if $highlight_theme == 'darker' || ($highlight_theme == 'mac')
       cursor: help
 ```
 
+index.styl 的 Dark mode 修改如下
+
+```stylus
+  --anzhiyu-lighttext: #BD93F9;
+```
+
 # hexo-butterfly-envelope
 
 `main.js`中把中文改為英文
