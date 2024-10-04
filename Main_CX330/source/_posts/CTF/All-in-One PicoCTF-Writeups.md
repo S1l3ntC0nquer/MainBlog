@@ -2476,6 +2476,14 @@ print(long_to_bytes(m))
 
 # Reverse
 
+## Reverse
+
+檔案下載下來後用 IDA 打開然後 TAB 看一下 Decompile 後的 Pseudo code，就出來了。
+
+```txt
+picoCTF{3lf_r3v3r5ing_succe55ful_fa9cb3b1}
+```
+
 ## Safe Opener
 
 這題給了一個Java的原始碼，要我們幫他解出保險箱的密碼，並把它用picoCTF{}包起來就是Flag了，先來看看code。
