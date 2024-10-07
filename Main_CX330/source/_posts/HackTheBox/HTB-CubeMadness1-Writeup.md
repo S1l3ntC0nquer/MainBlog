@@ -6,7 +6,10 @@ cover: >-
 categories:
     - HackTheBox
     - CTF
-tags: CheatEngine
+tags:
+    - HTB
+    - HackTheBox
+    - GamePwn
 ---
 
 # 0x00 Challenge Info
