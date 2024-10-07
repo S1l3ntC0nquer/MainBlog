@@ -3,7 +3,9 @@ title: "[HTB] CubeMadness1 Writeup"
 date: 2024-10-07 10:50:06
 cover: >-
     https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/help-you-at-solving-hackthebox-htb-challenges-machines.png
-categories: GamePwn
+categories:
+    - HackTheBox
+    - CTF
 tags: CheatEngine
 ---
 
