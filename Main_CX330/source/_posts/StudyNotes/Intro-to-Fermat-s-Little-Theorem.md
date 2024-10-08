@@ -1,7 +1,7 @@
 ---
 title: Intro to Fermat's Little Theorem
 date: 2024-10-08 18:32:24
-cover: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/fermat.jpg
+cover: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/fermatlittle.jpg
 categories: StudyNotes
 tags:
 ---
