@@ -881,6 +881,19 @@ index.styl 的 Dark mode 修改如下
   --anzhiyu-lighttext: #BD93F9;
 ```
 
+line-numbers.styl 修改如下
+
+```stylus
+#article-container
+  pre[class*='language-']
+    &.line-numbers
+      position: relative
+      padding-left: 3.8em
+      padding-right: 3.8em
+      counter-reset: linenumber
+      line-height: $line-height-code-block
+```
+
 # hexo-butterfly-envelope
 
 `main.js`中把中文改為英文
