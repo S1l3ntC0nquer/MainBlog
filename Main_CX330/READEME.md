@@ -894,6 +894,38 @@ line-numbers.styl 修改如下
       line-height: $line-height-code-block
 ```
 
+my-anzhiyu/source/css/\_highlight/prismjs/index.styl 修改如下
+
+```stylus
+if $prismjs_line_number
+  @require 'line-number'
+
+if $highlight_theme != false
+  @require 'diff'
+
+#article-container
+  pre[class*='language-']
+    scrollbar-color: var(--hlscrollbar-bg) transparent
+
+    &::-webkit-scrollbar-thumb
+      background: var(--hlscrollbar-bg)
+
+    &:not(.line-numbers)
+      padding: 10px 20px
+
+    .caption
+      margin-left: -3.8em
+      padding: 4px 16px !important
+
+      a
+        padding: 0 !important
+
+    /*
+    *:first-child
+      margin-left: -1px;
+    */
+```
+
 # hexo-butterfly-envelope
 
 `main.js`中把中文改為英文
