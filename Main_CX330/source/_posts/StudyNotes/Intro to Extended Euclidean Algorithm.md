@@ -136,7 +136,7 @@ def extended_euclidean(a: int, b: int) -> tuple[int, int, int]:
     return (g, x - (b // a) * y, y)
 
 def inverse(a: int, b: int) -> int:
-	g, x, y = egcd(a, b) # ax + by = gcd
+	g, x, y = extended_euclidean(a, b) # ax + by = gcd
 	if g == 1:
 		return x % b
 	raise ValueError("base is not invertible for the given modulus.")
