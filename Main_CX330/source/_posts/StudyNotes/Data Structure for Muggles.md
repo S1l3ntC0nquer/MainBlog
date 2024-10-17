@@ -1114,7 +1114,7 @@ Given that the limited space, I will only use **min leftist trees** to be the ex
 
 Following is the animation of inserting a **13** into a min leftist tree.
 
-![Insert](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/螢幕錄製 2024-10-18 002643.gif)
+![Insert](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/螢幕錄製%202024-10-18%20002643.gif)
 
 ### DeleteMin(T)
 
