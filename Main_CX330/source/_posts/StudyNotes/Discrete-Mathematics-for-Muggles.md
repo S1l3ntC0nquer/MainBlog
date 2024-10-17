@@ -111,6 +111,35 @@ $\text{Absorption Laws}$
 - $p\vee(p\wedge q)\Leftrightarrow p$
 - $p\wedge(p\vee q)\Leftrightarrow p$
 
+## Dual of Statement
+
+- Let's say $s$ is a statement. If $s$ contains no logical connectives other than $\wedge$ and $\vee$, then the dual of $s$, denoted $s^d$, is the statement obtained from $s$ by replacing each occorrence of $\wedge$ with $\vee$, $T_0$ with $F_0$ and vice versa.
+
+Here's an example, if $p$ is any primitive statement, then
+
+- $p^d\equiv p$
+- $(\neg{p})^d\equiv\neg{p}$
+- $p\vee T_0$ and $p\wedge F_0$ are duals of each other
+
+### Dulity Principle
+
+Let $s$ and $t$ be statements that contain no logical connectives other than $\wedge$ and $\vee$. If $s\Leftrightarrow t$, then $s^d\Leftrightarrow t^d$.
+
+## Substitution Rules
+
+1. Suppose that the **compound statement $P$ is a tautology**. If $p$ is a **primitive** statement that appears in $P$ and we replace each occurrence of $p$ by the same statement $q$, then the resulting compound statement $P_1$ is also a tautology.
+2. Let $P$ be a compound statement where $p$ is an arbitrary statement that appears in $P$, and let $q$ be a statement such that $q\Leftrightarrow p$. Suppose that in $P$ we replace one or more occurence of $p$ by $q$. Then this replacement yields the compound statement $P_1$. Under these circumstances $P_1\Leftrightarrow P$.
+
+For example
+$$
+\begin{aligned}
+P&:\neg(p\vee q)\Leftrightarrow(\neg p\wedge\neg q)\quad\text{is a tautology}\\
+P_1&:\neg[(r\wedge s)\vee q]\Leftrightarrow[\neg(r\wedge s )\wedge\neg q]\quad\text{is also a tautology}\\
+P_2&:\
+\end{aligned}
+$$
+
+
 # Set Theory
 
 ## Terms Definitions
