@@ -1011,7 +1011,7 @@ Following is the steps to do this operation
 
 And the time complextity of deletion is $O(\log{n})$, where $n$ is also the heap size.
 
-# Leftist Trees (Leftist Heaps)
+# Leftist Heaps (Leftist Trees)
 
 ## Intro
 
@@ -1019,7 +1019,7 @@ In previous part, we use the situation in hospital as an example to explain why 
 
 ![Hospital](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20241017161532111.png)
 
-But doctor1 becomes off duty, the 2 priority queues should be melded together for doctor2. To do this, we need the Leftist tree! 
+But doctor1 becomes off duty, the 2 priority queues should be melded together for doctor2. To do this, we need the Leftist heaps! 
 
 ## Extended Binary Trees
 
@@ -1029,11 +1029,130 @@ Before we step into the leftist tree, I need to introduce extended binary trees,
 
 ### Function: Shortest(x)
 
+Let's say `x` is a node in an extended binary tree, then function `shortest(x)` is the length of a shortest path from `x` to an **external node**.
 
+![Shortest](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20241017225738232.png)
+
+And here's the formula for calculate the `shortest(x)` for all `x` belongs to internal nodes (since `shortest(x)` for all x in external nodes are 0).
+$$
+shortest(x)=1+min(shortest(leftChild(x)), shortest(rightChild(x)))
+$$
+![Example](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20241017230509271.png)
+
+### Function: Count(x)
+
+This one will be a little easier to understand. Count means the nubmer of internal nodes. So for all `x`, which `x` is an internal node, we can calculate `count(x)` by the following formula (since `count(x)` of all x in external nodes are 0).
+$$
+count(x)=1+count(leftChild(x))+count(rightChild(x))
+$$
+![Example](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20241017233747467.png)
+
+## Height-Biased Leftist Trees (HBLT)
+
+Following is the definitioan of a HBLT:
+
+- An extended binary tree
+- For every internal node $x$, $shortest(leftChild(x))\geq shortest(rightChild(x))$
+
+In the following graph, B is a HBLT while A isn't.
+
+![B is a HBLT while A isn't](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20241017232908301.png)
+
+## Weight-Biased Leftist Trees (WBLT)
+
+Following is the definition of a WBLT:
+
+- An extended binary tree
+- For every internal node $x$, $count(leftChild(x))\geq count(rightChild(x))$
+
+In the following graph, the left is a WBLT while the right isn't.
+
+![Example](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20241017233747467.png)
+
+## Properties of Leftist Trees
+
+### 0x00
+
+- The rightmost path is a shortest from root to external node, that is `shortest(root)`.
+
+![Example](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20241017235911009.png)
+
+### 0x01
+
+- Number of internal nodes is $n\geq 2^{shortest(root)}-1$.
+
+That's because the first `shortest(root)` level of nodes constitute a full binary tree, and  for a `shortest(root)` level full binary tree, the total number of nodes is the following.
+$$
+\displaystyle\sum_{i=1}^{shortest(root)}2^{i-1}=2^{shortest(x)}-1
+$$
+And that's why $n$ must be larger than $2^{shortest(root)}-1$. Also, we can infer the following by this inequality.
+$$
+shortest(root)\le\log_2(n+1)
+$$
+
+### 0x02
+
+- Length of rightmost path is $O(\log n)$, where $n$ is the number of nodes in a leftist tree.
+
+## Leftist Trees as Priority Queue
+
+Remember the what I said in the first of this part? We need to make an priority queue that is easy to be merged with other one! Since we have learned min heaps and max heaps before, and leftist tree is actually a type of heap, we have the following types of leftist trees.
+
+-  Min Leftist Tree
+    - Leftist tree that is a min tree. Used as a min priority queue.
+- Max Leftist Tree
+    - Leftist tree that is a max tree. Used as a max priority queue.
 
 ## Operations
 
-Time complexity
+Given that the limited space, I will only use **min leftist trees** to be the examples, and all the operation here will be considered for min leftist trees. Nevertheless, they can all be applied to max leftist tree just by some modification.
+
+### Insert(x, T1)
+
+- Create a min leftist tree `T2` containing only `x`
+- Merge `T1` and `T2`
+
+Following is the animation of inserting a **13** into a min leftist tree.
+
+![Insert](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/螢幕錄製 2024-10-18 002643.gif)
+
+### DeleteMin(T)
+
+- Get subtrees of root, `T_left` and `T_right`
+- Delete the original `root`
+- Merge `T_left` and `T_right`
+
+Following is the animation of deleting a minimum (6 in this case) from a min leftist tree.
+
+![DeleteMin](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/deleteMin.gif)
+
+### Meld(T1, T2) or Merge(T1, T2)
+
+- Phase 1: Top-down process
+    - Maintaining the property of **min tree**
+    - Going down along the rightmost paths in `T1` or `T2` and comparing their roots
+    - For the tree with smaller root, going down to its right child
+        - If no right child, attaching another tree as right subtree.
+        - Else, comparing again
+- Phase 2: Bottom-up process
+    - Maintaining the property of **leftist tree**
+    - Climbing up through the rightmost path of the new tree
+        - If not meet the definition of a leftist tree (HBLT or WBLT), interchanging the left and right subtrees of the node
+- Time Complexity is $O(\log m)$
+    - Length of rightmost path is $O(\log n)$, where $n$ is the number of nodes in a leftist tree
+    - A merge operation moves down and climbs up along the rightmost paths of the two leftist trees.
+    - $m$ is number of total elements in 2 leftist trees
+
+The following is the animation of deleting a minimum from a min leftist tree, but please focus on the merge operation.
+
+![Merge](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/Merge.gif)
+
+### Initialize()
+
+- Create $n$ single node min leftist trees and place them in a FIFO queue
+- Repeatedly remove two min leftist trees from the FIFO queue, merge them, and put the resulting min leftist tree into the FIFO queue
+- The process terminates when only 1 min leftist tree remains in the FIFO queue
+- Time complexity is $n+2\times(1\times\frac{n}{2}+2\times\frac{n}{4}+3\times\frac{n}{8}+\dots)=O(n)$
 
 # Disjoint Sets
 
@@ -1041,3 +1160,7 @@ Time complexity
 
 # Graphs
 
+# Credits
+
+- [Animation](https://www.cs.usfca.edu/~galles/visualization/Algorithms.html)
+- 
