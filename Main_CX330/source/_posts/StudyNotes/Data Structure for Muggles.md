@@ -1010,3 +1010,34 @@ Following is the steps to do this operation
 ![Step 4](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240927014228044.png)
 
 And the time complextity of deletion is $O(\log{n})$, where $n$ is also the heap size.
+
+# Leftist Trees (Leftist Heaps)
+
+## Intro
+
+In previous part, we use the situation in hospital as an example to explain why we need priority queue, and now the situation becomes more complicated. In that hospital, 2 doctors are on call, just like the following graph.
+
+![Hospital](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20241017161532111.png)
+
+But doctor1 becomes off duty, the 2 priority queues should be melded together for doctor2. To do this, we need the Leftist tree! 
+
+## Extended Binary Trees
+
+Before we step into the leftist tree, I need to introduce extended binary trees, a transformation of binary trees. To turn a binary tree into an extended binary tree, we just simply add an **external node** to every leaf in the original binary tree, then we obtained an extended binary tree! This is an example.
+
+![Extended Binray Tree](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20241017162414816.png)
+
+### Function: Shortest(x)
+
+
+
+## Operations
+
+Time complexity
+
+# Disjoint Sets
+
+
+
+# Graphs
+
