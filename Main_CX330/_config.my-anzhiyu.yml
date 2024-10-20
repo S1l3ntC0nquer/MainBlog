@@ -12,7 +12,7 @@ menu:
         Message board: /comments/ || fa-solid fa-message
 
     My:
-        CV: /assets/CV.pdf || fa-solid fa-file
+        Resume: /assets/CV.pdf || fa-solid fa-file
         Music bar: /music/ || fa-solid fa-music
         Life snippets: /essay/ || fa-solid fa-lightbulb
         # Books: /bangumis/ || anzhiyu-icon-book
@@ -43,7 +43,7 @@ nav:
               - name: LinkedIn
                 link: https://www.linkedin.com/in/%E5%AD%90%E9%9B%8B-%E9%99%B3-11087825b/
                 icon: /assets/linkedin.png
-              - name: CV
+              - name: Resume
                 link: /assets/CV.pdf
                 icon: /assets/me.jpg
         - title: Others
