@@ -1156,7 +1156,139 @@ The following is the animation of deleting a minimum from a min leftist tree, bu
 
 # Disjoint Sets
 
+## Intro
 
+Let's forget about the hospital scene, you are now a police officer. You know the relationship of 10 gangster, and No.1 & No.9 are suspects. How do you tell if they're in a same gang? Let's why we need disjoint sets! We can use this data structure to store the data like this.
+
+There should Dbe no element appears in 2 different sets in the disjoint sets, which means a unique element should only appear once. Here are 2 examples.
+$$
+\begin{aligned}
+&S_1=\{0, 6, 7, 8\}\quad S_2=\{1, 4, 9\}\quad S_3=\{2, 3, 5\}\quad\text{Disjoint sets}\\
+&S_1=\{0, 6, 7, 8, 9\}\quad S_2=\{0, 1, 4, 9\}\quad S_3=\{1, 2, 3, 5\}\quad\text{Not disjoint sets}\\
+\end{aligned}
+$$
+
+## Data Representation of Disjoint Sets
+
+To represent a disjoint set, we **link the node from the children to the parent**, and each **root has a pointer to the set name**.
+
+![Disjoint Set](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/disjointSet.jpg)
+
+## Operations
+
+### Find(i)
+
+- Find the set containing the targeted element
+- Start at the node representing element $i$ and climb up the tree until the root is reached. Then return the element in the root
+- Using an integer array to store the parent of each element
+- Time complexity depends on the level of $i$
+
+![Image](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20241018104104634.png)
+
+```c
+while (parent[i] >= 0){
+    i = parent[i]; // move up the tree
+}
+return i;
+```
+
+### Union(i, j)
+
+- Combine 2 disjoint sets into 1
+- $i$ & $j$ are the roots of different trees, so $i\ne j$
+- For tree representation, we set the parent field of one root pointing to the other root
+- Which is making one tree as a subtree of the other. `parent[j] = i`
+- Time complexity is $O(1)$
+
+$$
+G_1=\{1, 3\}\quad G_2=\{6, 7, 8, 9, 10\}\quad G_3=G_1\cup G_2=\{1, 3, 6, 7, 8, 9, 10\}
+$$
+
+![Union](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20241018105014928.png)
+
+## Sequence of Union-Find Operations
+
+$$
+\begin{aligned}
+&union(1, 0), find(0)\\
+&union(2, 1), find(0)\\
+&\quad\quad\quad\quad\vdots \\
+&union(N-1, N-2), find(0)
+\end{aligned}
+$$
+
+For each `find(0)`, we trace from 0 to the root.
+
+![Image](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20241018112442076.png)
+
+- Time complexity 
+  - Time to initailize `parent[i] = 0` for all elements is $O(n)$
+  - $n-1$ times of `union()`, each time takes $O(1)$, so total is $O(n)$
+  - $n-1$ times of `find()`, each time takes $i$, so total is $\displaystyle\sum^n_{i=2}i=O(n^2)$
+
+How to avoid the creation of degenerate tree? Let's see in next part of this chapter!
+
+## Weight Rule for Union(i, j)
+
+- Make tree with fewer number of elements a subtree of the other tree
+- The count of the new tree is the sum of the counts of the trees that are united
+
+![Weight Rule](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20241018113423678.png)
+
+## Height Rule for Union(i, j)
+
+- Make tree with smaller height a subtree of the other tree
+- The height increases only when two trees of equal height are united
+
+![Height Rule](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/Height%20Rule.jpg)
+
+## Collapsing Rule
+
+### Lemma 1
+
+- Suppose we start with single element trees and perform unions using either the height rule or the weight rule
+
+- The height of a tree with $p$ element is at most $floor(\log_2p)+1$
+- Processing an intermixed sequence of $u-1$ unions and $f$ finds, the time complexity will be $O(u+f\log u)$
+- $u-1$ unions part, we generate a tree with $u$ nodes
+- $f$ finds part, it requires at most $f\times[floor(\log_2u)+1]$
+
+### Improving Find(i) with Collapsing Rule
+
+Collapsing rule means: 
+
+- Make all nodes on find path point to tree root
+- Pay some more efforts this time, but the `Find()` operations in the future could save time
+- Slower this time, faster next time
+
+Here's an example, if we have a sequence $find(7),find(7),find(7),find(7),find(7)$ to this tree.
+
+![Tree](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/tree.jpg)
+
+- **Without** collapsing rule
+  - A $find(7)$ requires climbing up 3 times
+  - Total is $5\times 3=15$ moves
+- **With** collapsing rule
+  - The first $find(7)$ requires climbing up 3 times
+  - The remainding $find(7)$ only needs to climbing up once
+  - Total is $3+4\times 1=7$ moves
+
+### Lemma 2 (By Tarjan and Van Leeuwen)
+
+Let $T(f, u)$ be the maximum time required to process any intermixed sequence of $f$ finds and $u$ unions. Assuming that $u\geq\frac{n}{2}$
+$$
+k_1\times(n+f\times\alpha(f+n,n))\le T(f,u)\le k_2\times(n, f\times\alpha(f+n,n))
+$$
+where $k_1$ and $k_2$ are constants, $n$ is the number of elements, and $\alpha(f+n, n)$ is **inverse Ackermann function**.
+
+- Ackermann function
+  - A function of 2 parameters whose value grows very, very fast
+- Inverse Ackermann function
+  - A function of 2 parameters whose value grows very, very slow
+
+## Time Complexity
+
+Those bounds in Lemma 2 can be applied when we start with singleton sets and use either the weight or height rule for unions and collapsing rule for a find. The time complexity will be $O(n+f)$, which is very efficient.
 
 # Graphs
 
