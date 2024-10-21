@@ -56,11 +56,14 @@ nav:
                 icon: /assets/hacker.png
         - title: Useful Tools
           item:
-              - name: RevShell Generator
+              - name: RevShells
                 link: https://revshells.cx330.tw
                 icon: /assets/hacker.png
               - name: OhMyCV
                 link: https://ohmycv.cx330.tw
+                icon: /assets/hacker.png
+              - name: GTFOBins
+                link: https://gtfobins.cx330.tw
                 icon: /assets/hacker.png
 
         # - title: English site
