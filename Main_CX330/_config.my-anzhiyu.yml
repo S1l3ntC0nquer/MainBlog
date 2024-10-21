@@ -54,6 +54,14 @@ nav:
               - name: Admin
                 link: https://admin.cx330.tw
                 icon: /assets/hacker.png
+        - title: Useful Tools
+          item:
+              - name: RevShell Generator
+                link: https://revshells.cx330.tw
+                icon: /assets/hacker.png
+              - name: OhMyCV
+                link: https://ohmycv.cx330.tw
+                icon: /assets/hacker.png
 
         # - title: English site
         #   item:
