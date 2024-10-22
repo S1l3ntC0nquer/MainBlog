@@ -135,22 +135,46 @@ $$
 \begin{aligned}
 P&:\neg(p\vee q)\Leftrightarrow(\neg p\wedge\neg q)\quad\text{is a tautology}\\
 P_1&:\neg[(r\wedge s)\vee q]\Leftrightarrow[\neg(r\wedge s )\wedge\neg q]\quad\text{is also a tautology}\\
-P_2&:\
+P_2&:\neg[(r\wedge s)\vee(t\to u)]\leftrightarrow[\neg(r\wedge s)\wedge\neg(t\to u)]\quad\text{is also a tautology}
 \end{aligned}
 $$
 
+## Modus Ponens (Rule of Detachment)
+
+- Statement
+    - If $p$ is true, and $p\to q$ is true, then the conclusion $q$ must also be true
+
+## Law of The Syllogism
+
+- Statement
+    - If $p$ then $q$
+    - If $q$ then $r$
+    - 2 of the aboves imply if $p$ then $r$
+- Math Expression
+    - $[(p\to q)\wedge(q\to r)]\to(p\to r)$
+
+## Modus Tollens
+
+- Statement
+    - If $p$ then $q$, then not $q$ impies not $p$
+- Math Expression
+    - $[(p\to q)\wedge\neg q]\to\neg p$
+
+## Rule of Conjunction
+
+- If $p, q$ are true statement, then $p\wedge q$ is also a true statement
 
 # Set Theory
 
 ## Terms Definitions
 
-- Set: A well-defined collection of objects. Neither order nor repetition is relevant for a  general set.
-- Element: Objects inside the set is called elements. They are said to be members of the set.
-- Universe: 
-- Subset: If every element of $C$ is an element of  $D$, then $C$ is a subset of $D$, which will be denoted by $C \subseteq D$.
-- Proper subset: If, in addition, $D$ contains an element that is not in $C$, then $C$ is called a proper subset of $D$. It will be denoted by $C \subset D$.
+- Set: A well-defined collection of objects. Neither order nor repetition is relevant for a  general set
+- Element: Objects inside the set is called elements. They are said to be members of the set
+- Universe: The set that contains all possible elements relevant to a particular discussion or problem
+- Subset: If every element of $C$ is an element of  $D$, then $C$ is a subset of $D$, which will be denoted by $C \subseteq D$
+- Proper subset: If, in addition, $D$ contains an element that is not in $C$, then $C$ is called a proper subset of $D$. It will be denoted by $C \subset D$
 - Cardinality: Also called size, the number of elements in a set, denoted by $|A|$.
-- Equal: $C$ & $D$ are said to be equal when $C \subseteq D$ and $D \subseteq C$.
+- Equal: $C$ & $D$ are said to be equal when $C \subseteq D$ and $D \subseteq C$
 
 ## Subset Relations
 
