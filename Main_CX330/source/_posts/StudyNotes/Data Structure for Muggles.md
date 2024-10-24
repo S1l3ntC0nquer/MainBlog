@@ -1319,19 +1319,87 @@ With graph, we can do a lot of applications, such as planning a route from city 
 
 ### Directed Graph
 
+There' direction between the connections of the vertices.
+
+ ![Directed Graph](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20241025015028390.png)
+
 ### Undirected Graph
+
+There's no direction between the connections.
+
+![Undirected Graph](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20241025015002851.png)
 
 ### Subgraph
 
+A graph that is composed of a subset of vertices and a subset of edges from another graph.
+
+![Subgraph](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20241025015216953.png)
+
 ### Path
+
+Length of a path is the number of edges on it.
+
+![Path](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20241025015309904.png)
 
 ### Simple Path & Cycle
 
+- SImple Path
+    - No repeating vertices (except for the case that the **first** and the **last** are the same)
+- Cycle
+    - Simple path
+    - The first and the last vertices are the same
+
+$$
+\begin{aligned}
+&0, 1, 3, 2\quad\text{Simple path}\\
+&0, 1, 3, 1\quad\text{Not simple path}\\
+&0, 1, 2, 0\quad\text{Cycle}
+\end{aligned}
+$$
+
 ### Connection
+
+- 2 vertices $u$ and $v$ are *connected* **if and only if** there's a path from $u$ to $v$
+- Connected component
+    - A maximum subgraph that are connected to each other
+- Strongly connected component
+    - In a direct graph, every pair of vertices $u$ and $v$ has a directed path from $u$ to $v$ and also from $v$ to $u$
+
+![Strongly Connected Components - GeeksforGeeks](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/scc_fianldrawio.png)
 
 ## Complete Graph
 
+- Having the maximum number of edges
+
+![Complete Graph](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20241025020132018.png)
+
 ## Properties
+
+### Number of Edges
+
+If we set $n$ to be the number of vertices and $e$ to be the number of edges, then
+
+- **Undirected Graph**
+    - $e\le n(n-1)/2$
+- **Directed Graph**
+    - $e\le n(n-1)$
+
+### Vertex Degree
+
+- Number of edges incident to vertex
+- Directed graph
+    - In-degree, which is pointed into the vertex
+    - Out-degree, vice versa
+
+### Sum of degree
+
+The number of edges is $e$, then
+
+- Undirected Graph
+    - $2e$
+    - Since each edges contributes $2$ to vertex degree
+- Directed Graph
+    - $e=sum(in)=sum(out)$
 
 ## Trees & Spanning Trees
 
@@ -1346,17 +1414,51 @@ With graph, we can do a lot of applications, such as planning a route from city 
 ### Spanning Tree
 
 - A tree
-- A subgraph that includes all vertices of the original graph
+- A subgraph that includes **all vertices** of the original graph
+- If the original graph has $n$ vertices, then the spanning tree will have $n$ vertices and $n-1$ edges
 
 ### Minimum Cost Spanning Tree
+
+- A spanning tree with least cost (or weight)
+    - Tree cost means the sum of edge costs/weights
+
+![Minimum Spanning Tree (MST) - GeeksforGeeks](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/Untitled-Diagram66-3.jpg)
 
 ## Graph Representaions
 
 ### Adjacency Matrix
 
-### Adjacency Linked List
+- Using 2-Dimensional $n$ by $n$ matrix $A$
+    - $n$ is number of vertices
+    - $A[i][j]=1$ means there to be an edge between vertices $i$ and $j$
+    - Diagonal entries are all $0$
 
-### Adjacency Array List
+![Adjacency Matrix](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20241025021948121.png)
+
+Traversing this matrix will have the time complexity $O(n^2)$, it seems to be okay in a small matrix. But what if the matrix is large and sparse? There's only a little 1s in the matrix, which are the things we care (cause we don't care about the zeros), how can we improve the time complexity? We can use other ways to represent an graph.
+
+### Linked Adjacency List
+
+#### Undirected Graph
+
+- Each adjacency list is a chain. One chain for each vertex
+    - Array length will be $n$
+- The data field of a chain node store an adjacency vertex
+    - In **undirected** graph, total number of chain nodes will be $2e$
+
+![Linked Adjacency List](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20241025022527988.png)
+
+#### Directed Graph
+
+- Total nubmer of chain nodes is $e$
+- The data field of a chain node store an adjacent vertex
+- In **inverse** linked adjacency list, the data field of a chain node store the vertex adjacent to the vetex it represents
+
+![Linked Adjacency List](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20241025022922803.png)
+
+### Array Adjacency List
+
+
 
 ## Weighted Graphs
 
