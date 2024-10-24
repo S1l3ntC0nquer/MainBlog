@@ -1292,7 +1292,85 @@ Those bounds in Lemma 2 can be applied when we start with singleton sets and use
 
 # Graphs
 
-# Credits
+## Intro
 
-- [Animation](https://www.cs.usfca.edu/~galles/visualization/Algorithms.html)
-- 
+Now, let's talk about the brains of the humanities. In out brain, each region is associated with different functions. Just like the graph below.
+
+![Brain](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20241024152300167.png)
+
+ But the works in reality are complicated, so we usually use multi-part of out brain to achieve a task. That's what we can represented by a graph. It will be easier for us to visualize and further analysis.
+
+Graph can be represented as this form.
+$$
+G=(V, E)
+$$
+
+- $V$: Set of vertices
+  - Vertices are also called nodes or points
+- $E$: Set of edges
+  - Each edges connected 2 different vertices
+  - Edges are also called arcs & lines
+  - In **undirected** graph, $(u, v)$ and $(v, u)$ represent the *same* edge
+  - In **directed** graph, $<u, v>$ and $<v, u>$ represent *different* edges
+
+With graph, we can do a lot of applications, such as planning a route from city A to city B, witch we can let vertices to be cities, edges to be roads and edge weight to be the distances or times we need. Now, let's go to the next part and know more terms of graph.
+
+## Terminology
+
+### Directed Graph
+
+### Undirected Graph
+
+### Subgraph
+
+### Path
+
+### Simple Path & Cycle
+
+### Connection
+
+## Complete Graph
+
+## Properties
+
+## Trees & Spanning Trees
+
+### Tree
+
+- Acycilc Graph
+  - A graph with no cycles
+- Connected Graph
+  - All pairs of nodes are connected
+  - $n$ vertices connected graph with $n-1$ edges
+
+### Spanning Tree
+
+- A tree
+- A subgraph that includes all vertices of the original graph
+
+### Minimum Cost Spanning Tree
+
+## Graph Representaions
+
+### Adjacency Matrix
+
+### Adjacency Linked List
+
+### Adjacency Array List
+
+## Weighted Graphs
+
+How to represent weighted in the above representations?
+
+# DFS & BFS
+
+
+
+
+
+
+
+# Credits and References
+
+- [Animation made by this site](https://www.cs.usfca.edu/~galles/visualization/Algorithms.html)
+
