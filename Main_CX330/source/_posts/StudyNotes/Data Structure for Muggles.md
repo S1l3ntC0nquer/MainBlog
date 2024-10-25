@@ -1458,17 +1458,82 @@ Traversing this matrix will have the time complexity $O(n^2)$, it seems to be ok
 
 ### Array Adjacency List
 
+- Using an integer array `node[]` to store all adjacency lists
+  - Array length will be $n+2e+1$
+  - The $i^\text{th}$ element in `node[0, 1, 2, ..., n-1]` is the starting point of the list for vertex $i$ 
 
+![Array Adjacency List](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/Array Adjacency List.jpg)
 
 ## Weighted Graphs
 
-How to represent weighted in the above representations?
+- Weighted adjacency matrix
+  - $A[i][j]$ is cost of edge $(i, j)$
+- Weighted adjacency list
+  - Each element is a pair of **adjacent vertex** & **edge weight**
+- A graph with weighted edges is called a network
 
-# DFS & BFS
+![Weighted Graph](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/Weighted Graph.jpg)
 
+## DFS & BFS
 
+To search element in a graph, we need to introduce 2 algorithms, depth first search and breadth first search. 
 
+- Depth First Search (DFS)
+  - Similar to a **preorder** tree traversal
+- Breadth First Search (BFS)
+  - Similar to a **level-order** tree traversal
 
+If there's a path from a vertex $u$ to another vertex $v$, we say $v$ is reachable from $u$. A search method is to traverse/visit every reachable vertices in the graph.
+
+### DFS
+
+#### Intro
+
+Here's the pseudo code and animation of DFS.
+
+```c
+short int visited[MAX_VERTICES];
+/*Depth first search of a graph beginning at v.*/
+dfs(v){
+    /*Label vertex v as reached.*/
+    visited[v] = TRUE;
+    /*Explore the adjacent unvisited vertices.*/
+    for (each unreached vertex u adjacent from v)
+    dfs(u);
+}
+```
+
+![DFS](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/螢幕錄製 2024-10-25 104315.gif)
+
+#### Time Complexity
+
+- Adjacency matrix, the time complexity is $O(n^2)$
+  - For each node, searching the corresponding row to find adjacent vertices takes $O(n)$
+  - Visiting at most $n$ nodes takes $O(n\times n)=O(n^2)$
+- Adjacency list, the time complexity is $O(n+e)$
+  - Search at most $e$ edges and $n$ nodes
+
+### BFS
+
+#### Intro
+
+Here's the pseudo code and animation of BFS.
+
+```c
+BFS(u), Q = {u}
+
+while !Q.empty // Q is a normal queue
+
+  for each neighbor v of u = Q.front, Q.pop
+
+    if v is unvisited, tree edge, Q.push(v)
+
+    else if v is visited, we ignore this edge
+```
+
+![BFS](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/BFS.gif)
+
+#### Time Complexity
 
 
 
@@ -1476,3 +1541,4 @@ How to represent weighted in the above representations?
 
 - [Animation made by this site](https://www.cs.usfca.edu/~galles/visualization/Algorithms.html)
 
+​	
