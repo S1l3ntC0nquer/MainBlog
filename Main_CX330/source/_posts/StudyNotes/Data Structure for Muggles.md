@@ -1462,7 +1462,7 @@ Traversing this matrix will have the time complexity $O(n^2)$, it seems to be ok
   - Array length will be $n+2e+1$
   - The $i^\text{th}$ element in `node[0, 1, 2, ..., n-1]` is the starting point of the list for vertex $i$ 
 
-![Array Adjacency List](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/Array Adjacency List.jpg)
+![Array Adjacency List](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/Array%20Adjacency%20List.jpg)
 
 ## Weighted Graphs
 
@@ -1472,7 +1472,7 @@ Traversing this matrix will have the time complexity $O(n^2)$, it seems to be ok
   - Each element is a pair of **adjacent vertex** & **edge weight**
 - A graph with weighted edges is called a network
 
-![Weighted Graph](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/Weighted Graph.jpg)
+![Weighted Graph](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/Weighted%20Graph.jpg)
 
 ## DFS & BFS
 
@@ -1486,8 +1486,6 @@ To search element in a graph, we need to introduce 2 algorithms, depth first sea
 If there's a path from a vertex $u$ to another vertex $v$, we say $v$ is reachable from $u$. A search method is to traverse/visit every reachable vertices in the graph.
 
 ### DFS
-
-#### Intro
 
 Here's the pseudo code and animation of DFS.
 
@@ -1503,26 +1501,19 @@ dfs(v){
 }
 ```
 
-![DFS](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/螢幕錄製 2024-10-25 104315.gif)
-
-#### Time Complexity
-
-- Adjacency matrix, the time complexity is $O(n^2)$
-  - For each node, searching the corresponding row to find adjacent vertices takes $O(n)$
-  - Visiting at most $n$ nodes takes $O(n\times n)=O(n^2)$
-- Adjacency list, the time complexity is $O(n+e)$
-  - Search at most $e$ edges and $n$ nodes
+![DFS](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/%E8%9E%A2%E5%B9%95%E9%8C%84%E8%A3%BD%202024-10-25%20104315.gif)
 
 ### BFS
 
-#### Intro
+- Visit start vertex and put into a FIFO queue
+- Repeatedly remove a vertex from the queue, visit its unvisited adjacent vertices, put newly visited vertices into the queue
 
 Here's the pseudo code and animation of BFS.
 
 ```c
 BFS(u), Q = {u}
 
-while !Q.empty // Q is a normal queue
+while !Q.empty // Q is a normal queue (FIFO)
 
   for each neighbor v of u = Q.front, Q.pop
 
@@ -1533,9 +1524,30 @@ while !Q.empty // Q is a normal queue
 
 ![BFS](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/BFS.gif)
 
-#### Time Complexity
+### Time Complexity
 
+- Adjacency matrix, the time complexity is $O(n^2)$
+  - For each node, searching the corresponding row to find adjacent vertices takes $O(n)$
+  - Visiting at most $n$ nodes takes $O(n\times n)=O(n^2)$
+- Adjacency list, the time complexity is $O(n+e)$
+  - Search at most $e$ edges and $n$ nodes
 
+### Application: Articulation Points
+
+Articulation Point means if a vertex is deleted, **at least** 2 connected components are produced, then the vertex is called articulation point. In the graph below, $d$ and $f$ are articulation points, for example.
+
+![Articulation Point](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/Articulation%20Point.jpg)
+
+To find a articulation point, we can generate a depth-first search spanning tree. Using the graph above as an example, we use `dfs(d)` to generate a spanning tree.
+
+![Original Graph](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/Original Graph.jpg)
+
+![Spanning Tree](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20241025133718076.png)
+
+- For root $r$
+  - $Degree(r)\ge2$, then $r$ is an articulation point
+- For a non-root vertex $v$
+  - A child of vertex $v$ cannot reach any ancestor of vertex $v$ via other paths, then $v$ is an articulation point
 
 # Credits and References
 
