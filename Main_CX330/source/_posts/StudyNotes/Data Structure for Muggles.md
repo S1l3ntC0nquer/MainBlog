@@ -597,7 +597,7 @@ newNode->llink = node;
 newNode->rlink = node->rlink;
 ```
 
-![Step 1](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/螢幕擷取畫面 2024-09-19 223329.png)
+![Step 1](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2%202024-09-19%20223329.png)
 
 ```c
 node->rlink->llink = newNode;
@@ -1458,21 +1458,196 @@ Traversing this matrix will have the time complexity $O(n^2)$, it seems to be ok
 
 ### Array Adjacency List
 
+- Using an integer array `node[]` to store all adjacency lists
+  - Array length will be $n+2e+1$
+  - The $i^\text{th}$ element in `node[0, 1, 2, ..., n-1]` is the starting point of the list for vertex $i$ 
 
+![Array Adjacency List](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/Array%20Adjacency%20List.jpg)
 
 ## Weighted Graphs
 
-How to represent weighted in the above representations?
+- Weighted adjacency matrix
+  - $A[i][j]$ is cost of edge $(i, j)$
+- Weighted adjacency list
+  - Each element is a pair of **adjacent vertex** & **edge weight**
+- A graph with weighted edges is called a network
 
-# DFS & BFS
+![Weighted Graph](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/Weighted%20Graph.jpg)
 
+## DFS & BFS
 
+To search element in a graph, we need to introduce 2 algorithms, depth first search and breadth first search. 
 
+- Depth First Search (DFS)
+  - Similar to a **preorder** tree traversal
+- Breadth First Search (BFS)
+  - Similar to a **level-order** tree traversal
 
+If there's a path from a vertex $u$ to another vertex $v$, we say $v$ is reachable from $u$. A search method is to traverse/visit every reachable vertices in the graph.
 
+### DFS
 
+Here's the pseudo code and animation of DFS.
+
+```c
+short int visited[MAX_VERTICES];
+/*Depth first search of a graph beginning at v.*/
+dfs(v){
+    /*Label vertex v as reached.*/
+    visited[v] = TRUE;
+    /*Explore the adjacent unvisited vertices.*/
+    for (each unreached vertex u adjacent from v)
+    dfs(u);
+}
+```
+
+![DFS](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/%E8%9E%A2%E5%B9%95%E9%8C%84%E8%A3%BD%202024-10-25%20104315.gif)
+
+### BFS
+
+- Visit start vertex and put into a FIFO queue
+- Repeatedly remove a vertex from the queue, visit its unvisited adjacent vertices, put newly visited vertices into the queue
+
+Here's the pseudo code and animation of BFS.
+
+```c
+// From VisuAlgo
+BFS(u), Q = {u}
+
+while !Q.empty // Q is a normal queue (FIFO)
+
+  for each neighbor v of u = Q.front, Q.pop
+
+    if v is unvisited, tree edge, Q.push(v)
+
+    else if v is visited, we ignore this edge
+```
+
+![BFS](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/BFS.gif)
+
+### Time Complexity
+
+- Adjacency matrix, the time complexity is $O(n^2)$
+  - For each node, searching the corresponding row to find adjacent vertices takes $O(n)$
+  - Visiting at most $n$ nodes takes $O(n\times n)=O(n^2)$
+- Adjacency list, the time complexity is $O(n+e)$
+  - Search at most $e$ edges and $n$ nodes
+
+### Application: Articulation Points
+
+Articulation Point means if a vertex is deleted, **at least** 2 connected components are produced, then the vertex is called articulation point. In the graph below, $d$ and $f$ are articulation points, for example.
+
+![Articulation Point](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/Articulation%20Point.jpg)
+
+To find a articulation point, we can generate a depth-first search spanning tree. Using the graph above as an example, we use `dfs(d)` to generate a spanning tree.
+
+![Original Graph](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/Original%20Graph.jpg)
+
+![Spanning Tree](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20241025133718076.png)
+
+- For root $r$
+  - $Degree(r)\ge2$, then $r$ is an articulation point
+- For a non-root vertex $v$
+  - A child of vertex $v$ cannot reach any ancestor of vertex $v$ via other paths, then $v$ is an articulation point
+
+# Minimum Spanning Tree (MST)
+
+## Intro
+
+- In a weighted **connected** **undirected** graph $G$
+  - $n$ is number of vertices
+- A spanning tree of the least weights
+  - Weights/Costs is the sum of the weights of edges in the spanning tree
+  - Edges within the graph $G$
+  - Number of edges is $n-1$
+
+How can we derive an MST from a graph?
+
+## Kruskal’s Method
+
+- Start with an **forest** composed of $n$ vertices and $0$ edges
+- Select edges in **nondecreasing** order of weight
+  - If not form a cycle with the edges that are already selected
+
+![Kruskal's Algorithm - VisuAlgo](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/kruskal.gif)
+
+### Pseudo Code
+
+```c
+T = {};
+while (|T| < N-1 and E is not empty){
+    choose a least cost edge (v,w) from E;
+    E = E – {(v,w)}; /*delete edge from E*/
+    if (adding (v,w) doesn’t create a cycle in T)
+    T = T + {(v,w)}; /*add edge to T*/
+}
+if (|T| == N – 1) T is a minimum cost spanning tree.
+else There is no spanning tree.
+```
+
+### Data Structures for Kruskal's Method
+
+- Operations related to $E$
+  - Check if the edge set $E$ is empty
+  - Select and remove a **least-weight** edge
+  - Use a **min heap** or **leftist heap** for edges set
+  - Time complexity
+    - Initialization: $O(e)$
+    - Remove and return least-weight edge: $O(\log e)$
+- Operations related to $T$
+  - Check if $T$ has $n-1$ edges
+  - Examine if adding $(u, v)$ to $T$ creates a cycle
+    - Each connected component in $T$ is a set containing the vertices, like $\{a, g\},\{f\}, \{h, b, c, e\}$
+    - Adding 2 vertices that are already connected creates a cycle
+    - Using `find()` operation to determine if $u$ and $v$ are in the same set
+  - Add an edge $(u, v)$ to $T$
+    - If an edge $(u, v)$ is added to $T$, the 2 connected components that have vertices $u$ and $v$ should be merged
+    - Using `union()` operation to merge the set containing $u$ and $v$ 
+    - $\{f\}+\{h, b, c, e\}=\{f, h, b, c, e\}$
+  - Use **disjoint sets** to process $T$
+
+### Time Complexity
+
+- Operations for edge set $E$
+  - Initialize min heap or leftist heap: $O(e)$
+  - Operations to get minimum weight edge: $O(\log e)$
+    - At most $e$ times of operation: $O(e\log e)$
+- Operations for vertices
+  - Initialize disjoint sets: $O(n)$
+  - At most $2e$ find operations and $n-1$ union operations: close to $O(e+n)$
+- Overall: $O(e+e\log e+n+e)\approx O(e\log e)$
+  - For each iteration, time for union-find operation is less than that for obtaining minimum cost edge
+
+## Prim's Method
+
+Prim's Algorithm is an greedy algorithm.
+
+- Start with a tree $T$ composed of $1$ vertex
+- Grow the tree $T$ by repeatedly adding the least weight edge $(u, v)$ until it has $n-1$ edges
+  - Only one of $u$ and $v$ is in $T$
+
+![Prim's Algorithm - VisuAlgo](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/prim.gif)
+
+### Pseudo Code
+
+```c
+// From VisuAlgo
+T = {s}
+
+enqueue edges connected to s in PQ (by inc weight)
+
+while (!PQ.isEmpty)
+
+  if (vertex v linked with e = PQ.remove ∉ T)
+
+    T = T ∪ {v, e}, enqueue edges connected to v
+
+  else ignore e
+
+MST = T
+```
 
 # Credits and References
 
-- [Animation made by this site](https://www.cs.usfca.edu/~galles/visualization/Algorithms.html)
-
+- [VisuAlgo](https://visualgo.net/en)
+- [Data Structures Visulization by University of San Francisco](https://www.cs.usfca.edu/~galles/visualization/Algorithms.html)
