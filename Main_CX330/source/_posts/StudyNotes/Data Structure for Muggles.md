@@ -1511,6 +1511,7 @@ dfs(v){
 Here's the pseudo code and animation of BFS.
 
 ```c
+// From VisuAlgo
 BFS(u), Q = {u}
 
 while !Q.empty // Q is a normal queue (FIFO)
@@ -1549,8 +1550,104 @@ To find a articulation point, we can generate a depth-first search spanning tree
 - For a non-root vertex $v$
   - A child of vertex $v$ cannot reach any ancestor of vertex $v$ via other paths, then $v$ is an articulation point
 
+# Minimum Spanning Tree (MST)
+
+## Intro
+
+- In a weighted **connected** **undirected** graph $G$
+  - $n$ is number of vertices
+- A spanning tree of the least weights
+  - Weights/Costs is the sum of the weights of edges in the spanning tree
+  - Edges within the graph $G$
+  - Number of edges is $n-1$
+
+How can we derive an MST from a graph?
+
+## Kruskal’s Method
+
+- Start with an **forest** composed of $n$ vertices and $0$ edges
+- Select edges in **nondecreasing** order of weight
+  - If not form a cycle with the edges that are already selected
+
+![Kruskal's Algorithm - VisuAlgo](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/kruskal.gif)
+
+### Pseudo Code
+
+```c
+T = {};
+while (|T| < N-1 and E is not empty){
+    choose a least cost edge (v,w) from E;
+    E = E – {(v,w)}; /*delete edge from E*/
+    if (adding (v,w) doesn’t create a cycle in T)
+    T = T + {(v,w)}; /*add edge to T*/
+}
+if (|T| == N – 1) T is a minimum cost spanning tree.
+else There is no spanning tree.
+```
+
+### Data Structures for Kruskal's Method
+
+- Operations related to $E$
+  - Check if the edge set $E$ is empty
+  - Select and remove a **least-weight** edge
+  - Use a **min heap** or **leftist heap** for edges set
+  - Time complexity
+    - Initialization: $O(e)$
+    - Remove and return least-weight edge: $O(\log e)$
+- Operations related to $T$
+  - Check if $T$ has $n-1$ edges
+  - Examine if adding $(u, v)$ to $T$ creates a cycle
+    - Each connected component in $T$ is a set containing the vertices, like $\{a, g\},\{f\}, \{h, b, c, e\}$
+    - Adding 2 vertices that are already connected creates a cycle
+    - Using `find()` operation to determine if $u$ and $v$ are in the same set
+  - Add an edge $(u, v)$ to $T$
+    - If an edge $(u, v)$ is added to $T$, the 2 connected components that have vertices $u$ and $v$ should be merged
+    - Using `union()` operation to merge the set containing $u$ and $v$ 
+    - $\{f\}+\{h, b, c, e\}=\{f, h, b, c, e\}$
+  - Use **disjoint sets** to process $T$
+
+### Time Complexity
+
+- Operations for edge set $E$
+  - Initialize min heap or leftist heap: $O(e)$
+  - Operations to get minimum weight edge: $O(\log e)$
+    - At most $e$ times of operation: $O(e\log e)$
+- Operations for vertices
+  - Initialize disjoint sets: $O(n)$
+  - At most $2e$ find operations and $n-1$ union operations: close to $O(e+n)$
+- Overall: $O(e+e\log e+n+e)\approx O(e\log e)$
+  - For each iteration, time for union-find operation is less than that for obtaining minimum cost edge
+
+## Prim's Method
+
+Prim's Algorithm is an greedy algorithm.
+
+- Start with a tree $T$ composed of $1$ vertex
+- Grow the tree $T$ by repeatedly adding the least weight edge $(u, v)$ until it has $n-1$ edges
+  - Only one of $u$ and $v$ is in $T$
+
+![Prim's Algorithm - VisuAlgo](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/prim.gif)
+
+### Pseudo Code
+
+```c
+// From VisuAlgo
+T = {s}
+
+enqueue edges connected to s in PQ (by inc weight)
+
+while (!PQ.isEmpty)
+
+  if (vertex v linked with e = PQ.remove ∉ T)
+
+    T = T ∪ {v, e}, enqueue edges connected to v
+
+  else ignore e
+
+MST = T
+```
+
 # Credits and References
 
-- [Animation made by this site](https://www.cs.usfca.edu/~galles/visualization/Algorithms.html)
-
-​	
+- [VisuAlgo](https://visualgo.net/en)
+- [Data Structures Visulization by University of San Francisco](https://www.cs.usfca.edu/~galles/visualization/Algorithms.html)
