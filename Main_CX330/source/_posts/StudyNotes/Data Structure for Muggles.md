@@ -597,7 +597,7 @@ newNode->llink = node;
 newNode->rlink = node->rlink;
 ```
 
-![Step 1](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/螢幕擷取畫面 2024-09-19 223329.png)
+![Step 1](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2%202024-09-19%20223329.png)
 
 ```c
 node->rlink->llink = newNode;
@@ -1541,7 +1541,7 @@ Articulation Point means if a vertex is deleted, **at least** 2 connected compon
 
 To find a articulation point, we can generate a depth-first search spanning tree. Using the graph above as an example, we use `dfs(d)` to generate a spanning tree.
 
-![Original Graph](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/Original Graph.jpg)
+![Original Graph](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/Original%20Graph.jpg)
 
 ![Spanning Tree](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20241025133718076.png)
 
