@@ -1516,11 +1516,11 @@ BFS(u), Q = {u}
 
 while !Q.empty // Q is a normal queue (FIFO)
 
-  for each neighbor v of u = Q.front, Q.pop
+    for each neighbor v of u = Q.front, Q.pop
 
-    if v is unvisited, tree edge, Q.push(v)
+        if v is unvisited, tree edge, Q.push(v)
 
-    else if v is visited, we ignore this edge
+        else if v is visited, we ignore this edge
 ```
 
 ![BFS](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/BFS.gif)
@@ -1638,11 +1638,11 @@ enqueue edges connected to s in PQ (by inc weight)
 
 while (!PQ.isEmpty)
 
-  if (vertex v linked with e = PQ.remove ∉ T)
+    if (vertex v linked with e = PQ.remove ∉ T)
 
-    T = T ∪ {v, e}, enqueue edges connected to v
+        T = T ∪ {v, e}, enqueue edges connected to v
 
-  else ignore e
+    else ignore e
 
 MST = T
 ```
