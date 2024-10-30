@@ -121,7 +121,7 @@ Here's an example, if $p$ is any primitive statement, then
 - $(\neg{p})^d\equiv\neg{p}$
 - $p\vee T_0$ and $p\wedge F_0$ are duals of each other
 
-### Dulity Principle
+### Duality Principle
 
 Let $s$ and $t$ be statements that contain no logical connectives other than $\wedge$ and $\vee$. If $s\Leftrightarrow t$, then $s^d\Leftrightarrow t^d$.
 
