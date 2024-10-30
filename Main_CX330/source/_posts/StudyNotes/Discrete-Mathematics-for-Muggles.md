@@ -26,6 +26,7 @@ New statements can be obtained from existing ones in two ways
   - Conjunction $\wedge$
     - AND
   - Disjunction $\vee$
+    - OR
     - $p\vee{q}$ means inclusive disjunction. True if one or the other of $p, q$ is true or if **both** of the statements $p, q$ are true
     - $p\veebar{q}$ maens exclusive disjunction. True if one or the other of $p, q$ is  true but **not both** of the statements $p, q$ are true
   - Implication $\to$
