@@ -45,12 +45,15 @@ $\begin{aligned} x\equiv 2\left(\bmod 3\right) \\ x \equiv 3\left(\bmod 5\right)
 
 1. Compute $N=3\cdot5\cdot7=105$.
 
-2. Compute $N_1=\frac{105}{3}=35,N_2=\frac{105}{5}=21,N_3=\frac{105}{7}=15$.
+2. Compute $N_1=\frac{105}{3}=35,\quad N_2=\frac{105}{5}=21,\quad N_3=\frac{105}{7}=15$.
 
 3. Find modular inverses:
-   $35 \cdot M_1 \equiv 1(\bmod 3), 21 \cdot M_2 \equiv 1(\bmod 5), 15 \cdot M_3 \equiv 1(\bmod 7)$. Solving these, we get $M_1=2, M_2=1, M_3=1$.
-
-4. Construct the solution:
+   
+   $35 \cdot M_1 \equiv 1(\bmod 3),\quad 21 \cdot M_2 \equiv 1(\bmod 5),\quad 15 \cdot M_3 \equiv 1(\bmod 7)$. 
+   
+   Solving these, we get $M_1=2,\quad M_2=1,\quad M_3=1$
+   
+1. Construct the solution:
 
     $\begin{aligned} & x=[(2 \cdot 35 \cdot 2)+(3 \cdot 21 \cdot 1)+(2 \cdot 15 \cdot 1)](\bmod 105) \\ & x=(140+63+30)(\bmod 105) \\ & x=233(\bmod 105) \\ & x=23(\bmod 105)\end{aligned}$
 

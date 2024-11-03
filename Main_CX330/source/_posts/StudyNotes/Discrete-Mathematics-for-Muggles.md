@@ -26,6 +26,7 @@ New statements can be obtained from existing ones in two ways
   - Conjunction $\wedge$
     - AND
   - Disjunction $\vee$
+    - OR
     - $p\vee{q}$ means inclusive disjunction. True if one or the other of $p, q$ is true or if **both** of the statements $p, q$ are true
     - $p\veebar{q}$ maens exclusive disjunction. True if one or the other of $p, q$ is  true but **not both** of the statements $p, q$ are true
   - Implication $\to$
@@ -38,7 +39,7 @@ New statements can be obtained from existing ones in two ways
     - $q$ is a necessary condition for $p$
     - $p$ only if $q$
     - The statement $p$ is called the *hypothesis* of the implication; $q$ is called the *conclusion*.
-  - Biconditional $\leftrightarrow$
+  - Biconditional $\leftrightarrow\text{or}\Leftrightarrow$
     - IF AND ONLY IF
     - IFF
     - $p\leftrightarrow{q}$ means $p$ is necessary and sufficient for $q$.
@@ -121,7 +122,7 @@ Here's an example, if $p$ is any primitive statement, then
 - $(\neg{p})^d\equiv\neg{p}$
 - $p\vee T_0$ and $p\wedge F_0$ are duals of each other
 
-### Dulity Principle
+### Duality Principle
 
 Let $s$ and $t$ be statements that contain no logical connectives other than $\wedge$ and $\vee$. If $s\Leftrightarrow t$, then $s^d\Leftrightarrow t^d$.
 
@@ -168,13 +169,27 @@ $$
 
 ## Terms Definitions
 
-- Set: A well-defined collection of objects. Neither order nor repetition is relevant for a  general set
-- Element: Objects inside the set is called elements. They are said to be members of the set
-- Universe: The set that contains all possible elements relevant to a particular discussion or problem
-- Subset: If every element of $C$ is an element of  $D$, then $C$ is a subset of $D$, which will be denoted by $C \subseteq D$
-- Proper subset: If, in addition, $D$ contains an element that is not in $C$, then $C$ is called a proper subset of $D$. It will be denoted by $C \subset D$
-- Cardinality: Also called size, the number of elements in a set, denoted by $|A|$.
-- Equal: $C$ & $D$ are said to be equal when $C \subseteq D$ and $D \subseteq C$
+- Set
+  - A well-defined collection of objects. Neither order nor repetition is relevant for a  general set
+
+- Element
+  - Objects inside the set is called elements. They are said to be members of the set
+
+- Universe
+  - The set that contains all possible elements relevant to a particular discussion or problem
+
+- Subset
+  - If every element of $C$ is an element of  $D$, then $C$ is a subset of $D$, which will be denoted by $C \subseteq D$
+
+- Proper subset
+  - If, in addition, $D$ contains an element that is not in $C$, then $C$ is called a proper subset of $D$. It will be denoted by $C \subset D$
+
+- Cardinality
+  - Also called size, the number of elements in a set, denoted by $|A|$
+
+- Equal
+  - $C$ & $D$ are said to be equal when $C \subseteq D$ and $D \subseteq C$
+
 
 ## Subset Relations
 
@@ -239,11 +254,17 @@ For any finite set $A$ with $|A|=n \geq 0$, we find that $A$ has $2^n$ subsets a
 
 ## Binary Operations for Sets
 
-For $A, B \subseteq U$, we define the following:
+For $A, B \subseteq U$, we define the following
 
-1. Union: $A \cup B = \{x\mid x\in A\vee x \in B\}$.
-2. Intersection: $A \cap B = \{x\mid x\in A\wedge x \in B \}$.
-3. Symmetric Difference: $A \triangle B=\{x\mid(x\in A\vee \in B)\wedge x\notin A\cap B\}=\{x\mid x \in A\cup B \wedge x \notin A \cap B\}$.
+- Union
+  - $A \cup B = \{x\mid x\in A\vee x \in B\}$
+
+- Intersection
+
+  - $A \cap B = \{x\mid x\in A\wedge x \in B \}$
+
+  - Symmetric Difference (like XOR)
+    - $A \triangle B=\{x\mid(x\in A\vee \in B)\wedge x\notin A\cap B\}=\{x\mid x \in A\cup B \wedge x \notin A \cap B\}$
 
 ## Disjoint
 
