@@ -1,14 +1,14 @@
 ---
 abbrlink: 7f04b563
 categories:
-  - - StudyNotes
+    - - StudyNotes
 cover: >-
-  https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/24/8/Blog_cover%20(15)-min_7cec81cba2ba1adb3e5c3bedbe62b9f9.jpg
-date: '2024-08-29T15:03:18.568316+08:00'
+    https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/24/8/Blog_cover%20(15)-min_7cec81cba2ba1adb3e5c3bedbe62b9f9.jpg
+date: "2024-08-29T15:03:18.568316+08:00"
 tags: []
 title: Data Structures for Muggles
-updated: '2024-08-29T15:39:10.351+08:00' 
 ---
+
 # Prologue
 
 **All the following example will be shown in C Programming Language or pseudo code.**
@@ -21,10 +21,10 @@ Finally, I would like to declare that almost every photo I use comes from the ha
 
 ## Space Complexity
 
-- The amount of memory that it needs to run to completion.
-- $S(P)=c+S_P(I)$
-- Total space requirement = Fixed space requirement + Variable space requirements
-- We usually care more about the **Variable space requirements**.
+-   The amount of memory that it needs to run to completion.
+-   $S(P)=c+S_P(I)$
+-   Total space requirement = Fixed space requirement + Variable space requirements
+-   We usually care more about the **Variable space requirements**.
 
 For example, we have the following code like this.
 
@@ -44,7 +44,7 @@ float sum(float list[], int n)
 
 In this code, we DO NOT copy the array list, we just passes all parameters by value, so the variable space requirements $S_{sum}(I)=0$. Here's another example, let's look at the code first.
 
-**Recursive** 
+**Recursive**
 
 ```c
 float rsum(float list[], int n)
@@ -54,14 +54,14 @@ float rsum(float list[], int n)
 }
 ```
 
-In this case, 1 recursive call requires **K** bytes for *2 parameters* and the *return address*. If the initial length of `list[]` is **N**, the variable space requirements $S_{rsum}(N)=N\times K$ bytes.
+In this case, 1 recursive call requires **K** bytes for _2 parameters_ and the _return address_. If the initial length of `list[]` is **N**, the variable space requirements $S_{rsum}(N)=N\times K$ bytes.
 
 ## Time Complexity
 
-- The amount of computer time that it needs to run to completion.
-- $T(P)=c+T_P(I)$
-- Total time requirement = Compile time + Execution time
-- We usually care more about the **Execution time**.
+-   The amount of computer time that it needs to run to completion.
+-   $T(P)=c+T_P(I)$
+-   Total time requirement = Compile time + Execution time
+-   We usually care more about the **Execution time**.
 
 For example, this is a segment with execution time independent from the instance characteristics.
 
@@ -85,7 +85,7 @@ On the other hand, a segment with execution time dependent on the instance chara
 float rsum(float list[], int n)
 {
     if (n){
-         return rsum(list,n-1)+list[n-1];   
+         return rsum(list,n-1)+list[n-1];
     }
     return 0;
 }
@@ -95,9 +95,9 @@ float rsum(float list[], int n)
 
 For given parameters, computing time might not be the same. So, we should know the following cases.
 
-- Best-case count: Minimum number of steps that can be executed.
-- Worst-case count: Maximum number of steps that can be executed.
-- Average count: Average number of steps executed.
+-   Best-case count: Minimum number of steps that can be executed.
+-   Worst-case count: Maximum number of steps that can be executed.
+-   Average count: Average number of steps executed.
 
 Here, I'm going to use **insertion sort** to show you the difference between the best-case & the worst-case. If you don't know what it is, you can go check it out [here](https://www.geeksforgeeks.org/insertion-sort-algorithm/). Following is a snippet of the insertion sort algorithm in C.
 
@@ -111,23 +111,26 @@ for (j = i - 1; j >= 0 && t < a[j]; j--){
 
 **Worst-case**
 
-- a[0 : i-1] = [1, 2, 3, 4] and t = 0
-    - 4 compares
-- a[0 : i-1] = [1, 2, 3, …, i] and t = 0
-    - i compares
+-   a[0 : i-1] = [1, 2, 3, 4] and t = 0
+    -   4 compares
+-   a[0 : i-1] = [1, 2, 3, …, i] and t = 0
+    -   i compares
 
-For a list in **decreasing** order, the total compares will be 
+For a list in **decreasing** order, the total compares will be
+
 $$
 1+2+3+4+\dots+(n-1)=\frac{n(n-1)}{2}=\frac{1}{2}n^2-\frac{1}{2}n
 $$
+
 **Best-case**
 
-- a[0 : i-1] = [1, 2, 3, 4] and t = 5
-    - 1 compare
-- a[0 : i-1] = [1, 2, 3, …, i] and t = i + 1
-    - 1 compare
+-   a[0 : i-1] = [1, 2, 3, 4] and t = 5
+    -   1 compare
+-   a[0 : i-1] = [1, 2, 3, …, i] and t = i + 1
+    -   1 compare
 
 For a list in **increasing** order, the total compares will be
+
 $$
 1+1+1+\dots+1=n-1
 $$
@@ -138,10 +141,10 @@ Sometimes determining exact step counts is difficult and not useful, so we will 
 
 Now, we jump back to the example in previous part. What is the time complexity of insertion sort in the Big-O representation?
 
-- Worst case
-    - $\frac{1}{2}n^2-\frac{1}{2}n\Rightarrow O(n^2)$
-- Best case
-    - $n-1\Rightarrow O(n)$
+-   Worst case
+    -   $\frac{1}{2}n^2-\frac{1}{2}n\Rightarrow O(n^2)$
+-   Best case
+    -   $n-1\Rightarrow O(n)$
 
 ## Why Algorithm Is Important
 
@@ -153,14 +156,14 @@ As you can see, the exponential one grows exponentially, which means a little va
 
 ## Summary
 
-- Space and time complexity
-    - Best case, worst case, and average
-    - Variable and fixed requirements
-- Asymptotic complexity
-    - Big-O
-- Example:
-    - Insertion sort
-    - Selection sort
+-   Space and time complexity
+    -   Best case, worst case, and average
+    -   Variable and fixed requirements
+-   Asymptotic complexity
+    -   Big-O
+-   Example:
+    -   Insertion sort
+    -   Selection sort
 
 More information about complexity will be introduce when I take the algorithm course next year, or you can search for some sources if you really want to learn more about it.
 
@@ -188,7 +191,7 @@ int *array = (int *)malloc(size * sizeof(int)); // Finish the memory allocation
 free(array); // Free the memory after use
 ```
 
-- The `free()` function deallocates an area of memory allocated by `malloc()`.
+-   The `free()` function deallocates an area of memory allocated by `malloc()`.
 
 So, that's how to implement the dynamic 1-D array in C. Now, here comes another question. What if we want to store some data like the student ID and his exam scores? Should we store it in an 1-D array?
 
@@ -218,22 +221,23 @@ for (int i = 0; i < cols; i++) {
 ## Row-Major and Column-Major
 
 To know what is row-major & column-major, we can take a look at this example. If we have a matrix called A.
+
 $$
 A=\left[\begin{array}{lll}1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9\end{array}\right]
 $$
 
-- Column-major
-  - $A=[1, 4, 7, 2, 5, 8, 3, 6, 9]$
-  - Elements of the columns are contiguous in memory
-  - Top to bottom, left to right
-  - Matlab
-  - Fortran
-- Row-major
-  - $A=[1, 2, 3, 4, 5, 6, 7, 8, 9]$
-  - Elements of the rows are contiguous in memory
-  - Left to right, top to bottom
-  - C
-  - C++
+-   Column-major
+    -   $A=[1, 4, 7, 2, 5, 8, 3, 6, 9]$
+    -   Elements of the columns are contiguous in memory
+    -   Top to bottom, left to right
+    -   Matlab
+    -   Fortran
+-   Row-major
+    -   $A=[1, 2, 3, 4, 5, 6, 7, 8, 9]$
+    -   Elements of the rows are contiguous in memory
+    -   Left to right, top to bottom
+    -   C
+    -   C++
 
 # Stacks
 
@@ -241,14 +245,14 @@ $$
 
 Stack is also an fundamental structure that is opposite from Queue (will be mentioned later), it has some properties
 
-- Last-In-First-Out (LIFO)
-- Like a tennis ball box
-- Basic operations
-  - Push: Insert an element to the top of the stack 
-  - Pop: Remove and return the top element in the stack
-  - Peek/Top: Return the top element in the stack
-  - IsEmpty: Return true if the stack is empty
-  - IsFull: Return true if the stack is full
+-   Last-In-First-Out (LIFO)
+-   Like a tennis ball box
+-   Basic operations
+    -   Push: Insert an element to the top of the stack
+    -   Pop: Remove and return the top element in the stack
+    -   Peek/Top: Return the top element in the stack
+    -   IsEmpty: Return true if the stack is empty
+    -   IsFull: Return true if the stack is full
 
 The following is the diagram of the **push** and **pop** operation of stacks.
 
@@ -256,22 +260,22 @@ The following is the diagram of the **push** and **pop** operation of stacks.
 
 ## Application: Balanced Brackets
 
-- Check whether the brackets are balanced.
-- Examples:
-  - “]” → False
-  - “(a+b)*c-d” → True
-- Steps:
-  - Scan the expression from left to right
-  - When a left bracket, “[”, “{”, or “(”, is encountered, push it into stack.
-  - When a right bracket, “]”, “}”, or “)”, is encountered, pop the top element from stack and check whether they are matched.
-    - If the right bracket and the pop out element are not matched, return False.
-  - After scanning the whole expression, if the stack is not empty, return False.
+-   Check whether the brackets are balanced.
+-   Examples:
+    -   “]” → False
+    -   “(a+b)\*c-d” → True
+-   Steps:
+    -   Scan the expression from left to right
+    -   When a left bracket, “[”, “{”, or “(”, is encountered, push it into stack.
+    -   When a right bracket, “]”, “}”, or “)”, is encountered, pop the top element from stack and check whether they are matched.
+        -   If the right bracket and the pop out element are not matched, return False.
+    -   After scanning the whole expression, if the stack is not empty, return False.
 
 ## Dynamic Stacks
 
 If we want to dynamically allocate the size of the stack, we should still use `malloc()`. Here's an example using dynamic arrays.
 
-- Headers and declarations
+-   Headers and declarations
 
 ```c
 int *stack;
@@ -279,7 +283,7 @@ int capacity = 1; // Initial capacity
 int top = -1; // Representing empty stack
 ```
 
-- Create stack
+-   Create stack
 
 ```c
 void createStack() {
@@ -291,7 +295,7 @@ void createStack() {
 }
 ```
 
-- Array doubling when stack is full
+-   Array doubling when stack is full
 
 ```c
 void stackFull() {
@@ -305,7 +309,7 @@ void stackFull() {
 }
 ```
 
-- Check if the stack is empty
+-   Check if the stack is empty
 
 ```c
 int isEmpty() {
@@ -313,7 +317,7 @@ int isEmpty() {
 }
 ```
 
-- Push
+-   Push
 
 ```c
 void push(int value) {
@@ -324,25 +328,25 @@ void push(int value) {
 }
 ```
 
-- Pop
+-   Pop
 
 ```c
 int pop() {
     if (isEmpty()) {
         printf("Stack underflow. No elements to pop.\n");
-        return -1; 
+        return -1;
     }
     return stack[top--];
 }
 ```
 
-- Peek (or Top)
+-   Peek (or Top)
 
 ```c
 int peek() {
     if (isEmpty()) {
         printf("Stack is empty.\n");
-        return -1; 
+        return -1;
     }
     return stack[top];
 }
@@ -354,41 +358,47 @@ int peek() {
 
 As I mentioned, queues are the opposite of stacks. That is because although they are both linear or ordered list, they have totally different properties.
 
-- First-In-First-Out (FIFO)
-- New elements are added at the **rear** end
-- Old elements are deleted at the **front** end.
-- Basic operations
-  - Add: Insert element at the **rear** of a queue
-  - Delete: Remove element at the **front** of a queue 
-  - IsFull: Return true if the queue is full. (`rear == MAX_QUEUE_SIZE - 1`)
-  - IsEmpty: Return true if the queue is empty (`front == rear`)
+-   First-In-First-Out (FIFO)
+-   New elements are added at the **rear** end
+-   Old elements are deleted at the **front** end.
+-   Basic operations
+    -   Add: Insert element at the **rear** of a queue
+    -   Delete: Remove element at the **front** of a queue
+    -   IsFull: Return true if the queue is full. (`rear == MAX_QUEUE_SIZE - 1`)
+    -   IsEmpty: Return true if the queue is empty (`front == rear`)
 
 The following is the diagram of the insertion and deletion of the queues.
 
 ![Operations of the Queue](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240912211242955.png)
 
 If now e have a queue that contains 5 elements but has the length 6 (null stands for no element there).
+
 $$
 Q = [A, B, C, D, E, null]
 $$
+
 After we **delete** an element from the front and **add** another one at the rear, it will be like this.
+
 $$
 Q = [null, B, C, D, E, F]
 $$
-The queue will be regarded as full since rear == MAX_QUEUE_SIZE, but we know that actually some empty space remains. So, how to fix it? We can think about when a customer at front of the line leaves, what will other customers do? 
+
+The queue will be regarded as full since rear == MAX_QUEUE_SIZE, but we know that actually some empty space remains. So, how to fix it? We can think about when a customer at front of the line leaves, what will other customers do?
 
 They move forward. So, we should shift other elements forward after deletion. That way, the queue became
+
 $$
 Q = [B, C, D, E, F, null]
 $$
-Voila! We fix it! But if we do this at every deletion, the program will be way too slow. So here's the next question, what should we do to fix it? 
+
+Voila! We fix it! But if we do this at every deletion, the program will be way too slow. So here's the next question, what should we do to fix it?
 
 ## Circular Queue
 
 In a circular queue, the **front** and the **rear** will have some differences comparing with the normal queue.
 
-- **front**: One position counterclockwise from the position of the front element.
-- **rear**: The position of the rear element.
+-   **front**: One position counterclockwise from the position of the front element.
+-   **rear**: The position of the rear element.
 
 This is how it looks like.
 
@@ -396,7 +406,7 @@ This is how it looks like.
 
 The addition or insertion in an circular queue has the following steps:
 
-1. Move **rear** one position clockwise: 
+1. Move **rear** one position clockwise:
    `rear = (rear + 1) % MAX_QUEUE_SIZE`
 
 2. Put element into `queue[rear]`
@@ -412,7 +422,7 @@ And the deletion steps are below:
 
 ![Deletion in an Circular Queue](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240912215134478.png)
 
-In a circular queue, how to know a queue is full? We can think about when a queue is keep adding elements until it's full, what will the **front** and **rear** go? The answer is, when elements are keep being added to a circular queue, the **rear** will keep going clockwise and finally equals to the **front**. 
+In a circular queue, how to know a queue is full? We can think about when a queue is keep adding elements until it's full, what will the **front** and **rear** go? The answer is, when elements are keep being added to a circular queue, the **rear** will keep going clockwise and finally equals to the **front**.
 
 On the other hand, we can also use this to determine if the queue is empty. Because if the elements in the queue are keep being deleted, the **front** will keep moving clockwise until it equals to **rear**.
 
@@ -438,10 +448,10 @@ So, to avoid this waste, we want to store data **dispersedly** in memory, just l
 
 But now, we are facing another problem. How do we know the order of the data if we store an sequential data like this? We use linked list! Let's start talking about linked list right away. Here is the features of it.
 
-- In memory, list elements are stored in an arbitrary order.
-- The fundamental unit is called a **node**.
-- In a normal linked list, a node contains **data** and **link/pointer**.
-- The **link** is used to point to the next element.
+-   In memory, list elements are stored in an arbitrary order.
+-   The fundamental unit is called a **node**.
+-   In a normal linked list, a node contains **data** and **link/pointer**.
+-   The **link** is used to point to the next element.
 
 To answer the previous question, we need to talk about why linked list is called linked list. It's because every element in the list **linked** to the very next data, so we can know the sequence even thought we didn't save them sequentially. To let you better understand, the following graph is the illustration of how it works.
 
@@ -457,10 +467,10 @@ Another way that usually seen to draw a linked list is like this.
 
 To insert K between B and C, we have to follow the steps below.
 
-- Get an unused node *a*.
-- Set the data field of a to K.
-- Set the link of a to point to C.
-- Set the link of B to point to *a*.
+-   Get an unused node _a_.
+-   Set the data field of a to K.
+-   Set the link of a to point to C.
+-   Set the link of B to point to _a_.
 
 ![Insertion of Linked List](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240919220608080.png)
 
@@ -468,8 +478,8 @@ To insert K between B and C, we have to follow the steps below.
 
 To delete C in the linked list, we have to follow the steps below.
 
-- Find the element precedes C.
-- Set the link of the element to the position of D.
+-   Find the element precedes C.
+-   Set the link of the element to the position of D.
 
 ![Deletion in Linked List](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240919220726626.png)
 
@@ -505,7 +515,7 @@ return desiredNode->data;
 
 ### Delete "C"
 
-- Step 1: find the node before the node to be removed
+-   Step 1: find the node before the node to be removed
 
 ```c
 beforeNode = first->link;
@@ -513,7 +523,7 @@ beforeNode = first->link;
 
 ![Step 1 of Deletion](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240919221635938.png)
 
-- Step 2: save pointer to node that will be deleted
+-   Step 2: save pointer to node that will be deleted
 
 ```c
 deleteNode = beforeNode->link;
@@ -521,7 +531,7 @@ deleteNode = beforeNode->link;
 
 ![Step 2 of Deletion](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240919221729705.png)
 
-- Step 3: change pointer in *beforeNode*
+-   Step 3: change pointer in _beforeNode_
 
 ```c
 beforeNode->link = beforeNode->link->link;
@@ -532,7 +542,7 @@ free(deleteNode);
 
 ### Insert “K” before “A"
 
-- Step 1: get an unused node, set its data and link fields
+-   Step 1: get an unused node, set its data and link fields
 
 ```c
 MALLOC( newNode, sizeof(*newNode));
@@ -542,7 +552,7 @@ newNode->link = first;
 
 ![Step 1](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240919221941849.png)
 
-- Step2: update *first*
+-   Step2: update _first_
 
 ```c
 first = newNode
@@ -564,7 +574,7 @@ beforeNode->link = newNode;
 
 ## Circular Linked List
 
-- The last node points to the first node.
+-   The last node points to the first node.
 
 ![Circular Linked List](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240919222430801.png)
 
@@ -572,8 +582,8 @@ beforeNode->link = newNode;
 
 In general linked list, to find an element will always start at the beginning of the list, but it's not the case in doubly linked list!
 
-- Right link: forward direction
-- Left link: backward direction
+-   Right link: forward direction
+-   Left link: backward direction
 
 ![Doubly Linked List](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240919222723904.png)
 
@@ -608,12 +618,12 @@ node->rlink = newNode;
 
 ## Linked Stacks & Queues
 
-- Linked stack
-    - Push: add to a linked list
-    - Pop: delete from a linked list
-- Linked queue
-    - AddQ: add to a rear of a linked list
-    - DeleteQ: delete the front of a linked list
+-   Linked stack
+    -   Push: add to a linked list
+    -   Pop: delete from a linked list
+-   Linked queue
+    -   AddQ: add to a rear of a linked list
+    -   DeleteQ: delete the front of a linked list
 
 ![Linked Stack](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240919223932702.png)
 
@@ -621,13 +631,13 @@ node->rlink = newNode;
 
 ## Summary
 
-- Linked lists
-- Doubly linked lists
-- Doubly circular linked lists
-- Operations: Get, Insert, and Delete
-- Applications:
-    - Linked stacks
-    - Linked queues
+-   Linked lists
+-   Doubly linked lists
+-   Doubly circular linked lists
+-   Operations: Get, Insert, and Delete
+-   Applications:
+    -   Linked stacks
+    -   Linked queues
 
 # Trees & Binary Trees
 
@@ -635,24 +645,24 @@ node->rlink = newNode;
 
 Tree is an data structure that looks like a genealogy, so there's a lot of terms that similar to the terms in a family. Now, let's introduce some terms about the trees.
 
-- Degree of a node
-  -  number of subtrees
-- Degree of a tree
-  - maximum of the degree of the nodes in the tree
-- Height (depth) of a tree
-  - maximum level of any node in the tree
-- Leaf (or Terminal)
-  - nodes having degree zeros
-- Internal node
-  - not leaf & not root
-- Children
-  - roots of subtrees of a node X
-- Parent
-  -  X is a parent
-- Sibling
-  - children of the same parent
-- Ancestor
-  -  all the nodes along the path from the root to the node 
+-   Degree of a node
+    -   number of subtrees
+-   Degree of a tree
+    -   maximum of the degree of the nodes in the tree
+-   Height (depth) of a tree
+    -   maximum level of any node in the tree
+-   Leaf (or Terminal)
+    -   nodes having degree zeros
+-   Internal node
+    -   not leaf & not root
+-   Children
+    -   roots of subtrees of a node X
+-   Parent
+    -   X is a parent
+-   Sibling
+    -   children of the same parent
+-   Ancestor
+    -   all the nodes along the path from the root to the node
 
 ![Tree](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240920103633068.png)
 
@@ -668,10 +678,10 @@ It's list representation will be like $\text{(A (B (E (K, L), F), C (G), D (H (M
 
 Binary trees are trees that have the following characteristics.
 
-- Degree-2 tree
-- Recursive definition
-  - Each node has left subtree and/or right subtree.
-  - Left subtree (or right subtree) is a binary tree.
+-   Degree-2 tree
+-   Recursive definition
+    -   Each node has left subtree and/or right subtree.
+    -   Left subtree (or right subtree) is a binary tree.
 
 This is an picture of a binary tree.
 
@@ -685,24 +695,24 @@ A full binary tree is a tree that has height $h$ and $2^h-1$ nodes. This is the 
 
 Please note that each full binary tree of the same height will only have one type. If we numbering the nodes in a full binary tree from **top to bottom**, **left to right**, then we will have the following properties.
 
-- Let $n$ be the number of nodes in a FULL binary tree
-  - Parent node of $i$ is node $floor(\frac{i}{2})$
-  - Left child of node $i$ is node $2i$
-  - Right child of node $i$ is node $2i+1$ 
+-   Let $n$ be the number of nodes in a FULL binary tree
+    -   Parent node of $i$ is node $floor(\frac{i}{2})$
+    -   Left child of node $i$ is node $2i$
+    -   Right child of node $i$ is node $2i+1$
 
 ## Skewed Binary Trees
 
-- At least one node at each of first $h$ levels
-- Minimum number of nodes for a height $h$
+-   At least one node at each of first $h$ levels
+-   Minimum number of nodes for a height $h$
 
 ![Skewed Binary Tree](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240920105648862.png)
 
 ## Number of Nodes and Height
 
-- Let $n$ be the number of nodes in a binary tree whose height is $h$.
-  - $h\le n\le 2^h-1$
-  - $\log_2(n+1)\le h$
-  - The height **h** of a binary tree is at least $log_2(n+1)$.
+-   Let $n$ be the number of nodes in a binary tree whose height is $h$.
+    -   $h\le n\le 2^h-1$
+    -   $\log_2(n+1)\le h$
+    -   The height **h** of a binary tree is at least $log_2(n+1)$.
 
 ## Complete Binary Trees
 
@@ -710,7 +720,7 @@ How to create a complete binary tree? Just follow the steps and check out the gr
 
 1. Create a full binary tree which has at least $n$ nodes.
 2. Number the nodes sequentially.
-3. The binary tree defined by the node numbered $1$ through $n$ is the n-node complete binary tree. 
+3. The binary tree defined by the node numbered $1$ through $n$ is the n-node complete binary tree.
 
 ![Complete Binary Tree](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240920143648565.png)
 
@@ -718,7 +728,7 @@ How to create a complete binary tree? Just follow the steps and check out the gr
 
 ### Array Representation
 
-- Number the nodes using the numbering scheme for a full binary tree. The node that is numbered `i` is stored in `tree[i]`.
+-   Number the nodes using the numbering scheme for a full binary tree. The node that is numbered `i` is stored in `tree[i]`.
 
 ![Array Representation](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240920144242000.png)
 
@@ -728,8 +738,8 @@ Since the number should be placed in the FULL binary tree, sometimes there will 
 
 ### Linked Representation
 
-- Each binary tree node is represented as an object whose data type is `TreeNode`.
-- The space required by an `n` node binary tree is `n * (space required by one node)`.
+-   Each binary tree node is represented as an object whose data type is `TreeNode`.
+-   The space required by an `n` node binary tree is `n * (space required by one node)`.
 
 ```c
 typedef struct node *treePointer;
@@ -745,15 +755,15 @@ typedef struct node{
 
 ## Binary Tree Traversal
 
-- Visiting each node in the tree exactly *once*
-- A traversal produces a *linear order for the nodes* in a tree
-  - LVR, LRV, VLR, VRL, RVL, and RLV
-    - L: moving left
-    - V: visiting the node
-    - R: moving right
-  - L**V**R: Inorder
-  - **V**LR: Preorder
-  - LR**V**: Postorder
+-   Visiting each node in the tree exactly _once_
+-   A traversal produces a _linear order for the nodes_ in a tree
+    -   LVR, LRV, VLR, VRL, RVL, and RLV
+        -   L: moving left
+        -   V: visiting the node
+        -   R: moving right
+    -   L**V**R: Inorder
+    -   **V**LR: Preorder
+    -   LR**V**: Postorder
 
 ### Inorder
 
@@ -805,20 +815,20 @@ This is an illustration from GeeksforGeeks.
 
 ### Level-Order
 
-- Visiting the nodes following the order of node numbering scheme (sequential numbering)
+-   Visiting the nodes following the order of node numbering scheme (sequential numbering)
 
 ![Level-Order](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240926210505026.png)
 
 ### Iterative Traversal Using Stack
 
-The following is an *inorder* example.
+The following is an _inorder_ example.
 
-- Push **root** into stack
-- Push the **left** into stack until reaching a **null** node
-- Pop the **top** node from the stack
-  - If there's no node in stack, break
-- Push the **right child** of the pop-out node into stack
-- Go back to step 2 from the **right child**
+-   Push **root** into stack
+-   Push the **left** into stack until reaching a **null** node
+-   Pop the **top** node from the stack
+    -   If there's no node in stack, break
+-   Push the **right child** of the pop-out node into stack
+-   Go back to step 2 from the **right child**
 
 Here's the graph to let you more understand the workflow.
 
@@ -844,23 +854,23 @@ We can clearly see that if we are only given a sequence in 1 specific order, the
 
 ## Intro
 
-The binary search tree, of course, it's an binary tree. But beside this, it has some unique properties so that we can call it a binary *search* tree.
+The binary search tree, of course, it's an binary tree. But beside this, it has some unique properties so that we can call it a binary _search_ tree.
 
-- Each node has a **(key, value)** pair
-- Keys in the tree are distinct
-- For every node `x`
-  - all keys in the **left** subtree are **smaller** than that in `x`
-  - all keys in the **right** subtree are **larger** than that in `x`
-- The subtrees are also binary search tree.
+-   Each node has a **(key, value)** pair
+-   Keys in the tree are distinct
+-   For every node `x`
+    -   all keys in the **left** subtree are **smaller** than that in `x`
+    -   all keys in the **right** subtree are **larger** than that in `x`
+-   The subtrees are also binary search tree.
 
 ## Operations
 
 ### Search(root, key)
 
-- k == root's key, terminate
-- k < root's key, check left subtree
-- k > root's key, check right subtree
-- Time complexity is $O(height)=O(n)$, $n$ is number of nodes
+-   k == root's key, terminate
+-   k < root's key, check left subtree
+-   k > root's key, check right subtree
+-   Time complexity is $O(height)=O(n)$, $n$ is number of nodes
 
 ![Search](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240926213639144.png)
 
@@ -893,23 +903,23 @@ return NULL
 ### Insert(root, key, value)
 
 1. Search the tree
-   - Matched: Do nothing
-   - No match: Obtain `LastNode`, which is the last node during the search.
+    - Matched: Do nothing
+    - No match: Obtain `LastNode`, which is the last node during the search.
 2. Add new node
-   - Create a new node with (key, value)
-   - If key > the key of `LastNode`, add the new node as **right child**
-   - If key < the key of `LastNode`, add the new node as **left child**
+    - Create a new node with (key, value)
+    - If key > the key of `LastNode`, add the new node as **right child**
+    - If key < the key of `LastNode`, add the new node as **left child**
 
 ![Insert](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/insert.jpg)
 
 ### Delete(key)
 
- There're 4 cases in the deletion.
+There're 4 cases in the deletion.
 
-- No element with delete key
-- Element is a *leaf*
-- Element is a degree-1 node
-- Element is a degree-2 node
+-   No element with delete key
+-   Element is a _leaf_
+-   Element is a degree-1 node
+-   Element is a degree-2 node
 
 Since the 1st case means we don't do anything, we will start from the 2nd case.
 
@@ -925,7 +935,7 @@ Link the single child of the `DeletedNode` to the parent of `DeletedNode`.
 
 #### Delete a Degree-2 Node
 
-There two ways to do it. We can replace the deleted node with 
+There two ways to do it. We can replace the deleted node with
 
 1. **Largest** pair in its **left** subtree
 2. **Smallest** pair in its **right** subtree
@@ -940,9 +950,9 @@ There two ways to do it. We can replace the deleted node with
 
 Rank of node $x$
 
-- The number of the nodes whose key values are smaller than $x$
-- Position of $x$ **inorder**
-- Like the **index** of an array
+-   The number of the nodes whose key values are smaller than $x$
+-   Position of $x$ **inorder**
+-   Like the **index** of an array
 
 # Heaps
 
@@ -985,15 +995,15 @@ Here I use max heap for example, but it's very similar with the min heap so you 
 
 ![Step 3](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240927012652095.png)
 
-This process is also called *bubbling up process* since it looks like a bubble goes up the water surface.
+This process is also called _bubbling up process_ since it looks like a bubble goes up the water surface.
 
 After we know how to insert things to a heap, we also care about it's speed. The time complexity of the inseriton is $O(\log{n})$, which $n$ is the heap size (height/level).
 
 ### Delete() or Pop()
 
-- Removing the **root** of the heap
-    - **Root** is the min element in a min heap
-    - **Root** is the max element in a max heap
+-   Removing the **root** of the heap
+    -   **Root** is the min element in a min heap
+    -   **Root** is the max element in a max heap
 
 Following is the steps to do this operation
 
@@ -1019,7 +1029,7 @@ In previous part, we use the situation in hospital as an example to explain why 
 
 ![Hospital](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20241017161532111.png)
 
-But doctor1 becomes off duty, the 2 priority queues should be melded together for doctor2. To do this, we need the Leftist heaps! 
+But doctor1 becomes off duty, the 2 priority queues should be melded together for doctor2. To do this, we need the Leftist heaps!
 
 ## Extended Binary Trees
 
@@ -1034,25 +1044,29 @@ Let's say `x` is a node in an extended binary tree, then function `shortest(x)` 
 ![Shortest](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20241017225738232.png)
 
 And here's the formula for calculate the `shortest(x)` for all `x` belongs to internal nodes (since `shortest(x)` for all x in external nodes are 0).
+
 $$
 shortest(x)=1+min(shortest(leftChild(x)), shortest(rightChild(x)))
 $$
+
 ![Example](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20241017230509271.png)
 
 ### Function: Count(x)
 
 This one will be a little easier to understand. Count means the nubmer of internal nodes. So for all `x`, which `x` is an internal node, we can calculate `count(x)` by the following formula (since `count(x)` of all x in external nodes are 0).
+
 $$
 count(x)=1+count(leftChild(x))+count(rightChild(x))
 $$
+
 ![Example](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20241017233747467.png)
 
 ## Height-Biased Leftist Trees (HBLT)
 
 Following is the definitioan of a HBLT:
 
-- An extended binary tree
-- For every internal node $x$, $shortest(leftChild(x))\geq shortest(rightChild(x))$
+-   An extended binary tree
+-   For every internal node $x$, $shortest(leftChild(x))\geq shortest(rightChild(x))$
 
 In the following graph, B is a HBLT while A isn't.
 
@@ -1062,8 +1076,8 @@ In the following graph, B is a HBLT while A isn't.
 
 Following is the definition of a WBLT:
 
-- An extended binary tree
-- For every internal node $x$, $count(leftChild(x))\geq count(rightChild(x))$
+-   An extended binary tree
+-   For every internal node $x$, $count(leftChild(x))\geq count(rightChild(x))$
 
 In the following graph, the left is a WBLT while the right isn't.
 
@@ -1073,35 +1087,38 @@ In the following graph, the left is a WBLT while the right isn't.
 
 ### 0x00
 
-- The rightmost path is a shortest from root to external node, that is `shortest(root)`.
+-   The rightmost path is a shortest from root to external node, that is `shortest(root)`.
 
 ![Example](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20241017235911009.png)
 
 ### 0x01
 
-- Number of internal nodes is $n\geq 2^{shortest(root)}-1$.
+-   Number of internal nodes is $n\geq 2^{shortest(root)}-1$.
 
-That's because the first `shortest(root)` level of nodes constitute a full binary tree, and  for a `shortest(root)` level full binary tree, the total number of nodes is the following.
+That's because the first `shortest(root)` level of nodes constitute a full binary tree, and for a `shortest(root)` level full binary tree, the total number of nodes is the following.
+
 $$
 \displaystyle\sum_{i=1}^{shortest(root)}2^{i-1}=2^{shortest(x)}-1
 $$
+
 And that's why $n$ must be larger than $2^{shortest(root)}-1$. Also, we can infer the following by this inequality.
+
 $$
 shortest(root)\le\log_2(n+1)
 $$
 
 ### 0x02
 
-- Length of rightmost path is $O(\log n)$, where $n$ is the number of nodes in a leftist tree.
+-   Length of rightmost path is $O(\log n)$, where $n$ is the number of nodes in a leftist tree.
 
 ## Leftist Trees as Priority Queue
 
 Remember the what I said in the first of this part? We need to make an priority queue that is easy to be merged with other one! Since we have learned min heaps and max heaps before, and leftist tree is actually a type of heap, we have the following types of leftist trees.
 
--  Min Leftist Tree
-    - Leftist tree that is a min tree. Used as a min priority queue.
-- Max Leftist Tree
-    - Leftist tree that is a max tree. Used as a max priority queue.
+-   Min Leftist Tree
+    -   Leftist tree that is a min tree. Used as a min priority queue.
+-   Max Leftist Tree
+    -   Leftist tree that is a max tree. Used as a max priority queue.
 
 ## Operations
 
@@ -1109,8 +1126,8 @@ Given that the limited space, I will only use **min leftist trees** to be the ex
 
 ### Insert(x, T1)
 
-- Create a min leftist tree `T2` containing only `x`
-- Merge `T1` and `T2`
+-   Create a min leftist tree `T2` containing only `x`
+-   Merge `T1` and `T2`
 
 Following is the animation of inserting a **13** into a min leftist tree.
 
@@ -1118,9 +1135,9 @@ Following is the animation of inserting a **13** into a min leftist tree.
 
 ### DeleteMin(T)
 
-- Get subtrees of root, `T_left` and `T_right`
-- Delete the original `root`
-- Merge `T_left` and `T_right`
+-   Get subtrees of root, `T_left` and `T_right`
+-   Delete the original `root`
+-   Merge `T_left` and `T_right`
 
 Following is the animation of deleting a minimum (6 in this case) from a min leftist tree.
 
@@ -1128,20 +1145,20 @@ Following is the animation of deleting a minimum (6 in this case) from a min lef
 
 ### Meld(T1, T2) or Merge(T1, T2)
 
-- Phase 1: Top-down process
-    - Maintaining the property of **min tree**
-    - Going down along the rightmost paths in `T1` or `T2` and comparing their roots
-    - For the tree with smaller root, going down to its right child
-        - If no right child, attaching another tree as right subtree.
-        - Else, comparing again
-- Phase 2: Bottom-up process
-    - Maintaining the property of **leftist tree**
-    - Climbing up through the rightmost path of the new tree
-        - If not meet the definition of a leftist tree (HBLT or WBLT), interchanging the left and right subtrees of the node
-- Time Complexity is $O(\log m)$
-    - Length of rightmost path is $O(\log n)$, where $n$ is the number of nodes in a leftist tree
-    - A merge operation moves down and climbs up along the rightmost paths of the two leftist trees.
-    - $m$ is number of total elements in 2 leftist trees
+-   Phase 1: Top-down process
+    -   Maintaining the property of **min tree**
+    -   Going down along the rightmost paths in `T1` or `T2` and comparing their roots
+    -   For the tree with smaller root, going down to its right child
+        -   If no right child, attaching another tree as right subtree.
+        -   Else, comparing again
+-   Phase 2: Bottom-up process
+    -   Maintaining the property of **leftist tree**
+    -   Climbing up through the rightmost path of the new tree
+        -   If not meet the definition of a leftist tree (HBLT or WBLT), interchanging the left and right subtrees of the node
+-   Time Complexity is $O(\log m)$
+    -   Length of rightmost path is $O(\log n)$, where $n$ is the number of nodes in a leftist tree
+    -   A merge operation moves down and climbs up along the rightmost paths of the two leftist trees.
+    -   $m$ is number of total elements in 2 leftist trees
 
 The following is the animation of deleting a minimum from a min leftist tree, but please focus on the merge operation.
 
@@ -1149,10 +1166,10 @@ The following is the animation of deleting a minimum from a min leftist tree, bu
 
 ### Initialize()
 
-- Create $n$ single node min leftist trees and place them in a FIFO queue
-- Repeatedly remove two min leftist trees from the FIFO queue, merge them, and put the resulting min leftist tree into the FIFO queue
-- The process terminates when only 1 min leftist tree remains in the FIFO queue
-- Time complexity is $n+2\times(1\times\frac{n}{2}+2\times\frac{n}{4}+3\times\frac{n}{8}+\dots)=O(n)$
+-   Create $n$ single node min leftist trees and place them in a FIFO queue
+-   Repeatedly remove two min leftist trees from the FIFO queue, merge them, and put the resulting min leftist tree into the FIFO queue
+-   The process terminates when only 1 min leftist tree remains in the FIFO queue
+-   Time complexity is $n+2\times(1\times\frac{n}{2}+2\times\frac{n}{4}+3\times\frac{n}{8}+\dots)=O(n)$
 
 # Disjoint Sets
 
@@ -1161,6 +1178,7 @@ The following is the animation of deleting a minimum from a min leftist tree, bu
 Let's forget about the hospital scene, you are now a police officer. You know the relationship of 10 gangster, and No.1 & No.9 are suspects. How do you tell if they're in a same gang? Let's why we need disjoint sets! We can use this data structure to store the data like this.
 
 There should Dbe no element appears in 2 different sets in the disjoint sets, which means a unique element should only appear once. Here are 2 examples.
+
 $$
 \begin{aligned}
 &S_1=\{0, 6, 7, 8\}\quad S_2=\{1, 4, 9\}\quad S_3=\{2, 3, 5\}\quad\text{Disjoint sets}\\
@@ -1178,10 +1196,10 @@ To represent a disjoint set, we **link the node from the children to the parent*
 
 ### Find(i)
 
-- Find the set containing the targeted element
-- Start at the node representing element $i$ and climb up the tree until the root is reached. Then return the element in the root
-- Using an integer array to store the parent of each element
-- Time complexity depends on the level of $i$
+-   Find the set containing the targeted element
+-   Start at the node representing element $i$ and climb up the tree until the root is reached. Then return the element in the root
+-   Using an integer array to store the parent of each element
+-   Time complexity depends on the level of $i$
 
 ![Image](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20241018104104634.png)
 
@@ -1194,11 +1212,11 @@ return i;
 
 ### Union(i, j)
 
-- Combine 2 disjoint sets into 1
-- $i$ & $j$ are the roots of different trees, so $i\ne j$
-- For tree representation, we set the parent field of one root pointing to the other root
-- Which is making one tree as a subtree of the other. `parent[j] = i`
-- Time complexity is $O(1)$
+-   Combine 2 disjoint sets into 1
+-   $i$ & $j$ are the roots of different trees, so $i\ne j$
+-   For tree representation, we set the parent field of one root pointing to the other root
+-   Which is making one tree as a subtree of the other. `parent[j] = i`
+-   Time complexity is $O(1)$
 
 $$
 G_1=\{1, 3\}\quad G_2=\{6, 7, 8, 9, 10\}\quad G_3=G_1\cup G_2=\{1, 3, 6, 7, 8, 9, 10\}
@@ -1221,24 +1239,24 @@ For each `find(0)`, we trace from 0 to the root.
 
 ![Image](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20241018112442076.png)
 
-- Time complexity 
-  - Time to initailize `parent[i] = 0` for all elements is $O(n)$
-  - $n-1$ times of `union()`, each time takes $O(1)$, so total is $O(n)$
-  - $n-1$ times of `find()`, each time takes $i$, so total is $\displaystyle\sum^n_{i=2}i=O(n^2)$
+-   Time complexity
+    -   Time to initailize `parent[i] = 0` for all elements is $O(n)$
+    -   $n-1$ times of `union()`, each time takes $O(1)$, so total is $O(n)$
+    -   $n-1$ times of `find()`, each time takes $i$, so total is $\displaystyle\sum^n_{i=2}i=O(n^2)$
 
 How to avoid the creation of degenerate tree? Let's see in next part of this chapter!
 
 ## Weight Rule for Union(i, j)
 
-- Make tree with fewer number of elements a subtree of the other tree
-- The count of the new tree is the sum of the counts of the trees that are united
+-   Make tree with fewer number of elements a subtree of the other tree
+-   The count of the new tree is the sum of the counts of the trees that are united
 
 ![Weight Rule](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20241018113423678.png)
 
 ## Height Rule for Union(i, j)
 
-- Make tree with smaller height a subtree of the other tree
-- The height increases only when two trees of equal height are united
+-   Make tree with smaller height a subtree of the other tree
+-   The height increases only when two trees of equal height are united
 
 ![Height Rule](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/Height%20Rule.jpg)
 
@@ -1246,45 +1264,47 @@ How to avoid the creation of degenerate tree? Let's see in next part of this cha
 
 ### Lemma 1
 
-- Suppose we start with single element trees and perform unions using either the height rule or the weight rule
+-   Suppose we start with single element trees and perform unions using either the height rule or the weight rule
 
-- The height of a tree with $p$ element is at most $floor(\log_2p)+1$
-- Processing an intermixed sequence of $u-1$ unions and $f$ finds, the time complexity will be $O(u+f\log u)$
-- $u-1$ unions part, we generate a tree with $u$ nodes
-- $f$ finds part, it requires at most $f\times[floor(\log_2u)+1]$
+-   The height of a tree with $p$ element is at most $floor(\log_2p)+1$
+-   Processing an intermixed sequence of $u-1$ unions and $f$ finds, the time complexity will be $O(u+f\log u)$
+-   $u-1$ unions part, we generate a tree with $u$ nodes
+-   $f$ finds part, it requires at most $f\times[floor(\log_2u)+1]$
 
 ### Improving Find(i) with Collapsing Rule
 
-Collapsing rule means: 
+Collapsing rule means:
 
-- Make all nodes on find path point to tree root
-- Pay some more efforts this time, but the `Find()` operations in the future could save time
-- Slower this time, faster next time
+-   Make all nodes on find path point to tree root
+-   Pay some more efforts this time, but the `Find()` operations in the future could save time
+-   Slower this time, faster next time
 
 Here's an example, if we have a sequence $find(7),find(7),find(7),find(7),find(7)$ to this tree.
 
 ![Tree](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/tree.jpg)
 
-- **Without** collapsing rule
-  - A $find(7)$ requires climbing up 3 times
-  - Total is $5\times 3=15$ moves
-- **With** collapsing rule
-  - The first $find(7)$ requires climbing up 3 times
-  - The remainding $find(7)$ only needs to climbing up once
-  - Total is $3+4\times 1=7$ moves
+-   **Without** collapsing rule
+    -   A $find(7)$ requires climbing up 3 times
+    -   Total is $5\times 3=15$ moves
+-   **With** collapsing rule
+    -   The first $find(7)$ requires climbing up 3 times
+    -   The remainding $find(7)$ only needs to climbing up once
+    -   Total is $3+4\times 1=7$ moves
 
 ### Lemma 2 (By Tarjan and Van Leeuwen)
 
 Let $T(f, u)$ be the maximum time required to process any intermixed sequence of $f$ finds and $u$ unions. Assuming that $u\geq\frac{n}{2}$
+
 $$
 k_1\times(n+f\times\alpha(f+n,n))\le T(f,u)\le k_2\times(n, f\times\alpha(f+n,n))
 $$
+
 where $k_1$ and $k_2$ are constants, $n$ is the number of elements, and $\alpha(f+n, n)$ is **inverse Ackermann function**.
 
-- Ackermann function
-  - A function of 2 parameters whose value grows very, very fast
-- Inverse Ackermann function
-  - A function of 2 parameters whose value grows very, very slow
+-   Ackermann function
+    -   A function of 2 parameters whose value grows very, very fast
+-   Inverse Ackermann function
+    -   A function of 2 parameters whose value grows very, very slow
 
 ## Time Complexity
 
@@ -1298,20 +1318,21 @@ Now, let's talk about the brains of the humanities. In out brain, each region is
 
 ![Brain](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20241024152300167.png)
 
- But the works in reality are complicated, so we usually use multi-part of out brain to achieve a task. That's what we can represented by a graph. It will be easier for us to visualize and further analysis.
+But the works in reality are complicated, so we usually use multi-part of out brain to achieve a task. That's what we can represented by a graph. It will be easier for us to visualize and further analysis.
 
 Graph can be represented as this form.
+
 $$
 G=(V, E)
 $$
 
-- $V$: Set of vertices
-  - Vertices are also called nodes or points
-- $E$: Set of edges
-  - Each edges connected 2 different vertices
-  - Edges are also called arcs & lines
-  - In **undirected** graph, $(u, v)$ and $(v, u)$ represent the *same* edge
-  - In **directed** graph, $<u, v>$ and $<v, u>$ represent *different* edges
+-   $V$: Set of vertices
+    -   Vertices are also called nodes or points
+-   $E$: Set of edges
+    -   Each edges connected 2 different vertices
+    -   Edges are also called arcs & lines
+    -   In **undirected** graph, $(u, v)$ and $(v, u)$ represent the _same_ edge
+    -   In **directed** graph, $<u, v>$ and $<v, u>$ represent _different_ edges
 
 With graph, we can do a lot of applications, such as planning a route from city A to city B, witch we can let vertices to be cities, edges to be roads and edge weight to be the distances or times we need. Now, let's go to the next part and know more terms of graph.
 
@@ -1321,7 +1342,7 @@ With graph, we can do a lot of applications, such as planning a route from city 
 
 There' direction between the connections of the vertices.
 
- ![Directed Graph](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20241025015028390.png)
+![Directed Graph](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20241025015028390.png)
 
 ### Undirected Graph
 
@@ -1343,11 +1364,11 @@ Length of a path is the number of edges on it.
 
 ### Simple Path & Cycle
 
-- SImple Path
-    - No repeating vertices (except for the case that the **first** and the **last** are the same)
-- Cycle
-    - Simple path
-    - The first and the last vertices are the same
+-   SImple Path
+    -   No repeating vertices (except for the case that the **first** and the **last** are the same)
+-   Cycle
+    -   Simple path
+    -   The first and the last vertices are the same
 
 $$
 \begin{aligned}
@@ -1359,17 +1380,17 @@ $$
 
 ### Connection
 
-- 2 vertices $u$ and $v$ are *connected* **if and only if** there's a path from $u$ to $v$
-- Connected component
-    - A maximum subgraph that are connected to each other
-- Strongly connected component
-    - In a direct graph, every pair of vertices $u$ and $v$ has a directed path from $u$ to $v$ and also from $v$ to $u$
+-   2 vertices $u$ and $v$ are _connected_ **if and only if** there's a path from $u$ to $v$
+-   Connected component
+    -   A maximum subgraph that are connected to each other
+-   Strongly connected component
+    -   In a direct graph, every pair of vertices $u$ and $v$ has a directed path from $u$ to $v$ and also from $v$ to $u$
 
 ![Strongly Connected Components - GeeksforGeeks](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/scc_fianldrawio.png)
 
 ## Complete Graph
 
-- Having the maximum number of edges
+-   Having the maximum number of edges
 
 ![Complete Graph](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20241025020132018.png)
 
@@ -1379,48 +1400,48 @@ $$
 
 If we set $n$ to be the number of vertices and $e$ to be the number of edges, then
 
-- **Undirected Graph**
-    - $e\le n(n-1)/2$
-- **Directed Graph**
-    - $e\le n(n-1)$
+-   **Undirected Graph**
+    -   $e\le n(n-1)/2$
+-   **Directed Graph**
+    -   $e\le n(n-1)$
 
 ### Vertex Degree
 
-- Number of edges incident to vertex
-- Directed graph
-    - In-degree, which is pointed into the vertex
-    - Out-degree, vice versa
+-   Number of edges incident to vertex
+-   Directed graph
+    -   In-degree, which is pointed into the vertex
+    -   Out-degree, vice versa
 
 ### Sum of degree
 
 The number of edges is $e$, then
 
-- Undirected Graph
-    - $2e$
-    - Since each edges contributes $2$ to vertex degree
-- Directed Graph
-    - $e=sum(in)=sum(out)$
+-   Undirected Graph
+    -   $2e$
+    -   Since each edges contributes $2$ to vertex degree
+-   Directed Graph
+    -   $e=sum(in)=sum(out)$
 
 ## Trees & Spanning Trees
 
 ### Tree
 
-- Acycilc Graph
-  - A graph with no cycles
-- Connected Graph
-  - All pairs of nodes are connected
-  - $n$ vertices connected graph with $n-1$ edges
+-   Acycilc Graph
+    -   A graph with no cycles
+-   Connected Graph
+    -   All pairs of nodes are connected
+    -   $n$ vertices connected graph with $n-1$ edges
 
 ### Spanning Tree
 
-- A tree
-- A subgraph that includes **all vertices** of the original graph
-- If the original graph has $n$ vertices, then the spanning tree will have $n$ vertices and $n-1$ edges
+-   A tree
+-   A subgraph that includes **all vertices** of the original graph
+-   If the original graph has $n$ vertices, then the spanning tree will have $n$ vertices and $n-1$ edges
 
 ### Minimum Cost Spanning Tree
 
-- A spanning tree with least cost (or weight)
-    - Tree cost means the sum of edge costs/weights
+-   A spanning tree with least cost (or weight)
+    -   Tree cost means the sum of edge costs/weights
 
 ![Minimum Spanning Tree (MST) - GeeksforGeeks](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/Untitled-Diagram66-3.jpg)
 
@@ -1428,10 +1449,10 @@ The number of edges is $e$, then
 
 ### Adjacency Matrix
 
-- Using 2-Dimensional $n$ by $n$ matrix $A$
-    - $n$ is number of vertices
-    - $A[i][j]=1$ means there to be an edge between vertices $i$ and $j$
-    - Diagonal entries are all $0$
+-   Using 2-Dimensional $n$ by $n$ matrix $A$
+    -   $n$ is number of vertices
+    -   $A[i][j]=1$ means there to be an edge between vertices $i$ and $j$
+    -   Diagonal entries are all $0$
 
 ![Adjacency Matrix](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20241025021948121.png)
 
@@ -1441,47 +1462,47 @@ Traversing this matrix will have the time complexity $O(n^2)$, it seems to be ok
 
 #### Undirected Graph
 
-- Each adjacency list is a chain. One chain for each vertex
-    - Array length will be $n$
-- The data field of a chain node store an adjacency vertex
-    - In **undirected** graph, total number of chain nodes will be $2e$
+-   Each adjacency list is a chain. One chain for each vertex
+    -   Array length will be $n$
+-   The data field of a chain node store an adjacency vertex
+    -   In **undirected** graph, total number of chain nodes will be $2e$
 
 ![Linked Adjacency List](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20241025022527988.png)
 
 #### Directed Graph
 
-- Total nubmer of chain nodes is $e$
-- The data field of a chain node store an adjacent vertex
-- In **inverse** linked adjacency list, the data field of a chain node store the vertex adjacent to the vetex it represents
+-   Total nubmer of chain nodes is $e$
+-   The data field of a chain node store an adjacent vertex
+-   In **inverse** linked adjacency list, the data field of a chain node store the vertex adjacent to the vetex it represents
 
 ![Linked Adjacency List](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20241025022922803.png)
 
 ### Array Adjacency List
 
-- Using an integer array `node[]` to store all adjacency lists
-  - Array length will be $n+2e+1$
-  - The $i^\text{th}$ element in `node[0, 1, 2, ..., n-1]` is the starting point of the list for vertex $i$ 
+-   Using an integer array `node[]` to store all adjacency lists
+    -   Array length will be $n+2e+1$
+    -   The $i^\text{th}$ element in `node[0, 1, 2, ..., n-1]` is the starting point of the list for vertex $i$
 
 ![Array Adjacency List](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/Array%20Adjacency%20List.jpg)
 
 ## Weighted Graphs
 
-- Weighted adjacency matrix
-  - $A[i][j]$ is cost of edge $(i, j)$
-- Weighted adjacency list
-  - Each element is a pair of **adjacent vertex** & **edge weight**
-- A graph with weighted edges is called a network
+-   Weighted adjacency matrix
+    -   $A[i][j]$ is cost of edge $(i, j)$
+-   Weighted adjacency list
+    -   Each element is a pair of **adjacent vertex** & **edge weight**
+-   A graph with weighted edges is called a network
 
 ![Weighted Graph](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/Weighted%20Graph.jpg)
 
 ## DFS & BFS
 
-To search element in a graph, we need to introduce 2 algorithms, depth first search and breadth first search. 
+To search element in a graph, we need to introduce 2 algorithms, depth first search and breadth first search.
 
-- Depth First Search (DFS)
-  - Similar to a **preorder** tree traversal
-- Breadth First Search (BFS)
-  - Similar to a **level-order** tree traversal
+-   Depth First Search (DFS)
+    -   Similar to a **preorder** tree traversal
+-   Breadth First Search (BFS)
+    -   Similar to a **level-order** tree traversal
 
 If there's a path from a vertex $u$ to another vertex $v$, we say $v$ is reachable from $u$. A search method is to traverse/visit every reachable vertices in the graph.
 
@@ -1505,8 +1526,8 @@ dfs(v){
 
 ### BFS
 
-- Visit start vertex and put into a FIFO queue
-- Repeatedly remove a vertex from the queue, visit its unvisited adjacent vertices, put newly visited vertices into the queue
+-   Visit start vertex and put into a FIFO queue
+-   Repeatedly remove a vertex from the queue, visit its unvisited adjacent vertices, put newly visited vertices into the queue
 
 Here's the pseudo code and animation of BFS.
 
@@ -1527,11 +1548,11 @@ while !Q.empty // Q is a normal queue (FIFO)
 
 ### Time Complexity
 
-- Adjacency matrix, the time complexity is $O(n^2)$
-  - For each node, searching the corresponding row to find adjacent vertices takes $O(n)$
-  - Visiting at most $n$ nodes takes $O(n\times n)=O(n^2)$
-- Adjacency list, the time complexity is $O(n+e)$
-  - Search at most $e$ edges and $n$ nodes
+-   Adjacency matrix, the time complexity is $O(n^2)$
+    -   For each node, searching the corresponding row to find adjacent vertices takes $O(n)$
+    -   Visiting at most $n$ nodes takes $O(n\times n)=O(n^2)$
+-   Adjacency list, the time complexity is $O(n+e)$
+    -   Search at most $e$ edges and $n$ nodes
 
 ### Application: Articulation Points
 
@@ -1545,29 +1566,29 @@ To find a articulation point, we can generate a depth-first search spanning tree
 
 ![Spanning Tree](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20241025133718076.png)
 
-- For root $r$
-  - $Degree(r)\ge2$, then $r$ is an articulation point
-- For a non-root vertex $v$
-  - A child of vertex $v$ cannot reach any ancestor of vertex $v$ via other paths, then $v$ is an articulation point
+-   For root $r$
+    -   $Degree(r)\ge2$, then $r$ is an articulation point
+-   For a non-root vertex $v$
+    -   A child of vertex $v$ cannot reach any ancestor of vertex $v$ via other paths, then $v$ is an articulation point
 
 # Minimum Spanning Tree (MST)
 
 ## Intro
 
-- In a weighted **connected** **undirected** graph $G$
-  - $n$ is number of vertices
-- A spanning tree of the least weights
-  - Weights/Costs is the sum of the weights of edges in the spanning tree
-  - Edges within the graph $G$
-  - Number of edges is $n-1$
+-   In a weighted **connected** **undirected** graph $G$
+    -   $n$ is number of vertices
+-   A spanning tree of the least weights
+    -   Weights/Costs is the sum of the weights of edges in the spanning tree
+    -   Edges within the graph $G$
+    -   Number of edges is $n-1$
 
 How can we derive an MST from a graph?
 
 ## Kruskal’s Method
 
-- Start with an **forest** composed of $n$ vertices and $0$ edges
-- Select edges in **nondecreasing** order of weight
-  - If not form a cycle with the edges that are already selected
+-   Start with an **forest** composed of $n$ vertices and $0$ edges
+-   Select edges in **nondecreasing** order of weight
+    -   If not form a cycle with the edges that are already selected
 
 ![Kruskal's Algorithm - VisuAlgo](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/kruskal.gif)
 
@@ -1587,44 +1608,44 @@ else There is no spanning tree.
 
 ### Data Structures for Kruskal's Method
 
-- Operations related to $E$
-  - Check if the edge set $E$ is empty
-  - Select and remove a **least-weight** edge
-  - Use a **min heap** or **leftist heap** for edges set
-  - Time complexity
-    - Initialization: $O(e)$
-    - Remove and return least-weight edge: $O(\log e)$
-- Operations related to $T$
-  - Check if $T$ has $n-1$ edges
-  - Examine if adding $(u, v)$ to $T$ creates a cycle
-    - Each connected component in $T$ is a set containing the vertices, like $\{a, g\},\{f\}, \{h, b, c, e\}$
-    - Adding 2 vertices that are already connected creates a cycle
-    - Using `find()` operation to determine if $u$ and $v$ are in the same set
-  - Add an edge $(u, v)$ to $T$
-    - If an edge $(u, v)$ is added to $T$, the 2 connected components that have vertices $u$ and $v$ should be merged
-    - Using `union()` operation to merge the set containing $u$ and $v$ 
-    - $\{f\}+\{h, b, c, e\}=\{f, h, b, c, e\}$
-  - Use **disjoint sets** to process $T$
+-   Operations related to $E$
+    -   Check if the edge set $E$ is empty
+    -   Select and remove a **least-weight** edge
+    -   Use a **min heap** or **leftist heap** for edges set
+    -   Time complexity
+        -   Initialization: $O(e)$
+        -   Remove and return least-weight edge: $O(\log e)$
+-   Operations related to $T$
+    -   Check if $T$ has $n-1$ edges
+    -   Examine if adding $(u, v)$ to $T$ creates a cycle
+        -   Each connected component in $T$ is a set containing the vertices, like $\{a, g\},\{f\}, \{h, b, c, e\}$
+        -   Adding 2 vertices that are already connected creates a cycle
+        -   Using `find()` operation to determine if $u$ and $v$ are in the same set
+    -   Add an edge $(u, v)$ to $T$
+        -   If an edge $(u, v)$ is added to $T$, the 2 connected components that have vertices $u$ and $v$ should be merged
+        -   Using `union()` operation to merge the set containing $u$ and $v$
+        -   $\{f\}+\{h, b, c, e\}=\{f, h, b, c, e\}$
+    -   Use **disjoint sets** to process $T$
 
 ### Time Complexity
 
-- Operations for edge set $E$
-  - Initialize min heap or leftist heap: $O(e)$
-  - Operations to get minimum weight edge: $O(\log e)$
-    - At most $e$ times of operation: $O(e\log e)$
-- Operations for vertices
-  - Initialize disjoint sets: $O(n)$
-  - At most $2e$ find operations and $n-1$ union operations: close to $O(e+n)$
-- Overall: $O(e+e\log e+n+e)\approx O(e\log e)$
-  - For each iteration, time for union-find operation is less than that for obtaining minimum cost edge
+-   Operations for edge set $E$
+    -   Initialize min heap or leftist heap: $O(e)$
+    -   Operations to get minimum weight edge: $O(\log e)$
+        -   At most $e$ times of operation: $O(e\log e)$
+-   Operations for vertices
+    -   Initialize disjoint sets: $O(n)$
+    -   At most $2e$ find operations and $n-1$ union operations: close to $O(e+n)$
+-   Overall: $O(e+e\log e+n+e)\approx O(e\log e)$
+    -   For each iteration, time for union-find operation is less than that for obtaining minimum cost edge
 
 ## Prim's Method
 
 Prim's Algorithm is an greedy algorithm.
 
-- Start with a tree $T$ composed of $1$ vertex
-- Grow the tree $T$ by repeatedly adding the least weight edge $(u, v)$ until it has $n-1$ edges
-  - Only one of $u$ and $v$ is in $T$
+-   Start with a tree $T$ composed of $1$ vertex
+-   Grow the tree $T$ by repeatedly adding the least weight edge $(u, v)$ until it has $n-1$ edges
+    -   Only one of $u$ and $v$ is in $T$
 
 ![Prim's Algorithm - VisuAlgo](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/prim.gif)
 
@@ -1649,5 +1670,5 @@ MST = T
 
 # Credits and References
 
-- [VisuAlgo](https://visualgo.net/en)
-- [Data Structures Visulization by University of San Francisco](https://www.cs.usfca.edu/~galles/visualization/Algorithms.html)
+-   [VisuAlgo](https://visualgo.net/en)
+-   [Data Structures Visulization by University of San Francisco](https://www.cs.usfca.edu/~galles/visualization/Algorithms.html)
