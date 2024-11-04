@@ -936,3 +936,32 @@ upx -d <FileName>
 ```txt
 picoCTF{U9X_UnP4ck1N6_B1n4Ri3S_1a5a3f39}
 ```
+
+# Shop
+
+這題我甚至沒什麼逆向，盲猜打出來了XD。他就是 nc 連到題目後會是一個 shop，然後可以買東西，其中一個物品是 Flag，但初始的錢只有 40 元。打法就是購買商品，購買數量填寫負數，所以你就會越買錢越多，等錢超過 100 元就可以買 Flag，然後它會吐出 ASCII 值，再轉回來就是 Flag 了。
+
+![Pwned](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20241104102410078.png)
+
+```txt
+picoCTF{b4d_brogrammer_b8d7271f}
+```
+
+後來用 IDA 開來看了下，發現問題出在這裡。
+
+```c
+inv.array[v11].count = count - v9;
+if ( (unsigned int)*v10 >= inv.len )
+	runtime_panicindex();
+v14 = *v10;
+v15 = wallet - *_num * inv.array[v14].price;
+if ( (unsigned int)*v10 >= user.len )
+	runtime_panicindex();
+user.array[v14].count += *_num;
+if ( inv.len <= 2u )
+	runtime_panicindex();
+if ( inv.array[2].count != 1 )
+	main_get_flag();      
+```
+
+這邊第 5 行的 `_num` 是一個 `int` 指針，所以它可以為負值，這邊沒有做檢查就直接計算了，所以可以買負的數量的商品。
