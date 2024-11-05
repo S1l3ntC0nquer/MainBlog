@@ -980,12 +980,17 @@ First, we should know what is min tree and max tree to establish the concept we 
 
 ## Operations
 
-Here I use max heap for example, but it's very similar with the min heap so you can try it by yourself!
+Here I use max heap for example, but it's very similar with the min heap so you can try it by yourself! We're going to use 2 operations called heapify up and heapify down.
+
+- Heapify up
+    - While the new element has a larger value than its parent, swap the new element and its parent
+- Heapify down
+    - While the "out of place element" has a smaller priority than any child, swap the out of place element with the smallest child
 
 ### Insert(key)
 
-1. Create a new node while keep the heap being a complete binary tree.
-2. Compare the key with the parent.
+1. Create a new node while keep the heap being a complete binary tree
+2. Compare the key with the parent
     - If the key < parent, pass
     - If the key > parent, switch place with parent and recursively compare the parent with parent's parent until it match the definition (key value in any node is the maximum value in the subtree)
 
@@ -1670,5 +1675,6 @@ MST = T
 
 # Credits and References
 
+-   [Prof. Hui-Ling Chan](https://www.csie.ncku.edu.tw/zh-hant/members/64)
 -   [VisuAlgo](https://visualgo.net/en)
 -   [Data Structures Visulization by University of San Francisco](https://www.cs.usfca.edu/~galles/visualization/Algorithms.html)
