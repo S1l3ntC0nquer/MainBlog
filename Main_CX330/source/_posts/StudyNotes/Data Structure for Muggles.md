@@ -886,7 +886,7 @@ The binary search tree, of course, it's an binary tree. But beside this, it has 
 
 ## Operations
 
-### Search(root, key)
+### Search (root, key)
 
 -   k == root's key, terminate
 -   k < root's key, check left subtree
@@ -933,14 +933,14 @@ return NULL
 
 ![Insert](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/insert.jpg)
 
-### Delete(key)
+### Delete (key)
 
 There're 4 cases in the deletion.
 
 -   No element with delete key
 -   Element is a _leaf_
--   Element is a degree-1 node
--   Element is a degree-2 node
+-   Element is a $degree-1$ node
+-   Element is a $degree-2$ node
 
 Since the 1st case means we don't do anything, we will start from the 2nd case.
 
