@@ -691,15 +691,19 @@ This is an picture of a binary tree.
 
 ![Binary Tree](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240920104751233.png)
 
-## Full Binary Trees
+## Full Binary Trees & Perfect Binary Tree
 
-A full binary tree is a tree that has height $h$ and $2^h-1$ nodes. This is the graph of the full binary tree.
+- Full Binary Tree
+  - A full binary tree is a binary tree with either $0$ or $2$ child nodes for each node 
+- Perfect Binary Tree
+  - A full binary tree
+  - A tree that has height $h$ and $2^h-1$ nodes
 
-![Full Binary Tree](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240920105214535.png)
+![Perfect Binary Tree](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240920105214535.png)
 
 Please note that each full binary tree of the same height will only have one type. If we numbering the nodes in a full binary tree from **top to bottom**, **left to right**, then we will have the following properties.
 
--   Let $n$ be the number of nodes in a FULL binary tree
+-   Let $n$ be the number of nodes in a **full binary tree**
     -   Parent node of $i$ is node $floor(\frac{i}{2})$
     -   Left child of node $i$ is node $2i$
     -   Right child of node $i$ is node $2i+1$
