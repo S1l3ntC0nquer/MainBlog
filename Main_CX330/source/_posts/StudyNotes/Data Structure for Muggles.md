@@ -362,10 +362,14 @@ As I mentioned, queues are the opposite of stacks. That is because although they
 -   New elements are added at the **rear** end
 -   Old elements are deleted at the **front** end.
 -   Basic operations
-    -   Add: Insert element at the **rear** of a queue
-    -   Delete: Remove element at the **front** of a queue
-    -   IsFull: Return true if the queue is full. (`rear == MAX_QUEUE_SIZE - 1`)
-    -   IsEmpty: Return true if the queue is empty (`front == rear`)
+    -   Enqueue
+        -   Insert element at the **rear** of a queue
+    -   Dequeue
+        -   Remove element at the **front** of a queue
+    -   IsFull
+        -   Return true if the queue is full. (`rear == MAX_QUEUE_SIZE - 1`)
+    -   IsEmpty
+        -   Return true if the queue is empty (`front == rear`)
 
 The following is the diagram of the insertion and deletion of the queues.
 
