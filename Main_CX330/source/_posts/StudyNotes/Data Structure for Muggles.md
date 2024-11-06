@@ -1180,7 +1180,7 @@ Following is the animation of deleting a minimum (6 in this case) from a min lef
 -   Phase 2: Bottom-up process
     -   Maintaining the property of **leftist tree**
     -   Climbing up through the rightmost path of the new tree
-        -   If not meet the definition of a leftist tree (HBLT or WBLT), interchanging the left and right subtrees of the node
+        -   If not meet the definition of a leftist tree (HBLT or WBLT), interchange the left and right subtrees of the node
 -   Time Complexity is $O(\log m)$
     -   Length of rightmost path is $O(\log n)$, where $n$ is the number of nodes in a leftist tree
     -   A merge operation moves down and climbs up along the rightmost paths of the two leftist trees.
