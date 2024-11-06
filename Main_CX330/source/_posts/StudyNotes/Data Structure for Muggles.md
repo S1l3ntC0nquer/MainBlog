@@ -712,15 +712,15 @@ Please note that each full binary tree of the same height will only have one typ
 -   Let $n$ be the number of nodes in a binary tree whose height is $h$.
     -   $h\le n\le 2^h-1$
     -   $\log_2(n+1)\le h$
-    -   The height **h** of a binary tree is at least $log_2(n+1)$.
+    -   The height $h$ of a binary tree is at least $log_2(n+1)$
 
 ## Complete Binary Trees
 
 How to create a complete binary tree? Just follow the steps and check out the graph below.
 
-1. Create a full binary tree which has at least $n$ nodes.
-2. Number the nodes sequentially.
-3. The binary tree defined by the node numbered $1$ through $n$ is the n-node complete binary tree.
+1. Create a full binary tree which has at least $n$ nodes
+2. Number the nodes sequentially
+3. The binary tree defined by the node numbered $1$ through $n$ is the n-node complete binary tree
 
 ![Complete Binary Tree](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240920143648565.png)
 
