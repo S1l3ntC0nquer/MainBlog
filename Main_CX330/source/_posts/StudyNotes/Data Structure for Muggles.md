@@ -758,12 +758,18 @@ typedef struct node{
 -   Visiting each node in the tree exactly _once_
 -   A traversal produces a _linear order for the nodes_ in a tree
     -   LVR, LRV, VLR, VRL, RVL, and RLV
-        -   L: moving left
-        -   V: visiting the node
-        -   R: moving right
-    -   L**V**R: Inorder
-    -   **V**LR: Preorder
-    -   LR**V**: Postorder
+        -   L
+            -   moving left
+        -   V
+            -   visiting the node
+        -   R
+            -   moving right
+    -   L**V**R
+        -   Inorder
+    -   **V**LR
+        -   Preorder
+    -   LR**V**
+        -   Postorder
 
 ### Inorder
 
