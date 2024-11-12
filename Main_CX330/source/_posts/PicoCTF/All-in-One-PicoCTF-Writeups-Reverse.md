@@ -965,3 +965,34 @@ if ( inv.array[2].count != 1 )
 ```
 
 這邊第 5 行的 `_num` 是一個 `int` 指針，所以它可以為負值，這邊沒有做檢查就直接計算了，所以可以買負的數量的商品。
+
+# Bbbbloat
+
+這題用 IDA 打開後會發現 main 函數中有這段。
+
+```c
+printf("What's my favorite number? ");
+v5 = 863305;
+__isoc99_scanf("%d", &v4);
+v5 = 863305;
+if ( v4 == 549255 )                         // 549255 is the favorite number
+{
+    v5 = 863305;
+    s = (char *)sub_1249(0LL, v7);
+    fputs(s, stdout);
+    putchar(10);
+    free(s);
+}
+else
+{
+    puts("Sorry, that's not it!");
+}
+return 0LL;
+```
+
+所以我們只要在執行的時候輸入 549255 他就輸出 Flag 了。
+
+```txt
+picoCTF{cu7_7h3_bl047_695036e3}
+```
+
