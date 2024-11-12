@@ -34,6 +34,9 @@ nav:
     menu:
         - title: Contact
           item:
+              - name: X
+                link: https://x.com/CX330Blake
+                icon: /assets/x.png
               - name: Facebook
                 link: https://www.facebook.com/profile.php?id=100011698690769
                 icon: /assets/fb.png
@@ -508,9 +511,9 @@ footer:
             # - title: 抖音
             #   link: https://v.douyin.com/DwCpMEy/
             #   icon: anzhiyu-icon-tiktok
-            - title: CC
-              link: https://creativecommons.org/licenses/by-nc-nd/4.0/deed.en
-              icon: fa-regular fa-copyright
+            - title: X
+              link: https://x.com/CX330Blake
+              icon: fa-brands fa-x-twitter
     list:
         enable: true
         randomFriends: 3
