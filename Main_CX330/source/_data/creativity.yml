@@ -46,7 +46,7 @@
         color: "#161d2d"
         icon: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/tailwind.png
       - name: JS
-        color: "#000"
+        color: "#FFF"
         icon: https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png
       - name: TypeScript
         color: "#000"

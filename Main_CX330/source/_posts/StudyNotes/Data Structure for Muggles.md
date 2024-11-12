@@ -362,10 +362,14 @@ As I mentioned, queues are the opposite of stacks. That is because although they
 -   New elements are added at the **rear** end
 -   Old elements are deleted at the **front** end.
 -   Basic operations
-    -   Add: Insert element at the **rear** of a queue
-    -   Delete: Remove element at the **front** of a queue
-    -   IsFull: Return true if the queue is full. (`rear == MAX_QUEUE_SIZE - 1`)
-    -   IsEmpty: Return true if the queue is empty (`front == rear`)
+    -   Enqueue
+        -   Insert element at the **rear** of a queue
+    -   Dequeue
+        -   Remove element at the **front** of a queue
+    -   IsFull
+        -   Return true if the queue is full. (`rear == MAX_QUEUE_SIZE - 1`)
+    -   IsEmpty
+        -   Return true if the queue is empty (`front == rear`)
 
 The following is the diagram of the insertion and deletion of the queues.
 
@@ -687,15 +691,19 @@ This is an picture of a binary tree.
 
 ![Binary Tree](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240920104751233.png)
 
-## Full Binary Trees
+## Full Binary Trees & Perfect Binary Trees
 
-A full binary tree is a tree that has height $h$ and $2^h-1$ nodes. This is the graph of the full binary tree.
+- Full Binary Tree
+  - A full binary tree is a binary tree with either $0$ or $2$ child nodes for each node 
+- Perfect Binary Tree
+  - A full binary tree
+  - A tree that has height $h$ and $2^h-1$ nodes
 
-![Full Binary Tree](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240920105214535.png)
+![Perfect Binary Tree](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240920105214535.png)
 
-Please note that each full binary tree of the same height will only have one type. If we numbering the nodes in a full binary tree from **top to bottom**, **left to right**, then we will have the following properties.
+Please note that each perfect binary tree of the same height will only have one type. If we numbering the nodes in a perfect binary tree from **top to bottom**, **left to right**, then we will have the following properties.
 
--   Let $n$ be the number of nodes in a FULL binary tree
+-   Let $n$ be the number of nodes in a **perfect binary tree**
     -   Parent node of $i$ is node $floor(\frac{i}{2})$
     -   Left child of node $i$ is node $2i$
     -   Right child of node $i$ is node $2i+1$
@@ -712,15 +720,15 @@ Please note that each full binary tree of the same height will only have one typ
 -   Let $n$ be the number of nodes in a binary tree whose height is $h$.
     -   $h\le n\le 2^h-1$
     -   $\log_2(n+1)\le h$
-    -   The height **h** of a binary tree is at least $log_2(n+1)$.
+    -   The height $h$ of a binary tree is at least $log_2(n+1)$
 
 ## Complete Binary Trees
 
 How to create a complete binary tree? Just follow the steps and check out the graph below.
 
-1. Create a full binary tree which has at least $n$ nodes.
-2. Number the nodes sequentially.
-3. The binary tree defined by the node numbered $1$ through $n$ is the n-node complete binary tree.
+1. Create a full binary tree which has at least $n$ nodes
+2. Number the nodes sequentially
+3. The binary tree defined by the node numbered $1$ through $n$ is the n-node complete binary tree
 
 ![Complete Binary Tree](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240920143648565.png)
 
@@ -735,6 +743,13 @@ How to create a complete binary tree? Just follow the steps and check out the gr
 Since the number should be placed in the FULL binary tree, sometimes there will be some memory waste. For example, if we create a 4-level right-skewed binary tree, it will has the length 15, but only 4 being used.
 
 ![Worst Case for Required Space](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20240920144539000.png)
+
+In array representation, the tree will has the following properties.
+
+ -   Let $n$ be the number of nodes in a tree
+    -   Parent node of $i$ is node $floor(\frac{i}{2})$
+    -   Left child of node $i$ is node $2i$
+    -   Right child of node $i$ is node $2i+1$
 
 ### Linked Representation
 
@@ -758,12 +773,18 @@ typedef struct node{
 -   Visiting each node in the tree exactly _once_
 -   A traversal produces a _linear order for the nodes_ in a tree
     -   LVR, LRV, VLR, VRL, RVL, and RLV
-        -   L: moving left
-        -   V: visiting the node
-        -   R: moving right
-    -   L**V**R: Inorder
-    -   **V**LR: Preorder
-    -   LR**V**: Postorder
+        -   L
+            -   moving left
+        -   V
+            -   visiting the node
+        -   R
+            -   moving right
+    -   L**V**R
+        -   Inorder
+    -   **V**LR
+        -   Preorder
+    -   LR**V**
+        -   Postorder
 
 ### Inorder
 
@@ -865,7 +886,7 @@ The binary search tree, of course, it's an binary tree. But beside this, it has 
 
 ## Operations
 
-### Search(root, key)
+### Search (root, key)
 
 -   k == root's key, terminate
 -   k < root's key, check left subtree
@@ -912,14 +933,14 @@ return NULL
 
 ![Insert](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/insert.jpg)
 
-### Delete(key)
+### Delete (key)
 
 There're 4 cases in the deletion.
 
 -   No element with delete key
 -   Element is a _leaf_
--   Element is a degree-1 node
--   Element is a degree-2 node
+-   Element is a $degree-1$ node
+-   Element is a $degree-2$ node
 
 Since the 1st case means we don't do anything, we will start from the 2nd case.
 
@@ -1159,7 +1180,7 @@ Following is the animation of deleting a minimum (6 in this case) from a min lef
 -   Phase 2: Bottom-up process
     -   Maintaining the property of **leftist tree**
     -   Climbing up through the rightmost path of the new tree
-        -   If not meet the definition of a leftist tree (HBLT or WBLT), interchanging the left and right subtrees of the node
+        -   If not meet the definition of a leftist tree (HBLT or WBLT), interchange the left and right subtrees of the node
 -   Time Complexity is $O(\log m)$
     -   Length of rightmost path is $O(\log n)$, where $n$ is the number of nodes in a leftist tree
     -   A merge operation moves down and climbs up along the rightmost paths of the two leftist trees.
