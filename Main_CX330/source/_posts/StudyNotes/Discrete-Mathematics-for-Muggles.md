@@ -378,3 +378,5 @@ Under the assumption of equal likelihood, let $I$ be the sample space for an exp
 
 For sets $A$, $B$, the **Cartesian product**, or **cross product**, of $A$ and $B$ is denoted by $A \times B$ and equals $\{(a, b)\mid a \in A, b \in B\}$.
 
+# Properties of Integer
+
