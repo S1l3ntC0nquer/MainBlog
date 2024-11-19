@@ -1694,6 +1694,134 @@ while (!PQ.isEmpty)
 MST = T
 ```
 
+# Hash Table
+
+## Intro
+
+- A table to store dictionary pairs
+  - A dictionary pair includes `(key, value)`
+  - Different pair has different key
+- Operations
+  - `Search(key)`
+  - `Insert(key, value)`
+  - `Delete(key)`
+- Expected Time
+  - $O(1)$
+
+## Example
+
+Insert the pairs with the following keys to the hash table. *Asus, Canon, Zyxel, Epson, Ericsson, Apple, Dell*
+
+- Hash Table `ht`
+  - 26 buckets (26 alphabets)
+  - 2 slots per bucket (like "a" bucket holds 2 pairs, *Asus & Apple*)
+- Hash Function `h(k)`
+  - Map the first character of a key from $0$ to $25$
+
+![Example](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20241114152336245.png)
+
+## Loading Density
+
+- Loading Density
+  - $\alpha=n/sb$
+  - $n$ is number of pairs in the table
+  - $s$ is number of slots per bucket
+  - $b$ is number of buckets
+
+So in the previous example, we have the loading density $\alpha=7/(2\times26)$.
+
+## Synonyms
+
+- $2$ keys are **synonyms** if `h(k1)==h(k2)`
+  - In the previous example, *Asus* and *Apple* are synonyms
+- When Inserting Pairs in Previous Example
+  - `Insert(Cisco, 1000)`
+    - The home bucket isn't empty
+    - **Collision**
+  - `Insert(Acer, 1000)`
+    - The home bucket is full
+    - **Overflow**
+  - Collision & Overflow occur simultaneously when each bucket has only $1$ slot
+
+## Ideal Hash Functions
+
+- Easy to compute
+- Minimize number of collisions
+- No biased use of hash table
+  - `h(k)` is independently and uniformly at random from $0$ to $b-1$
+  - The probability of a bucket to be selected is $1/b$
+
+### Hash Functions: Division
+
+- Division
+  - $h(k)=k\pmod D$
+  - Use the remainder
+  - Have at least $D$ buckets in the hash table
+- Example
+  - Inserting pairs $(22,a), (34,c), (3,d), (73,e), (86,f)$
+  - Hash table with $11$ slots, `ht[0:10]`
+  - Hash function: $key\pmod{11}$
+
+![Example](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20241114153735564.png)
+
+### Hash Functions: Folding
+
+- Partition the key into several parts $P_0, P_1, \dots, P_i$ and add all partitions together
+- Shift folding
+  - $h(k)=P_0+P_1+\dots+P_i$
+  - $k = 12320324111220$ and we partition it into $3$ digits long, then $h(k)= 123 + 203 +241 +112 +20 = 699$
+- Folding at the boundaries
+  - Reversing every other partition and then adding
+  - $k=12320324111220$ and we partition it into $3$ digits long, then $h(k) = 123 + 302 +241 +211 +20 = 897$
+
+## Overflow Handling
+
+### Chaining
+
+- A linked list per bucket
+- Each list contains all synonyms
+- Example
+  - Inserting pairs whose keys are $6, 12, 34, 29, 28, 11, 23, 7, 0, 33, 30, 45$
+  - Hash function is $h(key)=key\pmod{17}$
+- Average chain length is $n/b$
+
+![Example](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20241114155114191.png)
+
+### Open Addressing
+
+- Search the hash table in some systematic fashion for a bucket that is not full
+  - Linear probing (linear open addressing)
+  - Quadratic probing
+  - Rehashing
+  - Random probing
+
+### Linear Probing
+
+#### Search
+
+- Search the hash table in the following order
+  - $ht[h(k)\bmod{b}],ht[(h(k)+1)\bmod{b}],\dots,ht[(h(k)+b)\bmod{b}]$
+  - $ht$ is hash table
+  - $h(k)$ is the hash function
+  - $b$ is the number of bucket
+
+#### Insert
+
+- The insert terminate when we reach the **first unfilled** bucket
+  - Insert the pair into taht bucket
+
+For example, we have a hash function $key\pmod{17}$ and $b=17$. Insert pairs whose keys are $6, 12, 34, 29, 28, 11, 23, 7, 0, 33, 30, 45$
+
+| Index | 0    | 1    | 2    | 3    | 4    | 5    | 6    | 7    | 8    | 9    | 10   | 11   | 12   | 13   | 14   | 15   | 16   |
+| ----- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| Value | 34   | 0    | 45   |      |      |      | 6    | 23   | 7    |      |      | 28   | 12   | 29   | 11   | 30   | 33   |
+
+#### Delete
+
+
+
+
+
 # Credits and References
 
 -   [Prof. Hui-Ling Chan](https://www.csie.ncku.edu.tw/zh-hant/members/64)
