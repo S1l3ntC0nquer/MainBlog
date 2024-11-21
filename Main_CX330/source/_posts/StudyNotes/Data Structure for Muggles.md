@@ -2004,6 +2004,18 @@ $$
 
 ![Proof 2](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20241121225441616.png)
 
+# Binomial Heaps
+
+# Leftist vs Binomial Heaps
+
+This is a table of time complexity for different operations.
+
+| Operations          | Leftist Heaps | Actual Binomial Heaps | Amortized Binomial Heaps |
+| ------------------- | ------------- | --------------------- | ------------------------ |
+| Insert              | $O(\log n)$   | $O(1)$                | $O(1)$                   |
+| Delete min (or max) | $O(\log n)$   | $O(n)$                | $O(\log n)$              |
+| Meld                | $O(\log n)$   | $O(1)$                | $O(1)$                   |
+
 
 
 # Credits and References
