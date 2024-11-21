@@ -1597,7 +1597,7 @@ To find a articulation point, we can generate a depth-first search spanning tree
 -   For a non-root vertex $v$
     -   A child of vertex $v$ cannot reach any ancestor of vertex $v$ via other paths, then $v$ is an articulation point
 
-# Minimum Spanning Tree (MST)
+# Minimum Spanning Trees (MST)
 
 ## Intro
 
@@ -1694,7 +1694,7 @@ while (!PQ.isEmpty)
 MST = T
 ```
 
-# Hash Table
+# Hash Tables
 
 ## Intro
 
@@ -1778,6 +1778,8 @@ So in the previous example, we have the loading density $\alpha=7/(2\times26)$.
 
 ### Chaining
 
+#### Intro
+
 - A linked list per bucket
 - Each list contains all synonyms
 - Example
@@ -1786,6 +1788,24 @@ So in the previous example, we have the loading density $\alpha=7/(2\times26)$.
 - Average chain length is $n/b$
 
 ![Example](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20241114155114191.png)
+
+#### Expected Performance
+
+If we have a **chained hash table with uniform hash functions**
+
+- Average chain length is $\frac{n}{b}$
+    - $n$ is number of data items in hash table
+    - $b$ is the number of buckets (number of chains)
+- $U_n$ 
+    - Expected number of key comparisons in an unsuccessful search
+    - Expected nubmer of keys on a chain
+    - $U_n=\frac{n}{b}$
+- $S_n$
+    - Expected number of key comparisons in a successful search
+    - When the $i^{th}$ key is being inserted, the expected number of keys in a chain is $\frac{(i-1)}{b}$
+    - The expected number of comparisons needed to search for $k_i$ is $1+\frac{i-1}{b}$. (Assuming that new entry will be insert)
+    - Find the $i^{th}$ key, averaged over $1\le i\le n$
+        - $S_n=\frac{1}{n}\displaystyle\sum^n_{i=1}\{1+\frac{i-1}{b}\}\approx 1+\frac{\alpha}{2}$
 
 ### Open Addressing
 
@@ -1818,7 +1838,171 @@ For example, we have a hash function $key\pmod{17}$ and $b=17$. Insert pairs who
 
 #### Delete
 
+In linear probing, we cannot directly delete an element in the hash table. Since if we do that, the corresponding position will be `None`, that way, the search function will return when encounter the `None`,  so all the elements after `None` won't be visited. To solve it, we use `Tombstone` to replace the `none`, we put a `Tombstone` in the element place we want to delete, and this is call **lazy deletion**.
 
+#### Expected Performance
+
+- Loading density of a hash table takes $\alpha = n/b$
+
+    - $n$ is number of data item in hash table
+    - $b$ is number of buckets
+
+- When $n$ is large and $0\le\alpha\le 1$
+
+    - $U_n$
+        - Expected number of key comparisons in an unsuccessful search
+        - $U_n\approx\frac{1}{2}\{1+\frac{1}{(1-\alpha)^2}\}$
+    - $S_n$
+        - Expected number of key comparisons in a successful search
+        - $S_n\approx\frac{1}{2}\{1+\frac{1}{1-\alpha}\}$
+
+- $\alpha\le0.75$ is recommended
+
+    - Proven by Knuth, 1962
+
+    - | $\alpha$ | $S_n$ | $U_n$  |
+        | -------- | ----- | ------ |
+        | $0.50$   | $1.5$ | $2.5$  |
+        | $0.75$   | $2.5$ | $8.5$  |
+        | $0.90$   | $5.5$ | $50.7$ |
+
+### Quadratic probing
+
+In quadratic probing, we search elements in the following order. ($h$ is hash function, $b$ is number of buckets)
+$$
+\begin{aligned}
+&ht[h(k) \bmod b],\\
+&ht[(h(k)+1) \bmod b], ht[(h(k)-1) \bmod b],\\
+&ht[(h(k)+2^2) \bmod b], ht[(h(k)-2^2) \bmod b],\\
+&ht[(h(k)+3^2) \bmod b], ht[(h(k)-3^2) \bmod b], \\ 
+&\vdots \\
+\end{aligned}
+$$
+For example, if $h(k)=k\bmod b$, where $b=7$
+
+- $k = 2$
+    - $h(k) = 2, \quad\text{Probing sequence is}\quad \{2, 3, 1, 6, 5, 4, 0\}$
+- $k = 6$
+    - $h(k) = 6, \quad\text{Probing sequence is} \quad\{6, 0, 5, 3, 2, 1, 4\}$
+- $k = 19$
+    - $h(k) = 5, \quad\text{Probing sequence is}\quad \{5, 6, 4, 2, 1, 0, 3\}$
+
+### Rehashing
+
+- Create a series of hash functions $h_1, h_2, h_3, \dots, h_m$
+- Examine buckets in the order of $h_1(k), h_2(k), h_3(k), \dots, h_m(k)$
+
+## Perfomances
+
+- Worst case for find/insert/delete time is $O(n)$, $n$ is the number of pairs in the table
+    - Open addressing
+        - This happens when all pairs are in the same cluster
+    - Chaining
+        -  This happens when all pairs are in the same chain
+
+# Bloom Filters
+
+## Intro
+
+- When
+    - Returning **maybe** and **No** are acceptable
+- What
+    - Bit array
+    - Uniform and independent hash functions $f_1, f_2, \dots, f_h$
+- Limitations
+    - The naive implementation of the bloom filter doesn’t support the delete operation
+    - The false positives rate can be reduced but can’t be reduced to zero
+
+
+## Operations
+
+### Insert(k)
+
+Given $m$ bits of memory $BF$ and $h$ hash functions, then $0\le f_i(k)\le m-1$
+
+- Initialize all $m$ bits to be $0$
+- To insert key $k$, set bits $f_1(k), f_2(k), f_3(k),\dots,f_h(k)=1$
+- So $1$ key will make multiple indices changes
+
+### Member(k, BF)
+
+Search for key $k$
+
+- **ANY** $BF[f_i(k)]=0$ means $k$ is <u>not</u> in the set
+- **ALL** $BF[f_i(k)]=1$ means $k$ <u>may be</u> in the set
+
+## Performances
+
+Assume that a bloom filter with
+
+1. $m$ bits of memory
+2. $h$ uniform hashed functions
+3. $u$ elements
+
+Consider the $i^{th}$ bit of the bloom filter
+
+- Probability to be selected by the $j^{th}$ hash function $f_j(k)$
+    - $P[f_j(k)=i]=\frac{1}{m}$
+- Probability of unselected by the $j^{th}$ hash function $f_j(k)$
+    - $P[f_j(k)\ne i]=1-\frac{1}{m}$
+- Probability of unselected by any of $h$ hash functions
+    - $1\le j\le h, P[f_j(k)\ne i]=(1-\frac{1}{m})^h$
+- After inserting $u$ elements, probability of unselected by any of $h$ hash functions
+    - $p = (1-\frac{1}{m})^{h\cdot u}$
+- After inserting $u$ elements, probability that bit $i$ remains $0$
+    - $p=(1-\frac{1}{m})^{h\cdot u}$
+- After inserting $u$ elements, probability that bit $i$ is $1$
+    - $1-p$
+
+Probability of false positives
+
+- Take a random element $k$ and check $Member(k, BF)$
+- The probability that all $h$ bits $f_1(k),\dots, f_h(k)$ in $BF$ are $1$
+    - $f = (1-p)^h$
+
+## Design of Bloom Filters
+
+- Choose $m$ (filter size in bits)
+    - Large $m$ to reduce filter error
+- Pick $h$ (number of hash functions)
+    - $h$ is too small
+        - Probability of different keys having same signature is high
+        - Test more bits for $Member(k, BF)$
+            - Lower false positive rate
+        - More bits in $BF$ are $1$
+            - Higher false positive rate
+    - $h$ is too large
+        - The bloom filter fills with ones quickly
+        - Test less bits for $Member(k, BF)$
+            - Higher false positive rate
+        - More bits in $BF$ are $0$
+            - Lower false positive rate
+- Select $h$ hash functions
+    - Hash functions should be relatively independent
+
+Given $m$ bits of memory and $u$ elements, choose $h=\frac{m\ln 2}{u}$
+
+- Probability that some bit $i$ is $1$
+    - $p\approx e^{\frac{-h \cdot u}{m}}=\frac{1}{2}$
+- Expected distribution
+    - $\frac{1}{2}$ bits are $1$ and vice versa
+- Probability of false positives
+    - $f=(1-p)^h\approx(\frac{1}{2})^h=(\frac{1}{2})^{(\ln 2)\frac{m}{u}}\approx 0.6185^{\frac{m}{u}}$
+
+## Minimize The False Positive Rate
+
+Assume that the filter size $m$ and the number of elements in the filter $u$ are fixed, $h$ minimizes false positive rate $f$ if 
+$$
+h = \frac{(m \ln 2)}{u}
+$$
+
+### Proof 1
+
+![Proof 1](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20241121225413052.png)
+
+### Proof 2
+
+![Proof 2](https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/image-20241121225441616.png)
 
 
 
