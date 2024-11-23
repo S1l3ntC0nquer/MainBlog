@@ -11,7 +11,7 @@
   btnLazyload: false
   url: false
   top_link: /album
-  top_btn_text: 返回
+  top_btn_text: Back
   album_list:
       - date: 2022/10/26 01:00:00
         content: A corner of Xiangtan。
