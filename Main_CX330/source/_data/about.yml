@@ -46,8 +46,8 @@
   map:
       title: "pwd: "
       StrengthenTitle: /Earth/Kathana
-      background: https://blog.cx330.tw/assets/taiwan.png
-      backgroundDark: https://blog.cx330.tw/assets/taiwan.png
+      background: https://github.com/S1l3ntC0nquer/MainBlog/blob/main/Main_CX330/source/assets/kathana.png
+      backgroundDark: https://github.com/S1l3ntC0nquer/MainBlog/blob/main/Main_CX330/source/assets/kathana.png
   selfInfo:
       selfInfoTips1: Born in
       selfInfoContentYear: 2004
