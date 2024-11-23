@@ -13,14 +13,14 @@
           - Programmer
           - Poet of Code
           - Vampire
-  name: 陳子雋 CX330
+  name: Kalpesh Solanki | S1l3ntC0nquer
   description: An hacker, developer, and a CTFer.
   aboutsiteTips:
       tips: Philosophy
       title1: Life is short,
       title2: you need
       word:
-          - Python
+          - Hack
           - Love
           - Dreams
           - Hope
@@ -34,9 +34,9 @@
       tips: Careers
       title: Let's go
       list:
-          - desc: NCKU CCEP
+          - desc: JNV ANAND
             color: "#5271ff"
-          - desc: NCKU CSIE
+          - desc: GEC RAJKOT
             color: "#00bf63"
       img: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/career.png
   statistic:
@@ -45,14 +45,14 @@
       cover: https://bu.dusays.com/2023/05/01/644f4b037b930.jpg
   map:
       title: "pwd: "
-      StrengthenTitle: /Earth/Taiwan
+      StrengthenTitle: /Earth/Kathana
       background: https://blog.cx330.tw/assets/taiwan.png
       backgroundDark: https://blog.cx330.tw/assets/taiwan.png
   selfInfo:
       selfInfoTips1: Born in
       selfInfoContentYear: 2004
-      selfInfoTips2: National Chung Kung University
-      selfInfoContent2: CSIE
+      selfInfoTips2: Gujarat Technological University
+      selfInfoContent2: ECE
       selfInfoTips3: Now
       selfInfoContent3: Undergraduate
   personalities:
@@ -97,14 +97,14 @@
       like_tips: Following
       like_title: Tech news
       like_bg: https://raw.githubusercontent.com/CX330Blake/MyBlogPhotos/main/image/technews.jpg
-      like_bottom: CyberSec, CTF, Front end, Back end, AI, Mobile app
+      like_bottom: CyberSec, CTF, Front end, Back end, AI, Mobile app, Electronics Xpert, Hardware, Embedded Systems
   music:
       music_tips: Music
-      music_title: Folk, Lo-Fi, Sad Rap, R&B
+      music_title: Phonk, Folk, Lo-Fi, Sad Rap, R&B, Every Genre
       music_bg: /assets/powfu.jpg
       music_link: /music
 #   reward_list:
-#       - name: 伴舟先生大霖子
+#       - name: Kalpesh Solanki
 #         amount: 4.03
 #         datatime: 2022-10-27
-#         suffix: 贝壳
+#         suffix: Everything
