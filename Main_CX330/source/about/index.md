@@ -10,7 +10,7 @@ type: "about"
 
 # Whoami
 
-Hello world. My name is **Blake Chen**, and the IDs I often use in the cyber world are **CX330** & **The Star** (since CX330 is hard to pronounce). I am currently a college student, majoring in computer science. I want to become a really great hacker, just like Condor or The Mentor.
+Hello world. My name is **Kalpesh Solanki**, and the IDs I often use in the cyber world are **S1l3ntC0nquer** & **The Star** (since S1l3ntC0nquer is hard to pronounce). I am currently a college student, majoring in computer science. I want to become a really great hacker, just like Condor or The Mentor.
 
 I'm a perfectionist, always striving to optimize everything in my life. When I fall short of my own expectations, it frustrates me, even though I know perfection is unattainable. Sometimes I try too hard and
 make a lot of things overflow, such as my brain, my schedule, my emotions, etc.
