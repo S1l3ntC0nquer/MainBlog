@@ -41,4 +41,4 @@ I hope one day, people will remember my name and my ID, remember **Kalpesh Solan
 
 # My LeetCode Stats
 
-![LeetCode Stats](https://leetcard.jacoblin.cool/CX330Blake?theme=unicorn&font=Fira%20Code&ext=activity)
+![LeetCode Stats](https://leetcard.jacoblin.cool/S1l3ntC0nquer?theme=unicorn&font=Fira%20Code&ext=activity)
